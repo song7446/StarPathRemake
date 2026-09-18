@@ -634,6 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrawingManager
   linePrefab: {fileID: 3563384554973968426, guid: a6551dc4d5518f84b90bdfe6b099d22a, type: 3}
   currentConnections: []
+  starCamera: {fileID: 66269330}
 --- !u!4 &551605959
 Transform:
   m_ObjectHideFlags: 0
@@ -939,7 +940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7514429184354602812, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: Lens.OrthographicSize
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

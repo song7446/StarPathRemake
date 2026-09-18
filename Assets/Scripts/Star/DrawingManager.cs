@@ -21,12 +21,14 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
     private ConstellationData currentAnswerData;
     public List<StarConnection> currentConnections = new List<StarConnection>();
     
+    [SerializeField] private Camera starCamera;
+    
     private void Update()
     {
         if (!isDrawing || currentLine == null) return;
         
         Vector2 mousePos = Mouse.current.position.ReadValue();
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector2 worldPos = starCamera.ScreenToWorldPoint(mousePos);
         
         if (hoveredStar != null && hoveredStar != startStar)
         {
