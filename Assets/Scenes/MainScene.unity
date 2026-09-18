@@ -1307,7 +1307,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1332,7 +1332,7 @@ Transform:
   m_GameObject: {fileID: 758870766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: -10}
+  m_LocalPosition: {x: 0, y: -9.97, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1733,15 +1733,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1444293080764783485, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: Lens.OrthographicSize
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1444293080764783485, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 1925984493}
+    - target: {fileID: 2058469559366171376, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
+      propertyPath: Lens.OrthographicSize
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2649599510408343471, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.12
+      value: 3.496
       objectReference: {fileID: 0}
     - target: {fileID: 5449675401194377992, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: m_Name
@@ -1753,11 +1757,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5631740467519875859, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7083037037843190514, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: -9.97
       objectReference: {fileID: 0}
     - target: {fileID: 7121013553867227136, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: Lens.FieldOfView
@@ -1809,7 +1813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7514429184354602812, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: Lens.OrthographicSize
-      value: 1.5
+      value: 1.6667
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2153,7 +2157,7 @@ Transform:
   m_GameObject: {fileID: 1925984492}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
