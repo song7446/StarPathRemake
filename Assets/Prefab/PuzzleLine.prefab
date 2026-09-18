@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8557796597500903705}
   - component: {fileID: 3563384554973968426}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: PuzzleLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
