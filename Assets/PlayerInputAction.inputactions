@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "PlayerInputAction",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "4fd441cb-fb6f-4f76-bdd5-71ca8a35b6b0",
+            "actions": [
+                {
+                    "name": "Advance",
+                    "type": "Button",
+                    "id": "4966b764-8a6b-4eb8-87e3-41dc0b313bbb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "514f81d6-d740-4e25-adb1-f725a8bbe49a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Advance",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
