@@ -19,6 +19,11 @@ public class ConstellationData : ScriptableObject
 {
     [Header("다국어 번역 키")]
     public string constellationId;
+
+    public string Name_Kr;
+    public string Explain_Kr;
+    public string Name_En;
+    public string Explain_En;
     
     [Header("정답 연결 리스트 (예: 1-2, 2-3, 3-4, 3-5)")]
     public List<StarConnection> correctConnections;

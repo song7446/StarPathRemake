@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13002fd244c90b4299bd69e8549285f, type: 3}
+  m_Name: Chapter_1_Definition
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
+  chapterId: 1_Front
+  cutSceneCasts: {fileID: 11400000, guid: 17202cab0ff1c66439ae3f1b9d319219, type: 2}
+  constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
+  animations:
+  - {fileID: 11400000, guid: c64555889da985643967b4b290b9f735, type: 2}
+  - {fileID: 11400000, guid: 98e25d442c4136a4a82c056ef08c1dde, type: 2}

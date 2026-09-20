@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    public ChapterDefinition chapterDefinition;
+    
     private void Start()
     {
         DialogueRepository.Instance.TryGetChapter("1_Front", out IReadOnlyList<DialogueData> dialogueDatas);

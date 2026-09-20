@@ -79,6 +79,8 @@ public class DialogueUI : MonoBehaviour
         StopTyping();
 
         DialogueData line = lines[currentIndex];
+        
+        AnimationManager.Instance.PlayAnimation(line.ID);
 
         string text = useEnglish && !string.IsNullOrEmpty(line.Text_En)
             ? line.Text_En

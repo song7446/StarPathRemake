@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: UrsaMajorSO
   m_EditorClassIdentifier: Assembly-CSharp::ConstellationData
   constellationId: Constellation_01
+  Name_Kr: "\uD070\uACF0\uC790\uB9AC"
+  Explain_Kr: "\uBD81\uCABD \uD558\uB298\uC744 \uC601\uC6D0\uD788 \uB9F4\uB3C4\uB294
+    \uAC70\uB300\uD55C \uACF0\uC758 \uBCC4\uC790\uB9AC. \uAC00\uC7A5 \uBC1D\uAC8C
+    \uBE5B\uB098\uB294 \uC77C\uACF1 \uAC1C\uC758 \uBCC4 \uBD81\uB450\uCE60\uC131\uC744
+    \uD488\uACE0 \uC788\uC5B4 \uBD81\uADF9\uC131\uC744 \uCC3E\uC744 \uC218 \uC788\uAC8C
+    \uD574\uC8FC\uC5C8\uB2E4. \uC5B4\uB518\uAC00\uC5D0 \uD568\uAED8 \uC788\uC744
+    \uB610 \uB2E4\uB978 \uC874\uC7AC\uB97C \uD5A5\uD574 \uC601\uC6D0\uD788 \uC190\uC744
+    \uBED7\uACE0 \uC788\uB2E4."
+  Name_En: Ursa Major
+  Explain_En: blr
   correctConnections:
   - starA: 1
     starB: 2
