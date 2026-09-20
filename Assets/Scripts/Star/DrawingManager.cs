@@ -20,16 +20,16 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
 
     private ConstellationData currentAnswerData;
     public List<StarConnection> currentConnections = new List<StarConnection>();
-    
+
     [SerializeField] private Camera starCamera;
-    
+
     private void Update()
     {
         if (!isDrawing || currentLine == null) return;
-        
+
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector2 worldPos = starCamera.ScreenToWorldPoint(mousePos);
-        
+
         if (hoveredStar != null && hoveredStar != startStar)
         {
             // 마우스가 다른 별 위에 있으면 마우스 좌표가 아니라 그 별의 정중앙에 선이 딱 붙게 만듭니다.
@@ -40,7 +40,7 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
             currentLine.SetPosition(1, worldPos);
         }
     }
-    
+
     public void StartDrawing(PuzzleStar star)
     {
         isDrawing = true;
@@ -54,7 +54,7 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
         currentLine.SetPosition(0, startStar.transform.position);
         currentLine.SetPosition(1, startStar.transform.position);
     }
-    
+
     public void EndDrawing()
     {
         isDrawing = false;
@@ -69,12 +69,13 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
             Debug.Log($"{startStar.starID}번 별과 {hoveredStar.starID}번 별 연결 완료!");
 
             // [추가 팁] 이미 그은 선(중복)이라면 무시하는 방어 로직
-            bool alreadyExists = currentConnections.Exists(c => c.IsSameConnection(newConnection.starA, newConnection.starB));
+            bool alreadyExists =
+                currentConnections.Exists(c => c.IsSameConnection(newConnection.starA, newConnection.starB));
             if (!alreadyExists)
             {
                 currentConnections.Add(newConnection);
                 permanentLines.Push(currentLine);
-                
+
                 // 정답 체크 실행
             }
             else
@@ -100,9 +101,22 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
     {
         hoveredStar = star;
     }
-    
+
     public void EndHoveredStar(PuzzleStar star)
     {
         hoveredStar = null;
+    }
+
+    public void OnRightClick()
+    {
+        if (isDrawing)
+            EndDrawing();
+        else
+        {
+            if (permanentLines.TryPop(out LineRenderer beforeLine))
+            {
+                Destroy(beforeLine);
+            }
+        }
     }
 }

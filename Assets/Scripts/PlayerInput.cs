@@ -9,4 +9,11 @@ public class PlayerInput : MonoBehaviour
 
         UIManager.Instance.OnAdvanceDialogue();
     }
+
+    public void OnRightClick(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        DrawingManager.Instance.OnRightClick();
+    }
 }
