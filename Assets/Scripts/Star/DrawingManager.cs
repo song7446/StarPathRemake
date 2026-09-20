@@ -77,6 +77,7 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
                 permanentLines.Push(currentLine);
 
                 // 정답 체크 실행
+                ConstellationManager.Instance.CheckAnswer(currentConnections);
             }
             else
             {
@@ -117,6 +118,30 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
             {
                 Destroy(beforeLine);
             }
+        }
+    }
+
+    public void DrawEditorLine(PuzzleStar editorStartStar, PuzzleStar editorEndStar)
+    {
+        StarConnection newConnection = new StarConnection();
+        newConnection.starA = editorStartStar.starID;
+        newConnection.starB = editorEndStar.starID;
+        
+        bool alreadyExists =
+            currentConnections.Exists(c => c.IsSameConnection(newConnection.starA, newConnection.starB));
+        if (!alreadyExists)
+        {
+            currentConnections.Add(newConnection);
+            permanentLines.Push(currentLine);
+            
+            LineRenderer editorLine = Instantiate(linePrefab, transform);
+            editorLine.positionCount = 2;
+        
+            editorLine.SetPosition(0, editorStartStar.transform.position);
+            editorLine.SetPosition(1, editorEndStar.transform.position);
+
+            // 정답 체크 실행
+            ConstellationManager.Instance.CheckAnswer(currentConnections);
         }
     }
 }

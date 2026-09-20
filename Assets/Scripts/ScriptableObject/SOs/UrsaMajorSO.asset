@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507f4b4ceb9ba3046a35777337b4be5f, type: 3}
+  m_Name: UrsaMajorSO
+  m_EditorClassIdentifier: Assembly-CSharp::ConstellationData
+  constellationId: Constellation_01
+  correctConnections:
+  - starA: 1
+    starB: 2
+  - starA: 2
+    starB: 3
+  - starA: 3
+    starB: 4
+  - starA: 4
+    starB: 5
+  - starA: 4
+    starB: 10
+  - starA: 5
+    starB: 6
+  - starA: 5
+    starB: 9
+  - starA: 6
+    starB: 7
+  - starA: 7
+    starB: 8
+  - starA: 8
+    starB: 9
+  - starA: 8
+    starB: 15
+  - starA: 9
+    starB: 10
+  - starA: 10
+    starB: 11
+  - starA: 11
+    starB: 12
+  - starA: 11
+    starB: 13
+  - starA: 13
+    starB: 14
+  - starA: 13
+    starB: 15
+  - starA: 15
+    starB: 16
+  constellationPrefab: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
+  constellationGuideImage: {fileID: 2634097103197475196, guid: 4bdfbdad7c824c34da9b6b90fabec665, type: 3}
