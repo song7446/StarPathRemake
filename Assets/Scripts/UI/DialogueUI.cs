@@ -6,15 +6,14 @@ using UnityEngine.Events;
 
 public class DialogueUI : MonoBehaviour
 {
-    [Header("UI")]
-    [SerializeField] private TMP_Text dialogueText;
+    [Header("UI")] [SerializeField] private TMP_Text dialogueText;
 
-    [Header("출력")]
-    [SerializeField, Min(1f)] private float charactersPerSecond = 25f;
+    [Header("출력")] [SerializeField, Min(1f)]
+    private float charactersPerSecond = 25f;
+
     [SerializeField] private bool useEnglish;
 
-    [Header("완료 이벤트")]
-    [SerializeField] private UnityEvent onDialogueFinished;
+    [Header("완료 이벤트")] [SerializeField] private UnityEvent onDialogueFinished;
 
     private IReadOnlyList<DialogueData> lines;
     private int currentIndex;
@@ -67,7 +66,12 @@ public class DialogueUI : MonoBehaviour
         if (currentIndex >= lines.Count)
         {
             isPlaying = false;
-            onDialogueFinished?.Invoke();
+
+            if (!GameManager.Instance.IsFront)
+            {
+                onDialogueFinished?.Invoke();
+            }
+
             return;
         }
 
@@ -79,7 +83,7 @@ public class DialogueUI : MonoBehaviour
         StopTyping();
 
         DialogueData line = lines[currentIndex];
-        
+
         AnimationManager.Instance.PlayAnimation(line.ID);
 
         string text = useEnglish && !string.IsNullOrEmpty(line.Text_En)
@@ -106,7 +110,7 @@ public class DialogueUI : MonoBehaviour
         while (dialogueText.maxVisibleCharacters < characterCount)
         {
             visibleCount += Mathf.Max(1f, charactersPerSecond)
-                          * Time.unscaledDeltaTime;
+                            * Time.unscaledDeltaTime;
 
             dialogueText.maxVisibleCharacters = Mathf.Min(
                 Mathf.FloorToInt(visibleCount),

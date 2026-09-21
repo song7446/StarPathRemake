@@ -44,6 +44,8 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
             Debug.Log("★ 정답! 별자리를 완벽하게 완성했습니다! ★");
 
             //  TODO:스테이지 클리어 이벤트 호출
+
+            GameManager.Instance.StartNextChapter();
         }
         else
         {
