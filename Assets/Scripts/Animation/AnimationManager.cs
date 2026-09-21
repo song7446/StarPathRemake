@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using SongLib.Core.Singleton;
 using UnityEngine;
 
@@ -17,25 +18,30 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
     public void CommandsToDictionary()
     {
         AnimationCommand[] animationCommands = GameManager.Instance.chapterDefinition.animations;
-        
+
         foreach (var animationCommand in animationCommands)
         {
             animationDict.TryAdd(animationCommand.dialogueId, animationCommand);
         }
     }
-    
+
     public void PlayAnimation(string id)
     {
-        if (animationDict.ContainsKey(id))
+        if (animationDict.TryGetValue(id, out var animationCommand))
         {
-            AnimationCommand animationCommand = animationDict[id];
-
             foreach (var command in animationCommand.commands)
             {
                 GameObject gameObject = GameObject.FindWithTag(command.characterId);
-                Destroy(gameObject);
+                gameObject.transform.GetComponent<SpriteRenderer>().DOFade(0, 2).OnComplete(() => Destroy(gameObject));
+
+                GameObject newGameObject = Instantiate(command.characterPrefab, command.position, Quaternion.Euler(command.rotation));
+                SpriteRenderer sr = newGameObject.transform.GetComponent<SpriteRenderer>();
+                Color color = sr.color;
+                color.a = 0;
                 
-                Instantiate(command.characterPrefab, command.position, Quaternion.Euler(command.rotation));
+                sr.color = color;
+                
+                sr.DOFade(1, 2);
             }
         }
     }
