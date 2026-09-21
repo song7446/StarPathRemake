@@ -17,15 +17,15 @@ MonoBehaviour:
     characterName: Father
     position: {x: -3.46, y: -1.35, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 0}
+    characterPrefab: {fileID: 5845569582844635182, guid: f2781e567f3522e468db8cdabdc2dc37, type: 3}
   - key: Daughter
     characterName: Daughter
     position: {x: -0.87, y: -1.86, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 0}
+    characterPrefab: {fileID: 8415689054987432274, guid: 393e6db88408d3948b6d2760894525a3, type: 3}
   objectInfos:
   - key: Bench
     objectName: Bench
     position: {x: -2.34, y: -2.4699998, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    objectPrefab: {fileID: 0}
+    objectPrefab: {fileID: 6865620340321105860, guid: d1c0afa8c91e0cd408db07a8ace921f9, type: 3}

@@ -1722,7 +1722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a202e27d31df9df4380e3d02b478b007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  chapterDefinition: {fileID: 11400000, guid: 846bba7d4ed4a0448a6ce87822e63c55, type: 2}
+  ChapterDefinitions:
+  - {fileID: 11400000, guid: 846bba7d4ed4a0448a6ce87822e63c55, type: 2}
+  - {fileID: 11400000, guid: 99d517ab64046494ba5d2ed6b01651e6, type: 2}
 --- !u!4 &1268157204
 Transform:
   m_ObjectHideFlags: 0
@@ -2800,7 +2802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6865620340321105860, guid: d1c0afa8c91e0cd408db07a8ace921f9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2861,7 +2863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5845569582844635182, guid: f2781e567f3522e468db8cdabdc2dc37, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -8,16 +8,9 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
 {
     private Dictionary<string, AnimationCommand> animationDict = new Dictionary<string, AnimationCommand>();
 
-    protected override void Awake()
-    {
-        base.Awake();
-
-        CommandsToDictionary();
-    }
-
     public void CommandsToDictionary()
     {
-        AnimationCommand[] animationCommands = GameManager.Instance.chapterDefinition.animations;
+        AnimationCommand[] animationCommands = GameManager.Instance.CurrentChapterDefinition.animations;
 
         foreach (var animationCommand in animationCommands)
         {
