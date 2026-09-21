@@ -2798,6 +2798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SPR_Bench
       objectReference: {fileID: 0}
+    - target: {fileID: 6865620340321105860, guid: d1c0afa8c91e0cd408db07a8ace921f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2855,6 +2859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SPR_Father_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5845569582844635182, guid: f2781e567f3522e468db8cdabdc2dc37, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2911,6 +2919,10 @@ PrefabInstance:
     - target: {fileID: 8415689054987432274, guid: 393e6db88408d3948b6d2760894525a3, type: 3}
       propertyPath: m_Name
       value: SPR_Daughter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415689054987432274, guid: 393e6db88408d3948b6d2760894525a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f13002fd244c90b4299bd69e8549285f, type: 3}
-  m_Name: Chapter_1_Definition
+  m_Name: Chapter_1_Front_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 1_Front
   cutSceneCasts: {fileID: 11400000, guid: 17202cab0ff1c66439ae3f1b9d319219, type: 2}
