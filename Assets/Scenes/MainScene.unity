@@ -1541,9 +1541,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   chapterDefinition: {fileID: 11400000, guid: 846bba7d4ed4a0448a6ce87822e63c55, type: 2}
-  chapters:
-  - 1_Front
-  - 1_Back
 --- !u!4 &1268157204
 Transform:
   m_ObjectHideFlags: 0
