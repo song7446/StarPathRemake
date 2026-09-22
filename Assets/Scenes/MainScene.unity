@@ -229,28 +229,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &43919110 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1112824666072902021, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
---- !u!114 &57461911 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6597448043837682851, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &57758505
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,28 +441,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 4.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &91202455 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7415919305521593411, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
---- !u!114 &93371154 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 439629507897945266, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &133124549
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,28 +919,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &523255836 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2387709529600223031, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
---- !u!114 &540293350 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8774752242288472538, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &606708386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,28 +1372,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &789444519 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5378569824486948298, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
---- !u!114 &840979152 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7039771828561382761, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &986504896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,28 +1463,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1021182895 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6860433976441383312, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
---- !u!114 &1033767565 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2306240750161256665, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &1202446825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,22 +1495,22 @@ MonoBehaviour:
   constellations:
   - {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   currentConstellationStars:
-  - {fileID: 1307113733}
-  - {fileID: 2104390212}
-  - {fileID: 1033767565}
-  - {fileID: 1905372289}
-  - {fileID: 840979152}
-  - {fileID: 789444519}
-  - {fileID: 1021182895}
-  - {fileID: 1818620673}
-  - {fileID: 523255836}
-  - {fileID: 2052928418}
-  - {fileID: 2048221131}
-  - {fileID: 43919110}
-  - {fileID: 57461911}
-  - {fileID: 93371154}
-  - {fileID: 91202455}
-  - {fileID: 540293350}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1202446827
 Transform:
   m_ObjectHideFlags: 0
@@ -1636,67 +1526,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1231443372
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 687902632545486591, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_Name
-      value: UrsaMajor
-      objectReference: {fileID: 0}
-    - target: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
 --- !u!1 &1268157202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,17 +1573,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1307113733 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6557764740833988584, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &1358878019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,17 +2141,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801531428}
   m_CullTransparentMesh: 1
---- !u!114 &1818620673 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1487085765029743724, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &1861843396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,17 +2255,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1905372289 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 515959967326771027, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &1925984492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2688,28 +2484,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2048221131 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6185988099658991029, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
---- !u!114 &2052928418 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3388989733060572565, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1 &2081416779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,17 +2515,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2104390212 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5625492456254935253, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
-  m_PrefabInstance: {fileID: 1231443372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162e9b3ef896cec40b318f09ba3a6d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStar
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2776,4 +2539,3 @@ SceneRoots:
   - {fileID: 1570410089}
   - {fileID: 606708391}
   - {fileID: 463507630}
-  - {fileID: 1231443372}

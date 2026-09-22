@@ -4,35 +4,31 @@ using UnityEngine;
 
 public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
 {
-    List<GameObject> AllObjects = new List<GameObject>();
     private Dictionary<string, GameObject> AllObjectsDict = new Dictionary<string, GameObject>();
 
     public void CreateCharacter(CutSceneCast cutSceneCast)
     {
-        foreach (var allObject in AllObjects)
+        foreach (var objects in AllObjectsDict)
         {
-            Destroy(allObject);
+            Destroy(objects.Value);
         }
         
-        AllObjects.Clear();
         AllObjectsDict.Clear();
 
         foreach (var characterInfo in cutSceneCast.characterInfos)
         {
             GameObject character = Instantiate(characterInfo.characterPrefab, characterInfo.position,
                 Quaternion.Euler(characterInfo.rotation));
-
-            AllObjects.Add(character);
-            AllObjectsDict.Add(characterInfo.key, character);
+            
+            AllObjectsDict.TryAdd(characterInfo.key, character);
         }
 
         foreach (var objectInfo in cutSceneCast.objectInfos)
         {
             GameObject objectObject = Instantiate(objectInfo.objectPrefab, objectInfo.position,
                 Quaternion.Euler(objectInfo.rotation));
-
-            AllObjects.Add(objectObject);
-            AllObjectsDict.Add(objectInfo.key, objectObject);
+            
+            AllObjectsDict.TryAdd(objectInfo.key, objectObject);
         }
     }
     
@@ -40,5 +36,15 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
     {
         AllObjectsDict.TryGetValue(key, out GameObject res);
         return res;
+    }
+
+    public void PushObject(string key, GameObject obj)
+    {
+        AllObjectsDict.TryAdd(key, obj);
+    }
+
+    public void RemoveObjectFromDictByKey(string key)
+    {
+        AllObjectsDict.Remove(key);
     }
 }

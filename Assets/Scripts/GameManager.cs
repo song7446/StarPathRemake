@@ -45,17 +45,21 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         if (_chapterIDs.Count <= 0)
             return;
 
-        _currentChapterDefinition = ChapterDefinitionsQueue.Dequeue();
-        
-        AnimationManager.Instance.CommandsToDictionary();
-        
-        CutSceneCastManager.Instance.CreateCharacter(CurrentChapterDefinition.cutSceneCasts);
-        
-        ConstellationManager.Instance.CreateConstellation(CurrentChapterDefinition.constellationData);
-        
-        DialogueRepository.Instance.TryGetChapter(_chapterIDs.Dequeue(), out IReadOnlyList<DialogueData> dialogueDatas);
-        UIManager.Instance.StartDialogue(dialogueDatas);
+        if (ChapterDefinitionsQueue.Count <= 0)
+            return;
 
         _isFront = !_isFront;
+
+        _currentChapterDefinition = ChapterDefinitionsQueue.Dequeue();
+
+        AnimationManager.Instance.CommandsToDictionary();
+
+        CutSceneCastManager.Instance.CreateCharacter(CurrentChapterDefinition.cutSceneCasts);
+
+        if (_isFront)
+            ConstellationManager.Instance.CreateConstellation(CurrentChapterDefinition.constellationData);
+
+        DialogueRepository.Instance.TryGetChapter(_chapterIDs.Dequeue(), out IReadOnlyList<DialogueData> dialogueDatas);
+        UIManager.Instance.StartDialogue(dialogueDatas);
     }
 }

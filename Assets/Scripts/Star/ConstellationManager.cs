@@ -6,15 +6,24 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
 {
     [SerializeField] private List<ConstellationData> constellations = new List<ConstellationData>();
     private ConstellationData _currentConstellationData;
-    [SerializeField] private List<PuzzleStar> currentConstellationStars;
+    private List<PuzzleStar> _currentConstellationStars = new List<PuzzleStar>();
 
     private bool isWrongLineDrawn;
 
     public void CreateConstellation(ConstellationData constellationData)
     {
+        _currentConstellationStars.Clear();
+        
         _currentConstellationData = constellationData;
         
-        Instantiate(constellationData.constellationPrefab, constellationData.CreatePosition, Quaternion.identity);
+        GameObject constellation = Instantiate(constellationData.constellationPrefab, constellationData.CreatePosition, Quaternion.identity);
+        
+        PuzzleStar[] childStars = constellation.GetComponentsInChildren<PuzzleStar>();
+
+        foreach (PuzzleStar childStar in childStars)
+        {
+            _currentConstellationStars.Add(childStar);
+        }
     }
 
     public void CheckAnswer(List<StarConnection> currentConnections)
@@ -70,7 +79,7 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
             PuzzleStar starA = gameObject.AddComponent<PuzzleStar>();
             PuzzleStar starB = gameObject.AddComponent<PuzzleStar>();
 
-            foreach (var star in currentConstellationStars)
+            foreach (var star in _currentConstellationStars)
             {
                 if (star.starID == id1)
                 {

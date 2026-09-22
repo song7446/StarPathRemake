@@ -10,6 +10,8 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
 
     public void CommandsToDictionary()
     {
+        animationDict.Clear();
+        
         AnimationCommand[] animationCommands = GameManager.Instance.CurrentChapterDefinition.animations;
 
         foreach (var animationCommand in animationCommands)
@@ -24,16 +26,30 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
         {
             foreach (var command in animationCommand.commands)
             {
-                GameObject gameObject = CutSceneCastManager.Instance.GetObjectByKey(command.characterId);
-                gameObject.transform.GetComponent<SpriteRenderer>().DOFade(0, 1).OnComplete(() => Destroy(gameObject));
+                GameObject oldObject = CutSceneCastManager.Instance.GetObjectByKey(command.characterId);
+                CutSceneCastManager.Instance.RemoveObjectFromDictByKey(command.characterId);
+
+                if (oldObject != null)
+                {
+                    SpriteRenderer oldRenderer = oldObject.GetComponent<SpriteRenderer>();
+                    
+                    oldRenderer.DOFade(0, 1)
+                        .SetLink(oldObject)
+                        .OnComplete(() =>
+                        {
+                            Destroy(oldObject);
+                        });
+                }
+                
 
                 GameObject newGameObject = Instantiate(command.characterPrefab, command.position, Quaternion.Euler(command.rotation));
+                CutSceneCastManager.Instance.PushObject(command.characterId, newGameObject);
                 SpriteRenderer sr = newGameObject.transform.GetComponent<SpriteRenderer>();
                 Color color = sr.color;
                 color.a = 0;
                 
                 sr.color = color;
-                sr.DOFade(1, 2);
+                sr.DOFade(1, 2).SetLink(newGameObject);
             }
         }
     }
