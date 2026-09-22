@@ -37,4 +37,9 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         return toggleCameraUI.GetIsOnSkyView();
     }
+
+    public void ToggleCamera()
+    {
+        toggleCameraUI.OnClickLookUpCameraButton();
+    }
 }

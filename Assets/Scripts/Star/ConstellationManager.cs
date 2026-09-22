@@ -62,6 +62,8 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
             //  TODO:스테이지 클리어 이벤트 호출
 
             GameManager.Instance.StartNextChapter();
+
+            UIManager.Instance.ToggleCamera();
         }
         else
         {
