@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using SongLib.Core.Singleton;
 using UnityEngine;
@@ -9,21 +10,51 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
     private List<PuzzleStar> _currentConstellationStars = new List<PuzzleStar>();
 
     private bool isWrongLineDrawn;
+    
+    [SerializeField] private float starAppearInterval = 0.3f;
+    private Coroutine starAppearCoroutine;
 
     public void CreateConstellation(ConstellationData constellationData)
     {
-        _currentConstellationStars.Clear();
+        if (starAppearCoroutine != null)
+        {
+            StopCoroutine(starAppearCoroutine);
+            starAppearCoroutine = null;
+        }
         
+        _currentConstellationStars.Clear();
         _currentConstellationData = constellationData;
         
         GameObject constellation = Instantiate(constellationData.constellationPrefab, constellationData.CreatePosition, Quaternion.identity);
+        PuzzleStar[] stars =
+            constellation.GetComponentsInChildren<PuzzleStar>(true);
+
         
         PuzzleStar[] childStars = constellation.GetComponentsInChildren<PuzzleStar>();
 
         foreach (PuzzleStar childStar in childStars)
         {
+            childStar.gameObject.SetActive(false);
             _currentConstellationStars.Add(childStar);
         }
+        
+        starAppearCoroutine = StartCoroutine(ShowStars(stars));
+    }
+    
+    private IEnumerator ShowStars(PuzzleStar[] stars)
+    {
+        WaitForSeconds delay = new WaitForSeconds(starAppearInterval);
+
+        foreach (PuzzleStar star in stars)
+        {
+            if (star == null)
+                continue;
+
+            star.gameObject.SetActive(true);
+            yield return delay;
+        }
+
+        starAppearCoroutine = null;
     }
 
     public void CheckAnswer(List<StarConnection> currentConnections)

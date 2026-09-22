@@ -24,6 +24,17 @@ public class CutSceneCast : ScriptableObject
         public GameObject objectPrefab;
     }
     
+    [System.Serializable]
+    public class BackGroundInfo
+    {
+        public string key;
+        public string BackGroundName;
+        public Vector3 position;
+        public Vector3 rotation;
+        public GameObject BackGroundPrefab;
+    }
+    
     public CharacterInfo[] characterInfos;
     public ObjectInfo[] objectInfos;
+    public BackGroundInfo[] BackGroundInfos;
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using SongLib.Core.Singleton;
 using UnityEngine;
 using UnityEngine.AI;
@@ -54,7 +55,18 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
         AnimationManager.Instance.CommandsToDictionary();
 
-        CutSceneCastManager.Instance.CreateCharacter(CurrentChapterDefinition.cutSceneCasts);
+        Sequence sequence = DOTween.Sequence();
+
+        if (_isFront)
+        {
+            AnimationManager.Instance.ChapterChangeAnimation(_currentChapterDefinition.cutSceneCasts, sequence);
+            CutSceneCastManager.Instance.CreateCharacterWithAnim(CurrentChapterDefinition.cutSceneCasts, sequence);
+        }
+        else
+        {
+            CutSceneCastManager.Instance.CreateCharacter(CurrentChapterDefinition.cutSceneCasts);
+        }
+
 
         if (_isFront)
             ConstellationManager.Instance.CreateConstellation(CurrentChapterDefinition.constellationData);
