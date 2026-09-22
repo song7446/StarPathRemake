@@ -21,6 +21,9 @@ public class PuzzleStar : MonoBehaviour
     {
         if (!UIManager.Instance.GetIsOnSkyView())
             return;
+
+        if (UIManager.Instance.IsPlayingDialogue())
+            return;
         
         if (!DrawingManager.Instance.IsDrawing)
         {

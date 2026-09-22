@@ -42,4 +42,9 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         toggleCameraUI.OnClickLookUpCameraButton();
     }
+
+    public bool IsPlayingDialogue()
+    {
+        return dialogueUI.IsPlaying;
+    }
 }

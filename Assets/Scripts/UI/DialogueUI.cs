@@ -23,6 +23,8 @@ public class DialogueUI : MonoBehaviour
     private bool isPlaying;
     private bool isTyping;
 
+    public bool IsPlaying => isPlaying;
+
     public void Play(IReadOnlyList<DialogueData> dialogues)
     {
         StopTyping();
