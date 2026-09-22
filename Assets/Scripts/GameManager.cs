@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         
         CutSceneCastManager.Instance.CreateCharacter(CurrentChapterDefinition.cutSceneCasts);
         
+        ConstellationManager.Instance.CreateConstellation(CurrentChapterDefinition.constellationData);
+        
         DialogueRepository.Instance.TryGetChapter(_chapterIDs.Dequeue(), out IReadOnlyList<DialogueData> dialogueDatas);
         UIManager.Instance.StartDialogue(dialogueDatas);
 

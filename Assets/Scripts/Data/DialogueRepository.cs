@@ -11,11 +11,6 @@ public class DialogueRepository : MonoBehaviourSingleton<DialogueRepository>
 
     private bool initialized;
 
-    private void Awake()
-    {
-        Initialize();
-    }
-
     private void Initialize()
     {
         if (initialized)

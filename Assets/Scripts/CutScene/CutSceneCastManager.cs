@@ -14,9 +14,8 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
             Destroy(allObject);
         }
         
-        AllObjectsDict.Clear();
-        
         AllObjects.Clear();
+        AllObjectsDict.Clear();
 
         foreach (var characterInfo in cutSceneCast.characterInfos)
         {

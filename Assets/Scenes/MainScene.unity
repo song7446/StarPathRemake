@@ -1602,8 +1602,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2955f3be688036e4b8dd432aec7fc3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstellationManager
-  constellations: []
-  currentConstellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
+  constellations:
+  - {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   currentConstellationStars:
   - {fileID: 1307113733}
   - {fileID: 2104390212}
@@ -1687,6 +1687,10 @@ PrefabInstance:
     - target: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
       propertyPath: m_Name
       value: UrsaMajor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

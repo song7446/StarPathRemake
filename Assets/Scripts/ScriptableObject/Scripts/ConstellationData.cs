@@ -24,6 +24,7 @@ public class ConstellationData : ScriptableObject
     public string Explain_Kr;
     public string Name_En;
     public string Explain_En;
+    public Vector3 CreatePosition;
     
     [Header("정답 연결 리스트 (예: 1-2, 2-3, 3-4, 3-5)")]
     public List<StarConnection> correctConnections;
