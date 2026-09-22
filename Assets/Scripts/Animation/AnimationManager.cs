@@ -24,8 +24,8 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
         {
             foreach (var command in animationCommand.commands)
             {
-                GameObject gameObject = GameObject.FindWithTag(command.characterId);
-                gameObject.transform.GetComponent<SpriteRenderer>().DOFade(0, 2).OnComplete(() => Destroy(gameObject));
+                GameObject gameObject = CutSceneCastManager.Instance.GetObjectByKey(command.characterId);
+                gameObject.transform.GetComponent<SpriteRenderer>().DOFade(0, 1).OnComplete(() => Destroy(gameObject));
 
                 GameObject newGameObject = Instantiate(command.characterPrefab, command.position, Quaternion.Euler(command.rotation));
                 SpriteRenderer sr = newGameObject.transform.GetComponent<SpriteRenderer>();
@@ -33,7 +33,6 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
                 color.a = 0;
                 
                 sr.color = color;
-                
                 sr.DOFade(1, 2);
             }
         }

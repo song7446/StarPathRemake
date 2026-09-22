@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Chapter_1_Back_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 1_Back
-  cutSceneCasts: {fileID: 11400000, guid: 17202cab0ff1c66439ae3f1b9d319219, type: 2}
+  cutSceneCasts: {fileID: 11400000, guid: 7638ebc3ee9fc1945ae0e226a3b7cd73, type: 2}
   constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   animations: []

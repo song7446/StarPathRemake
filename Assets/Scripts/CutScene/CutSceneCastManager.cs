@@ -5,6 +5,7 @@ using UnityEngine;
 public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
 {
     List<GameObject> AllObjects = new List<GameObject>();
+    private Dictionary<string, GameObject> AllObjectsDict = new Dictionary<string, GameObject>();
 
     public void CreateCharacter(CutSceneCast cutSceneCast)
     {
@@ -12,6 +13,8 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
         {
             Destroy(allObject);
         }
+        
+        AllObjectsDict.Clear();
         
         AllObjects.Clear();
 
@@ -21,6 +24,7 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
                 Quaternion.Euler(characterInfo.rotation));
 
             AllObjects.Add(character);
+            AllObjectsDict.Add(characterInfo.key, character);
         }
 
         foreach (var objectInfo in cutSceneCast.objectInfos)
@@ -29,6 +33,13 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
                 Quaternion.Euler(objectInfo.rotation));
 
             AllObjects.Add(objectObject);
+            AllObjectsDict.Add(objectInfo.key, objectObject);
         }
+    }
+    
+    public GameObject GetObjectByKey(string key)
+    {
+        AllObjectsDict.TryGetValue(key, out GameObject res);
+        return res;
     }
 }
