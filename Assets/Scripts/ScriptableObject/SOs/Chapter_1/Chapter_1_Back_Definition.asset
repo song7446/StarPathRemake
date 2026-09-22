@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Chapter_1_Back_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 1_Back
+  chapterTitle: "\uBA38\uBB3C\uB358 \uC790\uB9AC"
+  chapterSubtitle: "\uB0C9\uAE30"
   cutSceneCasts: {fileID: 11400000, guid: 7638ebc3ee9fc1945ae0e226a3b7cd73, type: 2}
   constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   animations: []
