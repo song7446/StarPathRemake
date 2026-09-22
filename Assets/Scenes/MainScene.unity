@@ -1494,23 +1494,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConstellationManager
   constellations:
   - {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
-  currentConstellationStars:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1202446827
 Transform:
   m_ObjectHideFlags: 0
@@ -1817,37 +1800,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524437574}
   m_CullTransparentMesh: 1
---- !u!1 &1570410088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1570410089}
-  m_Layer: 0
-  m_Name: -----------------------------------
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1570410089
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570410088}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1586548173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2532,10 +2484,9 @@ SceneRoots:
   - {fileID: 25832889}
   - {fileID: 1485070505}
   - {fileID: 2081416780}
+  - {fileID: 606708391}
+  - {fileID: 463507630}
   - {fileID: 1268157204}
   - {fileID: 692306431}
   - {fileID: 1586548175}
   - {fileID: 1202446827}
-  - {fileID: 1570410089}
-  - {fileID: 606708391}
-  - {fileID: 463507630}

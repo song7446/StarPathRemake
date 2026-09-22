@@ -12,7 +12,7 @@ public class ToggleCameraUI : MonoBehaviour
     
     [SerializeField] private Button _lookUpCameraButton;
     
-    public bool IsSkyView = false;
+    private bool IsSkyView = false;
     
 
     public void Awake()
@@ -39,14 +39,17 @@ public class ToggleCameraUI : MonoBehaviour
             // [하늘 뷰로 올라갈 때]
             ccSky.Priority = 20;
             ccStarSky.Priority = 20;
-            Debug.Log("카메라 이동: 땅 -> 하늘 (캐릭터 숨김)");
         }
         else
         {
             // [땅 뷰로 내려올 때]
             ccSky.Priority = 0;
             ccStarSky.Priority = 0;
-            Debug.Log("카메라 이동: 하늘 -> 땅 (캐릭터 표시)");
         }
+    }
+
+    public bool GetIsOnSkyView()
+    {
+        return IsSkyView;
     }
 }

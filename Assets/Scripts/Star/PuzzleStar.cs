@@ -19,6 +19,9 @@ public class PuzzleStar : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (!UIManager.Instance.GetIsOnSkyView())
+            return;
+        
         if (!DrawingManager.Instance.IsDrawing)
         {
             DrawingManager.Instance.StartDrawing(this);

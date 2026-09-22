@@ -32,4 +32,9 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         guideImageUI.SlideGuideImage();
     }
+
+    public bool GetIsOnSkyView()
+    {
+        return toggleCameraUI.GetIsOnSkyView();
+    }
 }
