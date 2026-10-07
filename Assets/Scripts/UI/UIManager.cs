@@ -10,12 +10,23 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     [SerializeField] private ToggleCameraUI toggleCameraUI;
     [SerializeField] private Button slideGuideImageButton;
     [SerializeField] private GuideImageUI guideImageUI;
+    [SerializeField] private Button onNoteBookButton;
+    [SerializeField] private NoteUI noteBookUI;
+    
+    private bool isNoteBookOpen = false;
 
     protected override void Awake()
     {
         base.Awake();
 
         slideGuideImageButton.onClick.AddListener(OnClickSlideGuideImage);
+        onNoteBookButton.onClick.AddListener(OnClickOnNoteBook);
+    }
+
+    private void OnClickOnNoteBook()
+    {
+        isNoteBookOpen = !isNoteBookOpen;
+        noteBookUI.gameObject.SetActive(isNoteBookOpen);
     }
 
     public void OnAdvanceDialogue()
