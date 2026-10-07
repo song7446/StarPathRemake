@@ -403,7 +403,13 @@ public class NotebookPaperCurl : BaseMeshEffect
 
         foreach (UIVertex vertex in vertices)
         {
-            vh.AddVert(vertex);
+            UIVertex output = vertex;
+
+            // 화면상의 휘어진 모양은 유지하고,
+            // 출력 깊이는 원래 종이 평면에 맞춤.
+            output.position.z = bottomLeft.position.z;
+
+            vh.AddVert(output);
         }
 
         foreach (Triangle triangle in triangles)
