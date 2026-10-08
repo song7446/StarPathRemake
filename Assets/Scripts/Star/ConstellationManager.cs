@@ -13,6 +13,9 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
     
     [SerializeField] private float starAppearInterval = 0.3f;
     private Coroutine starAppearCoroutine;
+    
+    [SerializeField, Min(0.01f)]
+    private float starFadeInDuration = 0.8f;
 
     public void CreateConstellation(ConstellationData constellationData)
     {
@@ -38,7 +41,74 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
             _currentConstellationStars.Add(childStar);
         }
         
-        starAppearCoroutine = StartCoroutine(ShowStars(stars));
+        starAppearCoroutine = StartCoroutine(FadeInStars(stars));
+    }
+    
+    private IEnumerator FadeInStars(PuzzleStar[] stars)
+    {
+        var renderers = new List<SpriteRenderer>();
+        var originalColors = new List<Color>();
+
+        // 모든 별을 활성화하고 투명하게 준비.
+        foreach (PuzzleStar star in stars)
+        {
+            if (star == null)
+                continue;
+
+            star.gameObject.SetActive(true);
+
+            foreach (SpriteRenderer renderer in
+                     star.GetComponentsInChildren<SpriteRenderer>(true))
+            {
+                // 중복 등록 방지.
+                if (renderers.Contains(renderer))
+                    continue;
+
+                Color originalColor = renderer.color;
+
+                renderers.Add(renderer);
+                originalColors.Add(originalColor);
+
+                Color transparentColor = originalColor;
+                transparentColor.a = 0f;
+                renderer.color = transparentColor;
+            }
+        }
+
+        float elapsed = 0f;
+        float duration = Mathf.Max(0.01f, starFadeInDuration);
+
+        // 같은 진행률로 모든 별을 동시에 표시.
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float progress = Mathf.Clamp01(elapsed / duration);
+
+            for (int i = 0; i < renderers.Count; i++)
+            {
+                if (renderers[i] == null)
+                    continue;
+
+                Color color = originalColors[i];
+                color.a *= progress;
+
+                renderers[i].color = color;
+            }
+
+            yield return null;
+        }
+
+        // 원래 색상과 투명도로 정확히 복구.
+        for (int i = 0; i < renderers.Count; i++)
+        {
+            if (renderers[i] != null)
+            {
+                renderers[i].color = originalColors[i];
+            }
+        }
+
+        starAppearCoroutine = null;
     }
     
     private IEnumerator ShowStars(PuzzleStar[] stars)
