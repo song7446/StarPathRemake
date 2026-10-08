@@ -8,15 +8,17 @@ using UnityEngine.UI;
 public class GuideImageUI : MonoBehaviour
 {
     [SerializeField] private GameObject guideImage;
+    [SerializeField] private Vector2 guideShownPosition;
     
     private Vector3 beforePosition;
-    private bool isGuideHidden;
+    [SerializeField] private bool isGuideHidden = true;
     private bool isSliding;
     
     private Vector3 guideMouseOffset;
     private RectTransform guideParent;
     private Camera guideUICamera;
     private bool isDraggingGuide;
+    
     
     public void OnBeginDragGuide(BaseEventData eventData)
     {
@@ -68,70 +70,98 @@ public class GuideImageUI : MonoBehaviour
     }
     
     public void SlideGuideImage()
+{
+    if (isSliding)
+        return;
+
+    RectTransform rect =
+        guideImage.GetComponent<RectTransform>();
+
+    Vector2 targetPosition;
+
+    if (isGuideHidden)
     {
-        if (isSliding)
-            return;
+        // 처음부터 밖에 있어도 지정한 위치로 등장.
+        targetPosition = guideShownPosition;
+    }
+    else
+    {
+        // 드래그 등으로 변경된 현재 위치 기억.
+        guideShownPosition = rect.anchoredPosition;
 
-        RectTransform rect = guideImage.GetComponent<RectTransform>();
-        Vector3 targetPosition;
+        Canvas canvas =
+            rect.GetComponentInParent<Canvas>().rootCanvas;
 
-        if (isGuideHidden)
-        {
-            targetPosition = beforePosition;
-        }
-        else
-        {
-            beforePosition = rect.position;
-
-            Canvas canvas = rect.GetComponentInParent<Canvas>().rootCanvas;
-            Camera uiCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay
+        Camera uiCamera =
+            canvas.renderMode == RenderMode.ScreenSpaceOverlay
                 ? null
                 : canvas.worldCamera;
 
-            Vector2 center = RectTransformUtility.WorldToScreenPoint(
-                uiCamera, rect.TransformPoint(rect.rect.center));
+        Vector2 center =
+            RectTransformUtility.WorldToScreenPoint(
+                uiCamera,
+                rect.TransformPoint(rect.rect.center)
+            );
 
-            Vector3[] corners = new Vector3[4];
-            rect.GetWorldCorners(corners);
+        Vector3[] corners = new Vector3[4];
+        rect.GetWorldCorners(corners);
 
-            float left = float.PositiveInfinity;
-            float right = float.NegativeInfinity;
+        float left = float.PositiveInfinity;
+        float right = float.NegativeInfinity;
 
-            foreach (Vector3 corner in corners)
-            {
-                float x = RectTransformUtility.WorldToScreenPoint(
-                    uiCamera, corner).x;
+        foreach (Vector3 corner in corners)
+        {
+            float x = RectTransformUtility.WorldToScreenPoint(
+                uiCamera,
+                corner
+            ).x;
 
-                left = Mathf.Min(left, x);
-                right = Mathf.Max(right, x);
-            }
-
-            float moveX = center.x < Screen.width * 0.5f
-                ? -right - 200f
-                : Screen.width - left + 200f;
-
-            RectTransform parent = rect.parent as RectTransform;
-
-            // 화면상 이동 거리를 실제 월드 좌표의 이동량으로 변환
-            if (!RectTransformUtility.ScreenPointToWorldPointInRectangle(
-                    parent, center, uiCamera, out Vector3 from) ||
-                !RectTransformUtility.ScreenPointToWorldPointInRectangle(
-                    parent, center + Vector2.right * moveX,
-                    uiCamera, out Vector3 to))
-                return;
-
-            targetPosition = beforePosition + (to - from);
+            left = Mathf.Min(left, x);
+            right = Mathf.Max(right, x);
         }
 
-        isSliding = true;
+        float moveX = center.x < Screen.width * 0.5f
+            ? -right - 200f
+            : Screen.width - left + 200f;
 
-        rect.DOMove(targetPosition, 0.4f)
-            .SetEase(Ease.InOutSine)
-            .SetUpdate(true)
-            .OnComplete(() =>
-            {
-                isGuideHidden = !isGuideHidden;
-                isSliding = false;
-            });
+        RectTransform parent = rect.parent as RectTransform;
+
+        if (parent == null)
+            return;
+
+        if (!RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                parent,
+                center,
+                uiCamera,
+                out Vector3 from) ||
+            !RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                parent,
+                center + Vector2.right * moveX,
+                uiCamera,
+                out Vector3 to))
+        {
+            return;
+        }
+
+        // 월드 이동량을 부모 기준의 UI 이동량으로 변환.
+        Vector3 localMovement =
+            parent.InverseTransformVector(to - from);
+
+        targetPosition =
+            rect.anchoredPosition + (Vector2)localMovement;
     }
+
+    bool targetHidden = !isGuideHidden;
+
+    isSliding = true;
+
+    rect.DOAnchorPos(targetPosition, 0.4f)
+        .SetEase(Ease.InOutSine)
+        .SetUpdate(true)
+        .OnComplete(() =>
+        {
+            isGuideHidden = targetHidden;
+            isSliding = false;
+        });
+}
 }
