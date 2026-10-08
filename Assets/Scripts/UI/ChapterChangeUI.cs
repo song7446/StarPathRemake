@@ -8,6 +8,8 @@ public class ChapterChangeUI : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI titleTMP;
+    [SerializeField] private TextMeshProUGUI subtitleTMP;
+    [SerializeField] private CanvasGroup titleGroup;
 
     // 제목 뒤에 표시할 장식 이미지. 없어도 됨.
     [SerializeField] private Image backGroundImage;
@@ -26,9 +28,10 @@ public class ChapterChangeUI : MonoBehaviour
 
     private Sequence sequence;
 
-    public void SetTitle(string title)
+    public void SetTitle(string title, string subtitle)
     {
         titleTMP.text = title;
+        subtitleTMP.text = subtitle;
     }
 
     public void FadeInTitle(
@@ -38,77 +41,83 @@ public class ChapterChangeUI : MonoBehaviour
         sequence?.Kill();
         sequence = null;
 
-        gameObject.SetActive(true);
+        if (titleGroup == null)
+        {
+            Debug.LogError("Title Group을 연결해주세요.", this);
+            return;
+        }
 
-        titleTMP.alpha = 0f;
+        // 켜기 전에 패널 전체를 투명하게 준비.
+        titleGroup.alpha = 0f;
+        titleGroup.interactable = false;
+        titleGroup.blocksRaycasts = false;
+
+        // 개별 요소는 불투명하게 두고,
+        // 전체 투명도는 CanvasGroup으로 조절.
+        titleTMP.alpha = 1f;
         titleTMP.raycastTarget = false;
 
+        SetBackgroundAlpha(1f);
         SetMosaic(1f);
-        SetBackgroundAlpha(0f);
+
+        gameObject.SetActive(true);
+
+        float fadeInTime = Mathf.Max(0.01f, fadeInDuration);
+        float fadeOutTime = Mathf.Max(0.01f, fadeOutDuration);
 
         sequence = DOTween.Sequence();
         sequence.SetUpdate(true);
 
-        // 제목 등장
+        // 챕터 번호, 제목, 장식이 함께 천천히 등장.
         sequence.Append(
-            titleTMP.DOFade(1f, fadeInDuration)
-                .SetEase(Ease.InOutSine)
+            titleGroup.DOFade(1f, fadeInTime)
+                .SetEase(Ease.Linear)
         );
 
-        // 제목과 함께 화면에 모자이크 적용
+        // 블러도 함께 적용.
         if (mosaicMaterial != null)
         {
             sequence.Join(
-                mosaicMaterial
-                    .DOFloat(pixelSize, PixelSizeId, fadeInDuration)
-                    .SetEase(Ease.InOutSine)
+                mosaicMaterial.DOFloat(
+                    pixelSize,
+                    PixelSizeId,
+                    fadeInTime
+                ).SetEase(Ease.InOutSine)
             );
         }
 
-        if (backGroundImage != null)
-        {
-            sequence.Join(
-                backGroundImage.DOFade(1f, fadeInDuration)
-                    .SetEase(Ease.InOutSine)
-            );
-        }
+        // 완전히 나타난 상태로 유지.
+        sequence.AppendInterval(Mathf.Max(0f, holdDuration));
 
-        // 제목 유지
-        sequence.AppendInterval(holdDuration);
-
-        // 다음 챕터 오브젝트 등장 시작
+        // 제목이 사라지기 시작할 때 오브젝트 등장.
         sequence.AppendCallback(() =>
         {
             onFadeOutStarted?.Invoke();
         });
 
-        // 제목 퇴장
+        // 제목 패널 전체 퇴장.
         sequence.Append(
-            titleTMP.DOFade(0f, fadeOutDuration)
+            titleGroup.DOFade(0f, fadeOutTime)
                 .SetEase(Ease.InOutSine)
         );
 
-        // 모자이크가 작아지면서 원래 화면으로 복귀
+        // 블러 해제.
         if (mosaicMaterial != null)
         {
             sequence.Join(
-                mosaicMaterial
-                    .DOFloat(1f, PixelSizeId, fadeOutDuration)
-                    .SetEase(Ease.InOutSine)
-            );
-        }
-
-        if (backGroundImage != null)
-        {
-            sequence.Join(
-                backGroundImage.DOFade(0f, fadeOutDuration)
-                    .SetEase(Ease.InOutSine)
+                mosaicMaterial.DOFloat(
+                    1f,
+                    PixelSizeId,
+                    fadeOutTime
+                ).SetEase(Ease.InOutSine)
             );
         }
 
         sequence.OnComplete(() =>
         {
             sequence = null;
+
+            titleGroup.alpha = 0f;
             SetMosaic(1f);
 
             gameObject.SetActive(false);

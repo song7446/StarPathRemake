@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using SongLib.Core.Singleton;
@@ -12,6 +13,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     [SerializeField] private GuideImageUI guideImageUI;
     [SerializeField] private Button onNoteBookButton;
     [SerializeField] private NoteUI noteBookUI;
+    [SerializeField] private ChapterChangeUI chapterChangeUI;
     
     private bool isNoteBookOpen = false;
 
@@ -57,5 +59,16 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     public bool IsPlayingDialogue()
     {
         return dialogueUI.IsPlaying;
+    }
+
+    public void SetTitle(string title, string subtitle)
+    {
+        chapterChangeUI.SetTitle(title, subtitle);
+    }
+
+    public void FadeInTitle(Action onFinished = null,
+        Action onFadeOutStarted = null)
+    {
+        chapterChangeUI.FadeInTitle(onFinished, onFadeOutStarted);
     }
 }

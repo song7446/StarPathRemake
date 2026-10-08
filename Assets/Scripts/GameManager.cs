@@ -24,8 +24,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private bool _isFront = false;
     public bool IsFront => _isFront;
-
-
+    
+    private bool _isShowingChapterTitle;
+    
     private void Start()
     {
         foreach (var chapter in chapters)
@@ -43,35 +44,90 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void StartNextChapter()
     {
-        if (_chapterIDs.Count <= 0)
+        if (_isShowingChapterTitle)
             return;
 
-        if (ChapterDefinitionsQueue.Count <= 0)
+        if (_chapterIDs.Count <= 0 ||
+            ChapterDefinitionsQueue.Count <= 0)
+        {
             return;
+        }
 
         _isFront = !_isFront;
 
-        _currentChapterDefinition = ChapterDefinitionsQueue.Dequeue();
+        _currentChapterDefinition =
+            ChapterDefinitionsQueue.Dequeue();
 
         AnimationManager.Instance.CommandsToDictionary();
 
-        Sequence sequence = DOTween.Sequence();
+        UIManager.Instance.SetTitle(
+            _currentChapterDefinition.chapterNumber,
+            $"{_currentChapterDefinition.chapterTitle} - " +
+            $"{_currentChapterDefinition.chapterSubtitle}"
+        );
 
         if (_isFront)
         {
-            AnimationManager.Instance.ChapterChangeAnimation(_currentChapterDefinition.cutSceneCasts, sequence);
-            CutSceneCastManager.Instance.CreateCharacterWithAnim(CurrentChapterDefinition.cutSceneCasts, sequence);
+            _isShowingChapterTitle = true;
+
+            UIManager.Instance.FadeInTitle(
+                onFinished: () =>
+                {
+                    try
+                    {
+                        StartChapterDialogue();
+                    }
+                    finally
+                    {
+                        _isShowingChapterTitle = false;
+                    }
+                },
+
+                onFadeOutStarted: CreateChapterObjects
+            );
         }
         else
         {
-            CutSceneCastManager.Instance.CreateCharacter(CurrentChapterDefinition.cutSceneCasts);
+            CreateChapterObjects();
+            StartChapterDialogue();
         }
+    }
 
-
+    private void CreateChapterObjects()
+    {
         if (_isFront)
-            ConstellationManager.Instance.CreateConstellation(CurrentChapterDefinition.constellationData);
+        {
+            Sequence sequence = DOTween.Sequence();
 
-        DialogueRepository.Instance.TryGetChapter(_chapterIDs.Dequeue(), out IReadOnlyList<DialogueData> dialogueDatas);
+            AnimationManager.Instance.ChapterChangeAnimation(
+                _currentChapterDefinition.cutSceneCasts,
+                sequence
+            );
+
+            CutSceneCastManager.Instance.CreateCharacterWithAnim(
+                _currentChapterDefinition.cutSceneCasts,
+                sequence
+            );
+
+            ConstellationManager.Instance.CreateConstellation(
+                _currentChapterDefinition.constellationData
+            );
+        }
+        else
+        {
+            CutSceneCastManager.Instance.CreateCharacter(
+                _currentChapterDefinition.cutSceneCasts
+            );
+        }
+    }
+
+    private void StartChapterDialogue()
+    {
+        DialogueRepository.Instance.TryGetChapter(
+            _chapterIDs.Dequeue(),
+            out IReadOnlyList<DialogueData> dialogueDatas
+        );
+
         UIManager.Instance.StartDialogue(dialogueDatas);
     }
 }
