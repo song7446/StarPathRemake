@@ -554,7 +554,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB300\uC0AC"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0646936c80510b841bd87f15f98a706a, type: 2}
   m_sharedMaterial: {fileID: -5450793321309260394, guid: 0646936c80510b841bd87f15f98a706a, type: 2}
@@ -3041,6 +3041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   dialogueUI: {fileID: 1759493822}
+  dialogueRectTransform: {fileID: 1759493823}
   toggleCameraUI: {fileID: 351302255}
   slideGuideImageButton: {fileID: 1524437576}
   guideImageUI: {fileID: 1861843398}
@@ -5925,6 +5926,7 @@ MonoBehaviour:
   constellations:
   - {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   starAppearInterval: 0.3
+  starFadeInDuration: 0.8
 --- !u!4 &1202446827
 Transform:
   m_ObjectHideFlags: 0
@@ -8788,6 +8790,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDialogueFinishedFront:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 606708387}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OutDialogueUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1759493823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8806,7 +8823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 15}
+  m_AnchoredPosition: {x: 0, y: -120}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1772817732

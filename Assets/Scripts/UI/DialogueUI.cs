@@ -14,6 +14,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private bool useEnglish;
 
     [Header("완료 이벤트")] [SerializeField] private UnityEvent onDialogueFinished;
+    [Header("완료 이벤트")] [SerializeField] private UnityEvent onDialogueFinishedFront;
 
     private IReadOnlyList<DialogueData> lines;
     private int currentIndex;
@@ -72,6 +73,10 @@ public class DialogueUI : MonoBehaviour
             if (!GameManager.Instance.IsFront)
             {
                 onDialogueFinished?.Invoke();
+            }
+            else
+            {
+                onDialogueFinishedFront?.Invoke();
             }
 
             return;

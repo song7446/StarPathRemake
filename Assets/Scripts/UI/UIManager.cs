@@ -8,13 +8,18 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviourSingleton<UIManager>
 {
     [SerializeField] private DialogueUI dialogueUI;
+    [SerializeField] private RectTransform dialogueRectTransform;
+    
     [SerializeField] private ToggleCameraUI toggleCameraUI;
     [SerializeField] private Button slideGuideImageButton;
     [SerializeField] private GuideImageUI guideImageUI;
     [SerializeField] private Button onNoteBookButton;
     [SerializeField] private NoteUI noteBookUI;
     [SerializeField] private ChapterChangeUI chapterChangeUI;
-    
+
+    Vector2 dialoguePostition = new Vector2(0, 15);
+    Vector2 dialogueOutPostition = new Vector2(0, -120);
+
     private bool isNoteBookOpen = false;
 
     protected override void Awake()
@@ -38,6 +43,11 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     public void StartDialogue(IReadOnlyList<DialogueData> dialogues)
     {
+        dialogueRectTransform.DOAnchorPos(
+            dialoguePostition,
+            0.5f
+        ).SetEase(Ease.InOutSine);
+        
         dialogueUI.Play(dialogues);
     }
 
@@ -70,5 +80,13 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         Action onFadeOutStarted = null)
     {
         chapterChangeUI.FadeInTitle(onFinished, onFadeOutStarted);
+    }
+
+    public void OutDialogueUI()
+    {
+        dialogueRectTransform.DOAnchorPos(
+            dialogueOutPostition,
+            0.5f
+        ).SetEase(Ease.InOutSine).SetDelay(3f);
     }
 }
