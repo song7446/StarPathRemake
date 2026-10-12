@@ -1734,7 +1734,7 @@ MonoBehaviour:
   backGroundImage: {fileID: 0}
   mosaicMaterial: {fileID: 2100000, guid: c1195e162ee98cd4085324be676b3022, type: 2}
   pixelSize: 64
-  fadeInDuration: 5
+  fadeInDuration: 2
   holdDuration: 2
   fadeOutDuration: 2
   subTitleInPosition: {x: -827, y: 496}
@@ -9138,13 +9138,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1268157203}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartNextChapter
+        m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -9154,12 +9154,12 @@ MonoBehaviour:
       - m_Target: {fileID: 606708387}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: GetOutDialogueUI
-        m_Mode: 1
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 2
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -10744,7 +10744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCC55\uD130 \uBCF4\uAE30"
+  m_text: "\uC7A5\uBA74 \uBCF4\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0646936c80510b841bd87f15f98a706a, type: 2}
   m_sharedMaterial: {fileID: -5450793321309260394, guid: 0646936c80510b841bd87f15f98a706a, type: 2}
@@ -10910,6 +10910,7 @@ GameObject:
   - component: {fileID: 2128148487}
   - component: {fileID: 2128148489}
   - component: {fileID: 2128148488}
+  - component: {fileID: 2128148490}
   m_Layer: 5
   m_Name: IMG_Glow
   m_TagString: Untagged
@@ -10974,6 +10975,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128148486}
   m_CullTransparentMesh: 1
+--- !u!114 &2128148490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128148486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751cc6e1c3ff88a4681b86ee0ee64d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowPulse
+  scaleMultiplier: 1.12
+  halfCycleDuration: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

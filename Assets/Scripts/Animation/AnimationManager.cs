@@ -51,19 +51,4 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
             }
         }
     }
-
-    public void ChapterChangeAnimation(CutSceneCast cutSceneCast , Sequence sequence)
-    {
-        GameObject groundObject = Instantiate(cutSceneCast.BackGroundInfos[0].BackGroundPrefab, new Vector3(0, -10, 0),
-            Quaternion.Euler(cutSceneCast.BackGroundInfos[0].rotation));
-        sequence.Insert(0f,
-            groundObject.transform.DOMoveY(cutSceneCast.BackGroundInfos[0].position.y, 0.8f).SetEase(Ease.OutBack, 1f)
-                .SetLink(groundObject));
-        
-        GameObject mountainObject = Instantiate(cutSceneCast.BackGroundInfos[1].BackGroundPrefab, new Vector3(0, -10, 0),
-            Quaternion.Euler(cutSceneCast.BackGroundInfos[1].rotation));
-        sequence.Insert(0.5f,
-            mountainObject.transform.DOMoveY(cutSceneCast.BackGroundInfos[1].position.y, 0.8f).SetEase(Ease.OutBack, 1f)
-                .SetLink(mountainObject));
-    }
 }

@@ -36,5 +36,5 @@ public class CutSceneCast : ScriptableObject
     
     public CharacterInfo[] characterInfos;
     public ObjectInfo[] objectInfos;
-    public BackGroundInfo[] BackGroundInfos;
+    public BackGroundInfo[] backGroundInfos;
 }

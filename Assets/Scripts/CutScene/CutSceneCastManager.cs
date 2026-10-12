@@ -19,6 +19,23 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
         float time = 0.5f;
         int i = 0;
         
+        foreach (var backGroundInfoInfo in cutSceneCast.backGroundInfos)
+        {
+            Vector3 position = backGroundInfoInfo.position;
+            position.y = backGroundInfoInfo.position.y + 10;
+            
+            GameObject backGroundGO = Instantiate(backGroundInfoInfo.BackGroundPrefab, position,
+                Quaternion.Euler(backGroundInfoInfo.rotation));
+            
+            AllObjectsDict.TryAdd(backGroundInfoInfo.key, backGroundGO);
+            
+            sequence.Insert(time * i - 0.2f,
+                backGroundGO.transform.DOMoveY(backGroundInfoInfo.position.y, 0.8f).SetEase(Ease.OutBack, 1f)
+                    .SetLink(backGroundGO));
+
+            i++;
+        }
+        
         foreach (var objectInfo in cutSceneCast.objectInfos)
         {
             Vector3 position = objectInfo.position;
@@ -53,8 +70,47 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
             i++;
         }
     }
+    
+    public void FadeOutCharacters(
+        float duration = 1f)
+    {
+        // 지금 퇴장할 오브젝트만 따로 보관
+        var targets = new System.Collections.Generic.List<GameObject>(
+            AllObjectsDict.Values);
 
-    public void CreateCharacter(CutSceneCast cutSceneCast)
+        AllObjectsDict.Clear();
+
+        Sequence fadeSequence = DOTween.Sequence();
+        fadeSequence.AppendInterval(duration);
+
+        foreach (GameObject target in targets)
+        {
+            if (target == null)
+                continue;
+
+            SpriteRenderer[] renderers =
+                target.GetComponentsInChildren<SpriteRenderer>(true);
+
+            foreach (SpriteRenderer spriteRenderer in renderers)
+            {
+                fadeSequence.Join(
+                    spriteRenderer.DOFade(0f, duration)
+                        .SetEase(Ease.InOutSine)
+                );
+            }
+        }
+
+        fadeSequence.OnComplete(() =>
+        {
+            foreach (GameObject target in targets)
+            {
+                if (target != null)
+                    Destroy(target);
+            }
+        });
+    }
+
+    public void CreateCharacterWithNoAnim(CutSceneCast cutSceneCast)
     {
         foreach (var objects in AllObjectsDict)
         {
@@ -77,6 +133,14 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
                 Quaternion.Euler(objectInfo.rotation));
             
             AllObjectsDict.TryAdd(objectInfo.key, objectObject);
+        }
+
+        foreach (var backGroundInfoInfo in cutSceneCast.backGroundInfos)
+        {
+            GameObject backGroundGO = Instantiate(backGroundInfoInfo.BackGroundPrefab, backGroundInfoInfo.position,
+                Quaternion.Euler(backGroundInfoInfo.rotation));
+            
+            AllObjectsDict.TryAdd(backGroundInfoInfo.key, backGroundGO);
         }
     }
     

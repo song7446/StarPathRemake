@@ -100,11 +100,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             Sequence sequence = DOTween.Sequence();
 
-            AnimationManager.Instance.ChapterChangeAnimation(
-                _currentChapterDefinition.cutSceneCasts,
-                sequence
-            );
-
             CutSceneCastManager.Instance.CreateCharacterWithAnim(
                 _currentChapterDefinition.cutSceneCasts,
                 sequence
@@ -116,10 +111,23 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
         else
         {
-            CutSceneCastManager.Instance.CreateCharacter(
+            CutSceneCastManager.Instance.CreateCharacterWithNoAnim(
                 _currentChapterDefinition.cutSceneCasts
             );
         }
+    }
+
+    public void BackToMainMenu()
+    {
+        CutSceneCastManager.Instance.FadeOutCharacters(1f);
+        ConstellationManager.Instance.FadeOutStarts();
+        UIManager.Instance.GetOutUIs();
+        DrawingManager.Instance.FadeOutAndReset(1);
+        
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            UIManager.Instance.SlideInChapterButtons();
+        }, ignoreTimeScale: false);
     }
 
     private void StartChapterDialogue()

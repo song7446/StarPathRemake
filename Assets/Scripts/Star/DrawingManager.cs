@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using SongLib.Core.Singleton;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,6 +23,9 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
     public List<StarConnection> currentConnections = new List<StarConnection>();
 
     [SerializeField] private Camera starCamera;
+    
+    private bool isFadingOut;
+
 
     private void Update()
     {
@@ -43,6 +47,9 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
 
     public void StartDrawing(PuzzleStar star)
     {
+        if (isFadingOut)
+            return;
+        
         isDrawing = true;
         startStar = star;
 
@@ -110,6 +117,9 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
 
     public void OnRightClick()
     {
+        if (isFadingOut)
+            return;
+        
         if (isDrawing)
             EndDrawing();
         else
@@ -123,6 +133,9 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
 
     public void DrawEditorLine(PuzzleStar editorStartStar, PuzzleStar editorEndStar)
     {
+        if (isFadingOut)
+            return;
+        
         StarConnection newConnection = new StarConnection();
         newConnection.starA = editorStartStar.starID;
         newConnection.starB = editorEndStar.starID;
@@ -132,16 +145,93 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
         if (!alreadyExists)
         {
             currentConnections.Add(newConnection);
-            permanentLines.Push(currentLine);
             
             LineRenderer editorLine = Instantiate(linePrefab, transform);
             editorLine.positionCount = 2;
         
+            permanentLines.Push(currentLine);
+            
             editorLine.SetPosition(0, editorStartStar.transform.position);
             editorLine.SetPosition(1, editorEndStar.transform.position);
 
             // 정답 체크 실행
             ConstellationManager.Instance.CheckAnswer(currentConnections);
         }
+    }
+    
+    public void FadeOutAndReset(
+        float duration = 0.5f,
+        Action onFinished = null)
+    {
+        if (isFadingOut)
+            return;
+
+        isFadingOut = true;
+        isDrawing = false;
+
+        // 현재 생성된 선을 모두 수집한다.
+        LineRenderer[] lines = GetComponentsInChildren<LineRenderer>(true);
+
+        currentLine = null;
+        startStar = null;
+        hoveredStar = null;
+
+        permanentLines.Clear();
+        currentConnections.Clear();
+
+        duration = Mathf.Max(0.01f, duration);
+
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendInterval(duration);
+
+        foreach (LineRenderer line in lines)
+        {
+            if (line == null)
+                continue;
+
+            // 선의 그라데이션과 기존 투명도를 유지하며 페이드
+            Gradient originalGradient = line.colorGradient;
+            GradientColorKey[] colorKeys = originalGradient.colorKeys;
+            GradientAlphaKey[] originalAlphaKeys = originalGradient.alphaKeys;
+            GradientAlphaKey[] fadedAlphaKeys =
+                new GradientAlphaKey[originalAlphaKeys.Length];
+
+            Gradient fadedGradient = new Gradient
+            {
+                mode = originalGradient.mode
+            };
+
+            sequence.Insert(
+                0f,
+                DOVirtual.Float(1f, 0f, duration, opacity =>
+                {
+                    if (line == null)
+                        return;
+
+                    for (int i = 0; i < originalAlphaKeys.Length; i++)
+                    {
+                        fadedAlphaKeys[i] = new GradientAlphaKey(
+                            originalAlphaKeys[i].alpha * opacity,
+                            originalAlphaKeys[i].time
+                        );
+                    }
+
+                    fadedGradient.SetKeys(colorKeys, fadedAlphaKeys);
+                    line.colorGradient = fadedGradient;
+                }).SetEase(Ease.InOutSine)
+            );
+        }
+
+        sequence.OnComplete(() =>
+        {
+            foreach (LineRenderer line in lines)
+            {
+                if (line != null)
+                    Destroy(line.gameObject);
+            }
+
+            isFadingOut = false;
+            onFinished?.Invoke();
+        });
     }
 }

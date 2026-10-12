@@ -29,7 +29,7 @@ MonoBehaviour:
     position: {x: -2.34, y: -2.4699998, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     objectPrefab: {fileID: 6865620340321105860, guid: d1c0afa8c91e0cd408db07a8ace921f9, type: 3}
-  BackGroundInfos:
+  backGroundInfos:
   - key: Ground
     BackGroundName: Ground
     position: {x: 0, y: 0, z: 0}

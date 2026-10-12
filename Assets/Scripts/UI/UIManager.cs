@@ -23,15 +23,15 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     [SerializeField] private RectTransform buttonsRectTransform;
     [SerializeField] private Vector2 buttonsInPosition;
     [SerializeField] private Vector2 buttonsOutPosition;
-    
+
     [SerializeField] private GameObject[] chapterButtons;
-    
+
     private readonly Dictionary<RectTransform, Vector3> chapterOriginalPositions
         = new Dictionary<RectTransform, Vector3>();
 
     private Sequence chapterButtonsSequence;
     private bool chapterButtonsAreOut;
-    
+
     private bool isNoteBookOpen = false;
 
     protected override void Awake()
@@ -99,22 +99,23 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         GetInButtons();
         GetInSubTitle();
     }
-    
+
     public void GetOutUIs()
     {
         GetOutButtons();
         GetOutSubTitle();
+        GetOutDialogueUI(0f);
     }
 
-    public void GetOutDialogueUI()
+    public void GetOutDialogueUI(float delay = 0f)
     {
         dialogueRectTransform.DOAnchorPos(
             dialogueOutPostition,
             0.5f
-        ).SetEase(Ease.InOutSine).SetDelay(3f);
+        ).SetEase(Ease.InOutSine).SetDelay(delay);
     }
 
-    public void GetInButtons()
+    private void GetInButtons()
     {
         buttonsRectTransform.DOAnchorPos(
             buttonsInPosition,
@@ -122,7 +123,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         ).SetEase(Ease.InOutSine);
     }
 
-    public void GetOutButtons()
+    private void GetOutButtons()
     {
         buttonsRectTransform.DOAnchorPos(
             buttonsOutPosition,
@@ -130,18 +131,27 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         ).SetEase(Ease.InOutSine);
     }
 
-    public void GetInSubTitle()
+    private void GetInSubTitle()
     {
-        chapterChangeUI.GetInSubTitle();   
+        chapterChangeUI.GetInSubTitle();
     }
-    
-    public void GetOutSubTitle()
+
+    private void GetOutSubTitle()
     {
-        chapterChangeUI.GetOutSubTitle();   
+        chapterChangeUI.GetOutSubTitle();
     }
 
     public void SlideOutChapterButtons()
     {
+        if (chapterButtonsAreOut)
+            return;
+
+        chapterButtonsSequence?.Kill();
+        chapterOriginalPositions.Clear();
+
+        Vector3 moveOffset = Vector3.zero;
+
+        // 원래 위치 저장 + 공통 이동 거리 계산
         foreach (var button in chapterButtons)
         {
             if (button == null || !button.activeSelf)
@@ -152,47 +162,63 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
             if (rect == null)
                 continue;
 
+            chapterOriginalPositions[rect] = rect.localPosition;
+
             Canvas canvas = rect.GetComponentInParent<Canvas>().rootCanvas;
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-
-            CanvasGroup group = button.GetComponent<CanvasGroup>();
-
-            if (group == null)
-                group = button.AddComponent<CanvasGroup>();
-
-            group.DOKill();
-            group.alpha = 1f;
-            group.interactable = false;
-            group.blocksRaycasts = false;
-
-            rect.DOKill();
-
-            Vector3 originalPosition = rect.localPosition;
 
             Bounds bounds =
                 RectTransformUtility.CalculateRelativeRectTransformBounds(
                     canvasRect, rect);
 
-            // 가장 아래쪽까지 화면 위로 완전히 빠지도록 이동
             float moveY = Mathf.Max(
                 0f,
                 canvasRect.rect.yMax - bounds.min.y + 100f);
 
-            Vector3 worldOffset = canvasRect.TransformVector(
+            Vector3 offset = canvasRect.TransformVector(
                 new Vector3(0f, moveY, 0f));
 
-            rect.DOMove(rect.position + worldOffset, 0.7f)
-                .SetEase(Ease.InCubic)
-                .OnComplete(() =>
-                {
-                    button.SetActive(false);
-
-                    rect.localPosition = originalPosition;
-                    group.interactable = true;
-                    group.blocksRaycasts = true;
-                });
+            if (offset.sqrMagnitude > moveOffset.sqrMagnitude)
+                moveOffset = offset;
         }
+
+        if (chapterOriginalPositions.Count == 0)
+            return;
+
+        // 시작할 때 설정해야 퇴장 도중에도 복귀 가능
+        chapterButtonsAreOut = true;
+        chapterButtonsSequence = DOTween.Sequence();
+
+        foreach (var pair in chapterOriginalPositions)
+        {
+            RectTransform rect = pair.Key;
+            CanvasGroup group = GetChapterCanvasGroup(rect);
+
+            rect.DOKill();
+            group.DOKill();
+
+            group.alpha = 1f;
+            group.interactable = false;
+            group.blocksRaycasts = false;
+
+            chapterButtonsSequence.Join(
+                rect.DOMove(rect.position + moveOffset, 0.7f)
+                    .SetEase(Ease.InCubic)
+            );
+        }
+
+        chapterButtonsSequence.OnComplete(() =>
+        {
+            foreach (var pair in chapterOriginalPositions)
+            {
+                if (pair.Key != null)
+                    pair.Key.gameObject.SetActive(false);
+            }
+
+            chapterButtonsSequence = null;
+        });
     }
+
     public void SlideInChapterButtons()
     {
         if (!chapterButtonsAreOut)
