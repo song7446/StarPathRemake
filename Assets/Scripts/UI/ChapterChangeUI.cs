@@ -9,6 +9,7 @@ public class ChapterChangeUI : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI titleTMP;
     [SerializeField] private TextMeshProUGUI subtitleTMP;
+    [SerializeField] private RectTransform subtitleTMPTransform;
     [SerializeField] private CanvasGroup titleGroup;
 
     // 제목 뒤에 표시할 장식 이미지. 없어도 됨.
@@ -22,6 +23,8 @@ public class ChapterChangeUI : MonoBehaviour
     [SerializeField, Min(0.01f)] private float fadeInDuration = 0.5f;
     [SerializeField, Min(0f)] private float holdDuration = 1f;
     [SerializeField, Min(0.01f)] private float fadeOutDuration = 1f;
+    [SerializeField] private Vector2 subTitleInPosition;
+    [SerializeField] private Vector2 subTitleOutPosition;
 
     private static readonly int PixelSizeId =
         Shader.PropertyToID("_PixelSize");
@@ -32,6 +35,22 @@ public class ChapterChangeUI : MonoBehaviour
     {
         titleTMP.text = title;
         subtitleTMP.text = subtitle;
+    }
+
+    public void GetInSubTitle()
+    {
+        subtitleTMPTransform.DOAnchorPos(
+            subTitleInPosition,
+            0.5f
+        ).SetEase(Ease.InOutSine);
+    }
+
+    public void GetOutSubTitle()
+    {
+        subtitleTMPTransform.DOAnchorPos(
+            subTitleOutPosition,
+            0.5f
+        ).SetEase(Ease.InOutSine);
     }
 
     public void FadeInTitle(

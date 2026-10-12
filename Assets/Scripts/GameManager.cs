@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             ChapterDefinitionsQueue.Enqueue(chapterDefinintion);
         }
 
-        StartNextChapter();
+        // StartNextChapter();
     }
 
     public void StartNextChapter()
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                     try
                     {
                         StartChapterDialogue();
+                        UIManager.Instance.GetInUIs();
                     }
                     finally
                     {

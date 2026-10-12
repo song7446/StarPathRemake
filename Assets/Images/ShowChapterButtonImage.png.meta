@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 6e04efacb43a47e45a5a9f702b164073
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8462778141128615854
+    second: ShowChapterButtonImage_0
+  - first:
+      213: 1048746438844001467
+    second: ShowChapterButtonImage_1
+  - first:
+      213: -2969246110144972779
+    second: ShowChapterButtonImage_2
+  - first:
+      213: 860695423423091937
+    second: ShowChapterButtonImage_3
+  - first:
+      213: 5707715821951934010
+    second: ShowChapterButtonImage_4
+  - first:
+      213: -1250767415494599918
+    second: ShowChapterButtonImage_5
+  - first:
+      213: 5665999888774431707
+    second: ShowChapterButtonImage_6
+  - first:
+      213: -766399474532598478
+    second: ShowChapterButtonImage_7
+  - first:
+      213: -2875467879083758455
+    second: ShowChapterButtonImage_8
+  - first:
+      213: 5495059025211619438
+    second: ShowChapterButtonImage_9
+  - first:
+      213: 8330095873450100078
+    second: ShowChapterButtonImage_10
+  - first:
+      213: 4861068747865905659
+    second: ShowChapterButtonImage_11
+  - first:
+      213: -7918800375459935794
+    second: ShowChapterButtonImage_12
+  - first:
+      213: 9061793608793916699
+    second: ShowChapterButtonImage_13
+  - first:
+      213: 5426456798604830908
+    second: ShowChapterButtonImage_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_0
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 707
+        width: 30
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 258961d4e1c2e8a80800000000000000
+      internalID: -8462778141128615854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_1
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 687
+        width: 61
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbca0c26455ed8e00800000000000000
+      internalID: 1048746438844001467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_2
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 709
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5183912056e1bc6d0800000000000000
+      internalID: -2969246110144972779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_3
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 693
+        width: 154
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e410fc6dedc1fb00800000000000000
+      internalID: 860695423423091937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_4
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 614
+        width: 104
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3e525e9c41e53f40800000000000000
+      internalID: 5707715821951934010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_5
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 635
+        width: 92
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21b9fc699a164aee0800000000000000
+      internalID: -1250767415494599918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_6
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 709
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd38dcb01eca1ae40800000000000000
+      internalID: 5665999888774431707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_7
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 707
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d307c0db33d55f0800000000000000
+      internalID: -766399474532598478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_8
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 707
+        width: 122
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98caa28e2394818d0800000000000000
+      internalID: -2875467879083758455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2103
+        height: 674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68fa81c11f524c40800000000000000
+      internalID: 5495059025211619438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_10
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 47
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e65c0f9ef027a9370800000000000000
+      internalID: 8330095873450100078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_11
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 47
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf9dc49654cf57340800000000000000
+      internalID: 4861068747865905659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_12
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 37
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec90b7d9305ca1290800000000000000
+      internalID: -7918800375459935794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_13
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 47
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1501189645f1cd70800000000000000
+      internalID: 9061793608793916699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShowChapterButtonImage_14
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 160
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb828dd25b5ae4b40800000000000000
+      internalID: 5426456798604830908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ShowChapterButtonImage_0: -8462778141128615854
+      ShowChapterButtonImage_1: 1048746438844001467
+      ShowChapterButtonImage_10: 8330095873450100078
+      ShowChapterButtonImage_11: 4861068747865905659
+      ShowChapterButtonImage_12: -7918800375459935794
+      ShowChapterButtonImage_13: 9061793608793916699
+      ShowChapterButtonImage_14: 5426456798604830908
+      ShowChapterButtonImage_2: -2969246110144972779
+      ShowChapterButtonImage_3: 860695423423091937
+      ShowChapterButtonImage_4: 5707715821951934010
+      ShowChapterButtonImage_5: -1250767415494599918
+      ShowChapterButtonImage_6: 5665999888774431707
+      ShowChapterButtonImage_7: -766399474532598478
+      ShowChapterButtonImage_8: -2875467879083758455
+      ShowChapterButtonImage_9: 5495059025211619438
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
