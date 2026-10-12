@@ -70,12 +70,20 @@ public class DialogueUI : MonoBehaviour
         {
             isPlaying = false;
 
+            if (GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx])
+            {
+                onDialogueFinished?.Invoke();
+                return;
+            }
+
             if (!GameManager.Instance.IsFront)
             {
+                GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx] = true;
                 onDialogueFinished?.Invoke();
             }
             else
             {
+                GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx] = true;
                 onDialogueFinishedFront?.Invoke();
             }
 

@@ -8,22 +8,18 @@ using UnityEngine.AI;
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     public ChapterDefinition[] ChapterDefinitions;
-    public Queue<ChapterDefinition> ChapterDefinitionsQueue = new Queue<ChapterDefinition>();
-
+    public bool[] isWatched;
+    
     private ChapterDefinition _currentChapterDefinition;
     public ChapterDefinition CurrentChapterDefinition => _currentChapterDefinition;
-
-    private Queue<String> _chapterIDs = new Queue<string>();
-    public Queue<string> ChapterIDs => _chapterIDs;
 
     private string[] chapterIds =
     {
         "1_Front", "1_Back", "2_Front", "2_Back", "3_Front", "3_Back", "4_Front", "4_Back", "5_Front", "5_Back",
         "6_Front", "6_Back"
     };
-
-    private bool _isFront = false;
-    public bool IsFront => _isFront;
+    
+    public bool IsFront => currentChapterIdx % 2 == 0;
 
     private bool _isShowingChapterTitle;
 
@@ -31,34 +27,19 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Start()
     {
-        foreach (var chapter in chapterIds)
-        {
-            _chapterIDs.Enqueue(chapter);
-        }
-
-        foreach (var chapterDefinintion in ChapterDefinitions)
-        {
-            ChapterDefinitionsQueue.Enqueue(chapterDefinintion);
-        }
+        isWatched = new bool[ChapterDefinitions.Length];
     }
-
+    
     public void StartChapter(int idx)
     {
         if (_isShowingChapterTitle)
             return;
 
-        if (_chapterIDs.Count <= 0 ||
-            ChapterDefinitionsQueue.Count <= 0)
-        {
-            return;
-        }
-
         if (idx >= ChapterDefinitions.Length)
         {
             return;
         }
-
-        _isFront = !_isFront;
+        
 
         _currentChapterDefinition = ChapterDefinitions[idx];
         currentChapterIdx = idx;
@@ -71,7 +52,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             $"{_currentChapterDefinition.chapterSubtitle}"
         );
 
-        if (_isFront)
+        if (IsFront)
         {
             _isShowingChapterTitle = true;
 
@@ -100,7 +81,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void CreateChapterObjects()
     {
-        if (_isFront)
+        if (IsFront)
         {
             Sequence sequence = DOTween.Sequence();
 
