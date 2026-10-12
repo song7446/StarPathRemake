@@ -26,6 +26,8 @@ public class ChapterButton : MonoBehaviour,
     private bool draggedThisPress;
     private bool canDrag;
 
+    [SerializeField] private int chapterIdx;
+
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
@@ -36,7 +38,7 @@ public class ChapterButton : MonoBehaviour,
 
     private void OnClickSceneViewButton()
     {
-        GameManager.Instance.StartNextChapter();
+        GameManager.Instance.StartChapter(chapterIdx);
         UIManager.Instance.SlideOutChapterButtons();
     }
 

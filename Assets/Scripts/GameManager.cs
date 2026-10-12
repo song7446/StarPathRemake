@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private Queue<String> _chapterIDs = new Queue<string>();
     public Queue<string> ChapterIDs => _chapterIDs;
 
-    private string[] chapters =
+    private string[] chapterIds =
     {
         "1_Front", "1_Back", "2_Front", "2_Back", "3_Front", "3_Back", "4_Front", "4_Back", "5_Front", "5_Back",
         "6_Front", "6_Back"
@@ -24,12 +24,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private bool _isFront = false;
     public bool IsFront => _isFront;
-    
+
     private bool _isShowingChapterTitle;
-    
+
+    public int currentChapterIdx = 0;
+
     private void Start()
     {
-        foreach (var chapter in chapters)
+        foreach (var chapter in chapterIds)
         {
             _chapterIDs.Enqueue(chapter);
         }
@@ -38,11 +40,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             ChapterDefinitionsQueue.Enqueue(chapterDefinintion);
         }
-
-        // StartNextChapter();
     }
 
-    public void StartNextChapter()
+    public void StartChapter(int idx)
     {
         if (_isShowingChapterTitle)
             return;
@@ -53,10 +53,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             return;
         }
 
+        if (idx >= ChapterDefinitions.Length)
+        {
+            return;
+        }
+
         _isFront = !_isFront;
 
-        _currentChapterDefinition =
-            ChapterDefinitionsQueue.Dequeue();
+        _currentChapterDefinition = ChapterDefinitions[idx];
+        currentChapterIdx = idx;
 
         AnimationManager.Instance.CommandsToDictionary();
 
@@ -75,7 +80,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 {
                     try
                     {
-                        StartChapterDialogue();
+                        StartChapterDialogue(currentChapterIdx);
                         UIManager.Instance.GetInUIs();
                     }
                     finally
@@ -83,14 +88,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                         _isShowingChapterTitle = false;
                     }
                 },
-
                 onFadeOutStarted: CreateChapterObjects
             );
         }
         else
         {
             CreateChapterObjects();
-            StartChapterDialogue();
+            StartChapterDialogue(currentChapterIdx);
         }
     }
 
@@ -123,17 +127,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         ConstellationManager.Instance.FadeOutStarts();
         UIManager.Instance.GetOutUIs();
         DrawingManager.Instance.FadeOutAndReset(1);
-        
-        DOVirtual.DelayedCall(1f, () =>
-        {
-            UIManager.Instance.SlideInChapterButtons();
-        }, ignoreTimeScale: false);
+
+        DOVirtual.DelayedCall(1f, () => { UIManager.Instance.SlideInChapterButtons(); }, ignoreTimeScale: false);
     }
 
-    private void StartChapterDialogue()
+    private void StartChapterDialogue(int idx)
     {
         DialogueRepository.Instance.TryGetChapter(
-            _chapterIDs.Dequeue(),
+            chapterIds[idx],
             out IReadOnlyList<DialogueData> dialogueDatas
         );
 

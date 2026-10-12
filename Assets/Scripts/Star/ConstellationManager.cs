@@ -36,7 +36,7 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
             constellation.GetComponentsInChildren<PuzzleStar>(true).ToList();
 
         allStars = stars;
-        
+
         PuzzleStar[] childStars = constellation.GetComponentsInChildren<PuzzleStar>();
 
         foreach (PuzzleStar childStar in childStars)
@@ -231,7 +231,7 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
 
             //  TODO:스테이지 클리어 이벤트 호출
 
-            GameManager.Instance.StartNextChapter();
+            GameManager.Instance.StartChapter(GameManager.Instance.currentChapterIdx + 1);
 
             UIManager.Instance.ToggleCamera();
         }
