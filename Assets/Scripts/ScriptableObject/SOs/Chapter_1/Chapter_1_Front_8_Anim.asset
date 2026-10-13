@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
   m_Name: Chapter_1_Front_8_Anim
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
-  dialogueId: Chapter_1_Front_8
+  dialogueId: Chapter_1_Front_9
   commands:
   - characterId: Father
     characterName: Father

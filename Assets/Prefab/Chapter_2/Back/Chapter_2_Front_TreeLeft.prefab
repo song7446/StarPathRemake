@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PassingStreetLight
   startPosition: {x: -1.81, y: 2.78, z: 0}
-  endPosition: {x: -9.78, y: 0.03, z: 0}
+  endPosition: {x: -14.3, y: 1.1, z: 0}
   horizontalDistance: 9
   downwardDistance: 5
   startScaleRatio: 0.1
