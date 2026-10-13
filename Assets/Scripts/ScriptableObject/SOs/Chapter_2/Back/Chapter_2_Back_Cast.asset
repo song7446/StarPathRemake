@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0ad4f48426f50439ec7478c6ade08d, type: 3}
+  m_Name: Chapter_2_Back_Cast
+  m_EditorClassIdentifier: Assembly-CSharp::CutSceneCast
+  characterInfos:
+  - key: Player
+    characterName: Player
+    position: {x: 4.7, y: -3.72, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 3984681193642846712, guid: 333a2a039b7024c4195d5ee7671449bd, type: 3}
+  - key: Police
+    characterName: Police
+    position: {x: -4.41, y: -3.57, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 7649232474225935587, guid: 76c2f09493f9b864f88e22ab74ea161a, type: 3}
+  objectInfos:
+  - key: Car
+    objectName: Car
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    objectPrefab: {fileID: 2436200445633563302, guid: 31ee3ddd7798c1b4b881cf2049424bb9, type: 3}
+  backGroundInfos:
+  - key: TreeLeft
+    BackGroundName: TreeLeft
+    position: {x: -1.81, y: 2.78, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    BackGroundPrefab: {fileID: 486520548794415735, guid: a189e5040b479c749a4fdda883c056bd, type: 3}
+  - key: TreeRight
+    BackGroundName: TreeRight
+    position: {x: 3.9, y: 2.78, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    BackGroundPrefab: {fileID: 8263088726392645663, guid: 8955c6c94130c8c4696b119e01cf6ff1, type: 3}
