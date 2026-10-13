@@ -22,7 +22,7 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
         foreach (var backGroundInfoInfo in cutSceneCast.backGroundInfos)
         {
             Vector3 position = backGroundInfoInfo.position;
-            position.y = backGroundInfoInfo.position.y + 10;
+            position.y = backGroundInfoInfo.position.y + 20;
             
             GameObject backGroundGO = Instantiate(backGroundInfoInfo.BackGroundPrefab, position,
                 Quaternion.Euler(backGroundInfoInfo.rotation));
@@ -39,7 +39,7 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
         foreach (var objectInfo in cutSceneCast.objectInfos)
         {
             Vector3 position = objectInfo.position;
-            position.y = objectInfo.position.y + 10;
+            position.y = objectInfo.position.y + 20;
             
             GameObject objectObject = Instantiate(objectInfo.objectPrefab, position,
                 Quaternion.Euler(objectInfo.rotation));
@@ -56,7 +56,7 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
         foreach (var characterInfo in cutSceneCast.characterInfos)
         {
             Vector3 position = characterInfo.position;
-            position.y = characterInfo.position.y + 10;
+            position.y = characterInfo.position.y + 20;
             
             GameObject character = Instantiate(characterInfo.characterPrefab, position,
                 Quaternion.Euler(characterInfo.rotation));

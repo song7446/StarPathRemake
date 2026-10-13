@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0ad4f48426f50439ec7478c6ade08d, type: 3}
+  m_Name: Chapter_2_Front_Cast
+  m_EditorClassIdentifier: Assembly-CSharp::CutSceneCast
+  characterInfos:
+  - key: Father
+    characterName: Father
+    position: {x: -4.48, y: -3.45, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 3798470438138933913, guid: 470443ec1de77484ea6c356396ff1fac, type: 3}
+  - key: Daughter
+    characterName: Daughter
+    position: {x: 4.82, y: -3.54, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 7580125047353787461, guid: 28d42468cbdaf4e4d90b5718a198a3a6, type: 3}
+  objectInfos:
+  - key: Car
+    objectName: Car
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    objectPrefab: {fileID: 2436200445633563302, guid: 31ee3ddd7798c1b4b881cf2049424bb9, type: 3}
+  backGroundInfos:
+  - key: StandingLightLeft
+    BackGroundName: StandingLightLeft
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    BackGroundPrefab: {fileID: 3616886369153502616, guid: e43659fdc56e2984d85d28af54ddb7d5, type: 3}
+  - key: StandingLightRight
+    BackGroundName: StandingLightRight
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    BackGroundPrefab: {fileID: 5140724492754776229, guid: 7486a0aa6d8fc914298356abdc280884, type: 3}
