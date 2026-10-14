@@ -176,6 +176,12 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
         AllObjectsDict.Remove(key);
     }
     
+    public GameObject[] GetAllObjects()
+    {
+        var objects = new List<GameObject>(AllObjectsDict.Values);
+        return objects.ToArray();
+    }
+    
     private void EnableInteriorShake(GameObject target)
     {
         if (target == null)

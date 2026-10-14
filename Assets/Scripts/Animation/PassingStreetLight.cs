@@ -3,42 +3,29 @@ using UnityEngine;
 
 public class PassingStreetLight : MonoBehaviour
 {
-    [Header("위치 (부모 기준)")] 
-    [SerializeField] private Vector3 startPosition;
-    [SerializeField] private Vector3 endPosition;
+    [Header("시작 위치 (부모 기준)")]
+    [SerializeField] private Vector3 startPosition =
+        new Vector3(1f, 1f, 0f);
 
     [Header("이동 거리")]
     [SerializeField] private float horizontalDistance = 9f;
     [SerializeField] private float downwardDistance = 5f;
 
     [Header("크기 (원래 크기 대비)")]
-    [SerializeField] private float startScaleRatio = 0.15f;
+    [SerializeField] private float startScaleRatio = 0.001f;
     [SerializeField] private float endScaleRatio = 1.5f;
 
     [Header("시간")]
+    [SerializeField] private float startDelay = 1f;
     [SerializeField] private float moveDuration = 3f;
     [SerializeField] private float repeatDelay = 1f;
 
     private Vector3 originalScale;
     private Sequence sequence;
-    
-    [Header("등장 페이드")]
-    [SerializeField] private float fadeInDuration = 0.6f;
-    
-    [SerializeField] private float startDelay = 1f;
-
-    private SpriteRenderer[] spriteRenderers;
-    private Color[] originalColors;
 
     private void Awake()
     {
         originalScale = transform.localScale;
-
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
-        originalColors = new Color[spriteRenderers.Length];
-
-        for (int i = 0; i < spriteRenderers.Length; i++)
-            originalColors[i] = spriteRenderers[i].color;
     }
 
     private void OnEnable()
@@ -52,68 +39,52 @@ public class PassingStreetLight : MonoBehaviour
 
         float direction = startPosition.x < 0f ? -1f : 1f;
 
-        // Vector3 endPosition = startPosition + new Vector3(
-        //     Mathf.Abs(horizontalDistance) * direction,
-        //     -Mathf.Abs(downwardDistance),
-        //     0f
-        // );
+        Vector3 endPosition = startPosition + new Vector3(
+            Mathf.Abs(horizontalDistance) * direction,
+            -Mathf.Abs(downwardDistance),
+            0f
+        );
 
         float duration = Mathf.Max(0.01f, moveDuration);
-        float fadeDuration = Mathf.Clamp(fadeInDuration, 0.01f, duration);
 
         ResetStreetLight();
-        SetOpacity(0f);
+
+// 시작 딜레이 동안에는 보이지 않게
+        transform.localScale = Vector3.zero;
 
         sequence = DOTween.Sequence();
 
+// 딜레이가 끝나고 실제 출발할 때 시작 크기 적용
         sequence.AppendCallback(() =>
         {
-            SetOpacity(0f);
-            ResetStreetLight();
+            transform.localScale = originalScale * startScaleRatio;
         });
 
-        sequence.Insert(
-            0f,
+        sequence.Append(
             transform.DOLocalMove(endPosition, duration)
                 .SetEase(Ease.InQuad)
         );
 
-        sequence.Insert(
-            0f,
-            transform.DOScale(endScaleRatio, duration)
+        sequence.Join(
+            transform.DOScale(originalScale * endScaleRatio, duration)
+                .From(originalScale * startScaleRatio, setImmediately: false)
                 .SetEase(Ease.InQuad)
         );
-
-        sequence.Insert(
-            0f,
-            DOVirtual.Float(0f, 1f, fadeDuration, SetOpacity)
-                .SetEase(Ease.InOutSine)
-        );
-
+        
+        // 完전히 화면 밖으로 나간 위치에서 대기
         sequence.AppendInterval(Mathf.Max(0f, repeatDelay));
+
+        // 반복 시 이동과 크기가 시작값으로 돌아간다.
         sequence.SetLoops(-1, LoopType.Restart);
 
-// 반복마다 적용하지 않고, 최초 시작에만 적용
+        // 최초 시작에만 적용
         sequence.SetDelay(Mathf.Max(0f, startDelay), false);
-    }
-
-    private void SetOpacity(float opacity)
-    {
-        for (int i = 0; i < spriteRenderers.Length; i++)
-        {
-            if (spriteRenderers[i] == null)
-                continue;
-
-            Color color = originalColors[i];
-            color.a *= opacity;
-            spriteRenderers[i].color = color;
-        }
     }
 
     private void ResetStreetLight()
     {
         transform.localPosition = startPosition;
-        transform.localScale = originalScale;
+        transform.localScale = originalScale * startScaleRatio;
     }
 
     private void OnDisable()
@@ -122,6 +93,5 @@ public class PassingStreetLight : MonoBehaviour
         sequence = null;
 
         transform.localScale = originalScale;
-        SetOpacity(1f);
     }
 }

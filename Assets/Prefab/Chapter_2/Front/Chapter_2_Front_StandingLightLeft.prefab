@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.81, y: 2.78, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,12 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PassingStreetLight
   startPosition: {x: -1.81, y: 2.78, z: 0}
-  endPosition: {x: -9.78, y: 0.03, z: 0}
-  horizontalDistance: 9
+  horizontalDistance: 12
   downwardDistance: 5
-  startScaleRatio: 0.1
+  startScaleRatio: 0.15
   endScaleRatio: 1
+  startDelay: 2
   moveDuration: 3
   repeatDelay: 1
-  fadeInDuration: 0.6
-  startDelay: 2

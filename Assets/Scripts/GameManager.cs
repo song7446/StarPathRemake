@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     };
     
     public bool IsFront => currentChapterIdx % 2 == 0;
+    private bool _fromFront;
 
     private bool _isShowingChapterTitle;
 
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         isWatched = new bool[ChapterDefinitions.Length];
     }
     
-    public void StartChapter(int idx)
+    public void StartChapter(int idx, bool fromFront = false)
     {
         if (_isShowingChapterTitle)
             return;
@@ -51,8 +52,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             $"{_currentChapterDefinition.chapterTitle} - " +
             $"{_currentChapterDefinition.chapterSubtitle}"
         );
+        
+        _fromFront = fromFront;
 
-        if (IsFront)
+        if (!fromFront)
         {
             _isShowingChapterTitle = true;
 
@@ -81,7 +84,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void CreateChapterObjects()
     {
-        if (IsFront)
+        if (!_fromFront)
         {
             Sequence sequence = DOTween.Sequence();
 

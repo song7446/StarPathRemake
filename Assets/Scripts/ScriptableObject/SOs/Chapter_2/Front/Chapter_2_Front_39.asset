@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
   dialogueId: Chapter_2_Front_39
   commands:
-  - characterId: Father
-    characterName: Father
+  - characterId: Daughter
+    characterName: Daughter
     position: {x: 4.82, y: -3.54, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 5201939186670935423, guid: f3a74019e0077ac4d9c4078650bb7f21, type: 3}
+    characterPrefab: {fileID: 7580125047353787461, guid: 28d42468cbdaf4e4d90b5718a198a3a6, type: 3}
