@@ -29,14 +29,19 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     objectPrefab: {fileID: 2436200445633563302, guid: 31ee3ddd7798c1b4b881cf2049424bb9, type: 3}
+  - key: TwoWayRadio
+    objectName: TwoWayRadio
+    position: {x: 0.2323, y: -1.8185, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    objectPrefab: {fileID: 3345755564243068090, guid: 3cb54e9f6356d6b4faae4a8f3c36525e, type: 3}
   backGroundInfos:
   - key: TreeLeft
     BackGroundName: TreeLeft
-    position: {x: -1.81, y: 2.78, z: 0}
+    position: {x: -2.26, y: 0.92, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     BackGroundPrefab: {fileID: 486520548794415735, guid: a189e5040b479c749a4fdda883c056bd, type: 3}
   - key: TreeRight
     BackGroundName: TreeRight
-    position: {x: 3.9, y: 2.78, z: 0}
+    position: {x: 2.73, y: 1.07, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     BackGroundPrefab: {fileID: 8263088726392645663, guid: 8955c6c94130c8c4696b119e01cf6ff1, type: 3}

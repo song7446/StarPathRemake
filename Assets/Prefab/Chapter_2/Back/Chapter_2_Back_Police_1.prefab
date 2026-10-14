@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9201609835428989732}
   - component: {fileID: 8416932810814511149}
+  - component: {fileID: 7032404773066416445}
   m_Layer: 0
   m_Name: Chapter_2_Back_Police_1
   m_TagString: Untagged
@@ -91,3 +92,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &7032404773066416445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649232474225935587}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc47a88b1918c8e4184d37efa1d0ed4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarInteriorShake
+  horizontalAmount: 0.008
+  verticalAmount: 0.02
+  shakeSpeed: 7
+  fadeInDuration: 1
+  seed: 10

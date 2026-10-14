@@ -18,4 +18,11 @@ MonoBehaviour:
   chapterSubtitle: "\uCD94\uC801"
   cutSceneCasts: {fileID: 11400000, guid: 858422b278a1f0b40b209dd9dc11ef48, type: 2}
   constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
-  animations: []
+  animations:
+  - {fileID: 11400000, guid: dfff16cea575f134a90dfd493267386c, type: 2}
+  - {fileID: 11400000, guid: 16916f5f4fb1af045b33703ef7ef08d8, type: 2}
+  - {fileID: 11400000, guid: 45a570a98b5a082489d1ff3471a44ed9, type: 2}
+  - {fileID: 11400000, guid: dc19ec30277a2054489432f5e784d200, type: 2}
+  - {fileID: 11400000, guid: e83e91ad0a1f3fc40bf2b1c8a96dcfa5, type: 2}
+  - {fileID: 11400000, guid: a8be9dd4892a523489fcbd342aae5509, type: 2}
+  - {fileID: 11400000, guid: 59514b7f2af3b694ba5ff13f80961a4b, type: 2}

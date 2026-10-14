@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7536098593712295213}
   - component: {fileID: 7125225148078737928}
+  - component: {fileID: -1873077327393181260}
   m_Layer: 0
   m_Name: Chapter_2_Back_Player_1
   m_TagString: Untagged
@@ -91,3 +92,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &-1873077327393181260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984681193642846712}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc47a88b1918c8e4184d37efa1d0ed4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarInteriorShake
+  horizontalAmount: 0.008
+  verticalAmount: 0.02
+  shakeSpeed: 7
+  fadeInDuration: 1
+  seed: 10

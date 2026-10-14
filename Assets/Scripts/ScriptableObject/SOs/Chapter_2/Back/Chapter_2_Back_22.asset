@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
+  m_Name: Chapter_2_Back_22
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
+  dialogueId: Chapter_2_Back_22
+  commands:
+  - characterId: TwoWayRadio
+    characterName: TwoWayRadio
+    position: {x: 0.2323, y: -1.8185, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 5185963384500431450, guid: 843d21fc2de1eb847b4a04cb5eb79839, type: 3}
+  - characterId: Police
+    characterName: Police
+    position: {x: -4.41, y: -3.57, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 441912294641407402, guid: 383c7284d507b4b469bf8369b53bacd9, type: 3}
