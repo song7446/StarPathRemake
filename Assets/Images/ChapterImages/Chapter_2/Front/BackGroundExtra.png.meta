@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 9887df513abecda45acb117231788575
+guid: e03ddb1cda495d941bca307f92f6e973
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5342032084686192382
-    second: "\uC591\uCABD \uC0AC\uC774\uB4DC\uBBF8\uB7EC\uC758 \uBD88\uD22C\uBA85
-      \uADF8\uB798\uD30C\uC774\uD2B8 \uC720\uB9AC_0"
+      213: 958292512164162237
+    second: "\uACE0\uC694\uD55C \uC2DC\uACE8 \uBC24 \uC2E4\uB8E8\uC5E3-5_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -47,9 +46,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -101,14 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC591\uCABD \uC0AC\uC774\uB4DC\uBBF8\uB7EC\uC758 \uBD88\uD22C\uBA85
-        \uADF8\uB798\uD30C\uC774\uD2B8 \uC720\uB9AC_0"
+      name: "\uACE0\uC694\uD55C \uC2DC\uACE8 \uBC24 \uC2E4\uB8E8\uC5E3-5_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 1536
-        height: 1024
+        height: 942
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: efeb572b0e5b22a40800000000000000
-      internalID: 5342032084686192382
+      spriteID: dba267a66f98c4d00800000000000000
+      internalID: 958292512164162237
       vertices: []
       indices: 
       edges: []
@@ -127,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -137,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uC591\uCABD \uC0AC\uC774\uB4DC\uBBF8\uB7EC\uC758 \uBD88\uD22C\uBA85 \uADF8\uB798\uD30C\uC774\uD2B8 \uC720\uB9AC_0": 5342032084686192382
+      "\uACE0\uC694\uD55C \uC2DC\uACE8 \uBC24 \uC2E4\uB8E8\uC5E3-5_0": 958292512164162237
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
