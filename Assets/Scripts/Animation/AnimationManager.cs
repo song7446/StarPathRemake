@@ -8,6 +8,10 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
 {
     private Dictionary<string, AnimationCommand> animationDict = new Dictionary<string, AnimationCommand>();
 
+    private int activeTransitionCount;
+
+    public bool IsTransitioning => activeTransitionCount > 0;
+
     public void CommandsToDictionary()
     {
         animationDict.Clear();
@@ -26,30 +30,73 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
         {
             foreach (var command in animationCommand.commands)
             {
-                GameObject oldObject = CutSceneCastManager.Instance.GetObjectByKey(command.characterId);
-                CutSceneCastManager.Instance.RemoveObjectFromDictByKey(command.characterId);
+                GameObject oldObject =
+                    CutSceneCastManager.Instance.GetObjectByKey(command.characterId);
+
+                CutSceneCastManager.Instance.RemoveObjectFromDictByKey(
+                    command.characterId);
+
+                GameObject newGameObject = Instantiate(
+                    command.characterPrefab,
+                    command.position,
+                    Quaternion.Euler(command.rotation));
+
+                CutSceneCastManager.Instance.PushObject(
+                    command.characterId, newGameObject);
+
+                SpriteRenderer newRenderer =
+                    newGameObject.GetComponent<SpriteRenderer>();
+
+                Color originalColor = newRenderer.color;
+                Color transparentColor = originalColor;
+                transparentColor.a = 0f;
+                newRenderer.color = transparentColor;
+
+                activeTransitionCount++;
+
+                Sequence transition = DOTween.Sequence();
 
                 if (oldObject != null)
                 {
-                    SpriteRenderer oldRenderer = oldObject.GetComponent<SpriteRenderer>();
+                    SpriteRenderer oldRenderer =
+                        oldObject.GetComponent<SpriteRenderer>();
 
-                    oldRenderer.DOFade(0, 1)
-                        .SetLink(oldObject)
-                        .OnComplete(() => { Destroy(oldObject); });
+                    if (oldRenderer != null)
+                    {
+                        transition.Insert(
+                            0f,
+                            oldRenderer.DOFade(0f, 1f)
+                                .OnComplete(() =>
+                                {
+                                    if (oldObject != null)
+                                        Destroy(oldObject);
+                                })
+                        );
+                    }
+                    else
+                    {
+                        Destroy(oldObject);
+                    }
                 }
 
-                if (command.characterPrefab != null)
+                transition.Insert(
+                    0f,
+                    newRenderer.DOFade(originalColor.a, 2f)
+                );
+
+// 완료되거나 중간에 취소돼도 카운트 해제
+                bool released = false;
+
+                transition.OnKill(() =>
                 {
-                    GameObject newGameObject = Instantiate(command.characterPrefab, command.position,
-                        Quaternion.Euler(command.rotation));
-                    CutSceneCastManager.Instance.PushObject(command.characterId, newGameObject);
-                    SpriteRenderer sr = newGameObject.transform.GetComponent<SpriteRenderer>();
-                    Color color = sr.color;
-                    color.a = 0;
+                    if (released)
+                        return;
 
-                    sr.color = color;
-                    sr.DOFade(1, 2).SetLink(newGameObject);
-                }
+                    released = true;
+                    activeTransitionCount--;
+                });
+
+                transition.SetLink(newGameObject);
             }
         }
     }

@@ -34,6 +34,9 @@ public class ToggleCameraUI : MonoBehaviour
     /// </summary>
     public void OnClickLookUpCameraButton()
     {
+        if (AnimationManager.Instance.IsTransitioning)
+            return;
+        
         // 💡 버튼을 누를 때마다 상태를 반대로 뒤집음 (true -> false, false -> true)
         IsSkyView = !IsSkyView;
 
