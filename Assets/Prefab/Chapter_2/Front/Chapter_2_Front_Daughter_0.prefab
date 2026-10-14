@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7470122193033249660}
   - component: {fileID: 1825623020180678517}
+  - component: {fileID: -2371722827653362994}
   m_Layer: 0
   m_Name: Chapter_2_Front_Daughter_0
   m_TagString: Untagged
@@ -58,7 +59,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 3de36d975644d7f458b334b74ee7d0d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,8 +82,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: dbe3a4c221c84464f95a9ba8875c0e94, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a748a8b42501cf642a049c1d9cb1f34c, type: 3}
+  m_Color: {r: 0.827451, g: 0.8901961, b: 0.9490196, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,3 +92,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &-2371722827653362994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580125047353787461}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc47a88b1918c8e4184d37efa1d0ed4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarInteriorShake
+  horizontalAmount: 0.008
+  verticalAmount: 0.02
+  shakeSpeed: 7
+  fadeInDuration: 1
+  seed: 10

@@ -29,9 +29,15 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
             
             AllObjectsDict.TryAdd(backGroundInfoInfo.key, backGroundGO);
             
-            sequence.Insert(time * i - 0.2f,
-                backGroundGO.transform.DOMoveY(backGroundInfoInfo.position.y, 0.8f).SetEase(Ease.OutBack, 1f)
-                    .SetLink(backGroundGO));
+            sequence.Insert(
+                time * i - 0.2f,
+                backGroundGO.transform
+                    .DOMoveY(backGroundInfoInfo.position.y, 0.8f)
+                    .SetEase(Ease.OutBack, 1f)
+                    .OnComplete(() => EnableInteriorShake(backGroundGO))
+                    .SetLink(backGroundGO)
+            );
+
 
             i++;
         }
@@ -46,9 +52,14 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
             
             AllObjectsDict.TryAdd(objectInfo.key, objectObject);
             
-            sequence.Insert(time * i,
-                objectObject.transform.DOMoveY(objectInfo.position.y, 0.8f).SetEase(Ease.OutBack, 1f)
-                    .SetLink(objectObject));
+            sequence.Insert(
+                time * i - 0.2f,
+                objectObject.transform
+                    .DOMoveY(objectInfo.position.y, 0.8f)
+                    .SetEase(Ease.OutBack, 1f)
+                    .OnComplete(() => EnableInteriorShake(objectObject))
+                    .SetLink(objectObject)
+            );
 
             i++;
         }
@@ -63,9 +74,14 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
             
             AllObjectsDict.TryAdd(characterInfo.key, character);
             
-            sequence.Insert(time * i - 0.2f,
-                character.transform.DOMoveY(characterInfo.position.y, 0.8f).SetEase(Ease.OutBack, 1f)
-                    .SetLink(character));
+            sequence.Insert(
+                time * i - 0.2f,
+                character.transform
+                    .DOMoveY(characterInfo.position.y, 0.8f)
+                    .SetEase(Ease.OutBack, 1f)
+                    .OnComplete(() => EnableInteriorShake(character))
+                    .SetLink(character)
+            );
 
             i++;
         }
@@ -158,5 +174,17 @@ public class CutSceneCastManager : MonoBehaviourSingleton<CutSceneCastManager>
     public void RemoveObjectFromDictByKey(string key)
     {
         AllObjectsDict.Remove(key);
+    }
+    
+    private void EnableInteriorShake(GameObject target)
+    {
+        if (target == null)
+            return;
+
+        foreach (var shake in
+                 target.GetComponentsInChildren<CarInteriorShake>(true))
+        {
+            shake.enabled = true;
+        }
     }
 }

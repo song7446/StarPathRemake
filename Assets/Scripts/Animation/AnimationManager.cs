@@ -38,16 +38,18 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
                         .OnComplete(() => { Destroy(oldObject); });
                 }
 
+                if (command.characterPrefab != null)
+                {
+                    GameObject newGameObject = Instantiate(command.characterPrefab, command.position,
+                        Quaternion.Euler(command.rotation));
+                    CutSceneCastManager.Instance.PushObject(command.characterId, newGameObject);
+                    SpriteRenderer sr = newGameObject.transform.GetComponent<SpriteRenderer>();
+                    Color color = sr.color;
+                    color.a = 0;
 
-                GameObject newGameObject = Instantiate(command.characterPrefab, command.position,
-                    Quaternion.Euler(command.rotation));
-                CutSceneCastManager.Instance.PushObject(command.characterId, newGameObject);
-                SpriteRenderer sr = newGameObject.transform.GetComponent<SpriteRenderer>();
-                Color color = sr.color;
-                color.a = 0;
-
-                sr.color = color;
-                sr.DOFade(1, 2).SetLink(newGameObject);
+                    sr.color = color;
+                    sr.DOFade(1, 2).SetLink(newGameObject);
+                }
             }
         }
     }
