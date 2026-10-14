@@ -18,4 +18,7 @@ MonoBehaviour:
   chapterSubtitle: "\uB0C9\uAE30"
   cutSceneCasts: {fileID: 11400000, guid: 7638ebc3ee9fc1945ae0e226a3b7cd73, type: 2}
   constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
-  animations: []
+  animations:
+  - {fileID: 11400000, guid: 2be7cfc674a25ac45acfe97500c5d8ea, type: 2}
+  - {fileID: 11400000, guid: 59c55c85b9bfdce48b7049921218a6d7, type: 2}
+  - {fileID: 11400000, guid: 2582ffd27828fc646ab55d2583a71c69, type: 2}

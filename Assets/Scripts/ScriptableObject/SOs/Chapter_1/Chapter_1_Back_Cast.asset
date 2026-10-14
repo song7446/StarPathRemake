@@ -17,7 +17,7 @@ MonoBehaviour:
     characterName: Daughter
     position: {x: -0.84, y: -1.49, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 4860433734188812995, guid: 3f5e61a833a66a944aa05e285de5baa3, type: 3}
+    characterPrefab: {fileID: 60230214647995509, guid: fe588771606cb6644838c8438e06efcc, type: 3}
   objectInfos:
   - key: Bench
     objectName: Bench
