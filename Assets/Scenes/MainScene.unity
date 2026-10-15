@@ -369,8 +369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 385, y: 240}
+  m_AnchoredPosition: {x: -0.0001, y: 35}
+  m_SizeDelta: {x: 400.6994, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57758507
 MonoBehaviour:
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2634097103197475196, guid: 4bdfbdad7c824c34da9b6b90fabec665, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bdfbdad7c824c34da9b6b90fabec665, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3393,8 +3393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NotebookPageTurn
   pages:
   - {fileID: 981434810}
-  - {fileID: 737646947}
   - {fileID: 2007232790}
+  - {fileID: 737646947}
   - {fileID: 606618657}
   - {fileID: 1577840625}
   currentPageIndex: 0
@@ -3449,6 +3449,7 @@ GameObject:
   - component: {fileID: 606618660}
   - component: {fileID: 606618659}
   - component: {fileID: 606618658}
+  - component: {fileID: 606618661}
   m_Layer: 5
   m_Name: Page_4
   m_TagString: Untagged
@@ -3530,6 +3531,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606618656}
   m_CullTransparentMesh: 1
+--- !u!114 &606618661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606618656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e689b695525faf04e8270f860c246001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
+  changeGuideImageButton: {fileID: 1905871148}
+  constellationData: {fileID: 0}
 --- !u!1 &606708386
 GameObject:
   m_ObjectHideFlags: 0
@@ -3919,7 +3934,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2634097103197475196, guid: 4bdfbdad7c824c34da9b6b90fabec665, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bdfbdad7c824c34da9b6b90fabec665, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4191,8 +4206,8 @@ RectTransform:
   m_Children:
   - {fileID: 1577840625}
   - {fileID: 606618657}
-  - {fileID: 2007232790}
   - {fileID: 737646947}
+  - {fileID: 2007232790}
   - {fileID: 981434810}
   m_Father: {fileID: 548535711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4213,8 +4228,9 @@ GameObject:
   - component: {fileID: 737646950}
   - component: {fileID: 737646949}
   - component: {fileID: 737646948}
+  - component: {fileID: 737646951}
   m_Layer: 5
-  m_Name: Page_2
+  m_Name: Page_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4294,6 +4310,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737646946}
   m_CullTransparentMesh: 1
+--- !u!114 &737646951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737646946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e689b695525faf04e8270f860c246001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
+  changeGuideImageButton: {fileID: 993357728}
+  constellationData: {fileID: 0}
 --- !u!1 &745274331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6145,7 +6175,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: '3
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6237,13 +6269,14 @@ GameObject:
   - component: {fileID: 981434813}
   - component: {fileID: 981434812}
   - component: {fileID: 981434811}
+  - component: {fileID: 981434814}
   m_Layer: 5
   m_Name: Page_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &981434810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6318,6 +6351,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981434809}
   m_CullTransparentMesh: 1
+--- !u!114 &981434814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981434809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e689b695525faf04e8270f860c246001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
+  changeGuideImageButton: {fileID: 1745455047}
+  constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
 --- !u!1 &993357726
 GameObject:
   m_ObjectHideFlags: 0
@@ -10309,13 +10356,14 @@ GameObject:
   - component: {fileID: 1577840628}
   - component: {fileID: 1577840627}
   - component: {fileID: 1577840626}
+  - component: {fileID: 1577840629}
   m_Layer: 5
   m_Name: Page_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1577840625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10390,6 +10438,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577840624}
   m_CullTransparentMesh: 1
+--- !u!114 &1577840629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577840624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e689b695525faf04e8270f860c246001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
+  changeGuideImageButton: {fileID: 172031428}
+  constellationData: {fileID: 0}
 --- !u!1 &1586548173
 GameObject:
   m_ObjectHideFlags: 0
@@ -11000,7 +11062,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: '2
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11137,7 +11201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 307b7e9b111c54747b599f8bd383e75b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11617,6 +11681,8 @@ MonoBehaviour:
   guideImage: {fileID: 1861843396}
   guideShownPosition: {x: -720, y: 240}
   isGuideHidden: 1
+  guidePhotoImage: {fileID: 57758507}
+  guideImageName: {fileID: 133124551}
 --- !u!114 &1861843399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12312,8 +12378,9 @@ GameObject:
   - component: {fileID: 2007232793}
   - component: {fileID: 2007232792}
   - component: {fileID: 2007232791}
+  - component: {fileID: 2007232794}
   m_Layer: 5
-  m_Name: Page_3
+  m_Name: Page_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12393,6 +12460,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007232789}
   m_CullTransparentMesh: 1
+--- !u!114 &2007232794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007232789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e689b695525faf04e8270f860c246001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
+  changeGuideImageButton: {fileID: 182436516}
+  constellationData: {fileID: 11400000, guid: eb318188bb8f3ab4499ed1bcf67f0b28, type: 2}
 --- !u!1 &2033986037
 GameObject:
   m_ObjectHideFlags: 0

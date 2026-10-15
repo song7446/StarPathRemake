@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
             GetInDialogueUI();
     }
 
-    private void OnClickSlideGuideImage()
+    public void OnClickSlideGuideImage()
     {
         guideImageUI.SlideGuideImage();
     }
@@ -286,6 +286,26 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
             chapterButtonsAreOut = false;
             chapterButtonsSequence = null;
         });
+    }
+    
+    public void ReplaceGuideImage(Sprite sprite)
+    {
+        guideImageUI.ReplaceGuideImage(sprite);
+    }
+
+    public void ChangeGuideImage(Sprite sprite)
+    {
+        guideImageUI.ChangeGuideImage(sprite);
+    }
+
+    public bool IsGuideHidden()
+    {
+        return guideImageUI.isGuideHidden;
+    }
+
+    public void ChangeGuideName(string constellationName)
+    {
+        guideImageUI.ChangeGuideName(constellationName);
     }
 
     private CanvasGroup GetChapterCanvasGroup(RectTransform rect)
