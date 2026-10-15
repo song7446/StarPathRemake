@@ -248,7 +248,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -633,6 +633,10 @@ PrefabInstance:
     - target: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
       propertyPath: m_Name
       value: UrsaMajor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3739454195153248794, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
       propertyPath: m_Color.b
@@ -1581,7 +1585,64 @@ MonoBehaviour:
   ccStarSky: {fileID: 1033184031}
   ccStarGround: {fileID: 1033184030}
   _lookUpCameraButton: {fileID: 898578945}
-  IsSkyView: 0
+  fadeDuration: 0.4
+--- !u!1001 &2074302283214871566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173837126331742255, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510803573960233865, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+      propertyPath: m_Name
+      value: UrsaMinor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1596,3 +1657,4 @@ SceneRoots:
   - {fileID: 2145438973}
   - {fileID: 870305911}
   - {fileID: 2058515615}
+  - {fileID: 2074302283214871566}

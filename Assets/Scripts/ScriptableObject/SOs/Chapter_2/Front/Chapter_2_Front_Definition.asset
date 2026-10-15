@@ -17,7 +17,7 @@ MonoBehaviour:
   chapterTitle: "\uBCC4\uC744 \uB530\uB77C\uAC00\uB294 \uAE38"
   chapterSubtitle: "\uB3D9\uD589"
   cutSceneCasts: {fileID: 11400000, guid: 4b625a102d577c74189313d5daafa19e, type: 2}
-  constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
+  constellationData: {fileID: 11400000, guid: eb318188bb8f3ab4499ed1bcf67f0b28, type: 2}
   animations:
   - {fileID: 11400000, guid: c5b896f651d6ab74780f41c60a7c40d1, type: 2}
   - {fileID: 11400000, guid: 3627ee701ded03942812488c0faca23e, type: 2}
