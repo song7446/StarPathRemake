@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     private bool chapterButtonsAreOut;
 
     private bool isNoteBookOpen = false;
+    
+    private bool isDialogueHidden = true;
 
     protected override void Awake()
     {
@@ -50,17 +52,20 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     public void OnAdvanceDialogue()
     {
+        if (GetIsOnSkyView() || isDialogueHidden)
+            return;
+
         dialogueUI.Advance();
     }
 
     public void StartDialogue(IReadOnlyList<DialogueData> dialogues)
     {
-        dialogueRectTransform.DOAnchorPos(
-            dialoguePostition,
-            0.5f
-        ).SetEase(Ease.InOutSine);
-
         dialogueUI.Play(dialogues);
+
+        if (GetIsOnSkyView())
+            GetOutDialogueUI();
+        else
+            GetInDialogueUI();
     }
 
     private void OnClickSlideGuideImage()
@@ -104,15 +109,29 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         GetOutButtons();
         GetOutSubTitle();
-        GetOutDialogueUI(0f);
+        GetOutDialogueUI();
     }
 
-    public void GetOutDialogueUI(float delay = 0f)
+    public void GetOutDialogueUI()
     {
-        dialogueRectTransform.DOAnchorPos(
-            dialogueOutPostition,
-            0.5f
-        ).SetEase(Ease.InOutSine).SetDelay(delay);
+        // 예약된 퇴장이나 기존 이동을 취소
+        dialogueRectTransform.DOKill();
+
+        isDialogueHidden = true;
+
+        dialogueRectTransform
+            .DOAnchorPos(dialogueOutPostition, 0.5f)
+            .SetEase(Ease.InOutSine);
+    }
+    public void GetInDialogueUI()
+    {
+        dialogueRectTransform.DOKill();
+
+        isDialogueHidden = false;
+
+        dialogueRectTransform
+            .DOAnchorPos(dialoguePostition, 0.5f)
+            .SetEase(Ease.InOutSine);
     }
 
     private void GetInButtons()

@@ -36,23 +36,24 @@ public class ToggleCameraUI : MonoBehaviour
     {
         if (AnimationManager.Instance.IsTransitioning)
             return;
-        
-        // 💡 버튼을 누를 때마다 상태를 반대로 뒤집음 (true -> false, false -> true)
+
         IsSkyView = !IsSkyView;
 
         FadeObjects(IsSkyView);
 
         if (IsSkyView)
         {
-            // [하늘 뷰로 올라갈 때]
             ccSky.Priority = 20;
             ccStarSky.Priority = 20;
+
+            UIManager.Instance.GetOutDialogueUI();
         }
         else
         {
-            // [땅 뷰로 내려올 때]
             ccSky.Priority = 0;
             ccStarSky.Priority = 0;
+
+            UIManager.Instance.GetInDialogueUI();
         }
     }
 
