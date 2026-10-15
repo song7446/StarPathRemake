@@ -11808,6 +11808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1925984493}
+  - component: {fileID: 1925984494}
   m_Layer: 0
   m_Name: SkyCameraTarget
   m_TagString: Untagged
@@ -11830,6 +11831,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1925984494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925984492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb255f092334334bb1b97314bcaa43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkyCameraController
+  panTarget: {fileID: 1925984493}
+  panSpeed: 10
+  leftDistance: 9
+  rightDistance: 9
+  enableEdgePanning: 1
+  edgePanBorderThickness: 20
 --- !u!1 &1932959026
 GameObject:
   m_ObjectHideFlags: 0
