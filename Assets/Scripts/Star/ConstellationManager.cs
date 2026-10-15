@@ -17,6 +17,9 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
     private Coroutine starAppearCoroutine;
 
     [SerializeField, Min(0.01f)] private float starFadeInDuration = 0.8f;
+    
+    private GameObject currentConstellationObject;
+    private Coroutine starDisappearCoroutine;
 
     public void CreateConstellation(ConstellationData constellationData)
     {
@@ -25,16 +28,27 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
             StopCoroutine(starAppearCoroutine);
             starAppearCoroutine = null;
         }
+        
+        if (starDisappearCoroutine != null)
+        {
+            StopCoroutine(starDisappearCoroutine);
+            starDisappearCoroutine = null;
+        }
+
+        if (currentConstellationObject != null)
+            Destroy(currentConstellationObject);
 
         _currentConstellationStars.Clear();
         allStars.Clear();
         _currentConstellationData = constellationData;
+        
 
         GameObject constellation = Instantiate(constellationData.constellationPrefab, constellationData.CreatePosition,
             Quaternion.identity);
         List<PuzzleStar> stars =
             constellation.GetComponentsInChildren<PuzzleStar>(true).ToList();
 
+        currentConstellationObject = constellation;
         allStars = stars;
 
         PuzzleStar[] childStars = constellation.GetComponentsInChildren<PuzzleStar>();
@@ -117,30 +131,44 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
 
     public void FadeOutStarts()
     {
-        StartCoroutine(FadeOutStars(allStars, 1f));
+        if (currentConstellationObject == null ||
+            starDisappearCoroutine != null)
+            return;
+
+        // 등장 페이드와 충돌하지 않도록 중단
+        if (starAppearCoroutine != null)
+        {
+            StopCoroutine(starAppearCoroutine);
+            starAppearCoroutine = null;
+        }
+
+        starDisappearCoroutine = StartCoroutine(
+            FadeOutStars(currentConstellationObject, 1f));
     }
 
     private IEnumerator FadeOutStars(
-        List<PuzzleStar> stars,
+        GameObject target,
         float duration = 0.5f)
     {
-        var renderers = new List<SpriteRenderer>();
-        var originalColors = new List<Color>();
+        SpriteRenderer[] renderers =
+            target.GetComponentsInChildren<SpriteRenderer>(true);
 
-        foreach (PuzzleStar star in stars)
+        Color[] startColors = new Color[renderers.Length];
+
+        for (int i = 0; i < renderers.Length; i++)
+            startColors[i] = renderers[i].color;
+
+        // 사라지는 동안 별 클릭 방지
+        foreach (Collider2D col in
+                 target.GetComponentsInChildren<Collider2D>(true))
         {
-            if (star == null)
-                continue;
+            col.enabled = false;
+        }
 
-            foreach (SpriteRenderer renderer in
-                     star.GetComponentsInChildren<SpriteRenderer>(true))
-            {
-                if (renderers.Contains(renderer))
-                    continue;
-
-                renderers.Add(renderer);
-                originalColors.Add(renderer.color);
-            }
+        foreach (Collider col in
+                 target.GetComponentsInChildren<Collider>(true))
+        {
+            col.enabled = false;
         }
 
         float elapsed = 0f;
@@ -149,35 +177,34 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-
             float progress = Mathf.Clamp01(elapsed / duration);
 
-            for (int i = 0; i < renderers.Count; i++)
+            for (int i = 0; i < renderers.Length; i++)
             {
                 if (renderers[i] == null)
                     continue;
 
-                Color color = originalColors[i];
+                Color color = startColors[i];
                 color.a *= 1f - progress;
-
                 renderers[i].color = color;
             }
 
             yield return null;
         }
 
-        foreach (PuzzleStar star in stars)
+        if (target != null)
+            Destroy(target);
+
+        if (currentConstellationObject == target)
         {
-            if (star != null)
-                star.gameObject.SetActive(false);
+            currentConstellationObject = null;
+            _currentConstellationStars.Clear();
+            allStars.Clear();
+            _currentConstellationData = null;
+            isWrongLineDrawn = false;
         }
 
-        // 다음 페이드 인을 위해 비활성화 상태에서 색상 복구
-        for (int i = 0; i < renderers.Count; i++)
-        {
-            if (renderers[i] != null)
-                renderers[i].color = originalColors[i];
-        }
+        starDisappearCoroutine = null;
     }
 
     private IEnumerator ShowStars(PuzzleStar[] stars)
