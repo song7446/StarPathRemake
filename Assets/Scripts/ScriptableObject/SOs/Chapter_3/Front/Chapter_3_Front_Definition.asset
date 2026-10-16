@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13002fd244c90b4299bd69e8549285f, type: 3}
+  m_Name: Chapter_3_Front_Definition
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
+  chapterId: 3_Front
+  chapterNumber: Chapter 3
+  chapterTitle: "\uB0A8\uACA8\uC9C4 \uAE30\uB85D"
+  chapterSubtitle: "\uAE38\uC7A1\uC774"
+  cutSceneCasts: {fileID: 11400000, guid: 4b625a102d577c74189313d5daafa19e, type: 2}
+  constellationData: {fileID: 11400000, guid: b10159e9a2d1f694b8272568d1da9211, type: 2}
+  animations: []

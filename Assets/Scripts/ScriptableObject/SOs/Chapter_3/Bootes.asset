@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507f4b4ceb9ba3046a35777337b4be5f, type: 3}
+  m_Name: Bootes
+  m_EditorClassIdentifier: Assembly-CSharp::ConstellationData
+  constellationId: Constellation_03
+  Name_Kr: "\uBAA9\uB3D9\uC790\uB9AC"
+  Explain_Kr: "\uD070\uACF0\uC758 \uB4A4\uB97C \uB530\uB77C \uBC24\uD558\uB298\uC744
+    \uAC77\uB294 \uBAA9\uB3D9\uC758 \uBCC4\uC790\uB9AC. \uBD81\uB450\uCE60\uC131
+    \uC190\uC7A1\uC774\uC758 \uAD7D\uC740 \uC120\uC744 \uB530\uB77C\uAC00\uBA74,
+    \uADF8\uAC00 \uD488\uC740 \uBC1D\uC740 \uBCC4 \uC544\uB974\uD06C\uD22C\uB8E8\uC2A4\uC5D0
+    \uB2FF\uB294\uB2E4. \uB204\uAD70\uAC00\uB294 \uAE38\uC744 \uCC3E\uAE30 \uC704\uD574,
+    \uB204\uAD70\uAC00\uB294 \uC9C0\uB098\uAC04 \uC790\uC758 \uD754\uC801\uC744 \uCC3E\uAE30
+    \uC704\uD574 \uADF8 \uBE5B\uC744 \uBC14\uB77C\uBCF4\uC558\uB2E4. \uAC19\uC740
+    \uBCC4\uC744 \uB530\uB77C \uAC77\uB354\uB77C\uB3C4, \uADF8 \uB05D\uC5D0\uC11C
+    \uB9CC\uB098\uAE38 \uBC14\uB77C\uB294 \uAC83\uC740 \uC11C\uB85C \uB2EC\uB790\uB2E4."
+  Name_En: Bootes
+  Explain_En: blr
+  CreatePosition: {x: 0, y: 1.5, z: 0}
+  correctConnections:
+  - starA: 1
+    starB: 2
+  - starA: 1
+    starB: 4
+  - starA: 2
+    starB: 3
+  - starA: 2
+    starB: 9
+  - starA: 4
+    starB: 5
+  - starA: 4
+    starB: 8
+  - starA: 5
+    starB: 6
+  - starA: 6
+    starB: 7
+  - starA: 8
+    starB: 10
+  - starA: 9
+    starB: 10
+  - starA: 10
+    starB: 11
+  - starA: 10
+    starB: 13
+  - starA: 11
+    starB: 12
+  - starA: 13
+    starB: 14
+  - starA: 14
+    starB: 15
+  constellationPrefab: {fileID: 136806325418861560, guid: f4b4308b005ca8a43b596c30f8e00f9c, type: 3}
+  constellationGuideImage: {fileID: 21300000, guid: 99fdae4754d1e4448853c4ec653404e2, type: 3}
