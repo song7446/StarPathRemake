@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     private bool isNoteBookOpen = false;
     
     private bool isDialogueHidden = true;
+    
+    private Vector3 chapterButtonsExitOffset;
 
     protected override void Awake()
     {
@@ -42,6 +44,31 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
         slideGuideImageButton.onClick.AddListener(OnClickSlideGuideImage);
         onNoteBookButton.onClick.AddListener(OnClickOnNoteBook);
+    }
+
+    public void InitializeChapterButtons()
+    {
+        chapterOriginalPositions.Clear();
+
+        foreach (GameObject button in chapterButtons)
+        {
+            if (button == null)
+                continue;
+
+            RectTransform rect = button.GetComponent<RectTransform>();
+
+            if (rect != null)
+                chapterOriginalPositions[rect] = rect.localPosition;
+        }
+
+        for (int i = 0; i < chapterButtons.Length; i++)
+        {
+            if (chapterButtons[i] == null)
+                continue;
+
+            chapterButtons[i].SetActive(
+                GameManager.Instance.CanShowChapterButton(i));
+        }
     }
 
     private void OnClickOnNoteBook()
@@ -166,7 +193,6 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
             return;
 
         chapterButtonsSequence?.Kill();
-        chapterOriginalPositions.Clear();
 
         Vector3 moveOffset = Vector3.zero;
 
@@ -203,6 +229,8 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
         if (chapterOriginalPositions.Count == 0)
             return;
+        
+        chapterButtonsExitOffset = moveOffset;
 
         // 시작할 때 설정해야 퇴장 도중에도 복귀 가능
         chapterButtonsAreOut = true;
@@ -211,6 +239,10 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         foreach (var pair in chapterOriginalPositions)
         {
             RectTransform rect = pair.Key;
+
+            if (rect == null || !rect.gameObject.activeSelf)
+                continue;
+
             CanvasGroup group = GetChapterCanvasGroup(rect);
 
             rect.DOKill();
@@ -243,16 +275,34 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         if (!chapterButtonsAreOut)
             return;
 
-        // 나가는 도중 호출해도 현재 위치에서 돌아온다.
         chapterButtonsSequence?.Kill();
         chapterButtonsSequence = DOTween.Sequence();
 
-        foreach (var pair in chapterOriginalPositions)
-        {
-            RectTransform rect = pair.Key;
+        // 표시할 별이 없어도 완료 처리가 실행되도록 유지.
+        chapterButtonsSequence.AppendInterval(0.7f);
 
-            if (rect == null)
+        var shownGroups = new List<CanvasGroup>();
+
+        for (int i = 0; i < chapterButtons.Length; i++)
+        {
+            GameObject button = chapterButtons[i];
+
+            if (button == null)
                 continue;
+
+            if (!GameManager.Instance.CanShowChapterButton(i))
+            {
+                button.SetActive(false);
+                continue;
+            }
+
+            RectTransform rect = button.GetComponent<RectTransform>();
+
+            if (rect == null ||
+                !chapterOriginalPositions.TryGetValue(rect, out Vector3 originalPosition))
+            {
+                continue;
+            }
 
             CanvasGroup group = GetChapterCanvasGroup(rect);
 
@@ -263,22 +313,31 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
             group.interactable = false;
             group.blocksRaycasts = false;
 
-            rect.gameObject.SetActive(true);
+            // 비활성화된 별은 저장된 위치의 위쪽에서 등장.
+            // 새로 해금된 별도 동일하게 처리.
+            if (!button.activeSelf)
+            {
+                rect.localPosition = originalPosition;
+                rect.position += chapterButtonsExitOffset;
+            }
 
-            chapterButtonsSequence.Join(
-                rect.DOLocalMove(pair.Value, 0.7f)
+            button.SetActive(true);
+            shownGroups.Add(group);
+
+            chapterButtonsSequence.Insert(
+                0f,
+                rect.DOLocalMove(originalPosition, 0.7f)
                     .SetEase(Ease.OutCubic)
             );
         }
 
         chapterButtonsSequence.OnComplete(() =>
         {
-            foreach (var pair in chapterOriginalPositions)
+            foreach (CanvasGroup group in shownGroups)
             {
-                if (pair.Key == null)
+                if (group == null)
                     continue;
 
-                CanvasGroup group = GetChapterCanvasGroup(pair.Key);
                 group.interactable = true;
                 group.blocksRaycasts = true;
             }

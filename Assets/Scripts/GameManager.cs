@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private void Start()
     {
         isWatched = new bool[ChapterDefinitions.Length];
+
+        UIManager.Instance.InitializeChapterButtons();
     }
     
     public void StartChapter(int idx, bool fromFront = false)
@@ -123,5 +125,30 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         );
 
         UIManager.Instance.StartDialogue(dialogueDatas);
+    }
+    
+    public bool CanShowChapterButton(int idx)
+    {
+        if (isWatched == null || idx < 0 || idx >= isWatched.Length)
+            return false;
+
+        // 첫 번째 챕터는 처음부터 선택 가능.
+        if (idx == 0)
+            return true;
+
+        // 이미 본 장면은 다시 보기 가능.
+        if (isWatched[idx])
+            return true;
+
+        // 다음 챕터 앞장면은 이전 챕터 뒷장면을 보면 해금.
+        return idx % 2 == 0 && isWatched[idx - 1];
+    }
+
+    public void MarkCurrentChapterWatched()
+    {
+        if (currentChapterIdx < 0 || currentChapterIdx >= isWatched.Length)
+            return;
+
+        isWatched[currentChapterIdx] = true;
     }
 }
