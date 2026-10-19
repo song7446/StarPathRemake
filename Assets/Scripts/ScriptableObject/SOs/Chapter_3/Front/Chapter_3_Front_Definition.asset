@@ -16,6 +16,19 @@ MonoBehaviour:
   chapterNumber: Chapter 3
   chapterTitle: "\uB0A8\uACA8\uC9C4 \uAE30\uB85D"
   chapterSubtitle: "\uAE38\uC7A1\uC774"
-  cutSceneCasts: {fileID: 11400000, guid: 4b625a102d577c74189313d5daafa19e, type: 2}
-  constellationData: {fileID: 11400000, guid: b10159e9a2d1f694b8272568d1da9211, type: 2}
-  animations: []
+  cutSceneCasts: {fileID: 11400000, guid: beed32d6d0bfcc543939c02c8b1099af, type: 2}
+  constellationData: {fileID: 11400000, guid: 6a5669f84ab79b3428dfba3d808763ae, type: 2}
+  animations:
+  - {fileID: 11400000, guid: 54e6ba47298034845868fc57dd55d78a, type: 2}
+  - {fileID: 11400000, guid: 9af6317274b18114797e6d1b8a306e84, type: 2}
+  - {fileID: 11400000, guid: ec913773ddf02fd4782475f89f320098, type: 2}
+  - {fileID: 11400000, guid: cd277ed4db5501d489cb65c8528ea3d6, type: 2}
+  - {fileID: 11400000, guid: 339c3bc019b76ee40bae81f4e74aab05, type: 2}
+  - {fileID: 11400000, guid: 32ca0996ede34744aaa8e3321caa67ae, type: 2}
+  - {fileID: 11400000, guid: 30363aad661b5a24497696028dd3e720, type: 2}
+  - {fileID: 11400000, guid: a6d0d12e346b29143b286e829ae2d41c, type: 2}
+  - {fileID: 11400000, guid: be1dc770a577fd54b83d61d9024560c3, type: 2}
+  - {fileID: 11400000, guid: 795af527d1fdb0e4786d6b659023df6a, type: 2}
+  - {fileID: 11400000, guid: e8047c8e4de9b2042bb2a80a37681444, type: 2}
+  - {fileID: 11400000, guid: 25ee7f2bc2110f64fbb10988ea1e0c4b, type: 2}
+  - {fileID: 11400000, guid: 2de3c26943ce8304e8f131188b61a44f, type: 2}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0ad4f48426f50439ec7478c6ade08d, type: 3}
+  m_Name: Chapter_3_Front_Cast
+  m_EditorClassIdentifier: Assembly-CSharp::CutSceneCast
+  characterInfos: []
+  objectInfos:
+  - key: Desk
+    objectName: Desk
+    position: {x: 0, y: -0.66, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    objectPrefab: {fileID: 4500604494597182029, guid: 34e68325831d8154b904c12163c08030, type: 3}
+  backGroundInfos:
+  - key: BackGround
+    BackGroundName: BackGround
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    BackGroundPrefab: {fileID: 4396407105289616029, guid: 14f0731644a9e2e408ff5ec743f2efc5, type: 3}
