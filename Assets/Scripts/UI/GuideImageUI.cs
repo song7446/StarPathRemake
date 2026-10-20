@@ -188,7 +188,7 @@ public class GuideImageUI : MonoBehaviour
             return;
 
         guidePhotoImage.sprite = sprite;
-        guidePhotoImage.preserveAspect = true;
+        // guidePhotoImage.preserveAspect = true;
     }
 
     public void ChangeGuideName(string constellationName)

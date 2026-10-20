@@ -3547,7 +3547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &548535711
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3737,7 +3737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
   changeGuideImageButton: {fileID: 1905871148}
-  constellationData: {fileID: 0}
+  constellationData: {fileID: 11400000, guid: 610a5ec9ae9a20840bfbbe27b5a2a4a7, type: 2}
 --- !u!1 &606708386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4654,7 +4654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
   changeGuideImageButton: {fileID: 993357728}
-  constellationData: {fileID: 0}
+  constellationData: {fileID: 11400000, guid: 6a5669f84ab79b3428dfba3d808763ae, type: 2}
 --- !u!1 &745274331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6883,7 +6883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &981434810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11498,7 +11498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1577840625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11586,7 +11586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
   changeGuideImageButton: {fileID: 172031428}
-  constellationData: {fileID: 0}
+  constellationData: {fileID: 11400000, guid: b10159e9a2d1f694b8272568d1da9211, type: 2}
 --- !u!1 &1586548173
 GameObject:
   m_ObjectHideFlags: 0
@@ -13334,7 +13334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1932959027
 RectTransform:
   m_ObjectHideFlags: 0
