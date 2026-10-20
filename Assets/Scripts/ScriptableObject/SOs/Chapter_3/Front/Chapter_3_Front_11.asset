@@ -19,3 +19,8 @@ MonoBehaviour:
     position: {x: 0, y: -1, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     characterPrefab: {fileID: 2601694350876723378, guid: f88c96c3817b05244a6dc38331a79692, type: 3}
+  - characterId: Sketch
+    characterName: Skecth
+    position: {x: 527, y: 171, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 6666001283196761636, guid: 54ccafbd11cdedd4ea7974df99015fd8, type: 3}

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
   m_Name: Chapter_3_Front_29
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
-  dialogueId: Chapter_3_Front_28
+  dialogueId: Chapter_3_Front_29
   commands:
   - characterId: Sketch
     characterName: Sketch
     position: {x: 527, y: 171, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 6666001283196761636, guid: bc08775df75764442a81d9624e6f4cfa, type: 3}
+    characterPrefab: {fileID: 6666001283196761636, guid: c36c827233bc89144b307fdfa3eb7606, type: 3}
