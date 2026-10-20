@@ -10,7 +10,6 @@ public class ChapterButton : MonoBehaviour,
     IDragHandler,
     IEndDragHandler
 {
-    [SerializeField] private GameObject sceneViewObject;
     [SerializeField] private Button sceneViewButton;
 
     [Header("왼쪽 클릭")]
@@ -32,8 +31,6 @@ public class ChapterButton : MonoBehaviour,
     {
         rect = GetComponent<RectTransform>();
         sceneViewButton.onClick.AddListener(OnClickSceneViewButton);
-
-        HideSceneViewButton();
     }
 
     private void OnClickSceneViewButton()
@@ -64,16 +61,6 @@ public class ChapterButton : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            if (sceneViewObject != null)
-            {
-                sceneViewObject.SetActive(!sceneViewObject.activeSelf);
-            }
-
-            return;
-        }
-
         if (eventData.button != PointerEventData.InputButton.Left)
             return;
 
@@ -98,7 +85,6 @@ public class ChapterButton : MonoBehaviour,
             return;
 
         isDragging = true;
-        HideSceneViewButton();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -131,19 +117,12 @@ public class ChapterButton : MonoBehaviour,
 
         // draggedThisPress는 다음 PointerDown에서 초기화한다.
     }
-
-    private void HideSceneViewButton()
-    {
-        if (sceneViewObject != null)
-            sceneViewObject.SetActive(false);
-    }
+    
 
     private void OnDisable()
     {
         isDragging = false;
         draggedThisPress = false;
         canDrag = false;
-
-        HideSceneViewButton();
     }
 }

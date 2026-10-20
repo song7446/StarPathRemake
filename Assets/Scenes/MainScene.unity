@@ -495,6 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 69225754}
   - component: {fileID: 69225756}
+  - component: {fileID: 69225757}
   - component: {fileID: 69225755}
   m_Layer: 5
   m_Name: Btn_Chapter_3_Front
@@ -549,12 +550,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14b45d0892aee74891919854d332ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
-  sceneViewObject: {fileID: 1398135739}
   sceneViewButton: {fileID: 1983457318}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
   chapterIdx: 4
+--- !u!114 &69225757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69225753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378e3687085f9d547905f68e83bf2e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterSceneMenuUI
+  sceneViewButton: {fileID: 1398135739}
 --- !u!1 &73297374
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 73697036}
   - component: {fileID: 73697038}
+  - component: {fileID: 73697039}
   - component: {fileID: 73697037}
   m_Layer: 5
   m_Name: Btn_Chapter_1_Back
@@ -756,12 +770,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14b45d0892aee74891919854d332ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
-  sceneViewObject: {fileID: 545280938}
   sceneViewButton: {fileID: 468786961}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
   chapterIdx: 1
+--- !u!114 &73697039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73697035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378e3687085f9d547905f68e83bf2e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterSceneMenuUI
+  sceneViewButton: {fileID: 545280938}
 --- !u!1 &97136826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,6 +1388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 181920725}
   - component: {fileID: 181920727}
+  - component: {fileID: 181920728}
   - component: {fileID: 181920726}
   m_Layer: 5
   m_Name: Btn_Chapter_2_Back
@@ -1416,12 +1443,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14b45d0892aee74891919854d332ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
-  sceneViewObject: {fileID: 1153656370}
   sceneViewButton: {fileID: 1428540414}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
   chapterIdx: 3
+--- !u!114 &181920728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181920724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378e3687085f9d547905f68e83bf2e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterSceneMenuUI
+  sceneViewButton: {fileID: 1153656370}
 --- !u!1 &182436514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200099556}
   - component: {fileID: 200099558}
+  - component: {fileID: 200099559}
   - component: {fileID: 200099557}
   m_Layer: 5
   m_Name: Btn_Chapter_2_Front
@@ -1607,12 +1647,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14b45d0892aee74891919854d332ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
-  sceneViewObject: {fileID: 2092029022}
   sceneViewButton: {fileID: 2122668629}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
   chapterIdx: 2
+--- !u!114 &200099559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200099555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378e3687085f9d547905f68e83bf2e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterSceneMenuUI
+  sceneViewButton: {fileID: 2092029022}
 --- !u!1 &249795598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,7 +3599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &548535711
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4184,7 +4236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 2100000, guid: 35b0ec07a1f665747bf73cecb78ba448, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6883,7 +6935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &981434810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10099,7 +10151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 2100000, guid: 35b0ec07a1f665747bf73cecb78ba448, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10182,6 +10234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1449922535}
   - component: {fileID: 1449922536}
+  - component: {fileID: 1449922538}
   - component: {fileID: 1449922537}
   m_Layer: 5
   m_Name: Btn_Chapter_1_Front
@@ -10224,7 +10277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14b45d0892aee74891919854d332ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
-  sceneViewObject: {fileID: 386192890}
   sceneViewButton: {fileID: 1551327185}
   onLeftClick:
     m_PersistentCalls:
@@ -10242,6 +10294,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1449922538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449922534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378e3687085f9d547905f68e83bf2e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterSceneMenuUI
+  sceneViewButton: {fileID: 386192890}
 --- !u!1 &1452854906
 GameObject:
   m_ObjectHideFlags: 0
@@ -11498,7 +11563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1577840625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13334,7 +13399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1932959027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14141,7 +14206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 2100000, guid: 35b0ec07a1f665747bf73cecb78ba448, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -14231,7 +14296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 2100000, guid: 35b0ec07a1f665747bf73cecb78ba448, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
