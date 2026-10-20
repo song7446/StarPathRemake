@@ -23,7 +23,6 @@ MonoBehaviour:
     \uADF8\uB9BC\uC790\uB97C \uC601\uC6D0\uD788 \uB9C8\uC8FC \uBCF4\uACE0 \uC788\uB2E4."
   Name_En: Ursa Minor
   Explain_En: blr
-  CreatePosition: {x: 7.07, y: 1.26, z: 0}
   correctConnections:
   - starA: 1
     starB: 2
@@ -40,11 +39,7 @@ MonoBehaviour:
   - starA: 6
     starB: 7
   constellationPrefab: {fileID: 7510803573960233865, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
+  CreatePosition: {x: 3.46, y: 0.84, z: 0}
   constellationGuideImage: {fileID: 21300000, guid: 307b7e9b111c54747b599f8bd383e75b, type: 3}
-  fakeConstellations:
-  - constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
-    localPosition: {x: -5.13, y: -1.26, z: 0}
-    rotation: {x: 0, y: 0, z: -42.157}
-    scale: 1
-  fakeStarPrefab: {fileID: 0}
-  fakeStarPositions: []
+  fakeStarsPrefab: {fileID: 8817382393032707462, guid: 28e96700512ab594cbe31e47ccd6680f, type: 3}
+  fakeStarsCreatePosition: {x: -4.99, y: -1.74, z: 0}
