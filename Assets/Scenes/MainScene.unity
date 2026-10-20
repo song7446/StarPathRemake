@@ -11678,6 +11678,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1444293080764783485, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
+      propertyPath: Lens.OrthographicSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444293080764783485, guid: 8f9499a8f08fe364aac47fa5b275fc78, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 1925984493}

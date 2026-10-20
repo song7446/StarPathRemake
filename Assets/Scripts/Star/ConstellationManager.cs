@@ -17,18 +17,25 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
     private Coroutine starAppearCoroutine;
 
     [SerializeField, Min(0.01f)] private float starFadeInDuration = 0.8f;
-    
+
     private GameObject currentConstellationObject;
     private Coroutine starDisappearCoroutine;
 
     public void CreateConstellation(ConstellationData constellationData)
     {
+        if (constellationData == null ||
+            constellationData.constellationPrefab == null)
+        {
+            Debug.LogError("별자리 데이터 또는 프리팹이 없습니다.", this);
+            return;
+        }
+
         if (starAppearCoroutine != null)
         {
             StopCoroutine(starAppearCoroutine);
             starAppearCoroutine = null;
         }
-        
+
         if (starDisappearCoroutine != null)
         {
             StopCoroutine(starDisappearCoroutine);
@@ -36,30 +43,143 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
         }
 
         if (currentConstellationObject != null)
+        {
+            currentConstellationObject.SetActive(false);
             Destroy(currentConstellationObject);
+        }
 
         _currentConstellationStars.Clear();
         allStars.Clear();
+
         _currentConstellationData = constellationData;
-        
+        isWrongLineDrawn = false;
 
-        GameObject constellation = Instantiate(constellationData.constellationPrefab, constellationData.CreatePosition,
-            Quaternion.identity);
-        List<PuzzleStar> stars =
-            constellation.GetComponentsInChildren<PuzzleStar>(true).ToList();
+        // 정답과 가짜 별을 함께 관리하는 부모.
+        currentConstellationObject =
+            new GameObject("ConstellationGroup");
 
-        currentConstellationObject = constellation;
-        allStars = stars;
+        Transform root = currentConstellationObject.transform;
+        root.position = new Vector2(0, 0);
 
-        PuzzleStar[] childStars = constellation.GetComponentsInChildren<PuzzleStar>();
+        // 정답 별자리 생성.
+        GameObject answerObject = Instantiate(
+            constellationData.constellationPrefab,
+            constellationData.CreatePosition,
+            constellationData.constellationPrefab.transform.localRotation,
+            root);
 
-        foreach (PuzzleStar childStar in childStars)
+        PuzzleStar[] answerStars =
+            answerObject.GetComponentsInChildren<PuzzleStar>(true);
+
+        // 정답에 사용되는 번호를 먼저 확보.
+        var usedIDs = new HashSet<int>();
+
+        foreach (PuzzleStar star in answerStars)
         {
-            childStar.gameObject.SetActive(false);
-            _currentConstellationStars.Add(childStar);
+            usedIDs.Add(star.starID);
+
+            _currentConstellationStars.Add(star);
+            allStars.Add(star);
         }
 
-        starAppearCoroutine = StartCoroutine(FadeInStars(stars));
+        // 데이터에 적힌 정답 번호도 가짜 별에 배정하지 않음.
+        if (constellationData.correctConnections != null)
+        {
+            foreach (StarConnection connection in
+                     constellationData.correctConnections)
+            {
+                usedIDs.Add(connection.starA);
+                usedIDs.Add(connection.starB);
+            }
+        }
+
+        int nextFakeID = 0;
+
+        // 이전 별자리 프리팹을 가짜로 생성.
+        if (constellationData.fakeConstellations != null)
+        {
+            foreach (FakeConstellationPlacement placement in
+                     constellationData.fakeConstellations)
+            {
+                if (placement == null ||
+                    placement.constellationData == null ||
+                    placement.constellationData.constellationPrefab == null)
+                {
+                    continue;
+                }
+
+                // 해당 데이터의 프리팹만 사용.
+                // 그 데이터에 등록된 가짜 별자리까지 생성하지는 않음.
+                GameObject fakeObject = Instantiate(
+                    placement.constellationData.constellationPrefab,
+                    root,
+                    false);
+
+                fakeObject.name =
+                    "Fake_" + placement.constellationData.name;
+
+                fakeObject.transform.localPosition =
+                    placement.localPosition;
+
+                fakeObject.transform.localRotation =
+                    Quaternion.Euler(placement.rotation);
+
+                fakeObject.transform.localScale *=
+                    Mathf.Max(0.01f, placement.scale);
+
+                foreach (PuzzleStar star in
+                         fakeObject.GetComponentsInChildren<PuzzleStar>(true))
+                {
+                    RegisterFakeStar(star, usedIDs, ref nextFakeID);
+                }
+            }
+        }
+
+        // 낱개 가짜 별 생성.
+        if (constellationData.fakeStarPrefab != null &&
+            constellationData.fakeStarPositions != null)
+        {
+            foreach (Vector3 position in
+                     constellationData.fakeStarPositions)
+            {
+                PuzzleStar fakeStar = Instantiate(
+                    constellationData.fakeStarPrefab,
+                    root,
+                    false);
+
+                fakeStar.transform.localPosition = position;
+
+                RegisterFakeStar(fakeStar, usedIDs, ref nextFakeID);
+            }
+        }
+
+        // 정답과 가짜 별 모두 같은 방식으로 등장.
+        foreach (PuzzleStar star in allStars)
+        {
+            if (star != null)
+                star.gameObject.SetActive(false);
+        }
+
+        starAppearCoroutine = StartCoroutine(FadeInStars(allStars));
+    }
+
+    private void RegisterFakeStar(
+        PuzzleStar star,
+        HashSet<int> usedIDs,
+        ref int nextFakeID)
+    {
+        while (usedIDs.Contains(nextFakeID))
+            nextFakeID++;
+
+        int assignedID = nextFakeID;
+
+        usedIDs.Add(assignedID);
+        nextFakeID++;
+
+        star.SetupStar(assignedID, false);
+        star.gameObject.name = $"FakeStar_{assignedID}";
+
+        allStars.Add(star);
     }
 
     private IEnumerator FadeInStars(List<PuzzleStar> stars)
@@ -225,20 +345,34 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
 
     public void CheckAnswer(List<StarConnection> currentConnections)
     {
-        foreach (var drawnConn in currentConnections)
+        if (_currentConstellationData == null ||
+            _currentConstellationData.correctConnections == null ||
+            currentConnections == null ||
+            starDisappearCoroutine != null)
+        {
+            return;
+        }
+
+        isWrongLineDrawn = false;
+
+        List<StarConnection> answers =
+            _currentConstellationData.correctConnections;
+
+        foreach (StarConnection drawnConnection in currentConnections)
         {
             bool matchFound = false;
-            foreach (var answerConn in _currentConstellationData.correctConnections)
+
+            foreach (StarConnection answerConnection in answers)
             {
-                // IsSameConnection이 방향 상관없이 같은 연결인지(A-B == B-A) 체크해준다고 가정합니다.
-                if (answerConn.IsSameConnection(drawnConn.starA, drawnConn.starB))
+                if (answerConnection.IsSameConnection(
+                        drawnConnection.starA,
+                        drawnConnection.starB))
                 {
                     matchFound = true;
                     break;
                 }
             }
 
-            // 정답에 없는 엄한 선을 그었다면 즉시 오답
             if (!matchFound)
             {
                 isWrongLineDrawn = true;
@@ -249,22 +383,41 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
         if (isWrongLineDrawn)
         {
             Debug.Log("오답: 잘못된 연결이 포함되어 있습니다!");
-            // (선택) 여기서 모든 선을 초기화하거나, 플레이어에게 틀렸다는 피드백을 줄 수 있습니다.
+            return;
         }
-        else if (currentConnections.Count == _currentConstellationData.correctConnections.Count)
+
+        // 모든 정답 연결이 실제로 존재하는지도 확인.
+        bool allAnswersDrawn = answers.Count > 0;
+
+        foreach (StarConnection answerConnection in answers)
         {
-            // 잘못된 선도 없고, 그은 선의 개수도 정답과 똑같다면? (모양 완벽 일치!)
+            bool exists = currentConnections.Exists(connection =>
+                connection.IsSameConnection(
+                    answerConnection.starA,
+                    answerConnection.starB));
+
+            if (!exists)
+            {
+                allAnswersDrawn = false;
+                break;
+            }
+        }
+
+        if (allAnswersDrawn &&
+            currentConnections.Count == answers.Count)
+        {
             Debug.Log("★ 정답! 별자리를 완벽하게 완성했습니다! ★");
 
-            //  TODO:스테이지 클리어 이벤트 호출
-
-            GameManager.Instance.StartChapter(GameManager.Instance.currentChapterIdx + 1, true);
+            GameManager.Instance.StartChapter(
+                GameManager.Instance.currentChapterIdx + 1,
+                true);
 
             UIManager.Instance.ToggleCamera();
         }
         else
         {
-            Debug.Log($"진행 중... ({currentConnections.Count}/{_currentConstellationData.correctConnections.Count})");
+            Debug.Log(
+                $"진행 중... ({currentConnections.Count}/{answers.Count})");
         }
     }
 
