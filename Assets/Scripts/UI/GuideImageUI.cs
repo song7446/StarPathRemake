@@ -219,4 +219,21 @@ public class GuideImageUI : MonoBehaviour
             });
         }
     }
+    
+    public void HideGuideImage()
+    {
+        StartCoroutine(HideGuideImageRoutine());
+    }
+
+    private System.Collections.IEnumerator HideGuideImageRoutine()
+    {
+        // 사진 교체나 등장 애니메이션이 끝날 때까지 대기.
+        while (isSliding)
+            yield return null;
+
+        isDraggingGuide = false;
+
+        if (!isGuideHidden)
+            SlideGuideImage();
+    }
 }

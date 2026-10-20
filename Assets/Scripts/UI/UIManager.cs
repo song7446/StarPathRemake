@@ -137,6 +137,8 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         GetOutButtons();
         GetOutSubTitle();
         GetOutDialogueUI();
+        
+        guideImageUI.HideGuideImage();
     }
 
     public void GetOutDialogueUI()
