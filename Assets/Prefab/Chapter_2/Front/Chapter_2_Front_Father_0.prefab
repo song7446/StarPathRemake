@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6000027802194795475}
   - component: {fileID: 2592213491113187763}
   - component: {fileID: -167277925185608503}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chapter_2_Front_Father_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

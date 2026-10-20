@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9201609835428989732}
   - component: {fileID: 8416932810814511149}
   - component: {fileID: 7032404773066416445}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chapter_2_Back_Police_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

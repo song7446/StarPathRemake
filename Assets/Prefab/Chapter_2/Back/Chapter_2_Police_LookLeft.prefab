@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7709223355245117583}
   - component: {fileID: 2186754594844377788}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chapter_2_Police_LookLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

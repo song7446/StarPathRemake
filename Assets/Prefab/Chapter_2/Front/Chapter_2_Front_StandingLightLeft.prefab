@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2404892400173977951}
   - component: {fileID: 5760688749027144590}
   - component: {fileID: 1007836327127652293}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chapter_2_Front_StandingLightLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

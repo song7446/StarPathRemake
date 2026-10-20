@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4201226101462870575}
   - component: {fileID: 591075628333486001}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AdultDaughterSitting
   m_TagString: Daughter
   m_Icon: {fileID: 0}

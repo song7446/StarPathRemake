@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2757885171132691182}
   - component: {fileID: 3209170613213394310}
   - component: {fileID: 4299872129187410487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chapter_2_OldPolice_OnHandPaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3107307327183460589}
   - component: {fileID: 8738975638641178272}
   - component: {fileID: -654559311833954352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chapter_2_OldPolice_OnHandTwoWayRadio
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 810260359332025254}
   - component: {fileID: 2824777086954779875}
   - component: {fileID: -7223147461739323554}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chapter_2_TwoWayRadio_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

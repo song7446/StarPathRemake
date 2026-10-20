@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1571638858310784200}
   - component: {fileID: 2431249458973921323}
   - component: {fileID: -3001231393309603910}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chapter_2_CarBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

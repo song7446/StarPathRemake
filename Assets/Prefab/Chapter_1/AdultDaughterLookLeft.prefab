@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 377308829774825840}
   - component: {fileID: 6956472891240069796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AdultDaughterLookLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
