@@ -1,12 +1,15 @@
 using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
 using SongLib.Core.Singleton;
 using UnityEngine;
 
 public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
 {
-    private Dictionary<string, AnimationCommand> animationDict = new Dictionary<string, AnimationCommand>();
+    [Header("접히는 UI 그림을 생성할 부모")]
+    [SerializeField] private RectTransform animationUIParent;
+
+    private readonly Dictionary<string, AnimationCommand> animationDict
+        = new Dictionary<string, AnimationCommand>();
 
     private int activeTransitionCount;
 
@@ -16,107 +19,195 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
     {
         animationDict.Clear();
 
-        AnimationCommand[] animationCommands = GameManager.Instance.CurrentChapterDefinition.animations;
+        AnimationCommand[] animationCommands =
+            GameManager.Instance.CurrentChapterDefinition.animations;
 
         foreach (var animationCommand in animationCommands)
         {
-            animationDict.TryAdd(animationCommand.dialogueId, animationCommand);
+            animationDict.TryAdd(
+                animationCommand.dialogueId,
+                animationCommand);
         }
     }
 
     public void PlayAnimation(string id)
-{
-    if (!animationDict.TryGetValue(id, out var animationCommand))
-        return;
-
-    foreach (var command in animationCommand.commands)
     {
-        GameObject oldObject =
-            CutSceneCastManager.Instance.GetObjectByKey(command.characterId);
+        if (!animationDict.TryGetValue(id, out var animationCommand))
+            return;
 
-        CutSceneCastManager.Instance.RemoveObjectFromDictByKey(
-            command.characterId);
-
-        GameObject newObject = null;
-
-        // 프리팹이 있을 때만 새 캐릭터 생성
-        if (command.characterPrefab != null)
+        foreach (var command in animationCommand.commands)
         {
-            newObject = Instantiate(
-                command.characterPrefab,
-                command.position,
-                Quaternion.Euler(command.rotation));
+            bool isFoldedUI =
+                command.characterPrefab != null &&
+                command.characterPrefab.GetComponent<FoldedPictureUI>() != null;
 
-            CutSceneCastManager.Instance.PushObject(
-                command.characterId, newObject);
-        }
-
-        if (oldObject == null && newObject == null)
-            continue;
-
-        activeTransitionCount++;
-
-        Sequence transition = DOTween.Sequence();
-
-        // 렌더러가 없어도 완료 처리 가능
-        transition.AppendInterval(0.01f);
-
-        // 기존 오브젝트 퇴장
-        if (oldObject != null)
-        {
-            foreach (SpriteRenderer sr in
-                     oldObject.GetComponentsInChildren<SpriteRenderer>(true))
+            if (isFoldedUI && animationUIParent == null)
             {
-                transition.Insert(0f, sr.DOFade(0f, 1f));
+                Debug.LogError(
+                    "Animation UI Parent를 연결해주세요.",
+                    this);
+
+                continue;
             }
 
-            transition.InsertCallback(1f, () =>
+            GameObject oldObject =
+                CutSceneCastManager.Instance.GetObjectByKey(
+                    command.characterId);
+
+            CutSceneCastManager.Instance.RemoveObjectFromDictByKey(
+                command.characterId);
+
+            GameObject newObject = null;
+
+            // 프리팹이 null이면 생성 없이 기존 오브젝트만 퇴장.
+            if (command.characterPrefab != null)
             {
+                if (isFoldedUI)
+                {
+                    newObject = Instantiate(
+                        command.characterPrefab,
+                        animationUIParent,
+                        false);
+
+                    RectTransform rect =
+                        newObject.GetComponent<RectTransform>();
+
+                    rect.anchoredPosition3D = command.position;
+                    rect.localRotation =
+                        Quaternion.Euler(command.rotation);
+                }
+                else
+                {
+                    newObject = Instantiate(
+                        command.characterPrefab,
+                        command.position,
+                        Quaternion.Euler(command.rotation));
+                }
+
+                CutSceneCastManager.Instance.PushObject(
+                    command.characterId,
+                    newObject);
+            }
+
+            if (oldObject == null && newObject == null)
+                continue;
+
+            activeTransitionCount++;
+
+            Sequence transition = DOTween.Sequence();
+            transition.AppendInterval(0.01f);
+
+            float transitionDuration = 0.01f;
+
+            // 기존 오브젝트 퇴장.
+            if (oldObject != null)
+            {
+                FoldedPictureUI oldPicture =
+                    oldObject.GetComponent<FoldedPictureUI>();
+
+                float exitDuration;
+
+                if (oldPicture != null)
+                {
+                    exitDuration = Mathf.Max(0f, oldPicture.FoldDuration);
+
+                    // 접기 애니메이션은 FoldedPictureUI에서 실행.
+                    oldPicture.Hide();
+                }
+                else
+                {
+                    exitDuration = 1f;
+
+                    foreach (SpriteRenderer sr in
+                             oldObject.GetComponentsInChildren<SpriteRenderer>(true))
+                    {
+                        transition.Insert(
+                            0f,
+                            sr.DOFade(0f, exitDuration));
+                    }
+                }
+
+                transitionDuration =
+                    Mathf.Max(transitionDuration, exitDuration);
+
+                transition.InsertCallback(exitDuration, () =>
+                {
+                    if (oldObject != null)
+                        Destroy(oldObject);
+                });
+            }
+
+            // 새 오브젝트 등장.
+            if (newObject != null)
+            {
+                FoldedPictureUI newPicture =
+                    newObject.GetComponent<FoldedPictureUI>();
+
+                if (newPicture != null)
+                {
+                    newPicture.Show();
+
+                    transitionDuration = Mathf.Max(
+                        transitionDuration,
+                        newPicture.UnfoldDuration);
+                }
+                else
+                {
+                    const float enterDuration = 2f;
+
+                    foreach (SpriteRenderer sr in
+                             newObject.GetComponentsInChildren<SpriteRenderer>(true))
+                    {
+                        float originalAlpha = sr.color.a;
+
+                        Color color = sr.color;
+                        color.a = 0f;
+                        sr.color = color;
+
+                        transition.Insert(
+                            0f,
+                            sr.DOFade(originalAlpha, enterDuration));
+                    }
+
+                    transitionDuration = Mathf.Max(
+                        transitionDuration,
+                        enterDuration);
+                }
+            }
+
+            // 별도 스크립트에서 실행하는 펼치기/접기도 기다림.
+            float remainingDuration =
+                transitionDuration - transition.Duration();
+
+            if (remainingDuration > 0f)
+                transition.AppendInterval(remainingDuration);
+
+            // FoldedPictureUI의 SetUpdate(true)와 시간 기준을 맞춤.
+            bool usesFoldedUI =
+                isFoldedUI ||
+                (oldObject != null &&
+                 oldObject.GetComponent<FoldedPictureUI>() != null);
+
+            transition.SetUpdate(usesFoldedUI);
+
+            bool released = false;
+
+            transition.OnKill(() =>
+            {
+                if (released)
+                    return;
+
+                released = true;
+                activeTransitionCount--;
+
+                // 중간 취소 시에도 퇴장하던 대상은 정리.
                 if (oldObject != null)
                     Destroy(oldObject);
             });
+
+            transition.SetAutoKill(true);
+            transition.SetLink(
+                newObject != null ? newObject : gameObject);
         }
-
-        // 새 오브젝트 등장
-        if (newObject != null)
-        {
-            foreach (SpriteRenderer sr in
-                     newObject.GetComponentsInChildren<SpriteRenderer>(true))
-            {
-                float originalAlpha = sr.color.a;
-
-                Color color = sr.color;
-                color.a = 0f;
-                sr.color = color;
-
-                transition.Insert(
-                    0f,
-                    sr.DOFade(originalAlpha, 2f)
-                );
-            }
-        }
-
-        bool released = false;
-
-        transition.OnKill(() =>
-        {
-            if (released)
-                return;
-
-            released = true;
-            activeTransitionCount--;
-
-            // 중간에 취소돼도 퇴장하던 오브젝트가 남지 않도록 정리
-            if (oldObject != null)
-                Destroy(oldObject);
-        });
-
-        // 정상 완료 시에도 OnKill에서 카운트 해제
-        transition.SetAutoKill(true);
-
-        // 삭제 전용이면 새 오브젝트가 없으므로 매니저에 연결
-        transition.SetLink(
-            newObject != null ? newObject : gameObject);
     }
-}
 }
