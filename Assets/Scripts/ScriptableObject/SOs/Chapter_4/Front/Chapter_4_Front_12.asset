@@ -16,6 +16,6 @@ MonoBehaviour:
   commands:
   - characterId: Father
     characterName: Father
-    position: {x: -1.02, y: -1.17, z: 0}
+    position: {x: -1.87, y: -0.11, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     characterPrefab: {fileID: 4220997352270677686, guid: 34354df16a0ed1a4cb4ad81afae9582b, type: 3}
