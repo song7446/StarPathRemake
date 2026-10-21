@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
   m_Name: Chapter_3_Back_22
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
-  dialogueId: Chapter_3_Back_12
+  dialogueId: Chapter_3_Back_22
   commands:
   - characterId: Police
     characterName: Police

@@ -7882,7 +7882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 79e8caa8bf6476240bbf26156f716f5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be3be9202c37a48439d12fdda80e90d1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10737,7 +10737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1445826258}
   - component: {fileID: 1445826257}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: CharacterVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12881,7 +12881,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
