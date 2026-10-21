@@ -117,16 +117,32 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
 
     public void OnRightClick()
     {
-        if (isFadingOut)
-            return;
-        
+        // 그리는 중인 선 취소.
+        // EndDrawing()을 호출하지 않아서 연결을 확정하지 않음.
         if (isDrawing)
-            EndDrawing();
-        else
         {
-            if (permanentLines.TryPop(out LineRenderer beforeLine))
+            if (currentLine != null)
+                Destroy(currentLine.gameObject);
+
+            currentLine = null;
+            startStar = null;
+            hoveredStar = null;
+            isDrawing = false;
+
+            return;
+        }
+
+        // 마지막으로 완성한 선 취소.
+        if (permanentLines.TryPop(out LineRenderer lastLine))
+        {
+            if (lastLine != null)
+                Destroy(lastLine.gameObject);
+
+            // 선과 함께 연결 기록도 제거.
+            if (currentConnections.Count > 0)
             {
-                Destroy(beforeLine);
+                currentConnections.RemoveAt(
+                    currentConnections.Count - 1);
             }
         }
     }

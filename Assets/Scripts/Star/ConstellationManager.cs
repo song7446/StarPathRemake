@@ -22,100 +22,100 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
     private Coroutine starDisappearCoroutine;
 
     public void CreateConstellation(ConstellationData constellationData)
-{
-    if (constellationData == null ||
-        constellationData.constellationPrefab == null)
     {
-        Debug.LogError("정답 별자리 데이터 또는 프리팹이 없습니다.", this);
-        return;
-    }
-
-    if (starAppearCoroutine != null)
-    {
-        StopCoroutine(starAppearCoroutine);
-        starAppearCoroutine = null;
-    }
-
-    if (starDisappearCoroutine != null)
-    {
-        StopCoroutine(starDisappearCoroutine);
-        starDisappearCoroutine = null;
-    }
-
-    if (currentConstellationObject != null)
-    {
-        currentConstellationObject.SetActive(false);
-        Destroy(currentConstellationObject);
-    }
-
-    _currentConstellationStars.Clear();
-    allStars.Clear();
-
-    _currentConstellationData = constellationData;
-    isWrongLineDrawn = false;
-
-    // 정답과 가짜를 함께 페이드 아웃하고 삭제하기 위한 부모.
-    currentConstellationObject = new GameObject("ConstellationGroup");
-    Transform root = currentConstellationObject.transform;
-
-    // 정답 별자리 생성: 프리팹의 회전 유지.
-    GameObject answerPrefab = constellationData.constellationPrefab;
-
-    GameObject answerObject = Instantiate(
-        answerPrefab,
-        constellationData.CreatePosition,
-        answerPrefab.transform.localRotation,
-        root);
-
-    var usedIDs = new HashSet<int>();
-
-    foreach (PuzzleStar star in
-             answerObject.GetComponentsInChildren<PuzzleStar>(true))
-    {
-        usedIDs.Add(star.starID);
-
-        _currentConstellationStars.Add(star);
-        allStars.Add(star);
-    }
-
-    if (constellationData.correctConnections != null)
-    {
-        foreach (StarConnection connection in
-                 constellationData.correctConnections)
+        if (constellationData == null ||
+            constellationData.constellationPrefab == null)
         {
-            usedIDs.Add(connection.starA);
-            usedIDs.Add(connection.starB);
+            Debug.LogError("정답 별자리 데이터 또는 프리팹이 없습니다.", this);
+            return;
         }
-    }
 
-    // 배치해 둔 가짜 별 프리팹을 통째로 생성.
-    if (constellationData.fakeStarsPrefab != null)
-    {
-        GameObject fakePrefab = constellationData.fakeStarsPrefab;
+        if (starAppearCoroutine != null)
+        {
+            StopCoroutine(starAppearCoroutine);
+            starAppearCoroutine = null;
+        }
 
-        GameObject fakeObject = Instantiate(
-            fakePrefab,
-            constellationData.fakeStarsCreatePosition,
-            fakePrefab.transform.localRotation,
+        if (starDisappearCoroutine != null)
+        {
+            StopCoroutine(starDisappearCoroutine);
+            starDisappearCoroutine = null;
+        }
+
+        if (currentConstellationObject != null)
+        {
+            currentConstellationObject.SetActive(false);
+            Destroy(currentConstellationObject);
+        }
+
+        _currentConstellationStars.Clear();
+        allStars.Clear();
+
+        _currentConstellationData = constellationData;
+        isWrongLineDrawn = false;
+
+        // 정답과 가짜를 함께 페이드 아웃하고 삭제하기 위한 부모.
+        currentConstellationObject = new GameObject("ConstellationGroup");
+        Transform root = currentConstellationObject.transform;
+
+        // 정답 별자리 생성: 프리팹의 회전 유지.
+        GameObject answerPrefab = constellationData.constellationPrefab;
+
+        GameObject answerObject = Instantiate(
+            answerPrefab,
+            constellationData.CreatePosition,
+            answerPrefab.transform.localRotation,
             root);
 
-        int nextFakeID = 0;
+        var usedIDs = new HashSet<int>();
 
         foreach (PuzzleStar star in
-                 fakeObject.GetComponentsInChildren<PuzzleStar>(true))
+                 answerObject.GetComponentsInChildren<PuzzleStar>(true))
         {
-            RegisterFakeStar(star, usedIDs, ref nextFakeID);
+            usedIDs.Add(star.starID);
+
+            _currentConstellationStars.Add(star);
+            allStars.Add(star);
         }
-    }
 
-    foreach (PuzzleStar star in allStars)
-    {
-        if (star != null)
-            star.gameObject.SetActive(false);
-    }
+        if (constellationData.correctConnections != null)
+        {
+            foreach (StarConnection connection in
+                     constellationData.correctConnections)
+            {
+                usedIDs.Add(connection.starA);
+                usedIDs.Add(connection.starB);
+            }
+        }
 
-    starAppearCoroutine = StartCoroutine(FadeInStars(allStars));
-}
+        // 배치해 둔 가짜 별 프리팹을 통째로 생성.
+        if (constellationData.fakeStarsPrefab != null)
+        {
+            GameObject fakePrefab = constellationData.fakeStarsPrefab;
+
+            GameObject fakeObject = Instantiate(
+                fakePrefab,
+                constellationData.fakeStarsCreatePosition,
+                fakePrefab.transform.localRotation,
+                root);
+
+            int nextFakeID = 0;
+
+            foreach (PuzzleStar star in
+                     fakeObject.GetComponentsInChildren<PuzzleStar>(true))
+            {
+                RegisterFakeStar(star, usedIDs, ref nextFakeID);
+            }
+        }
+
+        foreach (PuzzleStar star in allStars)
+        {
+            if (star != null)
+                star.gameObject.SetActive(false);
+        }
+
+        starAppearCoroutine = StartCoroutine(FadeInStars(allStars));
+    }
 
     private void RegisterFakeStar(
         PuzzleStar star,
