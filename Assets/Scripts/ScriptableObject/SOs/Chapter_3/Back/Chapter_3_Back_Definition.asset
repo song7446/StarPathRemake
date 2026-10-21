@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13002fd244c90b4299bd69e8549285f, type: 3}
+  m_Name: Chapter_3_Back_Definition
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
+  chapterId: 3_Back
+  chapterNumber: Chapter 3
+  chapterTitle: "\uB0A8\uACA8\uC9C4 \uAE30\uB85D"
+  chapterSubtitle: "\uCD94\uC801"
+  cutSceneCasts: {fileID: 11400000, guid: eab4da8f0c9023844bed2d30e0f078eb, type: 2}
+  constellationData: {fileID: 11400000, guid: 6a5669f84ab79b3428dfba3d808763ae, type: 2}
+  animations:
+  - {fileID: 11400000, guid: 521e1b7401cfd9449ac0f0bb9dc06f78, type: 2}
+  - {fileID: 11400000, guid: 84a966ac380cb4243b9117dc3a212ac0, type: 2}
+  - {fileID: 11400000, guid: 6d3d93d40b8be2b438e1fdffbd773da7, type: 2}
+  - {fileID: 11400000, guid: a747acdc05583de4f9a988317b9144a5, type: 2}
+  - {fileID: 11400000, guid: 83404439b18a34847825bb743ef0d73f, type: 2}
+  - {fileID: 11400000, guid: 84ca8a07ffdcc46449fd56c945762a0c, type: 2}
+  - {fileID: 11400000, guid: cbec5ce6826d04848a929efec512a304, type: 2}
+  - {fileID: 11400000, guid: 159fe4488005d1b44962a4aed5bb1d56, type: 2}
+  - {fileID: 11400000, guid: 4c23331a60bb4c741a5c3fcd0ad1cf54, type: 2}
+  - {fileID: 11400000, guid: 7234c02140141fa4189e81e90aca4737, type: 2}

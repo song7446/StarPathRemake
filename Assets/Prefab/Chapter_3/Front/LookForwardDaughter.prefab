@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3383910681561005190}
   - component: {fileID: 4906870613167728948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LookForwardDaughter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
