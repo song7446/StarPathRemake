@@ -19,3 +19,8 @@ MonoBehaviour:
     position: {x: -1.02, y: -1.17, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     characterPrefab: {fileID: 3975278247371676018, guid: 20d3a9579cd8c8344bd7b1634b10b3ec, type: 3}
+  - characterId: Hole
+    characterName: Hole
+    position: {x: 2.42, y: -4.24, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 3884790286248076072, guid: b883bcf8d78161b49a10b6b926fbd76c, type: 3}

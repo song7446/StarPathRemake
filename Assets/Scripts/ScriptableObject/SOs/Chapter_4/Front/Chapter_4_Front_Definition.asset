@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13002fd244c90b4299bd69e8549285f, type: 3}
   m_Name: Chapter_4_Front_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
-  chapterId: 3_Front
-  chapterNumber: Chapter 3
+  chapterId: 4_Front
+  chapterNumber: Chapter 4
   chapterTitle: "\uC544\uB798\uC758 \uC774\uC57C\uAE30"
   chapterSubtitle: "\uBB3B\uC5B4\uB454 \uBE44\uBC00"
   cutSceneCasts: {fileID: 11400000, guid: 9aab2ef18c84e534f9de00e40a6ddcaf, type: 2}

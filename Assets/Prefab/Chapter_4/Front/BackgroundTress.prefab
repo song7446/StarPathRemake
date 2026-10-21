@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8855054239527628516}
   - component: {fileID: 2585357405314706274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackgroundTress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
