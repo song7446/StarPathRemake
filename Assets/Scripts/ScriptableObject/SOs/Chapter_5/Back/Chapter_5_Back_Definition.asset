@@ -18,4 +18,13 @@ MonoBehaviour:
   chapterSubtitle: "\uB9C8\uC8FC\uD55C \uC5C5"
   cutSceneCasts: {fileID: 11400000, guid: 7a082f138551ae649adc4511966a0dae, type: 2}
   constellationData: {fileID: 11400000, guid: b10159e9a2d1f694b8272568d1da9211, type: 2}
-  animations: []
+  animations:
+  - {fileID: 11400000, guid: 7c1bcd0a311d50a4c9f1ba509bc9be7e, type: 2}
+  - {fileID: 11400000, guid: 8a3dd8f66feaa34429b731584fcc70b9, type: 2}
+  - {fileID: 11400000, guid: 64bd9fe5bda65f943a6f7cdf703ea11d, type: 2}
+  - {fileID: 11400000, guid: 615f0923ed71f104bbb7ed2e666a4c93, type: 2}
+  - {fileID: 11400000, guid: eed94879e2e90df41a18c8a8fff785a4, type: 2}
+  - {fileID: 11400000, guid: 8c624801ac00c74458391bdb4b6cfb1c, type: 2}
+  - {fileID: 11400000, guid: 96476347f811f1341af3188760643d6f, type: 2}
+  - {fileID: 11400000, guid: 481c48e4bcb95e7469a2c43e9b0dfa1e, type: 2}
+  - {fileID: 11400000, guid: d84997ca593d40141833de012989abf2, type: 2}

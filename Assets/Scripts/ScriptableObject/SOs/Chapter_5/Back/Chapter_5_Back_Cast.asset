@@ -15,23 +15,18 @@ MonoBehaviour:
   characterInfos:
   - key: Father
     characterName: Father
-    position: {x: -1.87, y: -0.11, z: 0}
+    position: {x: 3.27, y: -1.26, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 4220997352270677686, guid: 34354df16a0ed1a4cb4ad81afae9582b, type: 3}
+    characterPrefab: {fileID: 6139270190065771039, guid: 09abb16ae12533f4e926709c5a0283b2, type: 3}
   objectInfos:
-  - key: Tree
-    objectName: Tree
-    position: {x: 0, y: 1.69, z: 0}
+  - key: Telescope
+    objectName: Telescope
+    position: {x: -1.2632895, y: -2.4858599, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    objectPrefab: {fileID: 2338996390932957587, guid: 029a264179b9bcc458318bc94a49b8b6, type: 3}
-  - key: Hole
-    objectName: Hole
-    position: {x: 2.42, y: -3.54, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    objectPrefab: {fileID: 1953689349587829299, guid: 017f8468f663c014c8cba0a9fd031183, type: 3}
+    objectPrefab: {fileID: 5127565445308811872, guid: 347773ccae25b3144ab042072e1632eb, type: 3}
   backGroundInfos:
   - key: BackGround
     BackGroundName: BackGround
-    position: {x: 0, y: 2.6, z: 0}
+    position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    BackGroundPrefab: {fileID: 5015264871757762942, guid: e1ee48f7219bc2444ac5ef256c791494, type: 3}
+    BackGroundPrefab: {fileID: 4396407105289616029, guid: 14f0731644a9e2e408ff5ec743f2efc5, type: 3}
