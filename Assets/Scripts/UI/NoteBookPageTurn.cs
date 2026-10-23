@@ -245,11 +245,11 @@ public class NotebookPageTurn : MonoBehaviour
                 fadeStart
             );
 
-// 원본 상태를 복구한 뒤 즉시 비활성화.
+            // 원본 상태를 복구한 뒤 즉시 비활성화.
             RestoreSource();
             pageRoot.gameObject.SetActive(false);
 
-// 뒤에서 보여줄 다음 페이지 활성화 / 내용 갱신.
+            // 뒤에서 보여줄 다음 페이지 활성화 / 내용 갱신.
             Action showNextPage = updatePage;
             updatePage = null;
 
@@ -263,7 +263,7 @@ public class NotebookPageTurn : MonoBehaviour
             if (token != generation || !isActiveAndEnabled)
                 yield break;
 
-// 다음 페이지 위에서 캡처 이미지만 넘어감.
+            // 다음 페이지 위에서 캡처 이미지만 넘어감.
             curl.PlayTurn(() => FinishTurn(token));
         }
         catch (Exception exception)
