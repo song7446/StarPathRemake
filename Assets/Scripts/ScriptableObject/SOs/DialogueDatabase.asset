@@ -204,13 +204,13 @@ MonoBehaviour:
   - ID: Chapter_1_Back_15
     Chapter_Id: 1_Back
     Speaker: Daughter
-    Text_Kr: "\uC544\uBE60\uC640 \uAE38 \uCC3E\uB294 \uBC95\uC744 \uBC30\uC6E0\uB358
+    Text_Kr: "\uC544\uBE60\uC640 \uBCC4\uC744 \uC787\uB294 \uBC95\uC744 \uBC30\uC6E0\uB358
       \uACF3\uC5D0 \uAC08\uAC8C."
     Text_En: null
   - ID: Chapter_1_Back_16
     Chapter_Id: 1_Back
     Speaker: Daughter
-    Text_Kr: "\uC624\uB298\uC740 \uAC70\uAE30\uC11C \uAE30\uB2E4\uB9B4\uAC8C."
+    Text_Kr: "\uAC70\uAE30\uC11C \uAE30\uB2E4\uB9B4\uAC8C."
     Text_En: null
   - ID: Chapter_1_Back_17
     Chapter_Id: 1_Back
@@ -230,23 +230,24 @@ MonoBehaviour:
   - ID: Chapter_1_Back_20
     Chapter_Id: 1_Back
     Speaker: Daughter
-    Text_Kr: "\uC544\uBE60\uB294 \uB0B4\uAC8C \uAE38 \uCC3E\uB294 \uBC95\uC744 \uC54C\uB824\uC92C\uC9C0\uB9CC,"
+    Text_Kr: "\uC544\uBE60\uB294 \uB0B4\uAC8C \uBCC4\uC744 \uC787\uB294 \uBC95\uC744
+      \uC54C\uB824\uC92C\uC9C0\uB9CC,"
     Text_En: null
   - ID: Chapter_1_Back_21
     Chapter_Id: 1_Back
     Speaker: Daughter
-    Text_Kr: "\uB098\uB294 \uC544\uC9C1 \uC5EC\uAE30\uC11C \uD5E4\uB9E4\uACE0 \uC788\uC5C8\uB2E4."
+    Text_Kr: "\uB098\uB294 \uC544\uC9C1 \uC544\uBE60\uB77C\uB294 \uBCC4\uC744 \uCC3E\uC9C0
+      \uBABB\uD588\uB2E4."
     Text_En: null
   - ID: Chapter_1_Back_22
     Chapter_Id: 1_Back
     Speaker: Daughter
-    Text_Kr: "\uADF8\uACF3\uC5D0 \uAC04\uB2E4\uACE0 \uC544\uBE60\uB97C \uB9CC\uB0A0
-      \uC218 \uC788\uC744\uAE4C."
+    Text_Kr: "\uC5EC\uAE30\uC11C \uAE30\uB2E4\uB9AC\uBA74 \uC544\uBE60\uAC00 \uC62C\uAE4C."
     Text_En: null
   - ID: Chapter_1_Back_23
     Chapter_Id: 1_Back
     Speaker: Daughter
-    Text_Kr: "\uC544\uB9C8 \uC774\uACF3\uACFC \uB2E4\uB974\uC9C0 \uC54A\uC744 \uAC83\uC774\uB2E4."
+    Text_Kr: "\uB3CC\uC544\uC62C \uAC70\uB77C\uB294 \uBCF4\uC7A5\uC740 \uC5C6\uC5C8\uB2E4."
     Text_En: null
   - ID: Chapter_1_Back_24
     Chapter_Id: 1_Back
@@ -1093,7 +1094,7 @@ MonoBehaviour:
   - ID: Chapter_3_Back_27
     Chapter_Id: 3_Back
     Speaker: Police
-    Text_Kr: "\uC544\uBE60\uC640 \uAE38 \uCC3E\uB294 \uBC95\uC744 \uBC30\uC6E0\uB358
+    Text_Kr: "\uC544\uBE60\uC640 \uBCC4\uC744 \uC787\uB294 \uBC95\uC744 \uBC30\uC6E0\uB358
       \uACF3\uC5D0 \uAC08\uAC8C."
     Text_En: 
   - ID: Chapter_3_Back_28
@@ -1390,13 +1391,13 @@ MonoBehaviour:
   - ID: Chapter_4_Back_13
     Chapter_Id: 4_Back
     Speaker: Daughter
-    Text_Kr: "\uC778\uC704\uC801\uC73C\uB85C \uB36E\uD600 \uC788\uB294 \uB4EF\uD55C "
+    Text_Kr: "\uC778\uC704\uC801\uC73C\uB85C \uB36E\uC5EC \uC788\uB294 \uB4EF\uD55C "
     Text_En: 
   - ID: Chapter_4_Back_14
     Chapter_Id: 4_Back
     Speaker: Daughter
     Text_Kr: "\uB9C8\uCE58 \uBB34\uC5B8\uAC00\uAC00 \uBB3B\uD600\uC788\uB294 \uB4EF\uD55C
-      \uB290\uB08C\uC774\uB4E4\uC5C8\uB2E4."
+      \uB290\uB08C\uC774 \uB4E4\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_4_Back_15
     Chapter_Id: 4_Back
@@ -1821,7 +1822,7 @@ MonoBehaviour:
   - ID: Chapter_5_Back_7
     Chapter_Id: 5_Back
     Speaker: Father
-    Text_Kr: "\uD558\uB298\uC744 \uC62C\uB824\uB2E4\uBCFC \uC5EC\uC720\uAC00 \uC5C6\uC5C8\uB2E4."
+    Text_Kr: "\uB9C8\uC74C \uB193\uACE0 \uBCC4\uC744 \uBCF4\uB358 \uB0A0\uC774 \uB4DC\uBB3C\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_5_Back_8
     Chapter_Id: 5_Back
@@ -1887,7 +1888,7 @@ MonoBehaviour:
     Chapter_Id: 5_Back
     Speaker: Father
     Text_Kr: "\uD558\uC9C0\uB9CC \uC0AC\uB78C\uC744 \uC8FD\uC774\uB77C\uB2C8 \uB9D0\uB3C4
-      \uC548\uB418\uB294 \uC77C\uC774\uC5C8\uB2E4."
+      \uC548 \uB418\uB294 \uC77C\uC774\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_5_Back_20
     Chapter_Id: 5_Back
@@ -1903,7 +1904,7 @@ MonoBehaviour:
   - ID: Chapter_5_Back_22
     Chapter_Id: 5_Back
     Speaker: Father
-    Text_Kr: "\uC5B4\uCA54 \uC218 \uC5C6\uC774 \uBC1B\uC544\uB4E4\uC600\uB2E4 "
+    Text_Kr: "\uC5B4\uCA54 \uC218 \uC5C6\uC774 \uBC1B\uC544\uB4E4\uC600\uB2E4"
     Text_En: 
   - ID: Chapter_5_Back_23
     Chapter_Id: 5_Back
@@ -1988,7 +1989,7 @@ MonoBehaviour:
   - ID: Chapter_5_Back_38
     Chapter_Id: 5_Back
     Speaker: Father
-    Text_Kr: "\uC5B8\uC81C\uAE4C\uC9C0 \uC5B4\uCA54 \uC218 \uC5C6\uB2E4\uB294 \uD551\uACC4"
+    Text_Kr: "\uC5B8\uC81C\uAE4C\uC9C0 \uC5B4\uCA54 \uC218 \uC5C6\uB2E4\uB294 \uD551\uACC4\uB85C"
     Text_En: 
   - ID: Chapter_5_Back_39
     Chapter_Id: 5_Back
@@ -2020,345 +2021,384 @@ MonoBehaviour:
   - ID: Chapter_6_Front_1
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uAC15\uAC00\uC5D0\uC11C \uBC1C\uACAC\uB41C \uC2DC\uC2E0 \uB9D0\uC785\uB2C8\uB2E4."
+    Text_Kr: "\uC218\uCCA9\uC5D0 \uD45C\uC2DC\uB41C \uACF3\uC740 \uC804\uBD80 \uD655\uC778\uD588\uB098?"
     Text_En: 
   - ID: Chapter_6_Front_2
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC2E0\uC6D0\uC740 \uC218\uCCA9\uC758 \uC8FC\uC778\uC73C\uB85C \uD655\uC778\uB410\uC2B5\uB2C8\uB2E4."
+    Text_Kr: "\uB124. \uD604\uC7A5\uB9C8\uB2E4 \uAC10\uC2DD\uC744 \uC9C4\uD589\uD558\uACE0
+      \uC788\uC2B5\uB2C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_3
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uACB0\uAD6D \uC774 \uC0AC\uB78C\uB3C4 \uC2DC\uC2E0\uC73C\uB85C \uCC3E\uC558\uAD70."
+    Text_Kr: "\uAE30\uB85D\uACFC \uB9DE\uC9C0 \uC54A\uB294 \uBD80\uBD84\uC740?"
     Text_En: 
   - ID: Chapter_6_Front_4
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC6B0\uB9AC\uB97C \uD53C\uD574 \uC228\uC5B4 \uC788\uB294 \uC904 \uC54C\uC558\uB294\uB370."
+    Text_Kr: "\uB9E4\uC7A5\uB41C \uC2DC\uAE30\uB294 \uC11C\uB85C \uB2E4\uB985\uB2C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_5
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uBD80\uAC80 \uACB0\uACFC\uB294?"
+    Text_Kr: "\uCD5C\uADFC\uC5D0 \uD759\uC744 \uD30C\uB0B8 \uD754\uC801\uB3C4 \uC788\uACE0\uC694."
     Text_En: 
   - ID: Chapter_6_Front_6
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uD0C0\uC0B4\uB85C \uBCF4\uC778\uB2F5\uB2C8\uB2E4."
+    Text_Kr: "\uBB3B\uC740 \uC0AC\uB78C\uC774 \uB2E4\uC2DC \uCC3E\uC544\uC628 \uAC78\uAE4C\uC694?"
     Text_En: 
   - ID: Chapter_6_Front_7
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB204\uAC00 \uADF8\uB7AC\uB294\uC9C0\uB294 \uB354 \uC870\uC0AC\uD574\uC57C
-      \uD569\uB2C8\uB2E4."
+    Text_Kr: "\uC544\uB2C8\uBA74 \uB2E4\uB978 \uC0AC\uB78C\uC774 \uCC3E\uC544\uC654\uACA0\uC9C0."
     Text_En: 
   - ID: Chapter_6_Front_8
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC774 \uC0AC\uB78C\uC774 \uBB3B\uC740 \uC2DC\uC2E0\uB4E4\uACFC\uB3C4"
+    Text_Kr: "\uB098\uB294 \uC218\uC0C9\uD55C \uC9C0\uC810\uB4E4\uC744 \uB2E4\uC2DC
+      \uC0B4\uD3C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_9
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uAD00\uB828\uC774 \uC788\uC744 \uC218 \uC788\uACA0\uAD70."
+    Text_Kr: "\uC7A5\uC18C\uB294 \uCC3E\uC558\uC9C0\uB9CC,"
     Text_En: 
   - ID: Chapter_6_Front_10
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC774 \uC0AC\uB78C\uC744 \uCC3E\uC73C\uBA74 \uB05D\uB0A0 \uC904 \uC54C\uC558\uB294\uB370."
+    Text_Kr: "\uADF8\uACF3\uC5D0\uC11C \uC788\uC5C8\uB358 \uC77C\uC740 \uC5EC\uC804\uD788
+      \uBE48\uCE78\uC774\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_11
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uD655\uC778\uD560 \uC77C\uC774 \uB354 \uB0A8\uC558\uC5B4."
+    Text_Kr: "\uB538\uC5D0\uAC8C \uC774\uC57C\uAE30\uB97C \uB4E4\uC5B4\uBD10\uC57C\uACA0\uC5B4."
     Text_En: 
   - ID: Chapter_6_Front_12
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB538\uC758 \uD589\uBC29\uC740 \uC544\uC9C1\uC778\uAC00?"
+    Text_Kr: "\uC544\uBC84\uC9C0\uAC00 \uC9D1\uC744 \uBE44\uC6B4 \uC2DC\uAE30\uB098"
     Text_En: 
   - ID: Chapter_6_Front_13
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB124. \uC544\uC9C1 \uCC3E\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4."
+    Text_Kr: "\uC218\uCCA9\uC5D0 \uB300\uD574 \uC544\uB294 \uAC8C \uC788\uC744\uC9C0\uB3C4
+      \uBAA8\uB974\uB2C8\uAE4C."
     Text_En: 
   - ID: Chapter_6_Front_14
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC544\uBC84\uC9C0 \uC18C\uC2DD\uB3C4 \uB4E3\uC9C0 \uBABB\uD588\uACA0\uAD70."
+    Text_Kr: "\uC9D1\uC5D0\uB294 \uC544\uC9C1 \uB3CC\uC544\uC624\uC9C0 \uC54A\uC558\uB2F5\uB2C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_15
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB9E4\uC7A5 \uD45C\uC2DC\uAC00 \uC788\uB294 \uACF3\uC740 \uC804\uBD80
-      \uD655\uC778\uD588\uB098?"
+    Text_Kr: "\uC218\uCCA9\uC5D0 \uB0A8\uAE34 \uB9D0\uC744 \uB2E4\uC2DC \uD655\uC778\uD574
+      \uBCF4\uC558\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_16
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB124. \uB538\uC740 \uC5B4\uB514\uC5D0\uB3C4 \uC5C6\uC5C8\uC2B5\uB2C8\uB2E4."
+    Text_Kr: "\uC544\uBE60\uC640 \uBCC4\uC744 \uC787\uB294 \uBC95\uC744 \uBC30\uC6E0\uB358
+      \uACF3\uC5D0 \uAC08\uAC8C."
     Text_En: 
   - ID: Chapter_6_Front_17
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB204\uAD70\uAC00 \uBA3C\uC800 \uD30C\uBCF8 \uD754\uC801\uB9CC \uC788\uC5C8\uC8E0."
+    Text_Kr: "\uC624\uB298\uC740 \uAC70\uAE30\uC11C \uAE30\uB2E4\uB9B4\uAC8C."
     Text_En: 
   - ID: Chapter_6_Front_18
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB538\uC774 \uC544\uBC84\uC9C0\uB97C \uCC3E\uC544\uB2E4\uB154\uB2E4\uBA74\u2026\u2026"
+    Text_Kr: "\uC55E\uCABD \uAD00\uCE21 \uAE30\uB85D\uC5D0\uB3C4 \uC7A5\uC18C\uAC00
+      \uC5EC\uB7EC \uAD70\uB370\uC785\uB2C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_19
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uADF8\uACF3\uC5D0\uC11C \uBB34\uC5C7\uC744 \uBD24\uC744\uAE4C\uC694."
+    Text_Kr: "\uC774 \uAE00\uB9CC\uC73C\uB85C\uB294 \uC5B4\uB290 \uACF3\uC778\uC9C0\u2026\u2026."
     Text_En: 
   - ID: Chapter_6_Front_20
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC2DC\uC2E0\uC744 \uBD24\uC744 \uAC00\uB2A5\uC131\uB3C4 \uC788\uACA0\uC9C0."
+    Text_Kr: "\uB098\uB294 \uB9C8\uC9C0\uB9C9 \uBB38\uC7A5\uC5D0\uC11C \uB208\uC744
+      \uBA48\uCDC4\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_21
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uADF8\uB807\uB2E4\uBA74 \uC65C \uC2E0\uACE0\uD558\uC9C0 \uC54A\uC558\uC744\uAE4C\uC694."
+    Text_Kr: "\uAE30\uB2E4\uB9B4\uAC8C."
     Text_En: 
   - ID: Chapter_6_Front_22
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC774\uC720\uB294 \uC9C1\uC811 \uB9CC\uB098\uC11C \uB4E4\uC5B4\uC57C\uACA0\uC9C0."
+    Text_Kr: "\uC544\uBC84\uC9C0\uB97C \uCC3E\uC73C\uB7EC \uAC04\uB2E4\uB294 \uB9D0\uC774
+      \uC544\uB2C8\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_23
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC218\uCCA9 \uB9C8\uC9C0\uB9C9 \uC7A5\uC758 \uC0AC\uBCF8\uC744 \uC918\uBD10."
+    Text_Kr: "\uD760..."
     Text_En: 
   - ID: Chapter_6_Front_24
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB538\uC774 \uB0A8\uAE34 \uAE00 \uB9D0\uC500\uC774\uC2DC\uC8E0?"
+    Text_Kr: "\uB354\uB294 \uAE30\uB85D\uC744 \uB530\uB77C\uAC08 \uC0DD\uAC01\uC774
+      \uC5C6\uC5C8\uB358 \uAC78\uAE4C\uC694."
     Text_En: 
   - ID: Chapter_6_Front_25
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC544\uBE60\uC640 \uAE38 \uCC3E\uB294 \uBC95\uC744 \uBC30\uC6E0\uB358
-      \uACF3\uC5D0 \uAC08\uAC8C."
+    Text_Kr: "\uADF8\uB7AC\uC744 \uC218\uB3C4 \uC788\uC9C0."
     Text_En: 
   - ID: Chapter_6_Front_26
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC624\uB298\uC740 \uAC70\uAE30\uC11C \uAE30\uB2E4\uB9B4\uAC8C."
+    Text_Kr: "\uCC3E\uC544\uB2E4\uB140\uB3C4 \uB9CC\uB098\uC9C0 \uBABB\uD588\uB2E4\uBA74,"
     Text_En: 
   - ID: Chapter_6_Front_27
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC544\uBC84\uC9C0\uB97C \uAE30\uB2E4\uB9AC\uB7EC \uAC04 \uAC70\uC600\uAD70."
+    Text_Kr: "\uC544\uBC84\uC9C0\uAC00 \uC790\uC2E0\uC744 \uCC3E\uC544\uC624\uAE38
+      \uBC14\uB790\uC744\uC9C0\uB3C4."
     Text_En: 
   - ID: Chapter_6_Front_28
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uB9E4\uC7A5\uC9C0\uB97C \uCC3E\uC544\uAC04\uB2E4\uB294 \uB73B\uC774
-      \uC544\uB2C8\uB77C."
+    Text_Kr: "\uB458\uC774 \uC790\uC8FC \uAC14\uB358 \uACF3\uBD80\uD130 \uD655\uC778\uD560\uAE4C\uC694?"
     Text_En: 
   - ID: Chapter_6_Front_29
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC55E\uCABD \uAD00\uCE21 \uAE30\uB85D\uC744 \uB2E4\uC2DC \uBD10."
+    Text_Kr: "\uADF8\uB798. \uAE38\uC744 \uC801\uC5B4\uB450\uC9C0 \uC54A\uC544\uB3C4
+      \uCC3E\uC544\uAC08 \uC218 \uC788\uACE0,"
     Text_En: 
   - ID: Chapter_6_Front_30
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uBCC4 \uADF8\uB9BC\uB9C8\uB2E4 \uCC3E\uC544\uAC00\uB294 \uAE38\uC774
-      \uC801\uD600 \uC788\uC5B4."
+    Text_Kr: "\uC544\uBC84\uC9C0\uB3C4 \uC5B4\uB514\uC778\uC9C0 \uC54C\uC544\uB4E4\uC744
+      \uB9CC\uD55C \uACF3."
     Text_En: 
   - ID: Chapter_6_Front_31
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uC774 \uC911\uC5D0 \uD568\uAED8 \uAC14\uB358 \uACF3\uC774 \uC788\uC744
-      \uAC70\uC57C."
+    Text_Kr: "\uB098\uB294 \uC624\uB798\uB41C \uAD00\uCE21 \uAE30\uB85D\uC744 \uD3BC\uCCE4\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_32
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uAE38 \uCC3E\uB294 \uBC95\uC744 \uBC30\uC6E0\uB2E4\uB294 \uAC8C \uB2E8\uC11C\uACA0\uAD70\uC694."
+    Text_Kr: "\uBCC4 \uADF8\uB9BC \uC544\uB798\uB85C \uC9E7\uC740 \uBA54\uBAA8\uB4E4\uC774
+      \uB0A8\uC544 \uC788\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_33
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uADF8\uB798. \uC544\uBC84\uC9C0\uAC00 \uC54C\uB824\uC92C\uC744 \uBCC4."
+    Text_Kr: "\uC544\uC774\uC640 \uD568\uAED8 \uC654\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_34
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uAE38\uC744 \uC783\uC5C8\uC744 \uB54C \uBC29\uD5A5\uC744 \uC9DA\uC5B4\uC8FC\uB294
-      \uBCC4\uC790\uB9AC."
+    Text_Kr: "\uCC98\uC74C\uC73C\uB85C \uBCC4\uC744 \uC9DA\uC5B4\uC8FC\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Front_35
     Chapter_Id: 6_Front
     Speaker: Police
-    Text_Kr: "\uADF8 \uADF8\uB9BC\uC5D0 \uC801\uD78C \uC7A5\uC18C\uB97C \uD655\uC778\uD574
-      \uBCF4\uC790."
+    Text_Kr: "\uB098\uB294 \uADF8 \uBB38\uC7A5 \uC606\uC758 \uBCC4\uB4E4\uC744 \uBC14\uB77C\uBD24\uB2E4."
+    Text_En: 
+  - ID: Chapter_6_Front_36
+    Chapter_Id: 6_Front
+    Speaker: Police
+    Text_Kr: "\uC774 \uC544\uC774\uC5D0\uAC8C\uB294 \uC5B4\uB5A4 \uAE30\uC5B5\uC73C\uB85C
+      \uB0A8\uC558\uC744\uAE4C."
+    Text_En: 
+  - ID: Chapter_6_Front_37
+    Chapter_Id: 6_Front
+    Speaker: Police
+    Text_Kr: "\uC544\uBE60\uB97C \uCC3E\uACE0 \uC2F6\uC5B4 \uD558\uB294 \uB538\uC774\uB77C..."
+    Text_En: 
+  - ID: Chapter_6_Front_38
+    Chapter_Id: 6_Front
+    Speaker: Police
+    Text_Kr: "\uAC08 \uACF3\uC740 \uBED4\uD558\uAD70."
     Text_En: 
   - ID: Chapter_6_Back_1
     Chapter_Id: 6_Back
-    Speaker: Police
-    Text_Kr: "\uAD00\uCE21 \uAE30\uB85D\uC5D0 \uC801\uD78C \uACF3\uC774 \uC5EC\uAE30\uC785\uB2C8\uB2E4."
+    Speaker: Daughter
+    Text_Kr: "\uBCA4\uCE58\uC5D0 \uB2FF\uC740 \uC190\uC774 \uCC28\uAC00\uC6E0\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_2
     Chapter_Id: 6_Back
-    Speaker: Police
-    Text_Kr: "\uBD81\uCABD \uD558\uB298\uC774 \uC798 \uBCF4\uC774\uB294\uAD70."
+    Speaker: Daughter
+    Text_Kr: "\uB098\uB294 \uC190\uC744 \uAC70\uB450\uC5B4 \uC18C\uB9E4 \uC548\uC73C\uB85C
+      \uB123\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_3
     Chapter_Id: 6_Back
-    Speaker: Police
-    Text_Kr: "\uC5EC\uAE30\uC11C \uD568\uAED8 \uBCC4\uC744 \uBD24\uB358 \uAC78\uAE4C\uC694."
+    Speaker: Daughter
+    Text_Kr: "\uAE38 \uCABD\uC5D0\uC11C \uC18C\uB9AC\uAC00 \uB0A0 \uB54C\uB9C8\uB2E4"
     Text_En: 
   - ID: Chapter_6_Back_4
     Chapter_Id: 6_Back
-    Speaker: Police
-    Text_Kr: "\uADF8\uB7AC\uC744\uC9C0\uB3C4 \uBAA8\uB974\uC9C0."
+    Speaker: Daughter
+    Text_Kr: "\uACE0\uAC1C\uB97C \uB3CC\uB838\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_5
     Chapter_Id: 6_Back
-    Speaker: Police
-    Text_Kr: "\uC9C0\uAE08\uC740 \uC544\uBB34\uB3C4 \uC5C6\uC2B5\uB2C8\uB2E4."
+    Speaker: Daughter
+    Text_Kr: "\uC9C0\uB098\uAC00\uB294 \uC0AC\uB78C\uC740 \uC788\uC5B4\uB3C4"
     Text_En: 
   - ID: Chapter_6_Back_6
     Chapter_Id: 6_Back
-    Speaker: Police
-    Text_Kr: "\uC8FC\uBCC0\uC744 \uB354 \uD655\uC778\uD574 \uBCF4\uACA0\uC2B5\uB2C8\uB2E4."
+    Speaker: Daughter
+    Text_Kr: "\uC774\uCABD\uC73C\uB85C \uC624\uB294 \uC0AC\uB78C\uC740 \uC5C6\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_7
     Chapter_Id: 6_Back
-    Speaker: Police
-    Text_Kr: "\uADF8\uB798. \uC544\uC9C1 \uBA40\uB9AC \uAC00\uC9C0 \uC54A\uC558\uC744
-      \uC218\uB3C4 \uC788\uC5B4."
+    Speaker: Daughter
+    Text_Kr: "\uC544\uBE60\uAC00 \uC624\uBA74 \uBB34\uC2A8 \uB9D0\uBD80\uD130 \uD574\uC57C
+      \uD560\uAE4C."
     Text_En: 
   - ID: Chapter_6_Back_8
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uCC3E\uC558\uB2E4."
+    Text_Kr: "\uC5B4\uB514 \uC788\uC5C8\uB0D0\uACE0."
     Text_En: 
   - ID: Chapter_6_Back_9
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC791\uC740\uACF0\uC790\uB9AC."
+    Text_Kr: "\uC65C \uC5F0\uB77D\uC744 \uD558\uC9C0 \uC54A\uC558\uB0D0\uACE0."
     Text_En: 
   - ID: Chapter_6_Back_10
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC544\uBE60\uAC00 \uC54C\uB824\uC92C\uC744 \uB54C\uB294"
+    Text_Kr: "\uADF8\uB2E4\uC74C\uC5D0\uB294\u2026\u2026."
     Text_En: 
   - ID: Chapter_6_Back_11
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC5B4\uB290 \uBCC4\uC778\uC9C0 \uD55C\uCC38 \uCC3E\uC558\uB294\uB370."
+    Text_Kr: "\uB098\uB294 \uC190\uD1B1 \uB05D\uC5D0 \uB0A8\uC740 \uD759\uC744 \uBB38\uC9C8\uB800\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_12
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC544\uBE60."
+    Text_Kr: "\uBB3C\uC5B4\uBCF4\uACE0 \uC2F6\uC740 \uB9D0\uC740 \uB9CE\uC558\uC9C0\uB9CC,"
     Text_En: 
   - ID: Chapter_6_Back_13
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uADF8 \uD45C\uC2DC\uAC00 \uC788\uB294 \uACF3\uC740 \uB2E4 \uAC00\uBD24\uC5B4."
+    Text_Kr: "\uC5B4\uB5A4 \uB300\uB2F5\uC744 \uB4E3\uAC8C \uB420\uC9C0\uB294 \uB450\uB824\uC6E0\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_14
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uD759\uC744 \uD30C\uB294 \uAC8C \uBB34\uC11C\uC6E0\uC5B4."
+    Text_Kr: "\uB0B4\uAC00 \uC798\uBABB \uC0DD\uAC01\uD55C \uAC70\uB77C\uACE0 \uB9D0\uD574\uC92C\uC73C\uBA74
+      \uD588\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_15
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC774\uBC88\uC5D0\uB294 \uC544\uBE60\uAC00 \uB098\uC62C\uAE4C \uBD10."
+    Text_Kr: "\uADF8\uB7F0\uB370 \uADF8 \uB9D0\uC744 \uB4E3\uACE0 \uC2F6\uC5B4\uC11C"
     Text_En: 
   - ID: Chapter_6_Back_16
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC544\uBE60\uAC00 \uC544\uB2C8\uB77C\uC11C \uB2E4\uD589\uC774\uB77C\uACE0
-      \uC0DD\uAC01\uD588\uC5B4."
+    Text_Kr: "\uB2E4\uB978 \uAC83\uB4E4\uC740 \uBABB \uBCF8 \uCC99\uD558\uB294 \uAC74
+      \uC544\uB2D0\uAE4C."
     Text_En: 
   - ID: Chapter_6_Back_17
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uADF8\uB7EC\uBA74 \uC548 \uB418\uB294 \uAC83 \uAC19\uC558\uB294\uB370."
+    Text_Kr: "\uACE0\uAC1C\uB97C \uB4E4\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_18
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uACBD\uCC30\uC5D0\uAC8C \uB9D0\uD558\uB824\uACE0\uB3C4 \uD588\uC5B4."
+    Text_Kr: "\uC544\uBE60\uAC00 \uC9DA\uC5B4\uC8FC\uB358 \uBCC4\uB4E4\uC774 \uBCF4\uC600\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_19
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uADF8\uB7F0\uB370 \uC544\uBE60\uAC00 \uD55C \uC77C\uC774\uBA74 \uC5B4\uB5A1\uD574."
+    Text_Kr: "\uC774\uC81C\uB294 \uD63C\uC790\uC11C\uB3C4 \uCC3E\uC744 \uC218 \uC788\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_20
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uBA3C\uC800 \uC544\uBE60\uD55C\uD14C \uBB3C\uC5B4\uBCF4\uACE0 \uC2F6\uC5C8\uC5B4."
+    Text_Kr: "\uCC3E\uC558\uB2E4\uACE0 \uB9D0\uD560 \uC0AC\uB78C\uB9CC \uC606\uC5D0
+      \uC5C6\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_21
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC65C \uADF8\uACF3\uB4E4\uC744 \uC801\uC5B4\uB480\uB294\uC9C0."
+    Text_Kr: "\uD558\uC9C0\uB9CC \uC544\uBE60\uAC00 \uB3CC\uC544\uC62C \uB54C\uAE4C\uC9C0"
     Text_En: 
   - ID: Chapter_6_Back_22
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC65C \uB098\uD55C\uD14C \uC544\uBB34 \uB9D0\uB3C4 \uD558\uC9C0 \uC54A\uC558\uB294\uC9C0."
+    Text_Kr: "\uC544\uBB34\uC5D0\uAC8C\uB3C4 \uB9D0\uD558\uC9C0 \uC54A\uC744 \uC218\uB294
+      \uC5C6\uC5C8\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_23
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uD558\uC9C0\uB9CC \uC774\uC81C \uC5B4\uB514\uC11C \uCC3E\uC544\uC57C
-      \uD560\uC9C0 \uBAA8\uB974\uACA0\uC5B4."
+    Text_Kr: "\uD759 \uC0AC\uC774\uB85C \uB4DC\uB7EC\uB0AC\uB358 \uC190\uC774 \uB5A0\uC62C\uB790\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_24
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC800 \uBCC4\uC744 \uBCF4\uBA74 \uAE38\uC744 \uC54C \uC218 \uC788\uB2E4\uACE0
-      \uD588\uC9C0."
+    Text_Kr: "\uADF8 \uC0AC\uB78C\uC744 \uAE30\uB2E4\uB9AC\uB294 \uC0AC\uB78C\uB3C4
+      \uC788\uC744 \uAC83\uC774\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_25
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC544\uBE60\uAC00 \uC788\uB294 \uACF3\uB3C4 \uC54C\uB824\uC8FC\uBA74
-      \uC88B\uC744 \uD150\uB370."
+    Text_Kr: "\uADF8 \uC0AC\uB78C\uB4E4\uC744 \uC704\uD574\uC11C\uB77C\uB3C4 \uB354
+      \uC774\uC0C1 \uCE68\uBB35\uD574\uC11C\uB294 \uC548\uB41C\uB2E4 "
     Text_En: 
   - ID: Chapter_6_Back_26
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC624\uB298\uAE4C\uC9C0\uB9CC \uC5EC\uAE30\uC11C \uAE30\uB2E4\uB9B4\uAC8C."
+    Text_Kr: "\uC9D1\uC5D0 \uB3CC\uC544\uAC00\uBA74 \uACBD\uCC30\uC5D0 \uC2E0\uACE0\uD558\uC790."
     Text_En: 
   - ID: Chapter_6_Back_27
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uB0B4\uC77C\uC740 \uC544\uBE60\uB97C \uCC3E\uC73C\uB7EC \uAC00\uC9C0
-      \uC54A\uC744 \uAC70\uC57C."
+    Text_Kr: "\uC218\uCCA9\uC744 \uB530\uB77C \uC5B4\uB514\uC5D0 \uAC14\uB294\uC9C0,"
     Text_En: 
   - ID: Chapter_6_Back_28
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC544\uC9C1 \uBB3B\uACE0 \uC2F6\uC740 \uAC8C \uB9CE\uC740\uB370."
+    Text_Kr: "\uADF8\uACF3\uC5D0\uC11C \uBB34\uC5C7\uC744 \uBD24\uB294\uC9C0."
     Text_En: 
   - ID: Chapter_6_Back_29
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uD639\uC2DC \uB3CC\uC544\uC624\uBA74 \uADF8\uB54C \uB300\uB2F5\uD574
-      \uC918."
+    Text_Kr: "\uB0B4\uAC00 \uC544\uB294 \uAC83\uBD80\uD130 \uB9D0\uD558\uBA74 \uB41C\uB2E4."
     Text_En: 
   - ID: Chapter_6_Back_30
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uB098, \uBA3C\uC800 \uAC08\uAC8C."
+    Text_Kr: "\uC544\uBE60."
     Text_En: 
   - ID: Chapter_6_Back_31
     Chapter_Id: 6_Back
     Speaker: Daughter
-    Text_Kr: "\uC798 \uC788\uC5B4, \uC544\uBE60."
+    Text_Kr: "\uC624\uB298\uC740 \uB098 \uBA3C\uC800 \uAC08\uAC8C."
+    Text_En: 
+  - ID: Chapter_6_Back_32
+    Chapter_Id: 6_Back
+    Speaker: Daughter
+    Text_Kr: "\uB098\uB294 \uBCA4\uCE58\uC5D0\uC11C \uC77C\uC5B4\uB098"
+    Text_En: 
+  - ID: Chapter_6_Back_33
+    Chapter_Id: 6_Back
+    Speaker: Daughter
+    Text_Kr: "\uBC1C\uBC11\uC744 \uBCF4\uBA70 \uCC9C\uCC9C\uD788 \uAC78\uC5C8\uC9C0\uB9CC"
+    Text_En: 
+  - ID: Chapter_6_Back_34
+    Chapter_Id: 6_Back
+    Speaker: Daughter
+    Text_Kr: "\uB4A4\uC5D0\uC11C \uB098\uB97C \uBD80\uB974\uB294 \uC18C\uB9AC\uB294
+      \uB4E4\uB9AC\uC9C0 \uC54A\uC558\uB2E4."
     Text_En: 

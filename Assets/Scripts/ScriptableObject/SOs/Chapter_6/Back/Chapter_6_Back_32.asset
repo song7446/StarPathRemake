@@ -18,4 +18,4 @@ MonoBehaviour:
     characterName: Daughter
     position: {x: -0.62, y: -1.03, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 6193817600557901702, guid: a00c435093e23d94d88ef1cfb327335a, type: 3}
+    characterPrefab: {fileID: 1929205585408077156, guid: 3149260e9a875d24291e5d2dbe251452, type: 3}
