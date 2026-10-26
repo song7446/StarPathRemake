@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 6_Front
   chapterNumber: Chapter 6
-  chapterTitle: "\uAE30\uB2E4\uB9BC\uC758 \uB05D"
-  chapterSubtitle: "\uBC1C\uAE38\uC758 \uB05D"
+  chapterTitle: "\uB2FF\uC9C0 \uBABB\uD55C \uB9D0"
+  chapterSubtitle: "\uB9D0\uC744 \uB530\uB77C "
   cutSceneCasts: {fileID: 11400000, guid: 8c7340f50bf90f043990ea18c825a43d, type: 2}
   constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   animations:

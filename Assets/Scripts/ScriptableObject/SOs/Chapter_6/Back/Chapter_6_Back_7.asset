@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
+  m_Name: Chapter_6_Back_7
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
+  dialogueId: Chapter_6_Back_7
+  commands:
+  - characterId: Daughter
+    characterName: Daughter
+    position: {x: -0.84, y: -1.49, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 4860433734188812995, guid: 3f5e61a833a66a944aa05e285de5baa3, type: 3}
