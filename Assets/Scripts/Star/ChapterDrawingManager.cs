@@ -49,6 +49,29 @@ public class ChapterDrawingManager : MonoBehaviourSingleton<ChapterDrawingManage
 
     private LineRenderer currentLine;
     private ChapterButton startStar;
+    
+    [SerializeField]
+    private int[] correctChapterOrder =
+    {
+        8,  // 5앞
+        0,  // 1앞
+        2,  // 2앞
+        6,  // 4앞
+        9,  // 5뒤
+        4,  // 3앞
+        7,  // 4뒤
+        1,  // 1뒤
+        5,  // 3뒤
+        3,  // 2뒤
+        10, // 6앞
+        11  // 6뒤
+    };
+    
+    [SerializeField]
+    private UnityEngine.Events.UnityEvent onPuzzleCompleted =
+        new UnityEngine.Events.UnityEvent();
+
+    private bool isCompleted;
 
     public void SetInputEnabled(bool enabled)
     {
@@ -110,11 +133,11 @@ public class ChapterDrawingManager : MonoBehaviourSingleton<ChapterDrawingManage
         connections.Add(
             new Connection(startStar, star, currentLine)
         );
-        
-        Debug.Log(startStar.name + " " + star.name);
 
         currentLine = null;
         startStar = null;
+        
+        CheckAnswer();
     }
 
     private LineRenderer CreateLine()
@@ -283,6 +306,75 @@ public class ChapterDrawingManager : MonoBehaviourSingleton<ChapterDrawingManage
         }
 
         connections.Clear();
+        isCompleted = false;
+    }
+    
+    public bool CheckAnswer()
+    {
+        if (isCompleted)
+            return true;
+
+        if (correctChapterOrder == null ||
+            correctChapterOrder.Length < 2)
+        {
+            return false;
+        }
+
+        // 정답에 필요한 선 개수와 정확히 같아야 한다.
+        if (connections.Count != correctChapterOrder.Length - 1)
+            return false;
+
+        var actualConnections = new HashSet<(int, int)>();
+
+        foreach (Connection connection in connections)
+        {
+            if (connection.From == null ||
+                connection.To == null ||
+                connection.Line == null)
+            {
+                return false;
+            }
+
+            int from = connection.From.ChapterIdx;
+            int to = connection.To.ChapterIdx;
+
+            if (from == to)
+                return false;
+
+            // 작은 번호를 앞에 넣어 양방향을 동일하게 취급.
+            var key = (Mathf.Min(from, to), Mathf.Max(from, to));
+
+            // 중복 연결이 있다면 정답으로 처리하지 않는다.
+            if (!actualConnections.Add(key))
+                return false;
+        }
+
+        for (int i = 0; i < correctChapterOrder.Length - 1; i++)
+        {
+            int from = correctChapterOrder[i];
+            int to = correctChapterOrder[i + 1];
+
+            var key = (Mathf.Min(from, to), Mathf.Max(from, to));
+
+            if (!actualConnections.Contains(key))
+                return false;
+        }
+
+        isCompleted = true;
+
+        // 성공 후 추가 연결이나 우클릭 삭제 방지.
+        SetInputEnabled(false);
+
+        Debug.Log("시간대 퍼즐 완성!");
+
+        onPuzzleCompleted?.Invoke();
+
+        return true;
+    }
+
+    public void OnPuzzleCompleted()
+    {
+        Debug.Log("시간대 퍼즐 정답");
     }
 
     private void OnDisable()

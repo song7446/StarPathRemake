@@ -27,6 +27,7 @@ public class ChapterButton : MonoBehaviour,
     private bool canDrag;
 
     [SerializeField] private int chapterIdx;
+    public int ChapterIdx => chapterIdx;
 
     private void Awake()
     {

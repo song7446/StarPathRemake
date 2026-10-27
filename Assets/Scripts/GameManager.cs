@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         isWatched = new bool[ChapterDefinitions.Length];
 
         UIManager.Instance.InitializeChapterButtons();
-        ChapterDrawingManager.Instance.SetInputEnabled(true);
     }
     
     public void StartChapter(int idx, bool fromFront = false)
