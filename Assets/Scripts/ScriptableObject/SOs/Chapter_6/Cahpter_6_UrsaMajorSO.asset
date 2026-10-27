@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507f4b4ceb9ba3046a35777337b4be5f, type: 3}
+  m_Name: Cahpter_6_UrsaMajorSO
+  m_EditorClassIdentifier: Assembly-CSharp::ConstellationData
+  constellationId: Constellation_01
+  Name_Kr: "\uD070\uACF0\uC790\uB9AC"
+  Explain_Kr: "\uBD81\uCABD \uD558\uB298\uC744 \uC601\uC6D0\uD788 \uB9F4\uB3C4\uB294
+    \uAC70\uB300\uD55C \uACF0\uC758 \uBCC4\uC790\uB9AC. \uAC00\uC7A5 \uBC1D\uAC8C
+    \uBE5B\uB098\uB294 \uC77C\uACF1 \uAC1C\uC758 \uBCC4 \uBD81\uB450\uCE60\uC131\uC744
+    \uD488\uACE0 \uC788\uC5B4 \uBD81\uADF9\uC131\uC744 \uCC3E\uC744 \uC218 \uC788\uAC8C
+    \uD574\uC8FC\uC5C8\uB2E4. \uC5B4\uB518\uAC00\uC5D0 \uD568\uAED8 \uC788\uC744
+    \uB610 \uB2E4\uB978 \uC874\uC7AC\uB97C \uD5A5\uD574 \uC601\uC6D0\uD788 \uC190\uC744
+    \uBED7\uACE0 \uC788\uB2E4."
+  Name_En: Ursa Major
+  Explain_En: blr
+  correctConnections:
+  - starA: 1
+    starB: 2
+  - starA: 2
+    starB: 3
+  - starA: 3
+    starB: 4
+  - starA: 4
+    starB: 5
+  - starA: 4
+    starB: 10
+  - starA: 5
+    starB: 6
+  - starA: 5
+    starB: 9
+  - starA: 6
+    starB: 7
+  - starA: 7
+    starB: 8
+  - starA: 8
+    starB: 9
+  - starA: 8
+    starB: 15
+  - starA: 9
+    starB: 10
+  - starA: 10
+    starB: 11
+  - starA: 11
+    starB: 12
+  - starA: 11
+    starB: 13
+  - starA: 13
+    starB: 14
+  - starA: 13
+    starB: 15
+  - starA: 15
+    starB: 16
+  constellationPrefab: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
+  CreatePosition: {x: -15.64, y: 1.5, z: 0}
+  constellationGuideImage: {fileID: 21300000, guid: 4bdfbdad7c824c34da9b6b90fabec665, type: 3}
+  fakeStarsPrefab: {fileID: 9067364659361863736, guid: 65101e03553f4844f8136b1ec817353a, type: 3}
+  fakeStarsCreatePosition: {x: 0, y: 0, z: 0}
