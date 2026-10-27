@@ -24,7 +24,6 @@ MonoBehaviour:
     \uCC0D\uB294\uB2E4."
   Name_En: Hercules
   Explain_En: blr
-  CreatePosition: {x: 0, y: 1.5, z: 0}
   correctConnections:
   - starA: 1
     starB: 2
@@ -71,4 +70,7 @@ MonoBehaviour:
   - starA: 21
     starB: 22
   constellationPrefab: {fileID: 2432522044265675945, guid: 024809c2d7695ce4481aa8738e388be2, type: 3}
+  CreatePosition: {x: -7.31, y: -3, z: 0}
   constellationGuideImage: {fileID: 21300000, guid: 907136ab46e0a8b48a5fe9fc17c12ae1, type: 3}
+  fakeStarsPrefab: {fileID: 3579703663748758709, guid: cc7c57d4f93bae34c98aa9fe40c966ac, type: 3}
+  fakeStarsCreatePosition: {x: 0, y: 0, z: 0}
