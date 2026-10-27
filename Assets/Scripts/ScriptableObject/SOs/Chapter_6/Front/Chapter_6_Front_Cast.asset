@@ -29,4 +29,4 @@ MonoBehaviour:
     BackGroundName: BackGround
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    BackGroundPrefab: {fileID: 7931975976546296241, guid: 43645a6d59bb1be44a56fc831c24782f, type: 3}
+    BackGroundPrefab: {fileID: 8876273326383148550, guid: c3a9671d438212a4f94d3aae5fdaa0f7, type: 3}
