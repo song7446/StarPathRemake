@@ -43,6 +43,7 @@ public class ChapterButton : MonoBehaviour,
     {
         GameManager.Instance.StartChapter(chapterIdx);
         UIManager.Instance.SlideOutChapterButtons();
+        ChapterDrawingManager.Instance.OnRightClick();
     }
 
     public void OnPointerDown(PointerEventData eventData)

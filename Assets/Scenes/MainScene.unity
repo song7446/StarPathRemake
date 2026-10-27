@@ -704,7 +704,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 1047603389}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 69225756}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 5
 --- !u!114 &69225757
 MonoBehaviour:
@@ -925,7 +937,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 1405534532}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 73697038}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 1
 --- !u!114 &73697039
 MonoBehaviour:
@@ -2187,7 +2211,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 873021085}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 181920727}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 3
 --- !u!114 &181920728
 MonoBehaviour:
@@ -2482,7 +2518,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 1372180392}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 200099558}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 2
 --- !u!114 &200099559
 MonoBehaviour:
@@ -4362,7 +4410,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 165096991}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 417909395}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 11
 --- !u!1 &427687265
 GameObject:
@@ -10905,7 +10965,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 1879852492}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1083468044}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 9
 --- !u!1 &1090664763
 GameObject:
@@ -11284,7 +11356,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 16079412}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1131101808}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 8
 --- !u!1 &1146978517
 GameObject:
@@ -11481,7 +11565,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 1686055141}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1156448199}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 7
 --- !u!1 &1175630181
 GameObject:
@@ -12672,7 +12768,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 129657573}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1316206460}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 4
 --- !u!1 &1325897504
 GameObject:
@@ -13392,7 +13500,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 1623889749}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1381070985}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 10
 --- !u!1 &1383464049
 GameObject:
@@ -14562,7 +14682,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 1498423383}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1449922536}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 0
 --- !u!225 &1449922537
 CanvasGroup:
@@ -18371,7 +18503,19 @@ MonoBehaviour:
   thumbnailImage: {fileID: 348237042}
   onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070194775}
+        m_TargetAssemblyTypeName: ChapterDrawingManager, Assembly-CSharp
+        m_MethodName: OnStarClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1853201326}
+          m_ObjectArgumentAssemblyTypeName: ChapterButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chapterIdx: 6
 --- !u!1 &1861843396
 GameObject:
@@ -20195,6 +20339,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052921962}
   m_CullTransparentMesh: 1
+--- !u!1 &2070194774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2070194776}
+  - component: {fileID: 2070194775}
+  m_Layer: 0
+  m_Name: $ChapterDrawingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2070194775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070194774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4161f80f0657c6d4e931050941eef29f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterDrawingManager
+  linePrefab: {fileID: 3563384554973968426, guid: a6551dc4d5518f84b90bdfe6b099d22a, type: 3}
+  chapterCanvas: {fileID: 606708390}
+  lineCamera: {fileID: 758870769}
+  lineDistance: 10
+  inputEnabled: 0
+--- !u!4 &2070194776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070194774}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2070672752
 GameObject:
   m_ObjectHideFlags: 0
@@ -20836,4 +21029,5 @@ SceneRoots:
   - {fileID: 692306431}
   - {fileID: 1202446827}
   - {fileID: 305368133}
+  - {fileID: 2070194776}
   - {fileID: 1586548175}

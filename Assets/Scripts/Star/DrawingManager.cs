@@ -165,7 +165,7 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
             LineRenderer editorLine = Instantiate(linePrefab, transform);
             editorLine.positionCount = 2;
         
-            permanentLines.Push(currentLine);
+            permanentLines.Push(editorLine);
             
             editorLine.SetPosition(0, editorStartStar.transform.position);
             editorLine.SetPosition(1, editorEndStar.transform.position);
