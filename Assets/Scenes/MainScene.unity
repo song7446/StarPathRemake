@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 20e5c904f33ade14583c20be3e847afb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -701,6 +701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 1983457318}
+  thumbnailImage: {fileID: 1047603389}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -921,6 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 468786961}
+  thumbnailImage: {fileID: 1405534532}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -1508,7 +1510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 79e8caa8bf6476240bbf26156f716f5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1977,7 +1979,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6fceb914e32e64b408109a3cb890819e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2182,6 +2184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 1428540414}
+  thumbnailImage: {fileID: 873021085}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -2476,6 +2479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 2122668629}
+  thumbnailImage: {fileID: 1372180392}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -3619,7 +3623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dfe9319730e6ad74c86c5aada4cc1c66, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4355,6 +4359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 977201210}
+  thumbnailImage: {fileID: 165096991}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -8887,7 +8892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f1b64558cb30d9147bc4aaa85fb93cb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10475,7 +10480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be3be9202c37a48439d12fdda80e90d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10897,6 +10902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 1622530708}
+  thumbnailImage: {fileID: 1879852492}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -11275,6 +11281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 116902675}
+  thumbnailImage: {fileID: 16079412}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -11471,6 +11478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 955807683}
+  thumbnailImage: {fileID: 1686055141}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -12661,6 +12669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 2147472340}
+  thumbnailImage: {fileID: 129657573}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -13146,7 +13155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd24080dcc7bbd743b1e1413a8c20343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13380,6 +13389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 693684003}
+  thumbnailImage: {fileID: 1623889749}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -14029,7 +14039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 667f6c0b60371174582b75912ae5a976, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14549,6 +14559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 1551327185}
+  thumbnailImage: {fileID: 1498423383}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -16273,7 +16284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd1f325cbe47b974cb61fc4dd16442c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16626,7 +16637,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d5ae736375961df4193e3bed69614fa2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18357,6 +18368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterButton
   sceneViewButton: {fileID: 1394686969}
+  thumbnailImage: {fileID: 348237042}
   onLeftClick:
     m_PersistentCalls:
       m_Calls: []
@@ -18536,7 +18548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14e4347adf7f9dc438f38802d6050a85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e4c2f678ce684149ac8c50922276157, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

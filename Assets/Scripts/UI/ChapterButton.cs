@@ -11,6 +11,7 @@ public class ChapterButton : MonoBehaviour,
     IEndDragHandler
 {
     [SerializeField] private Button sceneViewButton;
+    [SerializeField] private Image thumbnailImage;
 
     [Header("왼쪽 클릭")]
     [SerializeField] private UnityEvent onLeftClick = new UnityEvent();
@@ -31,6 +32,11 @@ public class ChapterButton : MonoBehaviour,
     {
         rect = GetComponent<RectTransform>();
         sceneViewButton.onClick.AddListener(OnClickSceneViewButton);
+    }
+
+    public void SetThumbnail()
+    {
+        thumbnailImage.sprite = GameManager.Instance.ChapterDefinitions[chapterIdx].thumbnail;
     }
 
     private void OnClickSceneViewButton()

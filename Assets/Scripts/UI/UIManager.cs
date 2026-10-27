@@ -297,6 +297,12 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
                 button.SetActive(false);
                 continue;
             }
+            
+            ChapterButton chapterButton = chapterButtons[i].GetComponent<ChapterButton>();
+            if (GameManager.Instance.isWatched[i])
+            {
+                chapterButton.SetThumbnail();
+            }
 
             RectTransform rect = button.GetComponent<RectTransform>();
 

@@ -17,4 +17,6 @@ public class ChapterDefinition : ScriptableObject
     [Header("Constellation")] [CanBeNull] public ConstellationData constellationData;
 
     [Header("Animation")] public AnimationCommand[] animations;
+    
+    [Header("Thumbnail")] public Sprite thumbnail;
 }
