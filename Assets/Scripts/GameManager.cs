@@ -4,12 +4,13 @@ using DG.Tweening;
 using SongLib.Core.Singleton;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     public ChapterDefinition[] ChapterDefinitions;
     public bool[] isWatched;
-    
+
     private ChapterDefinition _currentChapterDefinition;
     public ChapterDefinition CurrentChapterDefinition => _currentChapterDefinition;
 
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         "1_Front", "1_Back", "2_Front", "2_Back", "3_Front", "3_Back", "4_Front", "4_Back", "5_Front", "5_Back",
         "6_Front", "6_Back"
     };
-    
+
     public bool IsFront => currentChapterIdx % 2 == 0;
     private bool _fromFront;
 
@@ -26,26 +27,62 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public int currentChapterIdx = 0;
 
+    [SerializeField] private PauseMenuUI pauseMenuUI;
+
+    private bool isPreparingChapter;
+    private bool isChapterActive;
+    private bool isReturningToMenu;
+
+    private bool titleFinished;
+    private bool objectsFinished;
+
+    private Sequence chapterEntranceSequence;
+    private Coroutine chapterReadyCoroutine;
+    private Coroutine returnCoroutine;
+
+    // 챕터 진입 완료 여부.
+    public bool IsChapterReady =>
+        isChapterActive &&
+        !isPreparingChapter &&
+        !isReturningToMenu;
+
+    // 대사 중 캐릭터 교체 애니메이션도 함께 검사.
+    public bool CanReturnToChapterSelect =>
+        IsChapterReady &&
+        !AnimationManager.Instance.IsTransitioning;
+
     private void Start()
     {
         isWatched = new bool[ChapterDefinitions.Length];
 
         UIManager.Instance.InitializeChapterButtons();
     }
-    
+
     public void StartChapter(int idx, bool fromFront = false)
     {
-        if (_isShowingChapterTitle)
+        if (isPreparingChapter || isReturningToMenu)
             return;
 
-        if (idx >= ChapterDefinitions.Length)
+        if (idx < 0 ||
+            idx >= ChapterDefinitions.Length ||
+            idx >= chapterIds.Length ||
+            ChapterDefinitions[idx] == null)
         {
             return;
         }
-        
+
+        // 시작 요청을 받는 순간부터 복귀 차단.
+        isPreparingChapter = true;
+        isChapterActive = true;
+
+        titleFinished = fromFront;
+        objectsFinished = false;
 
         _currentChapterDefinition = ChapterDefinitions[idx];
         currentChapterIdx = idx;
+        _fromFront = fromFront;
+
+        pauseMenuUI.SetChapterPlaying(true);
 
         AnimationManager.Instance.CommandsToDictionary();
 
@@ -54,67 +91,130 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             $"{_currentChapterDefinition.chapterTitle} - " +
             $"{_currentChapterDefinition.chapterSubtitle}"
         );
-        
-        _fromFront = fromFront;
 
         if (!fromFront)
         {
-            _isShowingChapterTitle = true;
-
             UIManager.Instance.FadeInTitle(
-                onFinished: () =>
-                {
-                    try
-                    {
-                        StartChapterDialogue(currentChapterIdx);
-                        UIManager.Instance.GetInUIs();
-                    }
-                    finally
-                    {
-                        _isShowingChapterTitle = false;
-                    }
-                },
+                onFinished: () => { titleFinished = true; },
                 onFadeOutStarted: CreateChapterObjects
             );
         }
         else
         {
             CreateChapterObjects();
-            StartChapterDialogue(currentChapterIdx);
         }
+
+        chapterReadyCoroutine =
+            StartCoroutine(WaitForChapterReady(idx, fromFront));
     }
 
     private void CreateChapterObjects()
     {
-        if (!_fromFront)
-        {
-            Sequence sequence = DOTween.Sequence();
-
-            CutSceneCastManager.Instance.CreateCharacterWithAnim(
-                _currentChapterDefinition.cutSceneCasts,
-                sequence
-            );
-
-            ConstellationManager.Instance.CreateConstellation(
-                _currentChapterDefinition.constellationData
-            );
-        }
-        else
+        if (_fromFront)
         {
             CutSceneCastManager.Instance.CreateCharacterWithNoAnim(
                 _currentChapterDefinition.cutSceneCasts
             );
+
+            objectsFinished = true;
+            return;
         }
+
+        chapterEntranceSequence = DOTween.Sequence();
+
+        CutSceneCastManager.Instance.CreateCharacterWithAnim(
+            _currentChapterDefinition.cutSceneCasts,
+            chapterEntranceSequence
+        );
+
+        if (_currentChapterDefinition.constellationData != null)
+        {
+            ConstellationManager.Instance.CreateConstellation(
+                _currentChapterDefinition.constellationData
+            );
+        }
+
+        // 등장할 오브젝트가 없는 챕터도 처리.
+        if (chapterEntranceSequence.Duration() <= 0f)
+        {
+            chapterEntranceSequence.Kill();
+            chapterEntranceSequence = null;
+
+            objectsFinished = true;
+            return;
+        }
+
+        chapterEntranceSequence.OnComplete(() =>
+        {
+            chapterEntranceSequence = null;
+            objectsFinished = true;
+        });
+    }
+
+    private IEnumerator WaitForChapterReady(int idx, bool fromFront)
+    {
+        // 두 연출 중 늦게 끝나는 쪽까지 기다린다.
+        while (!titleFinished || !objectsFinished)
+            yield return null;
+
+        // ESC 메뉴가 열려 있으면 대사 시작은 복귀 후에 진행.
+        while (PauseMenuUI.IsOpen)
+            yield return null;
+
+        StartChapterDialogue(idx);
+
+        if (!fromFront)
+            UIManager.Instance.GetInUIs();
+
+        // 현재 UIManager의 대사창과 버튼 등장 시간이 0.5초.
+        // 이 부분은 완료 콜백이 없어서 기존 시간만큼 기다린다.
+        yield return new WaitForSeconds(0.5f);
+
+        // 첫 대사에서 실행된 캐릭터 교체도 기다린다.
+        while (AnimationManager.Instance.IsTransitioning)
+            yield return null;
+
+        isPreparingChapter = false;
+        chapterReadyCoroutine = null;
     }
 
     public void BackToMainMenu()
     {
+        if (!isChapterActive || returnCoroutine != null)
+            return;
+
+        returnCoroutine = StartCoroutine(ReturnToMenuRoutine());
+    }
+
+    private IEnumerator ReturnToMenuRoutine()
+    {
+        // 자동 복귀 요청도 연출이 끝난 후 실행한다.
+        while (isPreparingChapter ||
+               AnimationManager.Instance.IsTransitioning ||
+               PauseMenuUI.IsOpen)
+        {
+            yield return null;
+        }
+
+        isReturningToMenu = true;
+
+        pauseMenuUI.SetChapterPlaying(false);
+
         CutSceneCastManager.Instance.FadeOutCharacters(1f);
         ConstellationManager.Instance.FadeOutStarts();
         UIManager.Instance.GetOutUIs();
-        DrawingManager.Instance.FadeOutAndReset(1);
+        DrawingManager.Instance.FadeOutAndReset(1f);
 
-        DOVirtual.DelayedCall(1f, () => { UIManager.Instance.SlideInChapterButtons(); }, ignoreTimeScale: false);
+        yield return new WaitForSeconds(1f);
+
+        UIManager.Instance.SlideInChapterButtons();
+
+        // 현재 챕터 별 복귀 애니메이션 시간.
+        yield return new WaitForSeconds(0.7f);
+
+        isChapterActive = false;
+        isReturningToMenu = false;
+        returnCoroutine = null;
     }
 
     private void StartChapterDialogue(int idx)
@@ -126,7 +226,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
         UIManager.Instance.StartDialogue(dialogueDatas);
     }
-    
+
     public bool CanShowChapterButton(int idx)
     {
         if (isWatched == null || idx < 0 || idx >= isWatched.Length)

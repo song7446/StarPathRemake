@@ -390,4 +390,9 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         pauseMenuUI.HandleEscape();
     }
+
+    public void SetChapterPlaying(bool isPlaying)
+    {
+        pauseMenuUI.SetChapterPlaying(isPlaying);
+    }
 }

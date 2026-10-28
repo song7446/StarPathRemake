@@ -58,12 +58,39 @@ public class PauseMenuUI : MonoBehaviour
 
         SetChapterPlaying(false);
     }
+    
+    private void Update()
+    {
+        if (!IsOpen || !isInChapter)
+            return;
+
+        chapterSelectButton.interactable =
+            GameManager.Instance.CanReturnToChapterSelect;
+    }
 
     // 챕터 시작과 챕터 선택 복귀 시 호출.
     public void SetChapterPlaying(bool playing)
     {
         isInChapter = playing;
-        chapterSelectButton.gameObject.SetActive(isInChapter);
+
+        chapterSelectButton.gameObject.SetActive(playing);
+
+        // 활성 여부는 메뉴를 열었을 때 다시 확인.
+        chapterSelectButton.interactable = false;
+    }
+
+    private void ReturnToChapterSelect()
+    {
+        if (!isInChapter ||
+            !GameManager.Instance.CanReturnToChapterSelect)
+        {
+            return;
+        }
+
+        Resume();
+
+        // SetChapterPlaying(false)는 GameManager에서 처리.
+        GameManager.Instance.BackToMainMenu();
     }
 
     // PlayerInput의 ESC 입력에서 호출.
@@ -138,17 +165,6 @@ public class PauseMenuUI : MonoBehaviour
         Time.timeScale = previousTimeScale;
 
         HideAll();
-    }
-
-    private void ReturnToChapterSelect()
-    {
-        if (!isInChapter)
-            return;
-
-        Resume();
-        SetChapterPlaying(false);
-
-        GameManager.Instance.BackToMainMenu();
     }
 
     private void ReturnToTitle()
