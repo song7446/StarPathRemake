@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     [SerializeField] private Button onNoteBookButton;
     [SerializeField] private NoteUI noteBookUI;
     [SerializeField] private ChapterChangeUI chapterChangeUI;
+    [SerializeField] private PauseMenuUI pauseMenuUI;
 
     Vector2 dialoguePostition = new Vector2(0, 15);
     Vector2 dialogueOutPostition = new Vector2(0, -120);
@@ -383,5 +384,10 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
             group = rect.gameObject.AddComponent<CanvasGroup>();
 
         return group;
+    }
+
+    public void HandleEscape()
+    {
+        pauseMenuUI.HandleEscape();
     }
 }

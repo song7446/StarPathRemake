@@ -29,6 +29,14 @@ public class PlayerInput : MonoBehaviour
         ChapterDrawingManager.Instance.OnRightClick();
     }
 
+    public void OnEsc(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        
+        UIManager.Instance.HandleEscape();
+    }
+
     private bool IsPointerOverChapterButton()
     {
         EventSystem eventSystem = EventSystem.current;

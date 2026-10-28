@@ -1,0 +1,204 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class PauseMenuUI : MonoBehaviour
+{
+    public static bool IsOpen { get; private set; }
+
+    [Header("화면")]
+    [SerializeField] private GameObject inputBlocker;
+    [SerializeField] private GameObject pauseMenuPanel;
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject dialogueHistoryPanel;
+
+    [Header("메뉴 버튼")]
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private Button historyButton;
+    [SerializeField] private Button settingsButton;
+    [SerializeField] private Button chapterSelectButton;
+    [SerializeField] private Button titleButton;
+    [SerializeField] private Button quitButton;
+
+    [Header("뒤로 버튼")]
+    [SerializeField] private Button settingsBackButton;
+    [SerializeField] private Button historyBackButton;
+
+    [Header("씬")]
+    [SerializeField] private string titleSceneName = "TitleScene";
+
+    private bool isInChapter;
+    private bool isLeavingScene;
+    private float previousTimeScale = 1f;
+
+    private enum MenuPage
+    {
+        Closed,
+        Main,
+        Settings,
+        History
+    }
+
+    private MenuPage currentPage = MenuPage.Closed;
+
+    private void Awake()
+    {
+        IsOpen = false;
+        HideAll();
+
+        resumeButton.onClick.AddListener(Resume);
+        historyButton.onClick.AddListener(OpenHistory);
+        settingsButton.onClick.AddListener(OpenSettings);
+        chapterSelectButton.onClick.AddListener(ReturnToChapterSelect);
+        titleButton.onClick.AddListener(ReturnToTitle);
+        quitButton.onClick.AddListener(QuitGame);
+
+        // settingsBackButton.onClick.AddListener(ShowMainMenu);
+        // historyBackButton.onClick.AddListener(ShowMainMenu);
+
+        SetChapterPlaying(false);
+    }
+
+    // 챕터 시작과 챕터 선택 복귀 시 호출.
+    public void SetChapterPlaying(bool playing)
+    {
+        isInChapter = playing;
+        chapterSelectButton.gameObject.SetActive(isInChapter);
+    }
+
+    // PlayerInput의 ESC 입력에서 호출.
+    public void HandleEscape()
+    {
+        if (isLeavingScene)
+            return;
+
+        switch (currentPage)
+        {
+            case MenuPage.Closed:
+                OpenMenu();
+                break;
+
+            case MenuPage.Main:
+                Resume();
+                break;
+
+            case MenuPage.Settings:
+            case MenuPage.History:
+                ShowMainMenu();
+                break;
+        }
+    }
+
+    private void OpenMenu()
+    {
+        previousTimeScale = Time.timeScale;
+        Time.timeScale = 0f;
+
+        IsOpen = true;
+        inputBlocker.SetActive(true);
+
+        ShowMainMenu();
+    }
+
+    public void ShowMainMenu()
+    {
+        if (!IsOpen)
+            return;
+
+        SetPage(MenuPage.Main);
+    }
+
+    private void OpenSettings()
+    {
+        SetPage(MenuPage.Settings);
+    }
+
+    private void OpenHistory()
+    {
+        SetPage(MenuPage.History);
+    }
+
+    private void SetPage(MenuPage page)
+    {
+        currentPage = page;
+
+        pauseMenuPanel.SetActive(page == MenuPage.Main);
+        settingsPanel.SetActive(page == MenuPage.Settings);
+        dialogueHistoryPanel.SetActive(page == MenuPage.History);
+    }
+
+    public void Resume()
+    {
+        if (!IsOpen)
+            return;
+
+        IsOpen = false;
+        currentPage = MenuPage.Closed;
+
+        Time.timeScale = previousTimeScale;
+
+        HideAll();
+    }
+
+    private void ReturnToChapterSelect()
+    {
+        if (!isInChapter)
+            return;
+
+        Resume();
+        SetChapterPlaying(false);
+
+        GameManager.Instance.BackToMainMenu();
+    }
+
+    private void ReturnToTitle()
+    {
+        if (isLeavingScene)
+            return;
+
+        if (!Application.CanStreamedLevelBeLoaded(titleSceneName))
+        {
+            Debug.LogError(
+                $"타이틀 씬 이름과 빌드 씬 목록을 확인하세요: {titleSceneName}",
+                this
+            );
+            return;
+        }
+
+        isLeavingScene = true;
+
+        Resume();
+        Time.timeScale = 1f;
+
+        SceneManager.LoadSceneAsync(
+            titleSceneName,
+            LoadSceneMode.Single
+        );
+    }
+
+    private void QuitGame()
+    {
+        Resume();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    private void HideAll()
+    {
+        inputBlocker.SetActive(false);
+        pauseMenuPanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        dialogueHistoryPanel.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        // 메뉴가 열린 채 오브젝트가 비활성화되어도
+        // Time.timeScale이 0으로 남지 않도록 복구.
+        Resume();
+    }
+}
