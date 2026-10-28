@@ -25,6 +25,8 @@ public class DialogueUI : MonoBehaviour
     private bool isTyping;
 
     public bool IsPlaying => isPlaying;
+    
+    [SerializeField] private DialogueHistoryUI dialogueHistoryUI;
 
     public void Play(IReadOnlyList<DialogueData> dialogues)
     {
@@ -39,7 +41,9 @@ public class DialogueUI : MonoBehaviour
 
         if (dialogues == null || dialogues.Count == 0)
         {
+            lines = null;
             dialogueText.text = "";
+
             Debug.LogWarning("출력할 대사가 없습니다.", this);
             return;
         }
@@ -99,8 +103,6 @@ public class DialogueUI : MonoBehaviour
 
         DialogueData line = lines[currentIndex];
 
-        AnimationManager.Instance.PlayAnimation(line.ID);
-
         string text = useEnglish && !string.IsNullOrEmpty(line.Text_En)
             ? line.Text_En
             : line.Text_Kr;
@@ -110,6 +112,12 @@ public class DialogueUI : MonoBehaviour
         dialogueText.ForceMeshUpdate();
 
         characterCount = dialogueText.textInfo.characterCount;
+
+        // 재생한 순서대로 추가. 같은 대사도 다시 보면 추가한다.
+        if (dialogueHistoryUI != null)
+            dialogueHistoryUI.RecordLine(text);
+
+        AnimationManager.Instance.PlayAnimation(line.ID);
 
         if (characterCount > 0)
         {
