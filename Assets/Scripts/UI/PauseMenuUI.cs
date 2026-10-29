@@ -64,12 +64,6 @@ public class PauseMenuUI : MonoBehaviour
     
     private void Update()
     {
-        if (UnityEngine.InputSystem.Keyboard.current != null &&
-            UnityEngine.InputSystem.Keyboard.current.f8Key.wasPressedThisFrame)
-        {
-            AudioManager.Instance.PlaySFX(openPauseMenuClip);
-        }
-        
         if (!IsOpen || !isInChapter)
             return;
 
