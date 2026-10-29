@@ -15950,7 +15950,7 @@ AudioSource:
   m_GameObject: {fileID: 1175223496}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 1040202424745056813, guid: 013c95da083dcaa458c0f1ee26727f67, type: 2}
+  OutputAudioMixerGroup: {fileID: -2105799616199639397, guid: 013c95da083dcaa458c0f1ee26727f67, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -18595,6 +18595,7 @@ MonoBehaviour:
   sfxSource: {fileID: 295058399}
   bgmVolume: 1
   loopSfxSource: {fileID: 1542239300}
+  audioMixer: {fileID: 24100000, guid: 013c95da083dcaa458c0f1ee26727f67, type: 2}
 --- !u!4 &1338734835
 Transform:
   m_ObjectHideFlags: 0
@@ -22981,6 +22982,8 @@ MonoBehaviour:
   settingsBackButton: {fileID: 0}
   historyBackButton: {fileID: 0}
   titleSceneName: TitleScene
+  openPauseMenuClip: {fileID: 8300000, guid: 639f2d4cba8dceb4a9340e8433e2d7eb, type: 3}
+  closePauseMenuClip: {fileID: 8300000, guid: 639f2d4cba8dceb4a9340e8433e2d7eb, type: 3}
 --- !u!114 &1607645126
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,6 +30,9 @@ public class PauseMenuUI : MonoBehaviour
     private bool isInChapter;
     private bool isLeavingScene;
     private float previousTimeScale = 1f;
+    
+    [SerializeField] private AudioClip openPauseMenuClip;
+    [SerializeField] private AudioClip closePauseMenuClip;
 
     private enum MenuPage
     {
@@ -61,6 +64,12 @@ public class PauseMenuUI : MonoBehaviour
     
     private void Update()
     {
+        if (UnityEngine.InputSystem.Keyboard.current != null &&
+            UnityEngine.InputSystem.Keyboard.current.f8Key.wasPressedThisFrame)
+        {
+            AudioManager.Instance.PlaySFX(openPauseMenuClip);
+        }
+        
         if (!IsOpen || !isInChapter)
             return;
 
@@ -129,14 +138,6 @@ public class PauseMenuUI : MonoBehaviour
         AudioManager.Instance.SetBGMPaused(true);
     }
 
-    public void ShowMainMenu()
-    {
-        if (!IsOpen)
-            return;
-
-        SetPage(MenuPage.Main);
-    }
-
     private void OpenSettings()
     {
         SetPage(MenuPage.Settings);
@@ -147,13 +148,39 @@ public class PauseMenuUI : MonoBehaviour
         SetPage(MenuPage.History);
     }
 
-    private void SetPage(MenuPage page)
+    public void ShowMainMenu()
     {
+        if (!IsOpen)
+            return;
+
+        // 설정이나 기록에서 돌아오는 경우에는 닫기 소리.
+        bool isBack =
+            currentPage == MenuPage.Settings ||
+            currentPage == MenuPage.History;
+
+        if (currentPage == MenuPage.Main)
+            return;
+
+        SetPage(MenuPage.Main, false);
+
+        AudioManager.Instance.PlaySFX(
+            isBack ? closePauseMenuClip : openPauseMenuClip
+        );
+    }
+
+    private void SetPage(MenuPage page, bool playSound = true)
+    {
+        if (!IsOpen || currentPage == page)
+            return;
+
         currentPage = page;
 
         pauseMenuPanel.SetActive(page == MenuPage.Main);
         settingsPanel.SetActive(page == MenuPage.Settings);
         dialogueHistoryPanel.SetActive(page == MenuPage.History);
+
+        if (playSound)
+            AudioManager.Instance.PlaySFX(openPauseMenuClip);
     }
 
     public void Resume()
@@ -167,8 +194,9 @@ public class PauseMenuUI : MonoBehaviour
         Time.timeScale = previousTimeScale;
 
         HideAll();
-        
+
         AudioManager.Instance.SetBGMPaused(false);
+        AudioManager.Instance.PlaySFX(closePauseMenuClip);
     }
 
     private void ReturnToTitle()
