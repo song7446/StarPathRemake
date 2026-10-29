@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Chapter_2_Front_1
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
   dialogueId: Chapter_2_Front_1
-  soundEffect: {fileID: 8300000, guid: de3ffab1659a91d408633e2ee9f94406, type: 3}
-  soundVolume: 1
-  soundAction: 2
+  sounds:
+  - action: 2
+    clip: {fileID: 8300000, guid: de3ffab1659a91d408633e2ee9f94406, type: 3}
+    volume: 0.5
   commands: []

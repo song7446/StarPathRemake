@@ -102,15 +102,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 onFinished: () => { titleFinished = true; },
                 onFadeOutStarted: CreateChapterObjects
             );
+            
+            AudioManager.Instance.FadeOutBGM(2f,
+                () => { AudioManager.Instance.PlayBGM(_currentChapterDefinition.bgm, 2); });
         }
         else
         {
             CreateChapterObjects();
         }
-
-        AudioManager.Instance.FadeOutBGM(2f,
-            () => { AudioManager.Instance.PlayBGM(_currentChapterDefinition.bgm, 2); });
-
+        
         chapterReadyCoroutine =
             StartCoroutine(WaitForChapterReady(idx, fromFront));
     }

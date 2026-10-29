@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Chapter_2_Front_14
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
   dialogueId: Chapter_2_Front_14
-  soundEffect: {fileID: 8300000, guid: 42694dbdcf45b72428b0c3648acf576b, type: 3}
-  soundVolume: 1
-  soundAction: 1
+  sounds:
+  - action: 1
+    clip: {fileID: 8300000, guid: 42694dbdcf45b72428b0c3648acf576b, type: 3}
+    volume: 1
+  - action: 2
+    clip: {fileID: 8300000, guid: 1097dd074febdd64b95e78ccdd3d19bc, type: 3}
+    volume: 0.5
   commands:
   - characterId: Father
     characterName: Father
