@@ -125,6 +125,8 @@ public class PauseMenuUI : MonoBehaviour
         inputBlocker.SetActive(true);
 
         ShowMainMenu();
+        
+        AudioManager.Instance.SetBGMPaused(true);
     }
 
     public void ShowMainMenu()
@@ -165,6 +167,8 @@ public class PauseMenuUI : MonoBehaviour
         Time.timeScale = previousTimeScale;
 
         HideAll();
+        
+        AudioManager.Instance.SetBGMPaused(false);
     }
 
     private void ReturnToTitle()

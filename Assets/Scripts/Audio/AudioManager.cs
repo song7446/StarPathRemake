@@ -1,6 +1,7 @@
 using DG.Tweening;
 using SongLib.Core.Singleton;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public enum SFXAction
 {
@@ -23,6 +24,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     
     [Header("반복 효과음")]
     [SerializeField] private AudioSource loopSfxSource;
+    
+    [Header("일시정지 BGM 볼륨")]
+    [SerializeField] private AudioMixer audioMixer;
+
+    private Tween bgmPauseTween;
+    private float bgmPauseMultiplier = 1f;
 
     public void PlayBGM(AudioClip clip, float fadeDuration = 1f)
     {
@@ -119,5 +126,36 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
             clip,
             Mathf.Clamp01(volumeScale)
         );
+    }
+
+    public void SetBGMPaused(bool paused)
+    {
+        if (audioMixer == null)
+            return;
+
+        bgmPauseTween?.Kill();
+
+        float target = paused ? 0.2f : 1f;
+
+        bgmPauseTween = DOTween.To(
+                () => bgmPauseMultiplier,
+                value =>
+                {
+                    bgmPauseMultiplier = value;
+
+                    float decibels =
+                        Mathf.Log10(Mathf.Max(0.0001f, value)) * 20f;
+
+                    audioMixer.SetFloat(
+                        "BGMPauseVolume",
+                        decibels
+                    );
+                },
+                target,
+                0.25f
+            )
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true)
+            .SetLink(gameObject);
     }
 }

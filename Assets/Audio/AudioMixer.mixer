@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-2105799616199639397
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BGMPauseVolume
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: ebc432700739cc146a88931b6126ce84
+  m_Children: []
+  m_Volume: 3a6146e8cfae5e4419e9e28572556bb8
+  m_Pitch: 7440e7b2ba0e59b4a802a5118ea22349
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 5047027637363201582}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-743855132935722644
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -51,6 +70,8 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: b41cbe1fa3483704a8e64eb860beeabd
     name: BGMVolume
+  - guid: 3a6146e8cfae5e4419e9e28572556bb8
+    name: BGMPauseVolume
   - guid: b50d894bb47d3de43877feda6fc6d976
     name: MasterVolume
   - guid: fcd35b82db43ee9498e241843d0df633
@@ -60,6 +81,7 @@ AudioMixerController:
     - fb2d3fcab07aff546a92c77bd28be404
     - 10ecce2053e3fb94db7227488b87b0bf
     - da5b8d977363d8a4ab7dd422c038ab62
+    - ebc432700739cc146a88931b6126ce84
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -132,7 +154,8 @@ AudioMixerGroupController:
   m_Name: BGM
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 10ecce2053e3fb94db7227488b87b0bf
-  m_Children: []
+  m_Children:
+  - {fileID: -2105799616199639397}
   m_Volume: b41cbe1fa3483704a8e64eb860beeabd
   m_Pitch: 266b74cb3c8cfe8499f7e5f959049c3a
   m_Send: 00000000000000000000000000000000
@@ -142,3 +165,17 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &5047027637363201582
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: f81803548c9d1b14fa178a35be2b7659
+  m_EffectName: Attenuation
+  m_MixLevel: 4e4d8895cadd15640919a48e465944da
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
