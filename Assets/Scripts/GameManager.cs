@@ -51,11 +51,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         IsChapterReady &&
         !AnimationManager.Instance.IsTransitioning;
 
+    [SerializeField] private AudioClip baseBGM;
+
     private void Start()
     {
         isWatched = new bool[ChapterDefinitions.Length];
 
         UIManager.Instance.InitializeChapterButtons();
+
+        AudioManager.Instance.PlayBGM(baseBGM, 5);
     }
 
     public void StartChapter(int idx, bool fromFront = false)
@@ -103,6 +107,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             CreateChapterObjects();
         }
+
+        AudioManager.Instance.FadeOutBGM(2f,
+            () => { AudioManager.Instance.PlayBGM(_currentChapterDefinition.bgm, 2); });
 
         chapterReadyCoroutine =
             StartCoroutine(WaitForChapterReady(idx, fromFront));
@@ -208,6 +215,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         yield return new WaitForSeconds(1f);
 
         UIManager.Instance.SlideInChapterButtons();
+
+        AudioManager.Instance.FadeOutBGM(2f, () => { AudioManager.Instance.PlayBGM(baseBGM, 2); });
 
         // 현재 챕터 별 복귀 애니메이션 시간.
         yield return new WaitForSeconds(0.7f);

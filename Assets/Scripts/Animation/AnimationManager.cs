@@ -34,9 +34,37 @@ public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
     {
         if (!animationDict.TryGetValue(id, out var animationCommand))
             return;
+        
+        foreach (SoundCommand sound in animationCommand.sounds)
+        {
+            if (sound == null)
+                continue;
 
+            switch (sound.action)
+            {
+                case SFXAction.PlayOneShot:
+                    AudioManager.Instance.PlaySFX(
+                        sound.clip,
+                        sound.volume
+                    );
+                    break;
+
+                case SFXAction.StartLoop:
+                    AudioManager.Instance.PlayLoopSFX(
+                        sound.clip,
+                        sound.volume
+                    );
+                    break;
+
+                case SFXAction.StopLoop:
+                    AudioManager.Instance.StopLoopSFX();
+                    break;
+            }
+        }
+        
         foreach (var command in animationCommand.commands)
         {
+            
             bool isFoldedUI =
                 command.characterPrefab != null &&
                 command.characterPrefab.GetComponent<FoldedPictureUI>() != null;

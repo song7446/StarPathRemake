@@ -19,11 +19,14 @@ MonoBehaviour:
   cutSceneCasts: {fileID: 11400000, guid: 4b625a102d577c74189313d5daafa19e, type: 2}
   constellationData: {fileID: 11400000, guid: eb318188bb8f3ab4499ed1bcf67f0b28, type: 2}
   animations:
+  - {fileID: 11400000, guid: 324cae4781f640c4fb9215895796cfe9, type: 2}
   - {fileID: 11400000, guid: c5b896f651d6ab74780f41c60a7c40d1, type: 2}
   - {fileID: 11400000, guid: 3627ee701ded03942812488c0faca23e, type: 2}
   - {fileID: 11400000, guid: 2f8ae4cde730f5d489f2c95a8c02eff4, type: 2}
+  - {fileID: 11400000, guid: 2b3034f6f401ee546937900f3d288519, type: 2}
   - {fileID: 11400000, guid: b7df7cf2cdf8ed643ba1f424c2863378, type: 2}
   - {fileID: 11400000, guid: f1d27d00f3f50a3488b1dd33b7755d2c, type: 2}
   - {fileID: 11400000, guid: 50e8506fde526f546a4cdb28c06ee8b4, type: 2}
   - {fileID: 11400000, guid: 1345c8525ac63b04996958010aee510c, type: 2}
   thumbnail: {fileID: 21300000, guid: fd24080dcc7bbd743b1e1413a8c20343, type: 3}
+  bgm: {fileID: 8300000, guid: 2217546bcff2dc3439c47f86546fd258, type: 3}

@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 59c55c85b9bfdce48b7049921218a6d7, type: 2}
   - {fileID: 11400000, guid: 2582ffd27828fc646ab55d2583a71c69, type: 2}
   thumbnail: {fileID: 21300000, guid: 667f6c0b60371174582b75912ae5a976, type: 3}
+  bgm: {fileID: 8300000, guid: 6beecdbbf423de7438e5e7a3987f08ef, type: 3}

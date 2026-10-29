@@ -19,4 +19,6 @@ public class ChapterDefinition : ScriptableObject
     [Header("Animation")] public AnimationCommand[] animations;
     
     [Header("Thumbnail")] public Sprite thumbnail;
+    
+    [Header("BGM")]  public AudioClip bgm;
 }
