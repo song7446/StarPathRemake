@@ -34,6 +34,13 @@ public class PlayerInput : MonoBehaviour
         if (!context.performed)
             return;
         
+        // ESC 메뉴가 이미 열려 있다면 기존 메뉴 처리를 우선한다.
+        if (!PauseMenuUI.IsOpen &&
+            UIManager.Instance.TryCloseNoteBook())
+        {
+            return;
+        }
+        
         UIManager.Instance.HandleEscape();
     }
 

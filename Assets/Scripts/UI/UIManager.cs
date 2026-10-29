@@ -385,6 +385,17 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
         return group;
     }
+    
+    public bool TryCloseNoteBook()
+    {
+        if (!isNoteBookOpen)
+            return false;
+
+        isNoteBookOpen = false;
+        noteBookUI.gameObject.SetActive(false);
+
+        return true;
+    }
 
     public void HandleEscape()
     {
