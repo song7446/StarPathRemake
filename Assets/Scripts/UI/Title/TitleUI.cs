@@ -62,31 +62,12 @@ public class TitleUI : MonoBehaviour
 
     private void OnClickGameStart()
     {
-        if (isLoading)
+        if (isLoading || SceneFadeController.Instance.IsTransitioning)
             return;
-
-        if (!Application.CanStreamedLevelBeLoaded(gameSceneName))
-        {
-            Debug.LogError(
-                $"씬을 불러올 수 없습니다. 씬 이름과 빌드 씬 목록을 확인하세요: {gameSceneName}",
-                this
-            );
-
-            return;
-        }
-        
-        AudioManager.Instance.PlaySFX(gameStartClip);
 
         isLoading = true;
-        gameStartButton.interactable = false;
 
-        // 일시정지 상태에서 타이틀로 돌아왔더라도 정상 시작.
-        Time.timeScale = 1f;
-
-        SceneManager.LoadSceneAsync(
-            gameSceneName,
-            LoadSceneMode.Single
-        );
+        SceneFadeController.Instance.LoadScene(gameSceneName);
     }
 
     private void OnDestroy()

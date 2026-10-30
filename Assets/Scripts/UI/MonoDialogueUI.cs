@@ -8,7 +8,9 @@ using UnityEngine.UI;
 
 public class MonologueUI : MonoBehaviour
 {
-    public static bool IsPlaying { get; private set; }
+    private static MonologueUI activeMonologue;
+
+    public static bool IsPlaying => activeMonologue != null;
 
     [Header("UI")]
     [SerializeField] private GameObject panel;
@@ -28,11 +30,33 @@ public class MonologueUI : MonoBehaviour
     private bool isTyping;
     private Coroutine typingCoroutine;
     private Action onFinished;
+    
+    [SerializeField] private bool keepPanelOnFinished;
+    
+    [Header("초기 화면")]
+    [SerializeField] private bool showPanelOnAwake;
+    
+    [Header("타이핑 효과음")]
+    [SerializeField] private AudioSource typingAudioSource;
+    [SerializeField] private AudioClip typingClip;
+
+    [SerializeField, Range(0f, 1f)]
+    private float typingVolume = 0.4f;
+
+    [SerializeField, Range(0.5f, 2f)]
+    private float typingPitch = 0.85f;
+
+    [SerializeField, Min(1)]
+    private int soundEveryCharacters = 2;
 
     private void Awake()
     {
-        IsPlaying = false;
-        panel.SetActive(false);
+        // 인트로는 처음부터 검은 배경을 표시한다.
+        // 대사는 Play()를 호출할 때 출력한다.
+        monologueText.text = "";
+        monologueText.maxVisibleCharacters = 0;
+
+        panel.SetActive(showPanelOnAwake);
 
         if (nextButton != null)
             nextButton.onClick.AddListener(Advance);
@@ -40,7 +64,8 @@ public class MonologueUI : MonoBehaviour
 
     private void Update()
     {
-        if (!IsPlaying || PauseMenuUI.IsOpen)
+        // 현재 재생 중인 UI만 입력 처리.
+        if (activeMonologue != this || PauseMenuUI.IsOpen)
             return;
 
         if (Keyboard.current != null &&
@@ -84,7 +109,7 @@ public class MonologueUI : MonoBehaviour
         currentIndex = 0;
         onFinished = finished;
 
-        IsPlaying = true;
+        activeMonologue = this;
         panel.SetActive(true);
 
         ShowCurrentLine();
@@ -92,10 +117,13 @@ public class MonologueUI : MonoBehaviour
 
     public void Advance()
     {
-        if (!IsPlaying || PauseMenuUI.IsOpen)
+        if (activeMonologue != this ||
+            PauseMenuUI.IsOpen ||
+            lines == null)
+        {
             return;
+        }
 
-        // 출력 중 누르면 현재 문장을 즉시 완성.
         if (isTyping)
         {
             StopTyping();
@@ -141,24 +169,60 @@ public class MonologueUI : MonoBehaviour
     private IEnumerator TypeCharacters()
     {
         float visibleCount = 0f;
+        int charactersSinceSound = 0;
 
         while (monologueText.maxVisibleCharacters < characterCount)
         {
             if (PauseMenuUI.IsOpen)
             {
+                StopTypingSound();
                 yield return null;
                 continue;
             }
 
-            visibleCount += charactersPerSecond * Time.unscaledDeltaTime;
+            int previousCount = monologueText.maxVisibleCharacters;
 
-            monologueText.maxVisibleCharacters = Mathf.Min(
+            visibleCount += Mathf.Max(1f, charactersPerSecond)
+                            * Time.unscaledDeltaTime;
+
+            int nextCount = Mathf.Min(
                 Mathf.FloorToInt(visibleCount),
                 characterCount
             );
 
+            monologueText.maxVisibleCharacters = nextCount;
+
+            bool shouldPlaySound = false;
+
+            for (int i = previousCount; i < nextCount; i++)
+            {
+                char character =
+                    monologueText.textInfo.characterInfo[i].character;
+
+                if (char.IsWhiteSpace(character) ||
+                    char.IsPunctuation(character) ||
+                    char.IsControl(character))
+                {
+                    continue;
+                }
+
+                charactersSinceSound++;
+
+                if (charactersSinceSound >= Mathf.Max(1, soundEveryCharacters))
+                {
+                    charactersSinceSound = 0;
+                    shouldPlaySound = true;
+                }
+            }
+
+            // 여러 글자가 한 프레임에 출력돼도 소리는 한 번만 재생.
+            if (shouldPlaySound)
+                PlayTypingSound();
+
             yield return null;
         }
+
+        StopTypingSound();
 
         isTyping = false;
         typingCoroutine = null;
@@ -173,13 +237,23 @@ public class MonologueUI : MonoBehaviour
         }
 
         isTyping = false;
+        StopTypingSound();
     }
 
     private void Finish()
     {
         Action callback = onFinished;
+        onFinished = null;
 
-        CloseWithoutCallback();
+        StopTyping();
+        lines = null;
+
+        // 인트로는 화면과 입력 차단 상태를 유지한 채
+        // 외부에서 페이드아웃을 진행한다.
+        if (!keepPanelOnFinished)
+        {
+            CloseWithoutCallback();
+        }
 
         callback?.Invoke();
     }
@@ -189,12 +263,33 @@ public class MonologueUI : MonoBehaviour
     {
         StopTyping();
 
-        IsPlaying = false;
+        if (activeMonologue == this)
+            activeMonologue = null;
+
         lines = null;
         onFinished = null;
 
         if (panel != null)
             panel.SetActive(false);
+    }
+    
+    private void PlayTypingSound()
+    {
+        if (typingAudioSource == null || typingClip == null)
+            return;
+
+        typingAudioSource.Stop();
+        typingAudioSource.clip = typingClip;
+        typingAudioSource.loop = false;
+        typingAudioSource.volume = typingVolume;
+        typingAudioSource.pitch = typingPitch;
+        typingAudioSource.Play();
+    }
+
+    private void StopTypingSound()
+    {
+        if (typingAudioSource != null)
+            typingAudioSource.Stop();
     }
 
     private void OnDisable()

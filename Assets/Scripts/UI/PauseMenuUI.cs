@@ -195,27 +195,26 @@ public class PauseMenuUI : MonoBehaviour
 
     private void ReturnToTitle()
     {
-        if (isLeavingScene)
+        if (isLeavingScene ||
+            SceneFadeController.Instance.IsTransitioning)
+        {
             return;
+        }
 
         if (!Application.CanStreamedLevelBeLoaded(titleSceneName))
         {
             Debug.LogError(
                 $"타이틀 씬 이름과 빌드 씬 목록을 확인하세요: {titleSceneName}",
-                this
-            );
+                this);
+
             return;
         }
 
         isLeavingScene = true;
 
         Resume();
-        Time.timeScale = 1f;
 
-        SceneManager.LoadSceneAsync(
-            titleSceneName,
-            LoadSceneMode.Single
-        );
+        SceneFadeController.Instance.LoadScene(titleSceneName);
     }
 
     private void QuitGame()
