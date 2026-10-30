@@ -13,12 +13,18 @@ public class PlayerInput : MonoBehaviour
         if (!context.performed)
             return;
 
+        if (MonologueUI.IsPlaying || PauseMenuUI.IsOpen)
+            return;
+
         UIManager.Instance.OnAdvanceDialogue();
     }
-
+    
     public void OnRightClick(InputAction.CallbackContext context)
     {
         if (!context.performed)
+            return;
+        
+        if (MonologueUI.IsPlaying || PauseMenuUI.IsOpen)
             return;
 
         // 챕터 별 위에서는 기존 장면 보기 입력만 처리한다.

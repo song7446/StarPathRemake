@@ -52,6 +52,14 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
         !AnimationManager.Instance.IsTransitioning;
 
     [SerializeField] private AudioClip baseBGM;
+    
+    [SerializeField] private MonologueUI monologueUI;
+
+    [SerializeField]
+    private MonologueDefinition[] chapterMonologues;
+
+// 현재 플레이에서 끝까지 본 독백 ID.
+    private readonly HashSet<string> playedMonologueIds = new();
 
     private void Start()
     {
@@ -195,7 +203,7 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
     private IEnumerator ReturnToMenuRoutine()
     {
-        // 자동 복귀 요청도 연출이 끝난 후 실행한다.
+        // 챕터 준비, 캐릭터 교체, 일시정지가 끝날 때까지 대기.
         while (isPreparingChapter ||
                AnimationManager.Instance.IsTransitioning ||
                PauseMenuUI.IsOpen)
@@ -216,14 +224,67 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
         UIManager.Instance.SlideInChapterButtons();
 
-        AudioManager.Instance.FadeOutBGM(2f, () => { AudioManager.Instance.PlayBGM(baseBGM, 2); });
+        AudioManager.Instance.FadeOutBGM(2f, () =>
+        {
+            AudioManager.Instance.PlayBGM(baseBGM, 2f);
+        });
 
         // 현재 챕터 별 복귀 애니메이션 시간.
         yield return new WaitForSeconds(0.7f);
 
+        // 복귀 도중 ESC 메뉴를 열었다면 닫은 뒤 독백 시작.
+        while (PauseMenuUI.IsOpen)
+            yield return null;
+
         isChapterActive = false;
+
+        // 독백을 먼저 열어 입력 차단 패널을 활성화한다.
+        TryPlayChapterMonologue();
+
         isReturningToMenu = false;
         returnCoroutine = null;
+    }
+    
+    private void TryPlayChapterMonologue()
+    {
+        if (monologueUI == null ||
+            MonologueUI.IsPlaying ||
+            PauseMenuUI.IsOpen ||
+            isWatched == null ||
+            chapterMonologues == null)
+        {
+            return;
+        }
+
+        foreach (MonologueDefinition definition in chapterMonologues)
+        {
+            if (definition == null)
+                continue;
+
+            string dialogueId = definition.dialogueId;
+
+            if (string.IsNullOrWhiteSpace(dialogueId) ||
+                playedMonologueIds.Contains(dialogueId))
+            {
+                continue;
+            }
+
+            int index = definition.requiredChapterIndex;
+
+            if (index < 0 || index >= isWatched.Length)
+                continue;
+
+            if (!isWatched[index])
+                continue;
+
+            monologueUI.Play(dialogueId, () =>
+            {
+                playedMonologueIds.Add(dialogueId);
+            });
+
+            // 한 번 복귀할 때 독백 하나만 출력.
+            return;
+        }
     }
 
     private void StartChapterDialogue(int idx)

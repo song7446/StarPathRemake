@@ -2402,3 +2402,212 @@ MonoBehaviour:
     Text_Kr: "\uB4A4\uC5D0\uC11C \uB098\uB97C \uBD80\uB974\uB294 \uC18C\uB9AC\uB294
       \uB4E4\uB9AC\uC9C0 \uC54A\uC558\uB2E4."
     Text_En: 
+  - ID: Intro_1
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uB208\uC55E\uC5D0\uB294 \uC544\uBB34\uAC83\uB3C4 \uC5C6\uC5C8\uB2E4."
+    Text_En: 
+  - ID: Intro_2
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uC5B4\uB514\uC5D0\uC11C \uC654\uB294\uC9C0,"
+    Text_En: 
+  - ID: Intro_3
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uC5B4\uB514\uB85C \uAC00\uB824\uB358 \uAC74\uC9C0\uB3C4 \uAE30\uC5B5\uB098\uC9C0
+      \uC54A\uC558\uB2E4."
+    Text_En: 
+  - ID: Intro_4
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uBB34\uC5B8\uAC00 \uC78A\uACE0 \uC788\uB2E4\uB294 \uC0DD\uAC01\uB9CC
+      \uB4E4\uC5C8\uB2E4."
+    Text_En: 
+  - ID: Intro_5
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uADF8\uB0E5 \uC9C0\uB098\uCCD0\uC11C\uB294 \uC548 \uB418\uB294 \uAC83\uC744."
+    Text_En: 
+  - ID: Intro_6
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uC5B4\uB460 \uC18D\uC5D0\uC11C \uC791\uC740 \uBE5B\uC774 \uAE5C\uBE61\uC600\uB2E4."
+    Text_En: 
+  - ID: Intro_7
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uB0AF\uC120 \uBE5B\uC778\uB370\uB3C4"
+    Text_En: 
+  - ID: Intro_8
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uC774\uC0C1\uD558\uAC8C \uB208\uC744 \uB5C4 \uC218 \uC5C6\uC5C8\uB2E4."
+    Text_En: 
+  - ID: Intro_9
+    Chapter_Id: Intro
+    Speaker: Father
+    Text_Kr: "\uC870\uAE08 \uB354 \uAC00\uAE4C\uC774\uC11C \uBCF4\uACE0 \uC2F6\uC5C8\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_1_1
+    Chapter_Id: AfterChapter_1
+    Speaker: Father
+    Text_Kr: "\uC7A5\uBA74\uC740 \uC0AC\uB77C\uC84C\uC9C0\uB9CC"
+    Text_En: 
+  - ID: AfterChapter_1_2
+    Chapter_Id: AfterChapter_1
+    Speaker: Father
+    Text_Kr: "\uC544\uC774\uC758 \uBAA9\uC18C\uB9AC\uB294 \uD55C\uB3D9\uC548 \uB0A8\uC544
+      \uC788\uC5C8\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_1_3
+    Chapter_Id: AfterChapter_1
+    Speaker: Father
+    Text_Kr: "\uAE30\uB2E4\uB9AC\uB294 \uC0AC\uB78C\uC774 \uC788\uB2E4\uB294 \uAC83."
+    Text_En: 
+  - ID: AfterChapter_1_4
+    Chapter_Id: AfterChapter_1
+    Speaker: Father
+    Text_Kr: "\uADF8 \uC0AC\uC2E4\uC774 \uC65C \uC774\uB807\uAC8C \uB9C8\uC74C\uC5D0
+      \uAC78\uB9AC\uB294\uC9C0"
+    Text_En: 
+  - ID: AfterChapter_1_5
+    Chapter_Id: AfterChapter_1
+    Speaker: Father
+    Text_Kr: "\uC54C \uC218 \uC5C6\uC5C8\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_1_6
+    Chapter_Id: AfterChapter_1
+    Speaker: Father
+    Text_Kr: "\uACE0\uAC1C\uB97C \uB4E4\uC790 \uB2E4\uB978 \uBE5B\uC774 \uBCF4\uC600\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_1_7
+    Chapter_Id: AfterChapter_1
+    Speaker: Father
+    Text_Kr: "\uC544\uC9C1 \uBCF4\uC9C0 \uBABB\uD55C \uC774\uC57C\uAE30\uAC00 \uB0A8\uC544
+      \uC788\uC5C8\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_6_1
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uB9C8\uC9C0\uB9C9 \uC7A5\uBA74\uC774 \uC0AC\uB77C\uC84C\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_6_2
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uD769\uC5B4\uC838 \uC788\uB358 \uBE5B\uB4E4\uC774 \uB208\uC55E\uC5D0
+      \uB0A8\uC558\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_6_3
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uB204\uAD70\uAC00\uB294 \uAE30\uB2E4\uB838\uACE0,"
+    Text_En: 
+  - ID: AfterChapter_6_4
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uB204\uAD70\uAC00\uB294 \uCC3E\uC544 \uB098\uC130\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_6_5
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uADF8\uB4E4\uC774 \uC9C0\uB098\uC628 \uC2DC\uAC04\uC740"
+    Text_En: 
+  - ID: AfterChapter_6_6
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uB0B4\uAC00 \uBCF8 \uC21C\uC11C\uC640 \uAC19\uC9C0 \uC54A\uC558\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_6_7
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uC5B4\uB514\uC5D0\uC11C \uC2DC\uC791\uB41C \uC77C\uC774\uC5C8\uC744\uAE4C."
+    Text_En: 
+  - ID: AfterChapter_6_8
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uD558\uB098\uC529 \uC774\uC5B4\uBD10\uC57C \uD588\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_6_9
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uBCC4\uACFC \uBCC4 \uC0AC\uC774\uC5D0 \uC120\uC744 \uAE0B\uB4EF\uC774,"
+    Text_En: 
+  - ID: AfterChapter_6_10
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uBA3C\uC800 \uC788\uC5C8\uB358 \uC77C\uC5D0\uC11C"
+    Text_En: 
+  - ID: AfterChapter_6_11
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uADF8\uB2E4\uC74C \uC77C\uB85C."
+    Text_En: 
+  - ID: AfterChapter_All_1
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uC544\uC774\uC5D0\uAC8C \uBCC4\uC744 \uC54C\uB824\uC8FC\uB358 \uB0A0\uC774
+      \uB5A0\uC62C\uB790\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_All_2
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uB0B4\uAC00 \uAC00\uB9AC\uD0A8 \uACF3\uC744 \uCC3E\uACE0\uB3C4"
+    Text_En: 
+  - ID: AfterChapter_All_3
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uB9DE\uAC8C \uCC3E\uC558\uB294\uC9C0 \uBA87 \uBC88\uC774\uB098 \uBB3C\uC5B4\uBCF4\uACE4
+      \uD588\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_All_4
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uC774\uC81C\uB294 \uD63C\uC790\uC11C\uB3C4 \uCC3E\uC744 \uC218 \uC788\uB2E4\uACE0
+      \uD588\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_All_5
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uB0B4\uAC00 \uB0A8\uAE34 \uAE30\uB85D\uC744 \uC77D\uACE0,"
+    Text_En: 
+  - ID: AfterChapter_All_6
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uB0B4\uAC00 \uB2E4\uB154\uB358 \uAE38\uC744 \uB530\uB77C"
+    Text_En: 
+  - ID: AfterChapter_All_7
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uB05D\uB0B4 \uC54C\uC9C0 \uC54A\uC558\uC73C\uBA74 \uD588\uB358 \uAC83\uAE4C\uC9C0."
+    Text_En: 
+  - ID: AfterChapter_All_8
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uC544\uC774\uB97C \uC704\uD574\uC11C\uB77C\uB294 \uB9D0\uB85C"
+    Text_En: 
+  - ID: AfterChapter_All_9
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uC124\uBA85\uD560 \uC218 \uC788\uB294 \uC77C\uC740 \uC544\uB2C8\uC5C8\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_All_10
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uC624\uB298\uC740 \uB098 \uBA3C\uC800 \uAC08\uAC8C."
+    Text_En: 
+  - ID: AfterChapter_All_11
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uADF8 \uB9D0\uC5D0 \uB300\uB2F5\uD558\uACE0 \uC2F6\uC5C8\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_All_12
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uB354\uB294 \uAE30\uB2E4\uB9AC\uC9C0 \uC54A\uC544\uB3C4 \uB41C\uB2E4\uACE0."
+    Text_En: 
+  - ID: AfterChapter_All_13
+    Chapter_Id: AfterChapter_All
+    Speaker: Father
+    Text_Kr: "\uD558\uC9C0\uB9CC \uC544\uC774\uB294 \uC774\uBBF8 \uB5A0\uB09C \uB4A4\uC600\uB2E4...."
+    Text_En: 
