@@ -107,7 +107,7 @@ public class DialogueUI : MonoBehaviour
             }
             else
             {
-                GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx] = true;
+                // GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx] = true;
                 onDialogueFinishedFront?.Invoke();
             }
 
