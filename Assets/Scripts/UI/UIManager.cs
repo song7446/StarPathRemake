@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     [SerializeField] private AudioClip dialogueOutClip;
     [SerializeField] private AudioClip chapterStarsInClip;
     [SerializeField] private AudioClip chapterStarsOutClip;
+    [SerializeField] private AudioClip slideGuideImageClip;
     
     [SerializeField, Range(0f, 1f)]
     private float uiSoundVolume = 0.7f;
@@ -131,6 +132,8 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     public void OnClickSlideGuideImage()
     {
         guideImageUI.SlideGuideImage();
+        
+        AudioManager.Instance.PlaySFX(slideGuideImageClip);
     }
 
     public bool GetIsOnSkyView()

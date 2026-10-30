@@ -16,6 +16,8 @@ public class ToggleCameraUI : MonoBehaviour
     [SerializeField] private Button _lookUpCameraButton;
 
     private bool IsSkyView = false;
+    
+    [SerializeField] private AudioClip toggleCameraAudioClip;
 
 
     public void Awake()
@@ -55,6 +57,8 @@ public class ToggleCameraUI : MonoBehaviour
 
             UIManager.Instance.GetInDialogueUI();
         }
+        
+        AudioManager.Instance.PlaySFX(toggleCameraAudioClip);
     }
 
     public bool GetIsOnSkyView()
