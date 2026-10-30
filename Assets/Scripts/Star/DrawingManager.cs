@@ -26,6 +26,8 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
     
     private bool isFadingOut;
 
+    [SerializeField] private AudioClip connectStarAudioClip;
+
 
     private void Update()
     {
@@ -85,6 +87,8 @@ public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
 
                 // 정답 체크 실행
                 ConstellationManager.Instance.CheckAnswer(currentConnections);
+                
+                AudioManager.Instance.PlaySFX(connectStarAudioClip);
             }
             else
             {

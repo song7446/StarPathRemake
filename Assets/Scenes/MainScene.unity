@@ -9548,6 +9548,7 @@ MonoBehaviour:
   linePrefab: {fileID: 3563384554973968426, guid: a6551dc4d5518f84b90bdfe6b099d22a, type: 3}
   currentConnections: []
   starCamera: {fileID: 758870769}
+  connectStarAudioClip: {fileID: 8300000, guid: 81d0c269da4827d4eacc921ca2596936, type: 3}
 --- !u!4 &692306431
 Transform:
   m_ObjectHideFlags: 0
@@ -24694,9 +24695,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 6
+  field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -24721,7 +24722,7 @@ Transform:
   m_GameObject: {fileID: 1731806306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -9.97, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

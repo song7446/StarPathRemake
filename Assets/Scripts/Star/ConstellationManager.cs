@@ -20,6 +20,8 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
 
     private GameObject currentConstellationObject;
     private Coroutine starDisappearCoroutine;
+    
+    [SerializeField] private AudioClip answerStartAudioClip;
 
     public void CreateConstellation(ConstellationData constellationData)
     {
@@ -367,6 +369,8 @@ public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
                 true);
 
             UIManager.Instance.ToggleCamera();
+            
+            AudioManager.Instance.PlaySFX(answerStartAudioClip);
         }
         else
         {
