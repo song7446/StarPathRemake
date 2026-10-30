@@ -934,6 +934,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 5
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!114 &69225757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,6 +1168,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 1
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!114 &73697039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2733,6 +2735,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 3
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!114 &181920728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3040,6 +3043,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 2
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!114 &200099559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6124,6 +6128,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 11
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!1 &427687265
 GameObject:
   m_ObjectHideFlags: 0
@@ -15176,6 +15181,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 9
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!1 &1084768274
 GameObject:
   m_ObjectHideFlags: 0
@@ -15690,6 +15696,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 8
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!1 &1141590475
 GameObject:
   m_ObjectHideFlags: 0
@@ -15935,6 +15942,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 7
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!1 &1175223496
 GameObject:
   m_ObjectHideFlags: 0
@@ -18029,6 +18037,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 4
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!1 &1321695123
 GameObject:
   m_ObjectHideFlags: 0
@@ -19147,6 +19156,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 10
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!1 &1383464049
 GameObject:
   m_ObjectHideFlags: 0
@@ -20678,6 +20688,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 0
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!225 &1449922537
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -24698,9 +24709,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 6
+  field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -24725,7 +24736,7 @@ Transform:
   m_GameObject: {fileID: 1731806306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -9.97, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26212,6 +26223,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chapterIdx: 6
+  chapterStartAudioClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
 --- !u!1 &1861843396
 GameObject:
   m_ObjectHideFlags: 0
@@ -26269,6 +26281,7 @@ MonoBehaviour:
   isGuideHidden: 1
   guidePhotoImage: {fileID: 57758507}
   guideImageName: {fileID: 133124551}
+  guideImageSlideSound: {fileID: 8300000, guid: e35a5671276942f4ea312ee57b2f90cf, type: 3}
 --- !u!114 &1861843399
 MonoBehaviour:
   m_ObjectHideFlags: 0

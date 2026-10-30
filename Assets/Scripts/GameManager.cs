@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-public class GameManager : MonoBehaviourSingleton<GameManager>
+public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 {
     public ChapterDefinition[] ChapterDefinitions;
     public bool[] isWatched;

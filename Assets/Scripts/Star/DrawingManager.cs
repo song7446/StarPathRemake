@@ -5,7 +5,7 @@ using SongLib.Core.Singleton;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DrawingManager : MonoBehaviourSingleton<DrawingManager>
+public class DrawingManager : SceneMonoBehaviourSingleton<DrawingManager>
 {
     [Header("선 긋기 설정")] public LineRenderer linePrefab;
 

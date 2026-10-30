@@ -4,7 +4,7 @@ using System.Linq;
 using SongLib.Core.Singleton;
 using UnityEngine;
 
-public class ConstellationManager : MonoBehaviourSingleton<ConstellationManager>
+public class ConstellationManager : SceneMonoBehaviourSingleton<ConstellationManager>
 {
     [SerializeField] private List<ConstellationData> constellations = new List<ConstellationData>();
     private ConstellationData _currentConstellationData;

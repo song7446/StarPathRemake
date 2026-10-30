@@ -3,7 +3,7 @@ using DG.Tweening;
 using SongLib.Core.Singleton;
 using UnityEngine;
 
-public class AnimationManager : MonoBehaviourSingleton<AnimationManager>
+public class AnimationManager : SceneMonoBehaviourSingleton<AnimationManager>
 {
     [Header("접히는 UI 그림을 생성할 부모")]
     [SerializeField] private RectTransform animationUIParent;

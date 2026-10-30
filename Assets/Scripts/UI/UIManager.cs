@@ -5,7 +5,7 @@ using SongLib.Core.Singleton;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviourSingleton<UIManager>
+public class UIManager : SceneMonoBehaviourSingleton<UIManager>
 {
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private RectTransform dialogueRectTransform;

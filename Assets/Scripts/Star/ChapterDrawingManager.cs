@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class ChapterDrawingManager : MonoBehaviourSingleton<ChapterDrawingManager>
+public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingManager>
 {
     [Header("기존 LineRenderer 프리팹")]
     [SerializeField] private LineRenderer linePrefab;
