@@ -28,6 +28,8 @@ public class ChapterButton : MonoBehaviour,
 
     [SerializeField] private int chapterIdx;
     public int ChapterIdx => chapterIdx;
+    
+    [SerializeField] private AudioClip chapterStartAudioClip;
 
     private void Awake()
     {
@@ -45,6 +47,7 @@ public class ChapterButton : MonoBehaviour,
         GameManager.Instance.StartChapter(chapterIdx);
         UIManager.Instance.SlideOutChapterButtons();
         ChapterDrawingManager.Instance.OnRightClick();
+        AudioManager.Instance.PlaySFX(chapterStartAudioClip);
     }
 
     public void OnPointerDown(PointerEventData eventData)

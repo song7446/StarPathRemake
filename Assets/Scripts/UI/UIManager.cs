@@ -132,8 +132,6 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     public void OnClickSlideGuideImage()
     {
         guideImageUI.SlideGuideImage();
-        
-        AudioManager.Instance.PlaySFX(slideGuideImageClip);
     }
 
     public bool GetIsOnSkyView()

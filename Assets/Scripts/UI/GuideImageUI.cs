@@ -25,6 +25,8 @@ public class GuideImageUI : MonoBehaviour
     [Header("가이드 사진")] 
     [SerializeField] private Image guidePhotoImage;
     [SerializeField] private TextMeshProUGUI guideImageName;
+    
+    [SerializeField] private AudioClip guideImageSlideSound;
 
     public void OnBeginDragGuide(BaseEventData eventData)
     {
@@ -165,6 +167,8 @@ public class GuideImageUI : MonoBehaviour
         bool targetHidden = !isGuideHidden;
 
         isSliding = true;
+        
+        AudioManager.Instance.PlaySFX(guideImageSlideSound);
 
         rect.DOAnchorPos(targetPosition, 0.4f)
             .SetEase(Ease.InOutSine)
