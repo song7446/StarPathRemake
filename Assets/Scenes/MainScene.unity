@@ -7985,6 +7985,7 @@ MonoBehaviour:
   onPageHidden:
     m_PersistentCalls:
       m_Calls: []
+  turnPageAudioClip: {fileID: 8300000, guid: 7f53be751dade0f4da3bd1ccb143b6ca, type: 3}
 --- !u!114 &548535713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8572,6 +8573,13 @@ MonoBehaviour:
   - {fileID: 1083468040}
   - {fileID: 1381070981}
   - {fileID: 417909391}
+  noteOpenClip: {fileID: 8300000, guid: 1fcb1b3959697554589c82ec2af60072, type: 3}
+  noteCloseClip: {fileID: 8300000, guid: a7bdc4962eb4f7048af5d751adafe4f3, type: 3}
+  dialogueInClip: {fileID: 0}
+  dialogueOutClip: {fileID: 0}
+  chapterStarsInClip: {fileID: 0}
+  chapterStarsOutClip: {fileID: 0}
+  uiSoundVolume: 0.7
 --- !u!114 &606708388
 MonoBehaviour:
   m_ObjectHideFlags: 0

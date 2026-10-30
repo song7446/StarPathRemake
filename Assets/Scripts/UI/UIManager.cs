@@ -38,6 +38,18 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     private bool isDialogueHidden = true;
     
     private Vector3 chapterButtonsExitOffset;
+    
+    [Header("UI 효과음")]
+    [SerializeField] private AudioClip noteOpenClip;
+    [SerializeField] private AudioClip noteCloseClip;
+    [SerializeField] private AudioClip dialogueInClip;
+    [SerializeField] private AudioClip dialogueOutClip;
+    [SerializeField] private AudioClip chapterStarsInClip;
+    [SerializeField] private AudioClip chapterStarsOutClip;
+    
+    [SerializeField, Range(0f, 1f)]
+    private float uiSoundVolume = 0.7f;
+
 
     protected override void Awake()
     {
@@ -74,8 +86,28 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     private void OnClickOnNoteBook()
     {
-        isNoteBookOpen = !isNoteBookOpen;
-        noteBookUI.gameObject.SetActive(isNoteBookOpen);
+        SetNoteBookOpen(!isNoteBookOpen);
+    }
+    
+    private void SetNoteBookOpen(bool open)
+    {
+        if (isNoteBookOpen == open)
+            return;
+
+        isNoteBookOpen = open;
+
+        PlayUISound(open ? noteOpenClip : noteCloseClip);
+
+        noteBookUI.gameObject.SetActive(open);
+    }
+
+    public bool TryCloseNoteBook()
+    {
+        if (!isNoteBookOpen)
+            return false;
+
+        SetNoteBookOpen(false);
+        return true;
     }
 
     public void OnAdvanceDialogue()
@@ -144,26 +176,34 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     public void GetOutDialogueUI()
     {
-        // 예약된 퇴장이나 기존 이동을 취소
         dialogueRectTransform.DOKill();
 
+        bool wasVisible = !isDialogueHidden;
         isDialogueHidden = true;
+
+        if (wasVisible)
+            PlayUISound(dialogueOutClip);
 
         dialogueRectTransform
             .DOAnchorPos(dialogueOutPostition, 0.5f)
             .SetEase(Ease.InOutSine);
     }
+
     public void GetInDialogueUI()
     {
         dialogueRectTransform.DOKill();
 
+        bool wasHidden = isDialogueHidden;
         isDialogueHidden = false;
+
+        if (wasHidden)
+            PlayUISound(dialogueInClip);
 
         dialogueRectTransform
             .DOAnchorPos(dialoguePostition, 0.5f)
             .SetEase(Ease.InOutSine);
     }
-
+    
     private void GetInButtons()
     {
         buttonsRectTransform.DOAnchorPos(
@@ -260,6 +300,10 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
                     .SetEase(Ease.InCubic)
             );
         }
+        
+        // 실제 이동할 별이 있는 경우에만 재생.
+        if (chapterButtonsSequence.Duration() > 0f)
+            PlayUISound(chapterStarsOutClip);
 
         chapterButtonsSequence.OnComplete(() =>
         {
@@ -339,6 +383,9 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
                     .SetEase(Ease.OutCubic)
             );
         }
+        
+        if (shownGroups.Count > 0)
+            PlayUISound(chapterStarsInClip);
 
         chapterButtonsSequence.OnComplete(() =>
         {
@@ -385,17 +432,6 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
         return group;
     }
-    
-    public bool TryCloseNoteBook()
-    {
-        if (!isNoteBookOpen)
-            return false;
-
-        isNoteBookOpen = false;
-        noteBookUI.gameObject.SetActive(false);
-
-        return true;
-    }
 
     public void HandleEscape()
     {
@@ -405,5 +441,13 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     public void SetChapterPlaying(bool isPlaying)
     {
         pauseMenuUI.SetChapterPlaying(isPlaying);
+    }
+    
+    private void PlayUISound(AudioClip clip)
+    {
+        if (clip == null)
+            return;
+
+        AudioManager.Instance.PlaySFX(clip, uiSoundVolume);
     }
 }

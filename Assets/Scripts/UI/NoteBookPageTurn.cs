@@ -55,6 +55,8 @@ public class NotebookPageTurn : MonoBehaviour
 
     private Action updatePage;
     private int generation;
+    
+    [SerializeField] private AudioClip turnPageAudioClip;
 
     private void Awake()
     {
@@ -117,6 +119,8 @@ public class NotebookPageTurn : MonoBehaviour
             currentPageIndex = nextIndex;
             SetCurrentPage(nextPage);
         });
+        
+        AudioManager.Instance.PlaySFX(turnPageAudioClip, 1);
     }
     
     private void SetCurrentPage(RectTransform nextPage)
@@ -682,6 +686,8 @@ public class NotebookPageTurn : MonoBehaviour
         captureRoutine = StartCoroutine(
             CapturePreviousPage(previousIndex, generation)
         );
+        
+        AudioManager.Instance.PlaySFX(turnPageAudioClip, 1);
     }
     
     private IEnumerator CapturePreviousPage(
