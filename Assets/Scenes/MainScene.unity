@@ -18034,6 +18034,7 @@ MonoBehaviour:
   monologueUI: {fileID: 1041894744}
   chapterMonologues:
   - {fileID: 11400000, guid: a0e5e16150b376e49b6aa26807e1b30a, type: 2}
+  - {fileID: 11400000, guid: 2d706ec9bfb10e34f96db267ed666547, type: 2}
   - {fileID: 11400000, guid: e043fbf1ff8171a4fa8cd01cb1b80b33, type: 2}
 --- !u!4 &1268157204
 Transform:
