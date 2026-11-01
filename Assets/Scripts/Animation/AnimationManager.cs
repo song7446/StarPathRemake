@@ -35,30 +35,33 @@ public class AnimationManager : SceneMonoBehaviourSingleton<AnimationManager>
         if (!animationDict.TryGetValue(id, out var animationCommand))
             return;
         
-        foreach (SoundCommand sound in animationCommand.sounds)
+        if (animationCommand.sounds != null)
         {
-            if (sound == null)
-                continue;
-
-            switch (sound.action)
+            foreach (SoundCommand sound in animationCommand.sounds)
             {
-                case SFXAction.PlayOneShot:
-                    AudioManager.Instance.PlaySFX(
-                        sound.clip,
-                        sound.volume
-                    );
-                    break;
+                if (sound == null)
+                    continue;
 
-                case SFXAction.StartLoop:
-                    AudioManager.Instance.PlayLoopSFX(
-                        sound.clip,
-                        sound.volume
-                    );
-                    break;
+                switch (sound.action)
+                {
+                    case SFXAction.PlayOneShot:
+                        AudioManager.Instance.PlaySFX(
+                            sound.clip,
+                            sound.volume
+                        );
+                        break;
 
-                case SFXAction.StopLoop:
-                    AudioManager.Instance.StopLoopSFX();
-                    break;
+                    case SFXAction.StartLoop:
+                        AudioManager.Instance.PlayLoopSFX(
+                            sound.clip,
+                            sound.volume
+                        );
+                        break;
+
+                    case SFXAction.StopLoop:
+                        AudioManager.Instance.StopLoopSFX();
+                        break;
+                }
             }
         }
         
