@@ -215,6 +215,11 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
         pauseMenuUI.SetChapterPlaying(false);
 
+        if (UIManager.Instance.GetIsOnSkyView())
+        {
+            UIManager.Instance.ToggleCamera();
+        }
+
         CutSceneCastManager.Instance.FadeOutCharacters(1f);
         ConstellationManager.Instance.FadeOutStarts();
         UIManager.Instance.GetOutUIs();
