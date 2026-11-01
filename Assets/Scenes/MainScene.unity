@@ -14751,8 +14751,8 @@ MonoBehaviour:
   useEnglish: 0
   keepPanelOnFinished: 0
   showPanelOnAwake: 0
-  typingAudioSource: {fileID: 0}
-  typingClip: {fileID: 0}
+  typingAudioSource: {fileID: 1759493824}
+  typingClip: {fileID: 8300000, guid: ce1a1b002f923254fba6bc88fa51a0db, type: 3}
   typingVolume: 0.4
   typingPitch: 0.85
   soundEveryCharacters: 2
@@ -18033,7 +18033,6 @@ MonoBehaviour:
   baseBGM: {fileID: 8300000, guid: dba63ede32162a046a2c8708811a8d9d, type: 3}
   monologueUI: {fileID: 1041894744}
   chapterMonologues:
-  - {fileID: 11400000, guid: 00321032c09e6834981028f35ef3ddea, type: 2}
   - {fileID: 11400000, guid: a0e5e16150b376e49b6aa26807e1b30a, type: 2}
   - {fileID: 11400000, guid: e043fbf1ff8171a4fa8cd01cb1b80b33, type: 2}
 --- !u!4 &1268157204
