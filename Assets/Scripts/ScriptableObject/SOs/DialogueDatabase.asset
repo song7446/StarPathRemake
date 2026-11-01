@@ -2457,8 +2457,7 @@ MonoBehaviour:
   - ID: AfterChapter_1_2
     Chapter_Id: AfterChapter_1
     Speaker: Father
-    Text_Kr: "\uC544\uC774\uC758 \uBAA9\uC18C\uB9AC\uB294 \uD55C\uB3D9\uC548 \uB0A8\uC544
-      \uC788\uC5C8\uB2E4."
+    Text_Kr: "\uBAA9\uC18C\uB9AC\uB294 \uD55C\uB3D9\uC548 \uB0A8\uC544 \uC788\uC5C8\uB2E4."
     Text_En: 
   - ID: AfterChapter_1_3
     Chapter_Id: AfterChapter_1
@@ -2486,6 +2485,62 @@ MonoBehaviour:
     Speaker: Father
     Text_Kr: "\uC544\uC9C1 \uBCF4\uC9C0 \uBABB\uD55C \uC774\uC57C\uAE30\uAC00 \uB0A8\uC544
       \uC788\uC5C8\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_2_1
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uCC28 \uC548\uC5D0 \uC788\uB358 \uC0AC\uB78C\uB4E4\uC774 \uB2EC\uB77C\uC84C\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_2_2
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uC870\uAE08 \uC804\uAE4C\uC9C0 \uB4E4\uB9AC\uB358 \uB300\uD654 \uB300\uC2E0"
+    Text_En: 
+  - ID: AfterChapter_2_3
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uB204\uAD70\uAC00\uB97C \uCC3E\uB294 \uBAA9\uC18C\uB9AC\uAC00 \uB4E4\uB838\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_2_4
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uC774 \uC7A5\uBA74\uB4E4\uC740"
+    Text_En: 
+  - ID: AfterChapter_2_5
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uC77C\uC5B4\uB09C \uC21C\uC11C\uB300\uB85C \uBCF4\uC774\uB294 \uAC8C
+      \uC544\uB2CC \uAC83 \uAC19\uC558\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_2_6
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uADF8 \uC0AC\uC774\uC5D0 \uBB34\uC2A8 \uC77C\uC774 \uC788\uC5C8\uB294\uC9C0"
+    Text_En: 
+  - ID: AfterChapter_2_7
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uC544\uC9C1 \uC54C \uC218 \uC5C6\uC5C8\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_2_8
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uB0A8\uC740 \uBE5B\uB3C4 \uC0B4\uD3B4\uBD10\uC57C\uACA0\uB2E4."
+    Text_En: 
+  - ID: AfterChapter_2_9
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uBAA8\uB450 \uBCF4\uACE0 \uB098\uBA74"
+    Text_En: 
+  - ID: AfterChapter_2_10
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uBB34\uC5C7\uC774 \uBA3C\uC800\uC600\uB294\uC9C0"
+    Text_En: 
+  - ID: AfterChapter_2_11
+    Chapter_Id: AfterChapter_2
+    Speaker: Father
+    Text_Kr: "\uD558\uB098\uC529 \uC774\uC5B4\uBCFC \uC218 \uC788\uC744 \uAC83\uC774\uB2E4."
     Text_En: 
   - ID: AfterChapter_6_1
     Chapter_Id: AfterChapter_6
@@ -2542,6 +2597,16 @@ MonoBehaviour:
     Chapter_Id: AfterChapter_6
     Speaker: Father
     Text_Kr: "\uADF8\uB2E4\uC74C \uC77C\uB85C."
+    Text_En: 
+  - ID: AfterChapter_6_12
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uBAA8\uB4E0 \uC77C\uC744 \uB9DE\uCDB0\uBCF8\uB2E4\uBA74"
+    Text_En: 
+  - ID: AfterChapter_6_13
+    Chapter_Id: AfterChapter_6
+    Speaker: Father
+    Text_Kr: "\uB0B4 \uAE30\uC5B5\uB3C4 \uB3CC\uC544\uC62C \uAC83\uCC98\uB7FC \uB290\uAEF4\uC84C\uB2E4."
     Text_En: 
   - ID: AfterChapter_All_1
     Chapter_Id: AfterChapter_All
