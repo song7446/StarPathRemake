@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5756c10983fccc543830a460cd3cf93e, type: 3}
-  m_Name: AfterCahtper_6
+  m_Name: AfterChatper_6
   m_EditorClassIdentifier: Assembly-CSharp::MonologueDefinition
   requiredChapterIndex: 11
-  dialogueId: AfterCahtper_6
+  dialogueId: AfterChatper_6
