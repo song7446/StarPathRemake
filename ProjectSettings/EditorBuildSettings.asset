@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: ad34043db35a8784ba82c64740e70e5c
+  - enabled: 1
+    path: Assets/Scenes/FreeDrawScene.unity
+    guid: 8fce5bac903b68447862a8a253356fe2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e4a14747d7fe4b746a8d70b097f4026b, type: 3}

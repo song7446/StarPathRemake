@@ -30,6 +30,8 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
     private readonly List<Connection> fadingConnections = new();
 
+    [SerializeField] private ChapterConstellationReveal chapterConstellationReveal;
+
     public sealed class Connection
     {
         public ChapterButton From { get; }
@@ -588,7 +590,7 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
     public void OnPuzzleCompleted()
     {
-        Debug.Log("시간대 퍼즐 정답");
+        chapterConstellationReveal.Play();
     }
 
     private void OnDisable()
