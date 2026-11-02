@@ -3,33 +3,40 @@ using SongLib.Core.Singleton;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingManager>
 {
-    [Header("기존 LineRenderer 프리팹")]
-    [SerializeField] private LineRenderer linePrefab;
+    [Header("기존 LineRenderer 프리팹")] [SerializeField]
+    private LineRenderer linePrefab;
 
-    [Header("챕터 별이 있는 Canvas")]
-    [SerializeField] private Canvas chapterCanvas;
+    [Header("챕터 별이 있는 Canvas")] [SerializeField]
+    private Canvas chapterCanvas;
 
-    [Header("선을 렌더링하는 카메라")]
-    [SerializeField] private Camera lineCamera;
+    [Header("선을 렌더링하는 카메라")] [SerializeField]
+    private Camera lineCamera;
 
     // 카메라 앞 어느 깊이에 선을 배치할지 설정.
-    [SerializeField, Min(0.01f)]
-    private float lineDistance = 10f;
+    [SerializeField, Min(0.01f)] private float lineDistance = 10f;
 
-    [Header("순서 퍼즐 입력")]
-    [SerializeField] private bool inputEnabled;
+    [Header("순서 퍼즐 입력")] [SerializeField] private bool inputEnabled;
 
     public bool InputEnabled => inputEnabled;
     public bool IsDrawing => currentLine != null;
+    
+    [Header("오답 선 퇴장")]
+    [SerializeField, Min(0.01f)]
+    private float wrongLineFadeDuration = 0.5f;
+
+    private readonly List<Connection> fadingConnections = new();
 
     public sealed class Connection
     {
         public ChapterButton From { get; }
         public ChapterButton To { get; }
         public LineRenderer Line { get; }
+
+        public bool IsLocked { get; private set; }
 
         public Connection(
             ChapterButton from,
@@ -40,7 +47,58 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
             To = to;
             Line = line;
         }
+
+        public void Lock(Color color)
+        {
+            if (IsLocked)
+                return;
+
+            IsLocked = true;
+
+            if (Line == null)
+                return;
+
+            Line.startColor = color;
+            Line.endColor = color;
+
+            float opacity = 1f;
+
+            DOTween.To(
+                    () => opacity,
+                    value =>
+                    {
+                        opacity = value;
+
+                        if (Line == null)
+                            return;
+
+                        Color blinkColor = color;
+                        blinkColor.a = color.a * value;
+
+                        Line.startColor = blinkColor;
+                        Line.endColor = blinkColor;
+                    },
+                    0.15f,
+                    0.15f)
+                .SetEase(Ease.InOutSine)
+                .SetLoops(6, LoopType.Yoyo)
+                .SetLink(Line.gameObject)
+                .OnComplete(() =>
+                {
+                    if (Line == null)
+                        return;
+
+                    Line.startColor = color;
+                    Line.endColor = color;
+                });
+        }
     }
+
+    [Header("부분 정답")] [SerializeField, Min(1)]
+    private int lockThreshold = 4;
+
+    [SerializeField] private Color lockedLineColor =
+        new Color(1f, 0.85f, 0.5f, 1f);
 
     private readonly List<Connection> connections = new();
     public IReadOnlyList<Connection> Connections => connections;
@@ -49,26 +107,24 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
     private LineRenderer currentLine;
     private ChapterButton startStar;
-    
-    [SerializeField]
-    private int[] correctChapterOrder =
+
+    [SerializeField] private int[] correctChapterOrder =
     {
-        8,  // 5앞
-        0,  // 1앞
-        2,  // 2앞
-        6,  // 4앞
-        9,  // 5뒤
-        4,  // 3앞
-        7,  // 4뒤
-        1,  // 1뒤
-        5,  // 3뒤
-        3,  // 2뒤
+        8, // 5앞
+        0, // 1앞
+        2, // 2앞
+        6, // 4앞
+        9, // 5뒤
+        4, // 3앞
+        7, // 4뒤
+        1, // 1뒤
+        5, // 3뒤
+        3, // 2뒤
         10, // 6앞
-        11  // 6뒤
+        11 // 6뒤
     };
-    
-    [SerializeField]
-    private UnityEngine.Events.UnityEvent onPuzzleCompleted =
+
+    [SerializeField] private UnityEngine.Events.UnityEvent onPuzzleCompleted =
         new UnityEngine.Events.UnityEvent();
 
     private bool isCompleted;
@@ -136,7 +192,7 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
         currentLine = null;
         startStar = null;
-        
+
         CheckAnswer();
     }
 
@@ -154,6 +210,8 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
     private void LateUpdate()
     {
+        UpdateFadingConnections();
+        
         // 완성한 선도 매 프레임 두 별의 위치를 따라간다.
         for (int i = connections.Count - 1; i >= 0; i--)
         {
@@ -266,24 +324,21 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
         if (!inputEnabled)
             return;
 
-        // 미완성 선 취소.
+        // 미완성 선부터 취소.
         if (IsDrawing)
         {
             CancelDrawing();
             return;
         }
 
-        // 마지막 완성 선과 연결 기록을 함께 제거.
-        if (connections.Count == 0)
+        for (int i = connections.Count - 1; i >= 0; i--)
+        {
+            if (connections[i].IsLocked)
+                continue;
+
+            RemoveConnectionAt(i);
             return;
-
-        int lastIndex = connections.Count - 1;
-        Connection connection = connections[lastIndex];
-
-        if (connection.Line != null)
-            Destroy(connection.Line.gameObject);
-
-        connections.RemoveAt(lastIndex);
+        }
     }
 
     private void CancelDrawing()
@@ -305,10 +360,18 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
                 Destroy(connection.Line.gameObject);
         }
 
+        foreach (Connection connection in fadingConnections)
+        {
+            if (connection.Line != null)
+                Destroy(connection.Line.gameObject);
+        }
+
         connections.Clear();
+        fadingConnections.Clear();
+
         isCompleted = false;
     }
-    
+
     public bool CheckAnswer()
     {
         if (isCompleted)
@@ -320,56 +383,207 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
             return false;
         }
 
-        // 정답에 필요한 선 개수와 정확히 같아야 한다.
-        if (connections.Count != correctChapterOrder.Length - 1)
-            return false;
+        // 정답에 포함되는 연결 목록.
+        var correctKeys = new HashSet<(int, int)>();
 
-        var actualConnections = new HashSet<(int, int)>();
+        for (int i = 0; i < correctChapterOrder.Length - 1; i++)
+        {
+            correctKeys.Add(GetConnectionKey(
+                correctChapterOrder[i],
+                correctChapterOrder[i + 1]));
+        }
+
+        var connectedCorrectKeys = new HashSet<(int, int)>();
+        var lockedCorrectKeys = new HashSet<(int, int)>();
 
         foreach (Connection connection in connections)
         {
+            if (!IsValidConnection(connection))
+                continue;
+
+            var key = GetConnectionKey(
+                connection.From.ChapterIdx,
+                connection.To.ChapterIdx);
+
+            if (!correctKeys.Contains(key))
+                continue;
+
+            connectedCorrectKeys.Add(key);
+
+            if (connection.IsLocked)
+                lockedCorrectKeys.Add(key);
+        }
+
+        // 현재 존재하는 정답 선 중 아직 고정하지 않은 개수.
+        int newCorrectCount =
+            connectedCorrectKeys.Count - lockedCorrectKeys.Count;
+
+        bool allCorrectConnected =
+            connectedCorrectKeys.SetEquals(correctKeys);
+
+        // 기준 미달이면 아무것도 표시하거나 삭제하지 않음.
+        if (!allCorrectConnected &&
+            newCorrectCount < Mathf.Max(1, lockThreshold))
+        {
+            return false;
+        }
+
+        // 기준 도달: 정답은 고정하고 오답은 삭제.
+        LockCorrectAndRemoveWrong(correctKeys);
+
+        if (!allCorrectConnected)
+        {
+            Debug.Log(
+                $"정답 연결 {newCorrectCount}개 확정! " +
+                $"전체 {connectedCorrectKeys.Count}/{correctKeys.Count}");
+
+            return false;
+        }
+
+        isCompleted = true;
+        SetInputEnabled(false);
+        
+        onPuzzleCompleted?.Invoke();
+
+        return true;
+    }
+
+    private (int, int) GetConnectionKey(int from, int to)
+    {
+        // 기존처럼 양방향을 동일한 연결로 취급.
+        return (Mathf.Min(from, to), Mathf.Max(from, to));
+    }
+
+    private bool IsValidConnection(Connection connection)
+    {
+        return connection != null &&
+               connection.From != null &&
+               connection.To != null &&
+               connection.Line != null &&
+               connection.From.ChapterIdx != connection.To.ChapterIdx;
+    }
+
+    private void LockCorrectAndRemoveWrong(
+        HashSet<(int, int)> correctKeys)
+    {
+        var retainedKeys = new HashSet<(int, int)>();
+
+        int index = 0;
+
+        while (index < connections.Count)
+        {
+            Connection connection = connections[index];
+
+            if (!IsValidConnection(connection))
+            {
+                RemoveConnectionAt(index);
+                continue;
+            }
+
+            var key = GetConnectionKey(
+                connection.From.ChapterIdx,
+                connection.To.ChapterIdx);
+
+            if (!correctKeys.Contains(key) || !retainedKeys.Add(key))
+            {
+                FadeOutConnectionAt(index);
+                continue;
+            }
+
+            connection.Lock(lockedLineColor);
+            index++;
+        }
+    }
+    
+    private void FadeOutConnectionAt(int index)
+    {
+        Connection connection = connections[index];
+
+        // 정답 검사와 우클릭 취소 대상에서는 즉시 제외.
+        connections.RemoveAt(index);
+
+        if (connection.Line == null)
+            return;
+
+        fadingConnections.Add(connection);
+
+        LineRenderer line = connection.Line;
+
+        Gradient originalGradient = line.colorGradient;
+        GradientColorKey[] colorKeys = originalGradient.colorKeys;
+        GradientAlphaKey[] originalAlphaKeys = originalGradient.alphaKeys;
+
+        GradientAlphaKey[] fadedAlphaKeys =
+            new GradientAlphaKey[originalAlphaKeys.Length];
+
+        Gradient fadedGradient = new Gradient
+        {
+            mode = originalGradient.mode
+        };
+
+        DOVirtual.Float(
+                1f,
+                0f,
+                Mathf.Max(0.01f, wrongLineFadeDuration),
+                opacity =>
+                {
+                    if (line == null)
+                        return;
+
+                    for (int i = 0; i < originalAlphaKeys.Length; i++)
+                    {
+                        fadedAlphaKeys[i] = new GradientAlphaKey(
+                            originalAlphaKeys[i].alpha * opacity,
+                            originalAlphaKeys[i].time);
+                    }
+
+                    fadedGradient.SetKeys(colorKeys, fadedAlphaKeys);
+                    line.colorGradient = fadedGradient;
+                })
+            .SetEase(Ease.InOutSine)
+            .SetLink(line.gameObject)
+            .OnComplete(() =>
+            {
+                fadingConnections.Remove(connection);
+
+                if (line != null)
+                    Destroy(line.gameObject);
+            });
+    }
+    
+    private void UpdateFadingConnections()
+    {
+        for (int i = fadingConnections.Count - 1; i >= 0; i--)
+        {
+            Connection connection = fadingConnections[i];
+
             if (connection.From == null ||
                 connection.To == null ||
                 connection.Line == null)
             {
-                return false;
+                if (connection.Line != null)
+                    Destroy(connection.Line.gameObject);
+
+                fadingConnections.RemoveAt(i);
+                continue;
             }
 
-            int from = connection.From.ChapterIdx;
-            int to = connection.To.ChapterIdx;
+            connection.Line.SetPosition(
+                0, GetStarWorldPosition(connection.From));
 
-            if (from == to)
-                return false;
-
-            // 작은 번호를 앞에 넣어 양방향을 동일하게 취급.
-            var key = (Mathf.Min(from, to), Mathf.Max(from, to));
-
-            // 중복 연결이 있다면 정답으로 처리하지 않는다.
-            if (!actualConnections.Add(key))
-                return false;
+            connection.Line.SetPosition(
+                1, GetStarWorldPosition(connection.To));
         }
+    }
 
-        for (int i = 0; i < correctChapterOrder.Length - 1; i++)
-        {
-            int from = correctChapterOrder[i];
-            int to = correctChapterOrder[i + 1];
+    private void RemoveConnectionAt(int index)
+    {
+        Connection connection = connections[index];
 
-            var key = (Mathf.Min(from, to), Mathf.Max(from, to));
+        if (connection != null && connection.Line != null)
+            Destroy(connection.Line.gameObject);
 
-            if (!actualConnections.Contains(key))
-                return false;
-        }
-
-        isCompleted = true;
-
-        // 성공 후 추가 연결이나 우클릭 삭제 방지.
-        SetInputEnabled(false);
-
-        Debug.Log("시간대 퍼즐 완성!");
-
-        onPuzzleCompleted?.Invoke();
-
-        return true;
+        connections.RemoveAt(index);
     }
 
     public void OnPuzzleCompleted()
