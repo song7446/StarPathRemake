@@ -17,6 +17,7 @@ public class TitleUI : MonoBehaviour
 
     [Header("이동할 게임 씬 이름")]
     [SerializeField] private string gameSceneName = "MainScene";
+    [SerializeField] private string freeDrawSceneName = "FreeDrawScene";
 
     private bool isLoading;
 
@@ -26,8 +27,9 @@ public class TitleUI : MonoBehaviour
         
         settingButton.onClick.AddListener(OnClickSetting);
         quitButton.onClick.AddListener(OnClickQuit);
+        freeDrawModeButton.onClick.AddListener(OnClickFreeDrawMode);
     }
-
+    
     private void Update()
     {
         if (isLoading || !settingsPanel.activeSelf)
@@ -68,6 +70,16 @@ public class TitleUI : MonoBehaviour
         isLoading = true;
 
         SceneFadeController.Instance.LoadScene(gameSceneName);
+    }
+    
+    private void OnClickFreeDrawMode()
+    {
+        if (isLoading || SceneFadeController.Instance.IsTransitioning)
+            return;
+
+        isLoading = true;
+
+        SceneFadeController.Instance.LoadScene(freeDrawSceneName);
     }
 
     private void OnDestroy()
