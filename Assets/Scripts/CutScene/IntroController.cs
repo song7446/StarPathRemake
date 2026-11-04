@@ -1,36 +1,65 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class IntroController : MonoBehaviour
 {
-    [Header("독백")] [SerializeField] private MonologueUI monologueUI;
+    [Header("독백")]
+    [SerializeField] private MonologueUI monologueUI;
     [SerializeField] private string introDialogueId = "Intro";
-
     [SerializeField] private CanvasGroup monologueUIGroup;
+
+    [Header("조작 안내")]
+    [SerializeField] private GameObject spaceHint;
+
+    [Header("종료 페이드")]
+    [SerializeField, Min(0.01f)]
+    private float fadeOutDuration = 2f;
+
+    private bool isWaitingForFirstSpace;
+    private bool isFinishing;
+    private Tween fadeTween;
+    
+    [Header("안내 깜빡임")]
+    [SerializeField] private CanvasGroup spaceHintGroup;
+
+    [SerializeField, Min(0.01f)]
+    private float hintBlinkDuration = 0.8f;
+
+    private Tween hintBlinkTween;
+
+    private void Awake()
+    {
+        if (spaceHint != null)
+            spaceHint.SetActive(false);
+    }
 
     private IEnumerator Start()
     {
-        // GameManager 등 다른 컴포넌트의 Start 초기화 이후 실행.
+        // 다른 컴포넌트의 Start 초기화 이후 실행.
         yield return null;
-        
-        // 씬 전환 화면이 걷힌 뒤 인트로 시작.
+
+        // 씬 전환의 검은 화면이 걷힌 뒤 시작.
         while (SceneFadeController.Instance != null &&
                SceneFadeController.Instance.IsTransitioning)
         {
             yield return null;
         }
 
-        if (monologueUI == null)
+        if (monologueUI == null || monologueUIGroup == null)
         {
-            Debug.LogError("MonologueUI를 연결해주세요.", this);
+            Debug.LogError(
+                "인트로의 MonologueUI와 CanvasGroup을 연결해주세요.",
+                this);
+
             FinishIntro();
             yield break;
         }
 
-        // 데이터가 없을 때 화면이 계속 가려지는 것 방지.
         if (!DialogueRepository.Instance.TryGetChapter(
                 introDialogueId, out var dialogues) ||
+            dialogues == null ||
             dialogues.Count == 0)
         {
             Debug.LogWarning(
@@ -42,23 +71,95 @@ public class IntroController : MonoBehaviour
         }
 
         monologueUI.Play(introDialogueId, FinishIntro);
+
+        ShowSpaceHint();
     }
 
+    private void Update()
+    {
+        if (!isWaitingForFirstSpace ||
+            isFinishing ||
+            PauseMenuUI.IsOpen ||
+            Keyboard.current == null)
+        {
+            return;
+        }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            HideSpaceHint();
+    }
+    
     private void FinishIntro()
     {
-        monologueUIGroup.DOKill();
+        if (isFinishing)
+            return;
 
-        monologueUIGroup
-            .DOFade(0f, 2f)
+        isFinishing = true;
+        HideSpaceHint();
+
+        if (monologueUIGroup == null)
+        {
+            if (monologueUI != null)
+                monologueUI.CloseWithoutCallback();
+
+            Destroy(gameObject);
+            return;
+        }
+
+        fadeTween = monologueUIGroup
+            .DOFade(0f, fadeOutDuration)
             .SetUpdate(true)
             .SetLink(gameObject)
             .OnComplete(() =>
             {
-                // 페이드가 끝난 뒤 Panel과 입력 차단 해제.
                 if (monologueUI != null)
                     monologueUI.CloseWithoutCallback();
 
                 Destroy(gameObject);
             });
     }
+    
+    private void ShowSpaceHint()
+    {
+        isWaitingForFirstSpace = true;
+
+        hintBlinkTween?.Kill();
+
+        if (spaceHint == null)
+            return;
+
+        spaceHint.SetActive(true);
+
+        if (spaceHintGroup == null)
+            return;
+
+        spaceHintGroup.alpha = 1f;
+        spaceHintGroup.interactable = false;
+        spaceHintGroup.blocksRaycasts = false;
+
+        hintBlinkTween = spaceHintGroup
+            .DOFade(0.25f, hintBlinkDuration)
+            .SetEase(Ease.InOutSine)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetUpdate(true)
+            .SetLink(spaceHint);
+    }
+
+    private void HideSpaceHint()
+    {
+        isWaitingForFirstSpace = false;
+
+        hintBlinkTween?.Kill();
+        hintBlinkTween = null;
+
+        if (spaceHint != null)
+            spaceHint.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        hintBlinkTween?.Kill();
+        fadeTween?.Kill();
+    }
+    
 }
