@@ -32,6 +32,9 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
     [SerializeField] private ChapterConstellationReveal chapterConstellationReveal;
     [SerializeField] private Transform constellationRoot;
+    
+    [Header("시간대 퍼즐 안내")]
+    [SerializeField] private ChapterOrderHintUI chapterOrderHintUI;
 
     public sealed class Connection
     {
@@ -131,13 +134,36 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
         new UnityEngine.Events.UnityEvent();
 
     private bool isCompleted;
+    
+    private void Start()
+    {
+        SetInputEnabled(false);
+    }
+    
+    public void BeginOrderPuzzle()
+    {
+        if (isCompleted)
+            return;
+
+        SetInputEnabled(true);
+    }
 
     public void SetInputEnabled(bool enabled)
     {
         inputEnabled = enabled;
 
         if (!enabled)
+        {
             CancelDrawing();
+
+            if (chapterOrderHintUI != null)
+                chapterOrderHintUI.HideGuide();
+
+            return;
+        }
+
+        if (!isCompleted && chapterOrderHintUI != null)
+            chapterOrderHintUI.ShowGuide();
     }
 
     // ChapterButton의 On Left Click에 연결.
@@ -417,25 +443,29 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
                 lockedCorrectKeys.Add(key);
         }
 
-        // 현재 존재하는 정답 선 중 아직 고정하지 않은 개수.
+        // 아직 고정하지 않은 정답 선 개수.
         int newCorrectCount =
             connectedCorrectKeys.Count - lockedCorrectKeys.Count;
 
         bool allCorrectConnected =
             connectedCorrectKeys.SetEquals(correctKeys);
 
-        // 기준 미달이면 아무것도 표시하거나 삭제하지 않음.
+        // 기준 미달이면 피드백 없이 연결을 유지.
         if (!allCorrectConnected &&
             newCorrectCount < Mathf.Max(1, lockThreshold))
         {
             return false;
         }
 
-        // 기준 도달: 정답은 고정하고 오답은 삭제.
+        // 정답 선은 고정하고 오답 선은 페이드 아웃.
         LockCorrectAndRemoveWrong(correctKeys);
 
         if (!allCorrectConnected)
         {
+            // 첫 부분 정답에서만 안내 문구 변경.
+            if (chapterOrderHintUI != null)
+                chapterOrderHintUI.ShowPartialResult();
+
             Debug.Log(
                 $"정답 연결 {newCorrectCount}개 확정! " +
                 $"전체 {connectedCorrectKeys.Count}/{correctKeys.Count}");
@@ -444,8 +474,13 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
         }
 
         isCompleted = true;
+
+        // 엔딩 연출 전에 안내를 완전히 종료.
+        if (chapterOrderHintUI != null)
+            chapterOrderHintUI.Complete();
+
         SetInputEnabled(false);
-        
+
         onPuzzleCompleted?.Invoke();
 
         return true;

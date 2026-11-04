@@ -282,9 +282,33 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
             if (!isWatched[index])
                 continue;
 
+            bool unlockPuzzle = definition.unlockChapterOrderPuzzle;
+
+            // 시간대 퍼즐 안내 독백은 모든 장면을 본 뒤에만 실행.
+            if (unlockPuzzle)
+            {
+                bool allWatched = isWatched.Length > 0;
+
+                foreach (bool watched in isWatched)
+                {
+                    if (!watched)
+                    {
+                        allWatched = false;
+                        break;
+                    }
+                }
+
+                if (!allWatched)
+                    continue;
+            }
+
             monologueUI.Play(dialogueId, () =>
             {
                 playedMonologueIds.Add(dialogueId);
+
+                // 체크된 독백이 끝났을 때만 입력과 안내 활성화.
+                if (unlockPuzzle)
+                    ChapterDrawingManager.Instance.BeginOrderPuzzle();
             });
 
             // 한 번 복귀할 때 독백 하나만 출력.

@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 [CreateAssetMenu(
     fileName = "MonologueDefinition",
     menuName = "StarPath/Monologue Definition")]
@@ -14,7 +13,9 @@ public class MonologueDefinition : ScriptableObject
     [Tooltip("대사 CSV에 입력한 Chapter_Id")]
     public string dialogueId;
 
-    // 현재 플레이 중 출력 완료 여부.
+    [Tooltip("모든 장면을 시청하고 이 독백을 마치면 시간대 퍼즐 시작")]
+    public bool unlockChapterOrderPuzzle;
+
     [NonSerialized]
     public bool hasPlayed;
 }
