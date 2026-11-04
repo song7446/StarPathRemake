@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,9 @@ public class ChapterSceneMenuUI : MonoBehaviour, IPointerClickHandler
 
     private readonly List<RaycastResult> raycastResults
         = new List<RaycastResult>();
+    
+    [Header("메뉴 열림 이벤트")]
+    [SerializeField] private UnityEvent onMenuOpened = new();
 
     private void Awake()
     {
@@ -45,23 +49,21 @@ public class ChapterSceneMenuUI : MonoBehaviour, IPointerClickHandler
         if (sceneViewButton == null)
             return;
 
-        // 이미 열린 별을 다시 우클릭하면 닫기.
         if (openedMenu == this)
         {
             Close();
             return;
         }
 
-        // 다른 별의 메뉴부터 닫기.
         if (openedMenu != null)
             openedMenu.Close();
 
         openedMenu = this;
 
-        // 선택한 별과 메뉴를 다른 별보다 앞으로.
         transform.SetAsLastSibling();
-
         sceneViewButton.SetActive(true);
+
+        onMenuOpened?.Invoke();
     }
 
     private bool IsPointerOverThisStar()

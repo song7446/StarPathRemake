@@ -28,6 +28,9 @@ public class IntroController : MonoBehaviour
     private float hintBlinkDuration = 0.8f;
 
     private Tween hintBlinkTween;
+    
+    [Header("인트로 종료 후 안내")]
+    [SerializeField] private FirstChapterHintUI firstChapterHint;
 
     private void Awake()
     {
@@ -102,6 +105,9 @@ public class IntroController : MonoBehaviour
             if (monologueUI != null)
                 monologueUI.CloseWithoutCallback();
 
+            if (firstChapterHint != null)
+                firstChapterHint.Show();
+
             Destroy(gameObject);
             return;
         }
@@ -114,6 +120,9 @@ public class IntroController : MonoBehaviour
             {
                 if (monologueUI != null)
                     monologueUI.CloseWithoutCallback();
+
+                if (firstChapterHint != null)
+                    firstChapterHint.Show();
 
                 Destroy(gameObject);
             });
