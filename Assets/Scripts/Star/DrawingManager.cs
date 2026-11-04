@@ -23,7 +23,7 @@ public class DrawingManager : SceneMonoBehaviourSingleton<DrawingManager>
     public List<StarConnection> currentConnections = new List<StarConnection>();
 
     [SerializeField] private Camera starCamera;
-    
+
     private bool isFadingOut;
 
     [SerializeField] private AudioClip connectStarAudioClip;
@@ -51,7 +51,7 @@ public class DrawingManager : SceneMonoBehaviourSingleton<DrawingManager>
     {
         if (isFadingOut)
             return;
-        
+
         isDrawing = true;
         startStar = star;
 
@@ -68,7 +68,7 @@ public class DrawingManager : SceneMonoBehaviourSingleton<DrawingManager>
     {
         isDrawing = false;
 
-        if (hoveredStar != null)
+        if (hoveredStar != null && hoveredStar != startStar)
         {
             // 수정 1: 전역 변수 재사용 금지! 매번 새로운 객체를 찍어내야 합니다.
             StarConnection newConnection = new StarConnection();
@@ -85,9 +85,11 @@ public class DrawingManager : SceneMonoBehaviourSingleton<DrawingManager>
                 currentConnections.Add(newConnection);
                 permanentLines.Push(currentLine);
 
-                // 정답 체크 실행
+                if (StarConnectionHintUI.Instance != null)
+                    StarConnectionHintUI.Instance.NotifyLineConnected();
+
                 ConstellationManager.Instance.CheckAnswer(currentConnections);
-                
+
                 AudioManager.Instance.PlaySFX(connectStarAudioClip);
             }
             else
@@ -155,22 +157,22 @@ public class DrawingManager : SceneMonoBehaviourSingleton<DrawingManager>
     {
         if (isFadingOut)
             return;
-        
+
         StarConnection newConnection = new StarConnection();
         newConnection.starA = editorStartStar.starID;
         newConnection.starB = editorEndStar.starID;
-        
+
         bool alreadyExists =
             currentConnections.Exists(c => c.IsSameConnection(newConnection.starA, newConnection.starB));
         if (!alreadyExists)
         {
             currentConnections.Add(newConnection);
-            
+
             LineRenderer editorLine = Instantiate(linePrefab, transform);
             editorLine.positionCount = 2;
-        
+
             permanentLines.Push(editorLine);
-            
+
             editorLine.SetPosition(0, editorStartStar.transform.position);
             editorLine.SetPosition(1, editorEndStar.transform.position);
 
@@ -178,7 +180,7 @@ public class DrawingManager : SceneMonoBehaviourSingleton<DrawingManager>
             ConstellationManager.Instance.CheckAnswer(currentConnections);
         }
     }
-    
+
     public void FadeOutAndReset(
         float duration = 0.5f,
         Action onFinished = null)

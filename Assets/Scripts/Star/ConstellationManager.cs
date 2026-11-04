@@ -363,12 +363,16 @@ public class ConstellationManager : SceneMonoBehaviourSingleton<ConstellationMan
             currentConnections.Count == answers.Count)
         {
             Debug.Log("★ 정답! 별자리를 완벽하게 완성했습니다! ★");
-            
-            GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx] = true;
 
+            // 챕터 인덱스가 바뀌기 전에 안내 완료 처리.
+            if (StarConnectionHintUI.Instance != null)
+                StarConnectionHintUI.Instance.Complete();
+
+            GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx] = true;
             GameManager.Instance.StartChapter(
                 GameManager.Instance.currentChapterIdx + 1,
-                true);
+                true
+            );
 
             UIManager.Instance.ToggleCamera();
             

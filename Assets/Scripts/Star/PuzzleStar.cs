@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PuzzleStar : MonoBehaviour
 {
-    public int starID; // 노트의 정답과 비교할 고유 번호
+    public int starID;
     public bool isCorrect;
 
     public void SetupStar(int id, bool correct)
@@ -13,41 +13,51 @@ public class PuzzleStar : MonoBehaviour
 
         if (!isCorrect)
         {
-            /* 방해 별 설정 */
+            // 방해 별 설정
         }
     }
 
     private void OnMouseDown()
     {
+        if (PauseMenuUI.IsOpen || MonologueUI.IsPlaying)
+            return;
+
         if (!UIManager.Instance.GetIsOnSkyView())
             return;
 
         if (UIManager.Instance.IsPlayingDialogue())
             return;
-        
-        if (!DrawingManager.Instance.IsDrawing)
+
+        // 노트나 버튼 등 UI를 클릭할 때 뒤의 별이 눌리는 것 방지.
+        if (EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject())
         {
-            DrawingManager.Instance.StartDrawing(this);
+            return;
+        }
+
+        DrawingManager drawingManager = DrawingManager.Instance;
+
+        if (!drawingManager.IsDrawing)
+        {
+            drawingManager.StartDrawing(this);
         }
         else
         {
-            DrawingManager.Instance.EndDrawing();
+            drawingManager.HoveredStar(this);
+            drawingManager.EndDrawing();
         }
     }
 
     private void OnMouseEnter()
     {
         if (DrawingManager.Instance.IsDrawing)
-        {
             DrawingManager.Instance.HoveredStar(this);
-        }
+        
     }
 
     private void OnMouseExit()
     {
         if (DrawingManager.Instance.IsDrawing)
-        {
             DrawingManager.Instance.EndHoveredStar(this);
-        }
     }
 }
