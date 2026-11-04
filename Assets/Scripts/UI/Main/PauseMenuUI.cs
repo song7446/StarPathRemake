@@ -193,7 +193,7 @@ public class PauseMenuUI : MonoBehaviour
         AudioManager.Instance.PlaySFX(closePauseMenuClip);
     }
 
-    private void ReturnToTitle()
+    public void ReturnToTitle()
     {
         if (isLeavingScene ||
             SceneFadeController.Instance.IsTransitioning)

@@ -31,6 +31,7 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
     private readonly List<Connection> fadingConnections = new();
 
     [SerializeField] private ChapterConstellationReveal chapterConstellationReveal;
+    [SerializeField] private Transform constellationRoot;
 
     public sealed class Connection
     {
@@ -200,7 +201,7 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
     private LineRenderer CreateLine()
     {
-        LineRenderer line = Instantiate(linePrefab, transform);
+        LineRenderer line = Instantiate(linePrefab, constellationRoot);
 
         line.useWorldSpace = true;
         line.positionCount = 2;
