@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cfd835244f53175468d0f80db18ee2c5
+guid: 6fe930f1e8148b24db07e139d7245a14
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - ??????
+  - LXGW WenKai
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
