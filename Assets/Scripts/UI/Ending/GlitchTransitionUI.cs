@@ -110,6 +110,7 @@ public class GlitchTransitionUI : MonoBehaviour
         }
         
         AudioManager.Instance.PlaySFX(glitchSFX);
+        AudioManager.Instance.StopBGM();
 
         IsTransitioning = true;
 
