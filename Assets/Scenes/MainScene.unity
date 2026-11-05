@@ -9712,6 +9712,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
   changeGuideImageButton: {fileID: 1905871148}
   constellationData: {fileID: 11400000, guid: 610a5ec9ae9a20840bfbbe27b5a2a4a7, type: 2}
+  constellationNameText: {fileID: 1558776168}
+  constellationExplanationText: {fileID: 802366708}
+  guideImageNameText: {fileID: 1836260073}
 --- !u!1 &606708386
 GameObject:
   m_ObjectHideFlags: 0
@@ -9888,7 +9891,6 @@ MonoBehaviour:
   panel: {fileID: 1967400236}
   dialogueText: {fileID: 442286143}
   dialogueId: Ending
-  useEnglish: 0
   charactersPerSecond: 25
   lineHoldDuration: 2
   lastLineHoldDuration: 4
@@ -11588,6 +11590,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
   changeGuideImageButton: {fileID: 993357728}
   constellationData: {fileID: 11400000, guid: 6a5669f84ab79b3428dfba3d808763ae, type: 2}
+  constellationNameText: {fileID: 910879131}
+  constellationExplanationText: {fileID: 1399249181}
+  guideImageNameText: {fileID: 1031684791}
 --- !u!1 &745274331
 GameObject:
   m_ObjectHideFlags: 0
@@ -15564,6 +15569,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
   changeGuideImageButton: {fileID: 1745455047}
   constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
+  constellationNameText: {fileID: 1338535274}
+  constellationExplanationText: {fileID: 283409484}
+  guideImageNameText: {fileID: 1251773351}
 --- !u!1 &993357726
 GameObject:
   m_ObjectHideFlags: 0
@@ -16312,13 +16320,12 @@ MonoBehaviour:
   monologueText: {fileID: 1094750346}
   nextButton: {fileID: 0}
   charactersPerSecond: 25
-  useEnglish: 0
   keepPanelOnFinished: 0
   showPanelOnAwake: 0
   typingAudioSource: {fileID: 1759493824}
   typingClip: {fileID: 8300000, guid: ce1a1b002f923254fba6bc88fa51a0db, type: 3}
-  typingVolume: 0.4
-  typingPitch: 0.85
+  typingVolume: 1
+  typingPitch: 1.5
   soundEveryCharacters: 2
 --- !u!1 &1046552786
 GameObject:
@@ -18775,7 +18782,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   starAppearInterval: 0.3
   starFadeInDuration: 0.8
-  answerStartAudioClip: {fileID: 8300000, guid: 5e57fcd5590ca80498ef9a05ee15b6e3, type: 3}
+  answerStarAudioClip: {fileID: 8300000, guid: 5e57fcd5590ca80498ef9a05ee15b6e3, type: 3}
 --- !u!4 &1202446827
 Transform:
   m_ObjectHideFlags: 0
@@ -19070,7 +19077,6 @@ MonoBehaviour:
   monologueText: {fileID: 295905845}
   nextButton: {fileID: 0}
   charactersPerSecond: 25
-  useEnglish: 0
   keepPanelOnFinished: 1
   showPanelOnAwake: 1
   typingAudioSource: {fileID: 1210079156}
@@ -19655,6 +19661,7 @@ MonoBehaviour:
   closeDuration: 0.6
   openDuration: 0.6
   startClosed: 0
+  glitchSFX: {fileID: 8300000, guid: 92ad5ff319fff5144a631ae2486f56e0, type: 3}
 --- !u!1 &1268157202
 GameObject:
   m_ObjectHideFlags: 0
@@ -25424,6 +25431,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
   changeGuideImageButton: {fileID: 172031428}
   constellationData: {fileID: 11400000, guid: b10159e9a2d1f694b8272568d1da9211, type: 2}
+  constellationNameText: {fileID: 1278444604}
+  constellationExplanationText: {fileID: 480820599}
+  guideImageNameText: {fileID: 1509409138}
 --- !u!1 &1586548173
 GameObject:
   m_ObjectHideFlags: 0
@@ -27437,7 +27447,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueUI
   dialogueText: {fileID: 73297375}
   charactersPerSecond: 25
-  useEnglish: 0
   onDialogueFinished:
     m_PersistentCalls:
       m_Calls:
@@ -27462,8 +27471,8 @@ MonoBehaviour:
   dialogueSoundVolume: 1
   soundEveryCharacters: 2
   daughterPitch: 2
-  fatherPitch: 1
-  policePitch: 0.5
+  fatherPitch: 1.5
+  policePitch: 1
   defaultPitch: 1
 --- !u!224 &1759493823
 RectTransform:
@@ -30828,6 +30837,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NoteBookPage
   changeGuideImageButton: {fileID: 182436516}
   constellationData: {fileID: 11400000, guid: eb318188bb8f3ab4499ed1bcf67f0b28, type: 2}
+  constellationNameText: {fileID: 701990081}
+  constellationExplanationText: {fileID: 865889898}
+  guideImageNameText: {fileID: 500233435}
 --- !u!1 &2008729579
 GameObject:
   m_ObjectHideFlags: 0
