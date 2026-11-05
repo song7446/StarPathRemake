@@ -212,6 +212,9 @@ public class PauseMenuUI : MonoBehaviour
 
         isLeavingScene = true;
 
+        // 오디오 매니저가 다음 씬에도 남으므로 반복 효과음을 직접 정지.
+        AudioManager.Instance.StopLoopSFX();
+
         Resume();
 
         SceneFadeController.Instance.LoadScene(titleSceneName);

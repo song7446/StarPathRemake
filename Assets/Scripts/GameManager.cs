@@ -213,6 +213,9 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
         isReturningToMenu = true;
 
+        // 챕터 종료 또는 중도 퇴장 시 반복 효과음 정지.
+        AudioManager.Instance.StopLoopSFX();
+
         pauseMenuUI.SetChapterPlaying(false);
 
         if (UIManager.Instance.GetIsOnSkyView())
