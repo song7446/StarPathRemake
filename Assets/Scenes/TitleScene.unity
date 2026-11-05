@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 93471529}
   - component: {fileID: 93471528}
   - component: {fileID: 93471530}
+  - component: {fileID: 93471531}
   m_Layer: 5
   m_Name: TMP_ScreeScaleText
   m_TagString: Untagged
@@ -580,11 +581,24 @@ MonoBehaviour:
   targetText: {fileID: 93471528}
   textKr: "\uD574\uC0C1\uB3C4"
   textEn: Resolution
-  textZhHans: 
-  textJa: 
-  textEs: 
-  textPt: 
-  textRu: 
+  textZhHans: "\u5206\u8FA8\u7387"
+  textJa: "\u89E3\u50CF\u5EA6"
+  textEs: "Resoluci\xF3n"
+  textPt: Tela cheia
+  textRu: "\u041F\u043E\u043B\u043D\u044B\u0439 \u044D\u043A\u0440\u0430\u043D"
+--- !u!114 &93471531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93471526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &132629520
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +610,7 @@ GameObject:
   - component: {fileID: 132629521}
   - component: {fileID: 132629522}
   - component: {fileID: 132629523}
+  - component: {fileID: 132629524}
   m_Layer: 5
   m_Name: TMP_SFXVolume
   m_TagString: Untagged
@@ -619,7 +634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 230, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &132629522
@@ -722,6 +737,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &132629524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132629520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &144664472
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 119, y: -218}
+  m_AnchoredPosition: {x: 119, y: -190}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &181908651
@@ -1348,6 +1376,7 @@ GameObject:
   - component: {fileID: 344000999}
   - component: {fileID: 344000998}
   - component: {fileID: 344001000}
+  - component: {fileID: 344001001}
   m_Layer: 5
   m_Name: TMP_SettingTitle
   m_TagString: Untagged
@@ -1489,11 +1518,24 @@ MonoBehaviour:
   targetText: {fileID: 344000998}
   textKr: "\uC124\uC815"
   textEn: Setting
-  textZhHans: 
-  textJa: 
-  textEs: 
-  textPt: 
-  textRu: 
+  textZhHans: "\u8BBE\u7F6E"
+  textJa: "\u8A2D\u5B9A"
+  textEs: Ajustes
+  textPt: "Configura\xE7\xF5es"
+  textRu: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+--- !u!114 &344001001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344000996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &380030220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,6 +1954,7 @@ GameObject:
   - component: {fileID: 442421846}
   - component: {fileID: 442421848}
   - component: {fileID: 442421847}
+  - component: {fileID: 442421849}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -2038,6 +2081,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442421845}
   m_CullTransparentMesh: 1
+--- !u!114 &442421849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442421845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &447023812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2647,7 +2703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -65}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &571150878
@@ -3939,6 +3995,7 @@ GameObject:
   - component: {fileID: 1078972084}
   - component: {fileID: 1078972083}
   - component: {fileID: 1078972085}
+  - component: {fileID: 1078972086}
   m_Layer: 5
   m_Name: TMP_MasterText
   m_TagString: Untagged
@@ -4051,7 +4108,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -114.07291, y: 0, z: 1.3828125, w: 0}
+  m_margin: {x: -151.22128, y: 0, z: 1.3828125, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4080,11 +4137,24 @@ MonoBehaviour:
   targetText: {fileID: 1078972083}
   textKr: "\uC804\uCCB4 \uC18C\uB9AC"
   textEn: Master
-  textZhHans: 
-  textJa: 
-  textEs: 
-  textPt: 
-  textRu: 
+  textZhHans: "\u4E3B\u97F3\u91CF"
+  textJa: "\u5168\u4F53\u97F3\u91CF"
+  textEs: General
+  textPt: Geral
+  textRu: "\u041E\u0431\u0449\u0430\u044F"
+--- !u!114 &1078972086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078972081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &1088342704
 GameObject:
   m_ObjectHideFlags: 0
@@ -4989,7 +5059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116, y: -334}
+  m_AnchoredPosition: {x: 116, y: -350}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1171897129
@@ -5065,7 +5135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 62}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1220412691
@@ -5116,6 +5186,7 @@ GameObject:
   - component: {fileID: 1260921643}
   - component: {fileID: 1260921642}
   - component: {fileID: 1260921644}
+  - component: {fileID: 1260921645}
   m_Layer: 5
   m_Name: TMP_BGMText
   m_TagString: Untagged
@@ -5228,7 +5299,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -112.69162, y: 0, z: 2.765564, w: 0}
+  m_margin: {x: -148.47574, y: 0, z: 6.043274, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5256,12 +5327,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
   targetText: {fileID: 1260921642}
   textKr: "\uBC30\uACBD\uC74C"
-  textEn: BGM
-  textZhHans: 
-  textJa: 
-  textEs: 
-  textPt: 
-  textRu: 
+  textEn: Music
+  textZhHans: "\u80CC\u666F\u97F3\u4E50"
+  textJa: BGM
+  textEs: "M\xFAsica"
+  textPt: "M\xFAsica"
+  textRu: "\u041C\u0443\u0437\u044B\u043A\u0430"
+--- !u!114 &1260921645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260921640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &1284337453
 GameObject:
   m_ObjectHideFlags: 0
@@ -5893,6 +5977,7 @@ GameObject:
   - component: {fileID: 1475402739}
   - component: {fileID: 1475402738}
   - component: {fileID: 1475402740}
+  - component: {fileID: 1475402741}
   m_Layer: 5
   m_Name: TMP_SFXText
   m_TagString: Untagged
@@ -6005,7 +6090,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -116.1478, y: 0, z: 0, w: 0}
+  m_margin: {x: -153.29623, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6034,11 +6119,24 @@ MonoBehaviour:
   targetText: {fileID: 1475402738}
   textKr: "\uD6A8\uACFC\uC74C"
   textEn: SFX
-  textZhHans: 
-  textJa: 
-  textEs: 
-  textPt: 
-  textRu: 
+  textZhHans: "\u97F3\u6548"
+  textJa: "\u52B9\u679C\u97F3"
+  textEs: Efectos
+  textPt: Efeitos
+  textRu: "\u042D\u0444\u0444\u0435\u043A\u0442\u044B"
+--- !u!114 &1475402741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475402736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &1535207636
 GameObject:
   m_ObjectHideFlags: 0
@@ -6126,6 +6224,7 @@ GameObject:
   - component: {fileID: 1546639303}
   - component: {fileID: 1546639302}
   - component: {fileID: 1546639304}
+  - component: {fileID: 1546639305}
   m_Layer: 5
   m_Name: TMP_LanguageText
   m_TagString: Untagged
@@ -6267,11 +6366,24 @@ MonoBehaviour:
   targetText: {fileID: 1546639302}
   textKr: "\uC5B8\uC5B4"
   textEn: Language
-  textZhHans: 
-  textJa: 
-  textEs: 
-  textPt: 
-  textRu: 
+  textZhHans: "\u8BED\u8A00"
+  textJa: "\u8A00\u8A9E"
+  textEs: Idioma
+  textPt: Idioma
+  textRu: "\u042F\u0437\u044B\u043A"
+--- !u!114 &1546639305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546639300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &1549496381
 GameObject:
   m_ObjectHideFlags: 0
@@ -6412,6 +6524,7 @@ GameObject:
   - component: {fileID: 1560090474}
   - component: {fileID: 1560090475}
   - component: {fileID: 1560090476}
+  - component: {fileID: 1560090477}
   m_Layer: 5
   m_Name: TMP_BGMVolume
   m_TagString: Untagged
@@ -6435,7 +6548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 230, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1560090475
@@ -6538,6 +6651,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1560090477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560090473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &1593495478
 GameObject:
   m_ObjectHideFlags: 0
@@ -7426,6 +7552,7 @@ GameObject:
   - component: {fileID: 1840071982}
   - component: {fileID: 1840071981}
   - component: {fileID: 1840071983}
+  - component: {fileID: 1840071984}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -7567,11 +7694,24 @@ MonoBehaviour:
   targetText: {fileID: 1840071981}
   textKr: "\uC804\uCCB4\uD654\uBA74"
   textEn: Full Screen
-  textZhHans: 
-  textJa: 
-  textEs: 
-  textPt: 
-  textRu: 
+  textZhHans: "\u5168\u5C4F"
+  textJa: "\u5168\u753B\u9762"
+  textEs: Pantalla completa
+  textPt: Tela cheia
+  textRu: "\u041F\u043E\u043B\u043D\u044B\u0439 \u044D\u043A\u0440\u0430\u043D"
+--- !u!114 &1840071984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840071979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &1849999640
 GameObject:
   m_ObjectHideFlags: 0
@@ -7658,6 +7798,7 @@ GameObject:
   - component: {fileID: 1913522463}
   - component: {fileID: 1913522464}
   - component: {fileID: 1913522465}
+  - component: {fileID: 1913522466}
   m_Layer: 5
   m_Name: TMP_MasterVolume
   m_TagString: Untagged
@@ -7681,7 +7822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 230, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1913522464
@@ -7784,6 +7925,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1913522466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913522462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &1972717102
 GameObject:
   m_ObjectHideFlags: 0
@@ -8533,6 +8687,7 @@ GameObject:
   - component: {fileID: 2128181797}
   - component: {fileID: 2128181799}
   - component: {fileID: 2128181798}
+  - component: {fileID: 2128181800}
   m_Layer: 5
   m_Name: Item Label
   m_TagString: Untagged
@@ -8659,6 +8814,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128181796}
   m_CullTransparentMesh: 1
+--- !u!114 &2128181800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128181796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdf0ebce6a7f744b793f5a6485601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedFont
+  fontSettings: {fileID: 11400000, guid: b39db746eb9761341a2b4ad6ac590411, type: 2}
 --- !u!1 &2129760301
 GameObject:
   m_ObjectHideFlags: 0
