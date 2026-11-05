@@ -18,7 +18,11 @@ public class SettingsUI : MonoBehaviour
     {
         Korean = 0,
         English = 1,
-        SimplifiedChinese = 2
+        SimplifiedChinese = 2,
+        Japanese = 3,
+        Spanish = 4,
+        Portuguese = 5,
+        Russian = 6
     }
 
 // 설정창을 열지 않아도 저장된 언어를 확인할 수 있음.
@@ -30,13 +34,10 @@ public class SettingsUI : MonoBehaviour
                 LanguageKey,
                 (int)GameLanguage.English);
 
-            return savedLanguage switch
-            {
-                0 => GameLanguage.Korean,
-                1 => GameLanguage.English,
-                2 => GameLanguage.SimplifiedChinese,
-                _ => GameLanguage.English
-            };
+            return System.Enum.IsDefined(
+                typeof(GameLanguage), savedLanguage)
+                ? (GameLanguage)savedLanguage
+                : GameLanguage.English;
         }
     }
 
@@ -114,11 +115,17 @@ public class SettingsUI : MonoBehaviour
         InitializeResolutions();
 
         languageDropdown.ClearOptions();
+        languageDropdown.ClearOptions();
+
         languageDropdown.AddOptions(new List<string>
         {
             "한국어",
             "English",
-            "简体中文"
+            "简体中文",
+            "日本語",
+            "Español",
+            "Português",
+            "Русский"
         });
 
         languageDropdown.SetValueWithoutNotify(
@@ -315,7 +322,7 @@ public class SettingsUI : MonoBehaviour
         if (!initialized)
             return;
 
-        if (index < 0 || index > 2)
+        if (!System.Enum.IsDefined(typeof(GameLanguage), index))
             return;
 
         if ((int)CurrentLanguage == index)

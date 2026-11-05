@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687a8c62fe43d624bbd5e49d9b6ef5eb, type: 3}
+  m_Name: LanguageFontSettings
+  m_EditorClassIdentifier: Assembly-CSharp::LanguageFontSettings
+  koreanFont: {fileID: 11400000, guid: 19384f9479509aa48acedc86eefd7f72, type: 2}
+  englishFont: {fileID: 11400000, guid: eb4be8f9d9f2438489294d3f374f0b3d, type: 2}
+  simplifiedChineseFont: {fileID: 11400000, guid: b185471ec88dec946a205ac71f44b72e, type: 2}
+  japaneseFont: {fileID: 11400000, guid: e51dc9c82d3ba5944aeefb4c8d51a1c0, type: 2}
+  spanishFont: {fileID: 11400000, guid: eb4be8f9d9f2438489294d3f374f0b3d, type: 2}
+  portugueseFont: {fileID: 11400000, guid: eb4be8f9d9f2438489294d3f374f0b3d, type: 2}
+  russianFont: {fileID: 11400000, guid: eb4be8f9d9f2438489294d3f374f0b3d, type: 2}

@@ -27,6 +27,8 @@ public class GuideImageUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI guideImageName;
     
     [SerializeField] private AudioClip guideImageSlideSound;
+    
+    private ConstellationData currentConstellation;
 
     public void OnBeginDragGuide(BaseEventData eventData)
     {
@@ -195,9 +197,30 @@ public class GuideImageUI : MonoBehaviour
         // guidePhotoImage.preserveAspect = true;
     }
 
+    // 기존 문자열 호출과의 호환용.
+// 이 방식은 언어 변경 시 자동 번역되지 않음.
     public void ChangeGuideName(string constellationName)
     {
-        guideImageName.text = constellationName;
+        currentConstellation = null;
+
+        if (guideImageName != null)
+            guideImageName.text = constellationName ?? string.Empty;
+    }
+
+// 다국어 이름을 표시할 때 사용.
+    public void SetGuideConstellation(ConstellationData constellation)
+    {
+        currentConstellation = constellation;
+
+        if (currentConstellation == null)
+        {
+            if (guideImageName != null)
+                guideImageName.text = "";
+
+            return;
+        }
+
+        RefreshGuideName();
     }
     
     public void ReplaceGuideImage(Sprite sprite)
@@ -239,5 +262,24 @@ public class GuideImageUI : MonoBehaviour
 
         if (!isGuideHidden)
             SlideGuideImage();
+    }
+    
+    private void OnEnable()
+    {
+        SettingsUI.LanguageChanged += RefreshGuideName;
+        RefreshGuideName();
+    }
+
+    private void OnDisable()
+    {
+        SettingsUI.LanguageChanged -= RefreshGuideName;
+    }
+
+    private void RefreshGuideName()
+    {
+        if (currentConstellation == null || guideImageName == null)
+            return;
+
+        guideImageName.text = currentConstellation.GetName();
     }
 }

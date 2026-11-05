@@ -427,6 +427,11 @@ public class UIManager : SceneMonoBehaviourSingleton<UIManager>
     {
         guideImageUI.ChangeGuideName(constellationName);
     }
+    
+    public void SetGuideConstellation(ConstellationData constellation)
+    {
+        guideImageUI.SetGuideConstellation(constellation);
+    }
 
     private CanvasGroup GetChapterCanvasGroup(RectTransform rect)
     {
