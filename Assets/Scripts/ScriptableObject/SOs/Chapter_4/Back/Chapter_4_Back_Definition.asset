@@ -16,6 +16,12 @@ MonoBehaviour:
   chapterNumber: Chapter 4
   chapterTitle: "\uC544\uB798\uC758 \uC774\uC57C\uAE30"
   chapterSubtitle: "\uD30C\uD5E4\uCE5C \uBE44\uBC00"
+  chapterNumber_En: 
+  chapterTitle_En: 
+  chapterSubtitle_En: 
+  chapterNumber_ZhHans: 
+  chapterTitle_ZhHans: 
+  chapterSubtitle_ZhHans: 
   cutSceneCasts: {fileID: 11400000, guid: e14cd05dce21418499b6f076c3cd9e84, type: 2}
   constellationData: {fileID: 11400000, guid: 610a5ec9ae9a20840bfbbe27b5a2a4a7, type: 2}
   animations:
@@ -28,7 +34,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 94842f07e02d762419b34b8280387c90, type: 2}
   - {fileID: 11400000, guid: 717e0765d3b95d14a8bb5d539a513dbf, type: 2}
   - {fileID: 11400000, guid: a55efdb4574b8f143ab9ff4628038725, type: 2}
-  - {fileID: 11400000, guid: 500b0a47325c2f0479740f85e5883a1c, type: 2}
   - {fileID: 11400000, guid: f862ff4ab2f08fc498ad99da29e00e1e, type: 2}
   - {fileID: 11400000, guid: 9e64fd106b4982240a5d54da7a18bc29, type: 2}
   - {fileID: 11400000, guid: a6070862445f86141ad868bcef610378, type: 2}

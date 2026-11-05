@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Chapter_3_Front_28
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
   dialogueId: Chapter_3_Front_28
+  sounds:
+  - action: 1
+    clip: {fileID: 8300000, guid: 259926b87d5ebfe48be8edca5ef7cff3, type: 3}
+    volume: 0
   commands:
   - characterId: Daughter
     characterName: Daughter

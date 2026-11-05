@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: Chapter_4_Back_28
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
   dialogueId: Chapter_4_Back_28
+  sounds:
+  - action: 1
+    clip: {fileID: 8300000, guid: a581a116cccffa7459f76e8f94264014, type: 3}
+    volume: 0.6
   commands:
+  - characterId: Daughter
+    characterName: Daughter
+    position: {x: -1.74, y: -1.11, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 4567182233963185607, guid: 726d3505f12d00b40a8a37973b90d319, type: 3}
   - characterId: Hole
     characterName: Hole
     position: {x: 2.42, y: -3.54, z: 0}
