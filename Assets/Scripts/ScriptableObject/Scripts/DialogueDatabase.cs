@@ -20,13 +20,13 @@ public class DialogueData
     
     [TextArea(2, 8)]
     public string Text_Ja;
-    
+
     [TextArea(2, 8)]
     public string Text_Es;
-    
+
     [TextArea(2, 8)]
     public string Text_Pt;
-    
+
     [TextArea(2, 8)]
     public string Text_Ru;
 

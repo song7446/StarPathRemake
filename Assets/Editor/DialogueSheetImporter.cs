@@ -30,9 +30,14 @@ public static class DialogueSheetImporter
         int idColumn = FindColumn(header, "ID");
         int chapterColumn = FindColumn(header, "Chapter_Id");
         int speakerColumn = FindColumn(header, "Speaker");
+
         int krColumn = FindColumn(header, "Text_Kr");
         int enColumn = FindColumn(header, "Text_En");
         int zhHansColumn = FindColumn(header, "Text_ZhHans");
+        int jaColumn = FindColumn(header, "Text_Ja");
+        int esColumn = FindColumn(header, "Text_Es");
+        int ptColumn = FindColumn(header, "Text_Pt");
+        int ruColumn = FindColumn(header, "Text_Ru");
 
         var result = new List<DialogueData>();
         var ids = new HashSet<string>();
@@ -71,10 +76,14 @@ public static class DialogueSheetImporter
                 Chapter_Id = chapterId,
                 Speaker = GetCell(row, speakerColumn).Trim(),
 
-                // 대사의 공백과 줄바꿈은 그대로 보존.
+                // 대사의 공백과 줄바꿈은 그대로 보존한다.
                 Text_Kr = GetCell(row, krColumn),
                 Text_En = GetCell(row, enColumn),
-                Text_ZhHans = GetCell(row, zhHansColumn)
+                Text_ZhHans = GetCell(row, zhHansColumn),
+                Text_Ja = GetCell(row, jaColumn),
+                Text_Es = GetCell(row, esColumn),
+                Text_Pt = GetCell(row, ptColumn),
+                Text_Ru = GetCell(row, ruColumn)
             });
         }
 
