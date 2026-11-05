@@ -10,9 +10,7 @@ public class DialogueUI : MonoBehaviour
 
     [Header("출력")] [SerializeField, Min(1f)]
     private float charactersPerSecond = 25f;
-
-    [SerializeField] private bool useEnglish;
-
+    
     [Header("완료 이벤트")] [SerializeField] private UnityEvent onDialogueFinished;
     [Header("완료 이벤트")] [SerializeField] private UnityEvent onDialogueFinishedFront;
 
@@ -123,20 +121,19 @@ public class DialogueUI : MonoBehaviour
 
         DialogueData line = lines[currentIndex];
 
-        // 예시: 실제 화자 필드 이름이 Speaker인 경우
         SetDialoguePitch(line.Speaker);
 
-        string text = useEnglish && !string.IsNullOrEmpty(line.Text_En)
-            ? line.Text_En
-            : line.Text_Kr;
+        // 설정에서 선택한 언어로 출력.
+        string text = line.GetText();
 
-        dialogueText.text = text ?? "";
+        dialogueText.text = text;
         dialogueText.maxVisibleCharacters = 0;
         dialogueText.ForceMeshUpdate();
 
         characterCount = dialogueText.textInfo.characterCount;
 
-        // 재생한 순서대로 추가. 같은 대사도 다시 보면 추가한다.
+        // 실제로 대사를 진행했을 때만 기록.
+        // 같은 챕터를 다시 보면 기존처럼 기록이 이어짐.
         if (dialogueHistoryUI != null)
             dialogueHistoryUI.RecordLine(text);
 
@@ -267,9 +264,43 @@ public class DialogueUI : MonoBehaviour
                 break;
         }
     }
+    
+    private void OnEnable()
+    {
+        SettingsUI.LanguageChanged += OnLanguageChanged;
+    }
+
+    private void OnLanguageChanged()
+    {
+        if (!isPlaying ||
+            dialogueText == null ||
+            lines == null ||
+            currentIndex < 0 ||
+            currentIndex >= lines.Count)
+        {
+            return;
+        }
+
+        StopTyping();
+
+        DialogueData line = lines[currentIndex];
+
+        dialogueText.text = line.GetText();
+
+        // 변경된 문장은 타이핑 없이 전체 표시.
+        dialogueText.maxVisibleCharacters = int.MaxValue;
+        dialogueText.ForceMeshUpdate();
+
+        characterCount = dialogueText.textInfo.characterCount;
+        dialogueText.maxVisibleCharacters = characterCount;
+
+        // 언어 변경만으로 애니메이션을 실행하거나 기록을 추가하지 않음.
+    }
 
     private void OnDisable()
     {
+        SettingsUI.LanguageChanged -= OnLanguageChanged;
+
         StopTyping();
         isPlaying = false;
     }

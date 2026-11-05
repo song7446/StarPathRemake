@@ -13,13 +13,18 @@ public static class DialogueSheetImporter
             throw new ArgumentNullException(nameof(target));
 
         if (!AssetDatabase.Contains(target))
+        {
             throw new InvalidOperationException(
                 "프로젝트에 저장된 DialogueDatabase 에셋을 지정해주세요.");
+        }
 
         if (rows == null || rows.Count < 2 || rows[0] == null)
-            throw new InvalidOperationException("시트에 대사 데이터가 없습니다.");
+        {
+            throw new InvalidOperationException(
+                "시트에 대사 데이터가 없습니다.");
+        }
 
-        // 첫 번째 행에서 컬럼 위치 찾기
+        // 첫 번째 행에서 컬럼 위치 확인.
         string[] header = rows[0];
 
         int idColumn = FindColumn(header, "ID");
@@ -27,6 +32,7 @@ public static class DialogueSheetImporter
         int speakerColumn = FindColumn(header, "Speaker");
         int krColumn = FindColumn(header, "Text_Kr");
         int enColumn = FindColumn(header, "Text_En");
+        int zhHansColumn = FindColumn(header, "Text_ZhHans");
 
         var result = new List<DialogueData>();
         var ids = new HashSet<string>();
@@ -42,16 +48,22 @@ public static class DialogueSheetImporter
             string chapterId = GetCell(row, chapterColumn).Trim();
 
             if (string.IsNullOrEmpty(id))
+            {
                 throw new InvalidOperationException(
                     $"시트 {i + 1}행: ID가 없습니다.");
+            }
 
             if (string.IsNullOrEmpty(chapterId))
+            {
                 throw new InvalidOperationException(
                     $"시트 {i + 1}행: Chapter_Id가 없습니다.");
+            }
 
             if (!ids.Add(id))
+            {
                 throw new InvalidOperationException(
                     $"시트 {i + 1}행: 중복 ID '{id}'");
+            }
 
             result.Add(new DialogueData
             {
@@ -59,16 +71,20 @@ public static class DialogueSheetImporter
                 Chapter_Id = chapterId,
                 Speaker = GetCell(row, speakerColumn).Trim(),
 
-                // 대사의 공백과 줄바꿈은 그대로 보존
+                // 대사의 공백과 줄바꿈은 그대로 보존.
                 Text_Kr = GetCell(row, krColumn),
-                Text_En = GetCell(row, enColumn)
+                Text_En = GetCell(row, enColumn),
+                Text_ZhHans = GetCell(row, zhHansColumn)
             });
         }
 
         if (result.Count == 0)
-            throw new InvalidOperationException("가져올 대사가 없습니다.");
+        {
+            throw new InvalidOperationException(
+                "가져올 대사가 없습니다.");
+        }
 
-        // 모든 행을 정상적으로 변환한 뒤 기존 SO 갱신
+        // 모든 행의 검증이 끝난 뒤 기존 데이터 갱신.
         Undo.RecordObject(target, "Import Dialogue Sheet");
 
         target.ReplaceData(result);
@@ -88,18 +104,24 @@ public static class DialogueSheetImporter
                 .TrimStart('\uFEFF');
 
             if (string.Equals(
-                value, name, StringComparison.OrdinalIgnoreCase))
+                value,
+                name,
+                StringComparison.OrdinalIgnoreCase))
             {
                 return i;
             }
         }
 
-        throw new InvalidOperationException($"'{name}' 컬럼이 없습니다.");
+        throw new InvalidOperationException(
+            $"'{name}' 컬럼이 없습니다.");
     }
 
     private static string GetCell(string[] row, int index)
     {
-        return index < row.Length ? row[index] ?? "" : "";
+        if (row == null || index < 0 || index >= row.Length)
+            return "";
+
+        return row[index] ?? "";
     }
 
     private static bool IsEmptyRow(string[] row)

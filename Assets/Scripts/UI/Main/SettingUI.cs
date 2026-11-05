@@ -17,14 +17,30 @@ public class SettingsUI : MonoBehaviour
     public enum GameLanguage
     {
         Korean = 0,
-        English = 1
+        English = 1,
+        SimplifiedChinese = 2
     }
 
-    // 다른 컴포넌트의 초기화 순서에 관계없이 저장값 확인.
-    public static GameLanguage CurrentLanguage =>
-        (GameLanguage)Mathf.Clamp(
-            PlayerPrefs.GetInt(LanguageKey, 0), 0, 1);
+// 설정창을 열지 않아도 저장된 언어를 확인할 수 있음.
+    public static GameLanguage CurrentLanguage
+    {
+        get
+        {
+            int savedLanguage = PlayerPrefs.GetInt(
+                LanguageKey,
+                (int)GameLanguage.English);
 
+            return savedLanguage switch
+            {
+                0 => GameLanguage.Korean,
+                1 => GameLanguage.English,
+                2 => GameLanguage.SimplifiedChinese,
+                _ => GameLanguage.English
+            };
+        }
+    }
+
+// 기존 코드와의 호환을 위해 유지.
     public static bool UseEnglish =>
         CurrentLanguage == GameLanguage.English;
 
@@ -70,14 +86,23 @@ public class SettingsUI : MonoBehaviour
 
     private void Start()
     {
-        LoadVolume(masterSlider, masterValueText,
-            MasterKey, "MasterVolume");
+        LoadVolume(
+            masterSlider,
+            masterValueText,
+            MasterKey,
+            "MasterVolume");
 
-        LoadVolume(bgmSlider, bgmValueText,
-            BgmKey, "BGMVolume");
+        LoadVolume(
+            bgmSlider,
+            bgmValueText,
+            BgmKey,
+            "BGMVolume");
 
-        LoadVolume(sfxSlider, sfxValueText,
-            SfxKey, "SFXVolume");
+        LoadVolume(
+            sfxSlider,
+            sfxValueText,
+            SfxKey,
+            "SFXVolume");
 
         bool fullscreen = PlayerPrefs.GetInt(
             FullscreenKey,
@@ -92,7 +117,8 @@ public class SettingsUI : MonoBehaviour
         languageDropdown.AddOptions(new List<string>
         {
             "한국어",
-            "English"
+            "English",
+            "简体中文"
         });
 
         languageDropdown.SetValueWithoutNotify(
@@ -289,7 +315,8 @@ public class SettingsUI : MonoBehaviour
         if (!initialized)
             return;
 
-        index = Mathf.Clamp(index, 0, 1);
+        if (index < 0 || index > 2)
+            return;
 
         if ((int)CurrentLanguage == index)
             return;

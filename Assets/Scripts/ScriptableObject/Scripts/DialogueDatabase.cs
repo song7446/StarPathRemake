@@ -14,6 +14,41 @@ public class DialogueData
 
     [TextArea(2, 8)]
     public string Text_En;
+
+    [TextArea(2, 8)]
+    public string Text_ZhHans;
+
+    // 현재 설정된 언어의 대사를 반환.
+    public string GetText()
+    {
+        return GetText(SettingsUI.CurrentLanguage);
+    }
+
+    // 특정 언어의 대사를 반환.
+    public string GetText(SettingsUI.GameLanguage language)
+    {
+        string translatedText;
+
+        switch (language)
+        {
+            case SettingsUI.GameLanguage.English:
+                translatedText = Text_En;
+                break;
+
+            case SettingsUI.GameLanguage.SimplifiedChinese:
+                translatedText = Text_ZhHans;
+                break;
+
+            default:
+                translatedText = Text_Kr;
+                break;
+        }
+
+        // 번역이 없으면 한국어 원문 사용.
+        return string.IsNullOrWhiteSpace(translatedText)
+            ? Text_Kr ?? string.Empty
+            : translatedText;
+    }
 }
 
 [CreateAssetMenu(
