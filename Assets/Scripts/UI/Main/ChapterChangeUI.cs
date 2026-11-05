@@ -30,11 +30,53 @@ public class ChapterChangeUI : MonoBehaviour
         Shader.PropertyToID("_PixelSize");
 
     private Sequence sequence;
+    
+    private ChapterDefinition currentChapter;
+    private bool isLanguageSubscribed;
 
-    public void SetTitle(string title, string subtitle)
+    public void SetTitle(ChapterDefinition chapter)
     {
-        titleTMP.text = title;
-        subtitleTMP.text = subtitle;
+        currentChapter = chapter;
+
+        // 처음부터 비활성 상태여도 SetTitle이 호출되면 구독.
+        SubscribeLanguageChanged();
+        RefreshLocalizedTitle();
+    }
+
+    private void OnEnable()
+    {
+        SubscribeLanguageChanged();
+        RefreshLocalizedTitle();
+    }
+
+    private void SubscribeLanguageChanged()
+    {
+        if (isLanguageSubscribed)
+            return;
+
+        SettingsUI.LanguageChanged += RefreshLocalizedTitle;
+        isLanguageSubscribed = true;
+    }
+
+    private void RefreshLocalizedTitle()
+    {
+        if (currentChapter == null)
+            return;
+
+        if (titleTMP != null)
+            titleTMP.text = currentChapter.GetChapterNumber();
+
+        if (subtitleTMP != null)
+            subtitleTMP.text = currentChapter.GetDisplaySubtitle();
+    }
+
+    private void OnDestroy()
+    {
+        if (isLanguageSubscribed)
+        {
+            SettingsUI.LanguageChanged -= RefreshLocalizedTitle;
+            isLanguageSubscribed = false;
+        }
     }
 
     public void GetInSubTitle()

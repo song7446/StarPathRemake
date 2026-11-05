@@ -98,11 +98,7 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
         AnimationManager.Instance.CommandsToDictionary();
 
-        UIManager.Instance.SetTitle(
-            _currentChapterDefinition.chapterNumber,
-            $"{_currentChapterDefinition.chapterTitle} - " +
-            $"{_currentChapterDefinition.chapterSubtitle}"
-        );
+        UIManager.Instance.SetTitle(_currentChapterDefinition);
 
         if (!fromFront)
         {

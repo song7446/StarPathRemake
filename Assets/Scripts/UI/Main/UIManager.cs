@@ -153,9 +153,9 @@ public class UIManager : SceneMonoBehaviourSingleton<UIManager>
         return dialogueUI.IsPlaying;
     }
 
-    public void SetTitle(string title, string subtitle)
+    public void SetTitle(ChapterDefinition chapter)
     {
-        chapterChangeUI.SetTitle(title, subtitle);
+        chapterChangeUI.SetTitle(chapter);
     }
 
     public void FadeInTitle(Action onFinished = null,

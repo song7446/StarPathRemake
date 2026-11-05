@@ -123,19 +123,15 @@ public class DialogueUI : MonoBehaviour
 
         SetDialoguePitch(line.Speaker);
 
-        // 설정에서 선택한 언어로 출력.
-        string text = line.GetText();
-
-        dialogueText.text = text;
+        dialogueText.text = line.GetText();
         dialogueText.maxVisibleCharacters = 0;
         dialogueText.ForceMeshUpdate();
 
         characterCount = dialogueText.textInfo.characterCount;
 
-        // 실제로 대사를 진행했을 때만 기록.
-        // 같은 챕터를 다시 보면 기존처럼 기록이 이어짐.
+        // 번역된 문자열 대신 대사 데이터 자체를 기록.
         if (dialogueHistoryUI != null)
-            dialogueHistoryUI.RecordLine(text);
+            dialogueHistoryUI.RecordLine(line);
 
         AnimationManager.Instance.PlayAnimation(line.ID);
 

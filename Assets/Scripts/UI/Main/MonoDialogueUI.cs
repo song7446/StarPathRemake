@@ -20,8 +20,7 @@ public class MonologueUI : MonoBehaviour
     [Header("출력")]
     [SerializeField, Min(1f)]
     private float charactersPerSecond = 25f;
-
-    [SerializeField] private bool useEnglish;
+    
 
     private IReadOnlyList<DialogueData> lines;
     private int currentIndex;
@@ -60,6 +59,38 @@ public class MonologueUI : MonoBehaviour
 
         if (nextButton != null)
             nextButton.onClick.AddListener(Advance);
+    }
+    
+    private void OnEnable()
+    {
+        SettingsUI.LanguageChanged += OnLanguageChanged;
+    }
+
+    private void OnLanguageChanged()
+    {
+        // 현재 재생 중인 독백만 갱신.
+        // 독백 종료 후 페이드아웃 중이라면 처리하지 않음.
+        if (activeMonologue != this ||
+            monologueText == null ||
+            lines == null ||
+            currentIndex < 0 ||
+            currentIndex >= lines.Count)
+        {
+            return;
+        }
+
+        StopTyping();
+
+        DialogueData line = lines[currentIndex];
+
+        monologueText.text = line.GetText();
+        monologueText.maxVisibleCharacters = int.MaxValue;
+        monologueText.ForceMeshUpdate();
+
+        characterCount = monologueText.textInfo.characterCount;
+        monologueText.maxVisibleCharacters = characterCount;
+
+        // 언어 변경으로 다음 대사나 완료 콜백을 실행하지 않음.
     }
 
     private void Update()
@@ -148,12 +179,8 @@ public class MonologueUI : MonoBehaviour
 
         DialogueData line = lines[currentIndex];
 
-        string text = useEnglish &&
-                      !string.IsNullOrEmpty(line.Text_En)
-            ? line.Text_En
-            : line.Text_Kr;
-
-        monologueText.text = text ?? "";
+        // 현재 설정된 언어로 독백 출력.
+        monologueText.text = line.GetText();
         monologueText.maxVisibleCharacters = 0;
         monologueText.ForceMeshUpdate();
 
@@ -294,6 +321,8 @@ public class MonologueUI : MonoBehaviour
 
     private void OnDisable()
     {
+        SettingsUI.LanguageChanged -= OnLanguageChanged;
+
         CloseWithoutCallback();
     }
 }

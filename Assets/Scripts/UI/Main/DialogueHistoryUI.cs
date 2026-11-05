@@ -11,19 +11,36 @@ public class DialogueHistoryUI : MonoBehaviour
 
     private const int MaxHistoryCount = 100;
 
-    private readonly Queue<string> history = new();
+    // 문자열 대신 대사 데이터를 보관.
+    private readonly Queue<DialogueData> history = new();
 
     private void OnEnable()
     {
+        SettingsUI.LanguageChanged += OnLanguageChanged;
+
         Refresh();
     }
 
-    public void RecordLine(string text)
+    private void OnDisable()
     {
-        if (string.IsNullOrWhiteSpace(text))
+        SettingsUI.LanguageChanged -= OnLanguageChanged;
+    }
+
+    public void RecordLine(DialogueData dialogue)
+    {
+        if (dialogue == null)
             return;
 
-        history.Enqueue(text);
+        // 어느 언어에도 내용이 없는 대사는 기록하지 않음.
+        if (string.IsNullOrWhiteSpace(dialogue.Text_Kr) &&
+            string.IsNullOrWhiteSpace(dialogue.Text_En) &&
+            string.IsNullOrWhiteSpace(dialogue.Text_ZhHans))
+        {
+            return;
+        }
+
+        // 같은 대사도 다시 재생하면 새로운 기록으로 추가.
+        history.Enqueue(dialogue);
 
         while (history.Count > MaxHistoryCount)
             history.Dequeue();
@@ -32,10 +49,29 @@ public class DialogueHistoryUI : MonoBehaviour
             Refresh();
     }
 
+    private void OnLanguageChanged()
+    {
+        // 언어 변경 시 읽고 있던 스크롤 위치를 유지.
+        float scrollPosition = scrollRect != null
+            ? scrollRect.verticalNormalizedPosition
+            : 0f;
+
+        Refresh();
+
+        if (scrollRect != null && history.Count > 0)
+        {
+            scrollRect.StopMovement();
+            scrollRect.verticalNormalizedPosition = scrollPosition;
+        }
+    }
+
     public void Refresh()
     {
+        if (scrollRect == null || historyText == null)
+            return;
+
         bool hasHistory = history.Count > 0;
-        
+
         scrollRect.gameObject.SetActive(hasHistory);
 
         if (!hasHistory)
@@ -46,22 +82,26 @@ public class DialogueHistoryUI : MonoBehaviour
 
         var builder = new StringBuilder();
 
-        foreach (string line in history)
+        foreach (DialogueData line in history)
         {
             if (builder.Length > 0)
                 builder.Append("\n\n");
 
-            builder.Append(line);
+            // 기록을 보여주는 시점의 언어로 출력.
+            builder.Append(line.GetText());
         }
 
         historyText.text = builder.ToString();
 
         Canvas.ForceUpdateCanvases();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(
-            scrollRect.content
-        );
 
-        // 열 때 가장 최근 대사가 있는 맨 아래로 이동.
+        if (scrollRect.content != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(
+                scrollRect.content);
+        }
+
+        // 기록창을 열 때 가장 최근 대사로 이동.
         scrollRect.StopMovement();
         scrollRect.verticalNormalizedPosition = 0f;
     }
