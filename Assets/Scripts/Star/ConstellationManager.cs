@@ -21,7 +21,7 @@ public class ConstellationManager : SceneMonoBehaviourSingleton<ConstellationMan
     private GameObject currentConstellationObject;
     private Coroutine starDisappearCoroutine;
     
-    [SerializeField] private AudioClip answerStartAudioClip;
+    [SerializeField] private AudioClip answerStarAudioClip;
 
     public void CreateConstellation(ConstellationData constellationData)
     {
@@ -376,7 +376,7 @@ public class ConstellationManager : SceneMonoBehaviourSingleton<ConstellationMan
 
             UIManager.Instance.ToggleCamera();
             
-            AudioManager.Instance.PlaySFX(answerStartAudioClip);
+            AudioManager.Instance.PlaySFX(answerStarAudioClip, 0.5f);
         }
         else
         {

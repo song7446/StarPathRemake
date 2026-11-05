@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Chapter_2_Back_22
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
   dialogueId: Chapter_2_Back_22
+  sounds:
+  - action: 1
+    clip: {fileID: 8300000, guid: 19dec76a7bb6e6742bf27390d232628a, type: 3}
+    volume: 1
   commands:
   - characterId: TwoWayRadio
     characterName: TwoWayRadio
