@@ -29,6 +29,8 @@ public class GlitchTransitionUI : MonoBehaviour
     private Tween transitionTween;
     private float progress;
     private float noiseTime;
+    
+    [SerializeField] private AudioClip glitchSFX;
 
     public bool IsTransitioning { get; private set; }
     public bool IsClosed => progress >= 1f;
@@ -106,6 +108,8 @@ public class GlitchTransitionUI : MonoBehaviour
             onFinished?.Invoke();
             return;
         }
+        
+        AudioManager.Instance.PlaySFX(glitchSFX);
 
         IsTransitioning = true;
 
