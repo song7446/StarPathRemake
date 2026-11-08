@@ -22,8 +22,34 @@ MonoBehaviour:
     \uB610 \uB2E4\uB978 \uC874\uC7AC\uB97C \uD5A5\uD574 \uC601\uC6D0\uD788 \uC190\uC744
     \uBED7\uACE0 \uC788\uB2E4."
   Name_En: Ursa Major
-  Explain_En: blr
-  CreatePosition: {x: 0, y: 1.5, z: 0}
+  Explain_En: A great bear forever circling the northern sky. It holds the seven
+    bright stars of the Big Dipper, guiding the way to the North Star. It reaches
+    out forever toward another presence, somewhere beyond its grasp.
+  Name_ZhHans: "\u5927\u718A\u5EA7"
+  Explain_ZhHans: "\u5DE8\u718A\u7684\u661F\u5EA7\uFF0C\u6C38\u8FDC\u5F98\u5F8A\u4E8E\u5317\u65B9\u7684\u5929\u7A7A\u3002\u6000\u62B1\u7740\u660E\u4EAE\u7684\u5317\u6597\u4E03\u661F\uFF0C\u66FE\u6307\u5F15\u4EBA\u4EEC\u627E\u5230\u5317\u6781\u661F\u3002\u5B83\u6C38\u8FDC\u4F38\u51FA\u624B\uFF0C\u63A2\u5411\u67D0\u5904\u90A3\u4E2A\u672C\u5E94\u4E0E\u5B83\u76F8\u4F34\u7684\u8EAB\u5F71\u3002"
+  Name_Ja: "\u304A\u304A\u3050\u307E\u5EA7"
+  Explain_Ja: "\u5317\u306E\u7A7A\u3092\u6C38\u9060\u306B\u5DE1\u308B\u3001\u5927\u304D\u306A\u718A\u306E\u661F\u5EA7\u3002\u660E\u308B\u304F\u8F1D\u304F\u4E03\u3064\u306E\u661F\u3001\u5317\u6597\u4E03\u661F\u3092\u62B1\u304D\u3001\u5317\u6975\u661F\u3092\u898B\u3064\u3051\u308B\u624B\u304C\u304B\u308A\u3068\u306A\u3063\u305F\u3002\u3069\u3053\u304B\u3067\u5171\u306B\u3042\u308B\u306F\u305A\u306E\u3001\u3082\u3046\u3072\u3068\u3064\u306E\u5B58\u5728\u3078\u3001\u6C38\u9060\u306B\u624B\u3092\u4F38\u3070\u3057\u3066\u3044\u308B\u3002"
+  Name_Es: Osa Mayor
+  Explain_Es: "Una gran osa que gira eternamente por el cielo del norte. Alberga
+    las siete brillantes estrellas del Carro, que guiaban hacia la Estrella Polar.
+    Extiende su mano por siempre hacia otra presencia que, en alg\xFAn lugar, deber\xEDa
+    estar a su lado."
+  Name_Pt: Ursa Maior
+  Explain_Pt: "Uma grande ursa que ronda eternamente o c\xE9u do norte. Abriga as
+    sete estrelas brilhantes do Grande Carro, que indicavam o caminho at\xE9 a Estrela
+    Polar. Estende a m\xE3o para sempre em dire\xE7\xE3o a outra presen\xE7a que,
+    em algum lugar, deveria estar ao seu lado."
+  Name_Ru: "\u0411\u043E\u043B\u044C\u0448\u0430\u044F \u041C\u0435\u0434\u0432\u0435\u0434\u0438\u0446\u0430"
+  Explain_Ru: "\u041E\u0433\u0440\u043E\u043C\u043D\u0430\u044F \u043C\u0435\u0434\u0432\u0435\u0434\u0438\u0446\u0430,
+    \u0432\u0435\u0447\u043D\u043E \u043A\u0440\u0443\u0436\u0430\u0449\u0430\u044F
+    \u043F\u043E \u0441\u0435\u0432\u0435\u0440\u043D\u043E\u043C\u0443 \u043D\u0435\u0431\u0443.
+    \u041E\u043D\u0430 \u0445\u0440\u0430\u043D\u0438\u0442 \u0441\u0435\u043C\u044C
+    \u044F\u0440\u043A\u0438\u0445 \u0437\u0432\u0451\u0437\u0434 \u0411\u043E\u043B\u044C\u0448\u043E\u0433\u043E
+    \u041A\u043E\u0432\u0448\u0430, \u043F\u043E\u043C\u043E\u0433\u0430\u0432\u0448\u0438\u0445
+    \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u044C \u041F\u043E\u043B\u044F\u0440\u043D\u0443\u044E
+    \u0437\u0432\u0435\u0437\u0434\u0443. \u0418 \u0432\u0435\u0447\u043D\u043E \u0442\u044F\u043D\u0435\u0442\u0441\u044F
+    \u043A \u0442\u043E\u043C\u0443, \u043A\u0442\u043E \u0433\u0434\u0435-\u0442\u043E
+    \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0440\u044F\u0434\u043E\u043C."
   correctConnections:
   - starA: 1
     starB: 2
@@ -62,4 +88,7 @@ MonoBehaviour:
   - starA: 15
     starB: 16
   constellationPrefab: {fileID: 3663502720236111122, guid: 6346d7b844862484c86b3169ac7afe79, type: 3}
+  CreatePosition: {x: 0, y: 1.5, z: 0}
   constellationGuideImage: {fileID: 21300000, guid: 4bdfbdad7c824c34da9b6b90fabec665, type: 3}
+  fakeStarsPrefab: {fileID: 0}
+  fakeStarsCreatePosition: {x: 0, y: 0, z: 0}

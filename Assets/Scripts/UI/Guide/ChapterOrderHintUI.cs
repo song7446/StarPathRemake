@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ChapterOrderHintUI : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] private CanvasGroup hintGroup;
-    [SerializeField] private TMP_Text hintText;
+    [SerializeField] private TMP_Text orderText;
+    [SerializeField] private TMP_Text partialResultText;
 
     [Header("연출")]
     [SerializeField, Min(0.01f)]
@@ -29,9 +31,14 @@ public class ChapterOrderHintUI : MonoBehaviour
         hintGroup.alpha = 0f;
         hintGroup.interactable = false;
         hintGroup.blocksRaycasts = false;
-        hintGroup.gameObject.SetActive(false);
 
-        hintText.raycastTarget = false;
+        orderText.raycastTarget = false;
+        partialResultText.raycastTarget = false;
+
+        orderText.gameObject.SetActive(false);
+        partialResultText.gameObject.SetActive(false);
+
+        hintGroup.gameObject.SetActive(false);
     }
 
     public void ShowGuide()
@@ -39,10 +46,10 @@ public class ChapterOrderHintUI : MonoBehaviour
         if (isFinished || isShowing || hasShownResult)
             return;
 
-        ShowMessage("사건이 일어난 순서대로 장면의 별을 이어보세요.");
+        ShowMessage(false);
     }
 
-    // 첫 부분 정답 때만 문구 변경.
+    // 첫 부분 정답 때만 안내를 변경한다.
     public void ShowPartialResult()
     {
         if (isFinished || hasShownResult)
@@ -50,9 +57,7 @@ public class ChapterOrderHintUI : MonoBehaviour
 
         hasShownResult = true;
 
-        ShowMessage(
-            "올바른 연결은 고정되고,\n틀린 연결은 사라집니다."
-        );
+        ShowMessage(true);
 
         hideTimer = DOVirtual.DelayedCall(
             fadeDuration + resultHoldDuration,
@@ -61,16 +66,17 @@ public class ChapterOrderHintUI : MonoBehaviour
         ).SetLink(gameObject);
     }
 
-    private void ShowMessage(string message)
+    private void ShowMessage(bool showResult)
     {
-        hintTween?.Kill();
-        hideTimer?.Kill();
-        hideTimer = null;
+        KillTweens();
 
         isShowing = true;
-
         hintGroup.alpha = 0f;
-        hintText.text = message;
+
+        // 번역은 각 오브젝트의 LocalizedText에서 처리한다.
+        orderText.gameObject.SetActive(!showResult);
+        partialResultText.gameObject.SetActive(showResult);
+
         hintGroup.gameObject.SetActive(true);
 
         hintTween = hintGroup
@@ -93,6 +99,7 @@ public class ChapterOrderHintUI : MonoBehaviour
         hideTimer = null;
 
         hintTween?.Kill();
+        hintTween = null;
 
         hintTween = hintGroup
             .DOFade(0f, fadeDuration)
@@ -100,31 +107,42 @@ public class ChapterOrderHintUI : MonoBehaviour
             .SetLink(gameObject)
             .OnComplete(() =>
             {
+                hintTween = null;
                 isShowing = false;
+
                 hintGroup.gameObject.SetActive(false);
             });
     }
-    
+
     public void HideGuide()
+    {
+        KillTweens();
+
+        if (hasShownResult)
+            isFinished = true;
+
+        isShowing = false;
+
+        if (hintGroup != null)
+        {
+            hintGroup.alpha = 0f;
+            hintGroup.gameObject.SetActive(false);
+        }
+    }
+
+    public void Complete()
+    {
+        isFinished = true;
+        HideGuide();
+    }
+
+    private void KillTweens()
     {
         hintTween?.Kill();
         hideTimer?.Kill();
 
         hintTween = null;
         hideTimer = null;
-
-        if (hasShownResult)
-            isFinished = true;
-
-        isShowing = false;
-        hintGroup.alpha = 0f;
-        hintGroup.gameObject.SetActive(false);
-    }
-    
-    public void Complete()
-    {
-        isFinished = true;
-        HideGuide();
     }
 
     private void OnDisable()

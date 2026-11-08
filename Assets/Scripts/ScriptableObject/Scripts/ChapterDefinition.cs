@@ -22,6 +22,26 @@ public class ChapterDefinition : ScriptableObject
     public string chapterTitle_ZhHans;
     public string chapterSubtitle_ZhHans;
 
+    [Header("일본어")]
+    public string chapterNumber_Ja;
+    public string chapterTitle_Ja;
+    public string chapterSubtitle_Ja;
+
+    [Header("스페인어")]
+    public string chapterNumber_Es;
+    public string chapterTitle_Es;
+    public string chapterSubtitle_Es;
+
+    [Header("포르투갈어 브라질")]
+    public string chapterNumber_Pt;
+    public string chapterTitle_Pt;
+    public string chapterSubtitle_Pt;
+
+    [Header("러시아어")]
+    public string chapterNumber_Ru;
+    public string chapterTitle_Ru;
+    public string chapterSubtitle_Ru;
+
     [Header("등장 오브젝트")]
     public CutSceneCast cutSceneCasts;
 
@@ -43,7 +63,11 @@ public class ChapterDefinition : ScriptableObject
         return GetLocalizedText(
             chapterNumber,
             chapterNumber_En,
-            chapterNumber_ZhHans);
+            chapterNumber_ZhHans,
+            chapterNumber_Ja,
+            chapterNumber_Es,
+            chapterNumber_Pt,
+            chapterNumber_Ru);
     }
 
     public string GetChapterTitle()
@@ -51,7 +75,11 @@ public class ChapterDefinition : ScriptableObject
         return GetLocalizedText(
             chapterTitle,
             chapterTitle_En,
-            chapterTitle_ZhHans);
+            chapterTitle_ZhHans,
+            chapterTitle_Ja,
+            chapterTitle_Es,
+            chapterTitle_Pt,
+            chapterTitle_Ru);
     }
 
     public string GetChapterSubtitle()
@@ -59,7 +87,11 @@ public class ChapterDefinition : ScriptableObject
         return GetLocalizedText(
             chapterSubtitle,
             chapterSubtitle_En,
-            chapterSubtitle_ZhHans);
+            chapterSubtitle_ZhHans,
+            chapterSubtitle_Ja,
+            chapterSubtitle_Es,
+            chapterSubtitle_Pt,
+            chapterSubtitle_Ru);
     }
 
     public string GetDisplaySubtitle()
@@ -79,28 +111,30 @@ public class ChapterDefinition : ScriptableObject
     private static string GetLocalizedText(
         string korean,
         string english,
-        string simplifiedChinese)
+        string simplifiedChinese,
+        string japanese,
+        string spanish,
+        string portuguese,
+        string russian)
     {
-        string translatedText;
-
-        switch (SettingsUI.CurrentLanguage)
+        string translatedText = SettingsUI.CurrentLanguage switch
         {
-            case SettingsUI.GameLanguage.English:
-                translatedText = english;
-                break;
+            SettingsUI.GameLanguage.Korean => korean,
+            SettingsUI.GameLanguage.English => english,
+            SettingsUI.GameLanguage.SimplifiedChinese => simplifiedChinese,
+            SettingsUI.GameLanguage.Japanese => japanese,
+            SettingsUI.GameLanguage.Spanish => spanish,
+            SettingsUI.GameLanguage.Portuguese => portuguese,
+            SettingsUI.GameLanguage.Russian => russian,
+            _ => english
+        };
 
-            case SettingsUI.GameLanguage.SimplifiedChinese:
-                translatedText = simplifiedChinese;
-                break;
+        if (!string.IsNullOrWhiteSpace(translatedText))
+            return translatedText;
 
-            default:
-                translatedText = korean;
-                break;
-        }
-
-        // 번역이 없으면 기존 한국어 사용.
-        return string.IsNullOrWhiteSpace(translatedText)
-            ? korean ?? string.Empty
-            : translatedText;
+        // 선택한 언어의 번역이 없으면 영어로 표시한다.
+        return string.IsNullOrWhiteSpace(english)
+            ? string.Empty
+            : english;
     }
 }

@@ -13,9 +13,27 @@ MonoBehaviour:
   m_Name: Chapter_2_Front_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 2_Front
-  chapterNumber: Chapter 2
+  chapterNumber: "\uC81C2\uC7A5"
   chapterTitle: "\uBCC4\uC744 \uB530\uB77C\uAC00\uB294 \uAE38"
   chapterSubtitle: "\uB3D9\uD589"
+  chapterNumber_En: Chapter 2
+  chapterTitle_En: Following the Stars
+  chapterSubtitle_En: Together
+  chapterNumber_ZhHans: "\u7B2C2\u7AE0"
+  chapterTitle_ZhHans: "\u5FAA\u661F\u4E4B\u8DEF"
+  chapterSubtitle_ZhHans: "\u540C\u884C"
+  chapterNumber_Ja: "\u7B2C2\u7AE0"
+  chapterTitle_Ja: "\u661F\u3092\u305F\u3069\u308B\u9053"
+  chapterSubtitle_Ja: "\u540C\u884C"
+  chapterNumber_Es: "Cap\xEDtulo 2"
+  chapterTitle_Es: Tras las estrellas
+  chapterSubtitle_Es: "En compa\xF1\xEDa"
+  chapterNumber_Pt: "Cap\xEDtulo 2\t"
+  chapterTitle_Pt: Seguindo as estrelas
+  chapterSubtitle_Pt: Companhia
+  chapterNumber_Ru: "\u0413\u043B\u0430\u0432\u0430 2"
+  chapterTitle_Ru: "\u0412\u0441\u043B\u0435\u0434 \u0437\u0430 \u0437\u0432\u0451\u0437\u0434\u0430\u043C\u0438"
+  chapterSubtitle_Ru: "\u0412\u043C\u0435\u0441\u0442\u0435"
   cutSceneCasts: {fileID: 11400000, guid: 4b625a102d577c74189313d5daafa19e, type: 2}
   constellationData: {fileID: 11400000, guid: eb318188bb8f3ab4499ed1bcf67f0b28, type: 2}
   animations:

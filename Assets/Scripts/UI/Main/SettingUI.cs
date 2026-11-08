@@ -121,7 +121,7 @@ public class SettingsUI : MonoBehaviour
         {
             "한국어",
             "English",
-            "简体中文",
+            "中文",
             "日本語",
             "Español",
             "Português",

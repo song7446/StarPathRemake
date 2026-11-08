@@ -13,9 +13,27 @@ MonoBehaviour:
   m_Name: Chapter_5_Back_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 5_Front
-  chapterNumber: Chapter 5
+  chapterNumber: "\uC81C5\uC7A5"
   chapterTitle: "\uB05D\uB098\uBC84\uB9B0 \uC5EC\uC815"
   chapterSubtitle: "\uB9C8\uC8FC\uD55C \uC5C5"
+  chapterNumber_En: Chapter 5
+  chapterTitle_En: "Journey\u2019s End"
+  chapterSubtitle_En: The Reckoning
+  chapterNumber_ZhHans: "\u7B2C5\u7AE0"
+  chapterTitle_ZhHans: "\u5DF2\u7136\u7EC8\u7ED3\u7684\u65C5\u7A0B"
+  chapterSubtitle_ZhHans: "\u76F4\u9762\u4E1A\u679C"
+  chapterNumber_Ja: "\u7B2C5\u7AE0"
+  chapterTitle_Ja: "\u7D42\u308F\u3063\u3066\u3057\u307E\u3063\u305F\u65C5"
+  chapterSubtitle_Ja: "\u5411\u304D\u5408\u3046\u696D"
+  chapterNumber_Es: "Cap\xEDtulo 5"
+  chapterTitle_Es: El fin del camino
+  chapterSubtitle_Es: Ajuste de cuentas
+  chapterNumber_Pt: "Cap\xEDtulo 5"
+  chapterTitle_Pt: O fim da jornada
+  chapterSubtitle_Pt: O acerto de contas
+  chapterNumber_Ru: "\u0413\u043B\u0430\u0432\u0430 5"
+  chapterTitle_Ru: "\u041A\u043E\u043D\u0435\u0446 \u043F\u0443\u0442\u0438"
+  chapterSubtitle_Ru: "\u0420\u0430\u0441\u043F\u043B\u0430\u0442\u0430"
   cutSceneCasts: {fileID: 11400000, guid: 7a082f138551ae649adc4511966a0dae, type: 2}
   constellationData: {fileID: 11400000, guid: b10159e9a2d1f694b8272568d1da9211, type: 2}
   animations:

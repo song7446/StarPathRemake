@@ -13,9 +13,28 @@ MonoBehaviour:
   m_Name: Chapter_5_Front_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 5_Front
-  chapterNumber: Chapter 5
+  chapterNumber: "\uC81C5\uC7A5"
   chapterTitle: "\uB05D\uB098\uBC84\uB9B0 \uC5EC\uC815"
   chapterSubtitle: "\uC9C0\uB098\uCCD0 \uC628 \uAFC8"
+  chapterNumber_En: Chapter 5
+  chapterTitle_En: "Journey\u2019s End"
+  chapterSubtitle_En: A Dream Left Behind
+  chapterNumber_ZhHans: "\u7B2C5\u7AE0"
+  chapterTitle_ZhHans: "\u5DF2\u7136\u7EC8\u7ED3\u7684\u65C5\u7A0B"
+  chapterSubtitle_ZhHans: "\u9057\u843D\u7684\u68A6\u60F3"
+  chapterNumber_Ja: "\u7B2C5\u7AE0"
+  chapterTitle_Ja: "\u7D42\u308F\u3063\u3066\u3057\u307E\u3063\u305F\u65C5"
+  chapterSubtitle_Ja: "\u7F6E\u304D\u53BB\u308A\u306E\u5922"
+  chapterNumber_Es: "Cap\xEDtulo 5"
+  chapterTitle_Es: El fin del camino
+  chapterSubtitle_Es: "Un sue\xF1o atr\xE1s"
+  chapterNumber_Pt: "Cap\xEDtulo 5"
+  chapterTitle_Pt: O fim da jornada
+  chapterSubtitle_Pt: "Um sonho para tr\xE1s"
+  chapterNumber_Ru: "\u0413\u043B\u0430\u0432\u0430 5"
+  chapterTitle_Ru: "\u041A\u043E\u043D\u0435\u0446 \u043F\u0443\u0442\u0438"
+  chapterSubtitle_Ru: "\u041E\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u043D\u0430\u044F
+    \u043C\u0435\u0447\u0442\u0430"
   cutSceneCasts: {fileID: 11400000, guid: 9e7952ab882f00140904b4e9e61bb0d2, type: 2}
   constellationData: {fileID: 11400000, guid: b10159e9a2d1f694b8272568d1da9211, type: 2}
   animations:

@@ -13,9 +13,29 @@ MonoBehaviour:
   m_Name: Chapter_6_Back_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 6_Back
-  chapterNumber: Chapter 6
+  chapterNumber: "\uC81C6\uC7A5"
   chapterTitle: "\uB2FF\uC9C0 \uBABB\uD55C \uB9D0"
   chapterSubtitle: "\uCE68\uBB35\uC744 \uB118\uC5B4"
+  chapterNumber_En: Chapter 6
+  chapterTitle_En: Words That Never Reached You
+  chapterSubtitle_En: Beyond Silence
+  chapterNumber_ZhHans: "\u7B2C6\u7AE0"
+  chapterTitle_ZhHans: "\u672A\u80FD\u4F20\u8FBE\u7684\u8BDD\u8BED"
+  chapterSubtitle_ZhHans: "\u8DE8\u8D8A\u6C89\u9ED8"
+  chapterNumber_Ja: "\u7B2C6\u7AE0"
+  chapterTitle_Ja: "\u5C4A\u304B\u306A\u304B\u3063\u305F\u8A00\u8449"
+  chapterSubtitle_Ja: "\u6C88\u9ED9\u3092\u8D8A\u3048\u3066"
+  chapterNumber_Es: "Cap\xEDtulo 6"
+  chapterTitle_Es: Palabras que no te llegaron
+  chapterSubtitle_Es: "M\xE1s all\xE1 del silencio"
+  chapterNumber_Pt: "Cap\xEDtulo 6"
+  chapterTitle_Pt: "Palavras que n\xE3o chegaram"
+  chapterSubtitle_Pt: "Al\xE9m do sil\xEAncio"
+  chapterNumber_Ru: "\u0413\u043B\u0430\u0432\u0430 6"
+  chapterTitle_Ru: "\u0421\u043B\u043E\u0432\u0430, \u0447\u0442\u043E \u043D\u0435
+    \u0434\u043E\u0448\u043B\u0438"
+  chapterSubtitle_Ru: "\u0417\u0430 \u043F\u0440\u0435\u0434\u0435\u043B\u0430\u043C\u0438
+    \u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044F"
   cutSceneCasts: {fileID: 11400000, guid: 3ee0af589f8b4714e9f6d40c05e6169d, type: 2}
   constellationData: {fileID: 11400000, guid: 4c481f383ed4f094da4ac39c68d4ac93, type: 2}
   animations:

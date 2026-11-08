@@ -41,6 +41,30 @@ public class ConstellationData : ScriptableObject
     [TextArea(2, 8)]
     public string Explain_ZhHans;
 
+    [Header("일본어")]
+    public string Name_Ja;
+
+    [TextArea(2, 8)]
+    public string Explain_Ja;
+
+    [Header("스페인어")]
+    public string Name_Es;
+
+    [TextArea(2, 8)]
+    public string Explain_Es;
+
+    [Header("포르투갈어 브라질")]
+    public string Name_Pt;
+
+    [TextArea(2, 8)]
+    public string Explain_Pt;
+
+    [Header("러시아어")]
+    public string Name_Ru;
+
+    [TextArea(2, 8)]
+    public string Explain_Ru;
+
     [Header("정답 연결 리스트 (예: 1-2, 2-3, 3-4, 3-5)")]
     public List<StarConnection> correctConnections;
 
@@ -62,7 +86,11 @@ public class ConstellationData : ScriptableObject
         return GetLocalizedText(
             Name_Kr,
             Name_En,
-            Name_ZhHans);
+            Name_ZhHans,
+            Name_Ja,
+            Name_Es,
+            Name_Pt,
+            Name_Ru);
     }
 
     public string GetExplanation()
@@ -70,34 +98,40 @@ public class ConstellationData : ScriptableObject
         return GetLocalizedText(
             Explain_Kr,
             Explain_En,
-            Explain_ZhHans);
+            Explain_ZhHans,
+            Explain_Ja,
+            Explain_Es,
+            Explain_Pt,
+            Explain_Ru);
     }
 
     private static string GetLocalizedText(
         string korean,
         string english,
-        string simplifiedChinese)
+        string simplifiedChinese,
+        string japanese,
+        string spanish,
+        string portuguese,
+        string russian)
     {
-        string translatedText;
-
-        switch (SettingsUI.CurrentLanguage)
+        string translatedText = SettingsUI.CurrentLanguage switch
         {
-            case SettingsUI.GameLanguage.English:
-                translatedText = english;
-                break;
+            SettingsUI.GameLanguage.Korean => korean,
+            SettingsUI.GameLanguage.English => english,
+            SettingsUI.GameLanguage.SimplifiedChinese => simplifiedChinese,
+            SettingsUI.GameLanguage.Japanese => japanese,
+            SettingsUI.GameLanguage.Spanish => spanish,
+            SettingsUI.GameLanguage.Portuguese => portuguese,
+            SettingsUI.GameLanguage.Russian => russian,
+            _ => english
+        };
 
-            case SettingsUI.GameLanguage.SimplifiedChinese:
-                translatedText = simplifiedChinese;
-                break;
+        if (!string.IsNullOrWhiteSpace(translatedText))
+            return translatedText;
 
-            default:
-                translatedText = korean;
-                break;
-        }
-
-        // 번역이 비어 있으면 한국어 원문 사용.
-        return string.IsNullOrWhiteSpace(translatedText)
-            ? korean ?? string.Empty
-            : translatedText;
+        // 선택한 언어의 번역이 없으면 영어로 표시한다.
+        return string.IsNullOrWhiteSpace(english)
+            ? string.Empty
+            : english;
     }
 }

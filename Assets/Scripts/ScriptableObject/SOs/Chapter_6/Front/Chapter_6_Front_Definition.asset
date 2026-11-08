@@ -13,9 +13,28 @@ MonoBehaviour:
   m_Name: Chapter_6_Front_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 6_Front
-  chapterNumber: Chapter 6
+  chapterNumber: "\uC81C6\uC7A5"
   chapterTitle: "\uB2FF\uC9C0 \uBABB\uD55C \uB9D0"
   chapterSubtitle: "\uB9D0\uC744 \uB530\uB77C "
+  chapterNumber_En: Chapter 6
+  chapterTitle_En: Words That Never Reached You
+  chapterSubtitle_En: Following the Words
+  chapterNumber_ZhHans: "\u7B2C6\u7AE0"
+  chapterTitle_ZhHans: "\u672A\u80FD\u4F20\u8FBE\u7684\u8BDD\u8BED"
+  chapterSubtitle_ZhHans: "\u5FAA\u7740\u8BDD\u8BED"
+  chapterNumber_Ja: "\u7B2C6\u7AE0"
+  chapterTitle_Ja: "\u5C4A\u304B\u306A\u304B\u3063\u305F\u8A00\u8449"
+  chapterSubtitle_Ja: "\u8A00\u8449\u3092\u305F\u3069\u3063\u3066"
+  chapterNumber_Es: "Cap\xEDtulo 6"
+  chapterTitle_Es: Palabras que no te llegaron
+  chapterSubtitle_Es: Tras las palabras
+  chapterNumber_Pt: "Cap\xEDtulo 6"
+  chapterTitle_Pt: "Palavras que n\xE3o chegaram"
+  chapterSubtitle_Pt: Seguindo as palavras
+  chapterNumber_Ru: "\u0413\u043B\u0430\u0432\u0430 6"
+  chapterTitle_Ru: "\u0421\u043B\u043E\u0432\u0430, \u0447\u0442\u043E \u043D\u0435
+    \u0434\u043E\u0448\u043B\u0438"
+  chapterSubtitle_Ru: "\u0412\u0441\u043B\u0435\u0434 \u0437\u0430 \u0441\u043B\u043E\u0432\u0430\u043C\u0438"
   cutSceneCasts: {fileID: 11400000, guid: 8c7340f50bf90f043990ea18c825a43d, type: 2}
   constellationData: {fileID: 11400000, guid: 4c481f383ed4f094da4ac39c68d4ac93, type: 2}
   animations:

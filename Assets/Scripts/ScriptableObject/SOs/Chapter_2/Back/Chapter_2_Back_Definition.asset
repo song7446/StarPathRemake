@@ -13,9 +13,27 @@ MonoBehaviour:
   m_Name: Chapter_2_Back_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 2_Front
-  chapterNumber: Chapter 2
+  chapterNumber: "\uC81C2\uC7A5"
   chapterTitle: "\uBCC4\uC744 \uB530\uB77C\uAC00\uB294 \uAE38"
   chapterSubtitle: "\uCD94\uC801"
+  chapterNumber_En: Chapter 2
+  chapterTitle_En: Following the Stars
+  chapterSubtitle_En: In Pursuit
+  chapterNumber_ZhHans: "\u7B2C2\u7AE0"
+  chapterTitle_ZhHans: "\u5FAA\u661F\u4E4B\u8DEF"
+  chapterSubtitle_ZhHans: "\u8FFD\u8E2A"
+  chapterNumber_Ja: "\u7B2C2\u7AE0"
+  chapterTitle_Ja: "\u661F\u3092\u305F\u3069\u308B\u9053"
+  chapterSubtitle_Ja: "\u8FFD\u8DE1"
+  chapterNumber_Es: "Cap\xEDtulo 2"
+  chapterTitle_Es: Tras las estrellas
+  chapterSubtitle_Es: Tras el rastro
+  chapterNumber_Pt: "Cap\xEDtulo 2"
+  chapterTitle_Pt: Seguindo as estrelas
+  chapterSubtitle_Pt: "No encal\xE7o"
+  chapterNumber_Ru: "\u0413\u043B\u0430\u0432\u0430 2"
+  chapterTitle_Ru: "\u0412\u0441\u043B\u0435\u0434 \u0437\u0430 \u0437\u0432\u0451\u0437\u0434\u0430\u043C\u0438"
+  chapterSubtitle_Ru: "\u041F\u043E \u0441\u043B\u0435\u0434\u0443"
   cutSceneCasts: {fileID: 11400000, guid: 858422b278a1f0b40b209dd9dc11ef48, type: 2}
   constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   animations:

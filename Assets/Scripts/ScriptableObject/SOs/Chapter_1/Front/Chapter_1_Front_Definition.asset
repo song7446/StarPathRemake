@@ -13,9 +13,27 @@ MonoBehaviour:
   m_Name: Chapter_1_Front_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 1_Front
-  chapterNumber: Chapter 1
+  chapterNumber: "\uC81C1\uC7A5"
   chapterTitle: "\uBA38\uBB3C\uB358 \uC790\uB9AC"
   chapterSubtitle: "\uC628\uAE30"
+  chapterNumber_En: Chapter 1
+  chapterTitle_En: Where We Once Sat
+  chapterSubtitle_En: Warmth
+  chapterNumber_ZhHans: "\u7B2C1\u7AE0"
+  chapterTitle_ZhHans: "\u66FE\u7ECF\u505C\u7559\u7684\u5730\u65B9"
+  chapterSubtitle_ZhHans: "\u6696\u610F"
+  chapterNumber_Ja: "\u7B2C1\u7AE0"
+  chapterTitle_Ja: "\u304B\u3064\u3066\u3044\u305F\u5834\u6240"
+  chapterSubtitle_Ja: "\u6E29\u3082\u308A"
+  chapterNumber_Es: "Cap\xEDtulo 1"
+  chapterTitle_Es: "Donde nos sent\xE1bamos"
+  chapterSubtitle_Es: Calidez
+  chapterNumber_Pt: "Cap\xEDtulo 1"
+  chapterTitle_Pt: "Onde nos sent\xE1vamos"
+  chapterSubtitle_Pt: Calor
+  chapterNumber_Ru: "\u0413\u043B\u0430\u0432\u0430 1"
+  chapterTitle_Ru: "\u0413\u0434\u0435 \u043C\u044B \u0441\u0438\u0434\u0435\u043B\u0438"
+  chapterSubtitle_Ru: "\u0422\u0435\u043F\u043B\u043E"
   cutSceneCasts: {fileID: 11400000, guid: 17202cab0ff1c66439ae3f1b9d319219, type: 2}
   constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
   animations:

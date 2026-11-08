@@ -13,9 +13,28 @@ MonoBehaviour:
   m_Name: Chapter_3_Front_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 3_Front
-  chapterNumber: Chapter 3
+  chapterNumber: "\uC81C3\uC7A5"
   chapterTitle: "\uB0A8\uACA8\uC9C4 \uAE30\uB85D"
   chapterSubtitle: "\uAE38\uC7A1\uC774"
+  chapterNumber_En: Chapter 3
+  chapterTitle_En: The Notes Left Behind
+  chapterSubtitle_En: A Guide
+  chapterNumber_ZhHans: "\u7B2C3\u7AE0"
+  chapterTitle_ZhHans: "\u7559\u4E0B\u7684\u8BB0\u5F55"
+  chapterSubtitle_ZhHans: "\u6307\u5F15"
+  chapterNumber_Ja: "\u7B2C3\u7AE0"
+  chapterTitle_Ja: "\u6B8B\u3055\u308C\u305F\u8A18\u9332"
+  chapterSubtitle_Ja: "\u9053\u3057\u308B\u3079"
+  chapterNumber_Es: "Cap\xEDtulo 3"
+  chapterTitle_Es: Las notas que quedaron
+  chapterSubtitle_Es: "Una gu\xEDa"
+  chapterNumber_Pt: "Cap\xEDtulo 3"
+  chapterTitle_Pt: Os registros que ficaram
+  chapterSubtitle_Pt: Um guia
+  chapterNumber_Ru: "\u0413\u043B\u0430\u0432\u0430 3"
+  chapterTitle_Ru: "\u041E\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0435
+    \u0437\u0430\u043F\u0438\u0441\u0438"
+  chapterSubtitle_Ru: "\u041E\u0440\u0438\u0435\u043D\u0442\u0438\u0440"
   cutSceneCasts: {fileID: 11400000, guid: beed32d6d0bfcc543939c02c8b1099af, type: 2}
   constellationData: {fileID: 11400000, guid: 6a5669f84ab79b3428dfba3d808763ae, type: 2}
   animations:

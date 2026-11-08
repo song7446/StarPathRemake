@@ -29,6 +29,18 @@ public class GuideImageUI : MonoBehaviour
     [SerializeField] private AudioClip guideImageSlideSound;
     
     private ConstellationData currentConstellation;
+    
+    [Header("처음 표시할 별자리")]
+    [SerializeField] private ConstellationData defaultConstellation;
+    
+    private void Awake()
+    {
+        if (defaultConstellation == null)
+            return;
+
+        SetGuideConstellation(defaultConstellation);
+        ChangeGuideImage(defaultConstellation.constellationGuideImage);
+    }
 
     public void OnBeginDragGuide(BaseEventData eventData)
     {
@@ -176,10 +188,6 @@ public class GuideImageUI : MonoBehaviour
             .SetEase(Ease.InOutSine)
             .SetUpdate(true)
             .OnComplete(() =>
-            {
-                isGuideHidden = targetHidden;
-                isSliding = false;
-            }).OnComplete(() =>
             {
                 isGuideHidden = targetHidden;
                 isSliding = false;
