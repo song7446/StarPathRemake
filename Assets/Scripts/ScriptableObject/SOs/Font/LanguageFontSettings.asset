@@ -19,10 +19,10 @@ MonoBehaviour:
   simplifiedChineseFont: {fileID: 11400000, guid: b185471ec88dec946a205ac71f44b72e, type: 2}
   simplifiedChineseSizeMultiplier: 0.7
   japaneseFont: {fileID: 11400000, guid: e51dc9c82d3ba5944aeefb4c8d51a1c0, type: 2}
-  japaneseSizeMultiplier: 0.7
+  japaneseSizeMultiplier: 0.65
   spanishFont: {fileID: 11400000, guid: eb4be8f9d9f2438489294d3f374f0b3d, type: 2}
-  spanishSizeMultiplier: 0.8
+  spanishSizeMultiplier: 0.7
   portugueseFont: {fileID: 11400000, guid: eb4be8f9d9f2438489294d3f374f0b3d, type: 2}
-  portugueseSizeMultiplier: 0.8
+  portugueseSizeMultiplier: 0.7
   russianFont: {fileID: 11400000, guid: eb4be8f9d9f2438489294d3f374f0b3d, type: 2}
   russianSizeMultiplier: 0.75

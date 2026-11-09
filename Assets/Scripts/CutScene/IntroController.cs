@@ -17,20 +17,21 @@ public class IntroController : MonoBehaviour
     [SerializeField, Min(0.01f)]
     private float fadeOutDuration = 2f;
 
-    private bool isWaitingForFirstSpace;
-    private bool isFinishing;
-    private Tween fadeTween;
-    
     [Header("안내 깜빡임")]
     [SerializeField] private CanvasGroup spaceHintGroup;
 
     [SerializeField, Min(0.01f)]
     private float hintBlinkDuration = 0.8f;
 
-    private Tween hintBlinkTween;
-    
     [Header("인트로 종료 후 안내")]
     [SerializeField] private FirstChapterHintUI firstChapterHint;
+
+    private bool isWaitingForFirstSpace;
+    private bool isFinishing;
+
+    private Tween fadeTween;
+    private Tween hintBlinkTween;
+    private Coroutine selectionReadyCoroutine;
 
     private void Awake()
     {
@@ -40,15 +41,28 @@ public class IntroController : MonoBehaviour
 
     private IEnumerator Start()
     {
-        // 다른 컴포넌트의 Start 초기화 이후 실행.
+        // GameManager의 진행 기록 불러오기가 끝난 뒤 확인한다.
         yield return null;
 
-        // 씬 전환의 검은 화면이 걷힌 뒤 시작.
-        while (SceneFadeController.Instance != null &&
-               SceneFadeController.Instance.IsTransitioning)
+        bool skipIntro =
+            GameManager.Instance.HasPlayedMonologue(introDialogueId);
+
+        // 이어하기에서는 씬 전환 화면 뒤에서 인트로를 숨긴다.
+        if (skipIntro)
         {
-            yield return null;
+            isFinishing = true;
+            HideSpaceHint();
+            CloseIntroPanel();
+
+            selectionReadyCoroutine =
+                StartCoroutine(PrepareChapterSelection());
+
+            yield break;
         }
+
+        // 씬 전환과 일시정지가 끝난 뒤 인트로를 시작한다.
+        while (IsSceneTransitioning() || PauseMenuUI.IsOpen)
+            yield return null;
 
         if (monologueUI == null || monologueUIGroup == null)
         {
@@ -73,7 +87,11 @@ public class IntroController : MonoBehaviour
             yield break;
         }
 
-        monologueUI.Play(introDialogueId, FinishIntro);
+        // 다른 독백이 재생 중이라면 끝날 때까지 기다린다.
+        while (MonologueUI.IsPlaying || PauseMenuUI.IsOpen)
+            yield return null;
+
+        monologueUI.Play(introDialogueId, OnIntroCompleted);
 
         ShowSpaceHint();
     }
@@ -91,7 +109,15 @@ public class IntroController : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
             HideSpaceHint();
     }
-    
+
+    // 실제로 인트로 독백을 끝까지 봤을 때만 저장한다.
+    private void OnIntroCompleted()
+    {
+        GameManager.Instance.MarkMonologuePlayed(introDialogueId);
+
+        FinishIntro();
+    }
+
     private void FinishIntro()
     {
         if (isFinishing)
@@ -102,13 +128,7 @@ public class IntroController : MonoBehaviour
 
         if (monologueUIGroup == null)
         {
-            if (monologueUI != null)
-                monologueUI.CloseWithoutCallback();
-
-            if (firstChapterHint != null)
-                firstChapterHint.Show();
-
-            Destroy(gameObject);
+            OnIntroHidden();
             return;
         }
 
@@ -118,21 +138,82 @@ public class IntroController : MonoBehaviour
             .SetLink(gameObject)
             .OnComplete(() =>
             {
-                if (monologueUI != null)
-                    monologueUI.CloseWithoutCallback();
-
-                if (firstChapterHint != null)
-                    firstChapterHint.Show();
-
-                Destroy(gameObject);
+                fadeTween = null;
+                OnIntroHidden();
             });
     }
-    
+
+    private void OnIntroHidden()
+    {
+        CloseIntroPanel();
+
+        if (selectionReadyCoroutine == null)
+        {
+            selectionReadyCoroutine =
+                StartCoroutine(PrepareChapterSelection());
+        }
+    }
+
+    private void CloseIntroPanel()
+    {
+        if (monologueUIGroup != null)
+        {
+            monologueUIGroup.alpha = 0f;
+            monologueUIGroup.interactable = false;
+            monologueUIGroup.blocksRaycasts = false;
+        }
+
+        if (monologueUI != null)
+            monologueUI.CloseWithoutCallback();
+    }
+
+    private IEnumerator PrepareChapterSelection()
+    {
+        // 패널을 닫은 프레임 이후에 다음 독백과 입력을 복원한다.
+        yield return null;
+
+        while (IsSceneTransitioning() ||
+               PauseMenuUI.IsOpen ||
+               MonologueUI.IsPlaying)
+        {
+            yield return null;
+        }
+
+        GameManager manager = GameManager.Instance;
+
+        // 미시청 독백 또는 해금된 시간대 퍼즐을 복원한다.
+        manager.OnChapterSelectionReady();
+
+        // 복귀 직후 독백이 시작됐다면 끝날 때까지 기다린다.
+        while (MonologueUI.IsPlaying || PauseMenuUI.IsOpen)
+            yield return null;
+
+        // 첫 장면을 아직 완료하지 않았다면 조작 안내를 표시한다.
+        bool needsFirstChapterHint =
+            manager.isWatched != null &&
+            manager.isWatched.Length > 0 &&
+            !manager.isWatched[0];
+
+        if (needsFirstChapterHint && firstChapterHint != null)
+            firstChapterHint.Show();
+
+        selectionReadyCoroutine = null;
+
+        Destroy(gameObject);
+    }
+
+    private bool IsSceneTransitioning()
+    {
+        return SceneFadeController.Instance != null &&
+               SceneFadeController.Instance.IsTransitioning;
+    }
+
     private void ShowSpaceHint()
     {
         isWaitingForFirstSpace = true;
 
         hintBlinkTween?.Kill();
+        hintBlinkTween = null;
 
         if (spaceHint == null)
             return;
@@ -170,5 +251,4 @@ public class IntroController : MonoBehaviour
         hintBlinkTween?.Kill();
         fadeTween?.Kill();
     }
-    
 }

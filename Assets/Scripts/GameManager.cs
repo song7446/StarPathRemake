@@ -63,7 +63,7 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
     private void Start()
     {
-        isWatched = new bool[ChapterDefinitions.Length];
+        LoadProgress();
 
         UIManager.Instance.InitializeChapterButtons();
 
@@ -303,9 +303,8 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
             monologueUI.Play(dialogueId, () =>
             {
-                playedMonologueIds.Add(dialogueId);
+                MarkMonologuePlayed(dialogueId);
 
-                // 체크된 독백이 끝났을 때만 입력과 안내 활성화.
                 if (unlockPuzzle)
                     ChapterDrawingManager.Instance.BeginOrderPuzzle();
             });
@@ -344,9 +343,100 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
     public void MarkCurrentChapterWatched()
     {
-        if (currentChapterIdx < 0 || currentChapterIdx >= isWatched.Length)
+        if (isWatched == null ||
+            currentChapterIdx < 0 ||
+            currentChapterIdx >= isWatched.Length)
+        {
             return;
+        }
 
         isWatched[currentChapterIdx] = true;
+
+        SaveProgress();
+    }
+    
+    private void LoadProgress()
+    {
+        isWatched = new bool[ChapterDefinitions.Length];
+        playedMonologueIds.Clear();
+
+        if (!GameProgressSave.TryLoad(out GameProgressData data))
+            return;
+
+        // 저장 이후 배열 길이가 달라졌어도 가능한 범위만 복원한다.
+        int count = Mathf.Min(
+            isWatched.Length,
+            data.watchedScenes.Length);
+
+        Array.Copy(data.watchedScenes, isWatched, count);
+
+        foreach (string id in data.playedMonologueIds)
+        {
+            if (!string.IsNullOrWhiteSpace(id))
+                playedMonologueIds.Add(id);
+        }
+    }
+
+    public void SaveProgress()
+    {
+        GameProgressSave.Save(isWatched, playedMonologueIds);
+    }
+
+    private bool AreAllScenesWatched()
+    {
+        if (isWatched == null || isWatched.Length == 0)
+            return false;
+
+        foreach (bool watched in isWatched)
+        {
+            if (!watched)
+                return false;
+        }
+
+        return true;
+    }
+    
+    public void OnChapterSelectionReady()
+    {
+        if (MonologueUI.IsPlaying || PauseMenuUI.IsOpen)
+            return;
+
+        if (AreAllScenesWatched() && chapterMonologues != null)
+        {
+            foreach (MonologueDefinition definition in chapterMonologues)
+            {
+                if (definition == null ||
+                    !definition.unlockChapterOrderPuzzle ||
+                    string.IsNullOrWhiteSpace(definition.dialogueId))
+                {
+                    continue;
+                }
+
+                if (playedMonologueIds.Contains(definition.dialogueId))
+                {
+                    // 안내 독백을 이미 봤으므로 퍼즐을 바로 복원한다.
+                    ChapterDrawingManager.Instance.BeginOrderPuzzle();
+                    return;
+                }
+            }
+        }
+
+        // 장면 완료 직후 종료해서 아직 못 본 독백이 있다면 재생한다.
+        TryPlayChapterMonologue();
+    }
+    
+    public bool HasPlayedMonologue(string dialogueId)
+    {
+        return !string.IsNullOrWhiteSpace(dialogueId) &&
+               playedMonologueIds.Contains(dialogueId);
+    }
+
+    public void MarkMonologuePlayed(string dialogueId)
+    {
+        if (string.IsNullOrWhiteSpace(dialogueId))
+            return;
+
+        if (playedMonologueIds.Add(dialogueId))
+            SaveProgress();
     }
 }

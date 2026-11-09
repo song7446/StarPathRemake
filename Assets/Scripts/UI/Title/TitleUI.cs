@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -6,55 +5,237 @@ using UnityEngine.UI;
 
 public class TitleUI : MonoBehaviour
 {
+    [Header("메뉴 버튼")]
+    [SerializeField] private Button continueButton;
     [SerializeField] private Button gameStartButton;
     [SerializeField] private Button freeDrawModeButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private Button quitButton;
+
+    [Header("설정")]
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject inputBlocker;
+
+    [Header("새로 시작 확인")]
+    [SerializeField] private GameObject newGameConfirmPanel;
+    [SerializeField] private Button newGameYesButton;
+    [SerializeField] private Button newGameNoButton;
+
+    [Header("효과음")]
     [SerializeField] private AudioClip gameStartClip;
     [SerializeField] private AudioClip openSettingMenuClip;
 
-    [Header("이동할 게임 씬 이름")]
+    [Header("이동할 씬 이름")]
     [SerializeField] private string gameSceneName = "MainScene";
     [SerializeField] private string freeDrawSceneName = "FreeDrawScene";
 
     private bool isLoading;
 
+    private bool IsPopupOpen =>
+        settingsPanel.activeSelf ||
+        newGameConfirmPanel.activeSelf;
+
     private void Awake()
     {
+        settingsPanel.SetActive(false);
+        newGameConfirmPanel.SetActive(false);
+        inputBlocker.SetActive(false);
+
+        continueButton.onClick.AddListener(OnClickContinue);
         gameStartButton.onClick.AddListener(OnClickGameStart);
-        
+        freeDrawModeButton.onClick.AddListener(OnClickFreeDrawMode);
         settingButton.onClick.AddListener(OnClickSetting);
         quitButton.onClick.AddListener(OnClickQuit);
-        freeDrawModeButton.onClick.AddListener(OnClickFreeDrawMode);
+
+        newGameYesButton.onClick.AddListener(OnClickNewGameYes);
+        newGameNoButton.onClick.AddListener(CloseNewGameConfirm);
     }
-    
+
+    private void OnEnable()
+    {
+        RefreshContinueButton();
+    }
+
     private void Update()
     {
-        if (isLoading || !settingsPanel.activeSelf)
+        if (isLoading ||
+            Keyboard.current?.escapeKey.wasPressedThisFrame != true)
+        {
+            return;
+        }
+
+        // ESC도 아니오와 동일하게 확인창만 닫는다.
+        if (newGameConfirmPanel.activeSelf)
+        {
+            CloseNewGameConfirm();
+            return;
+        }
+
+        if (settingsPanel.activeSelf)
+            SetOffSetting();
+    }
+
+    private void RefreshContinueButton()
+    {
+        if (continueButton != null)
+        {
+            continueButton.gameObject.SetActive(
+                GameProgressSave.TryLoad(out _));
+        }
+    }
+
+    private void OnClickContinue()
+    {
+        if (IsPopupOpen || !CanLoadScene(gameSceneName))
             return;
 
-        if (Keyboard.current?.escapeKey.wasPressedThisFrame == true)
-            SetOffSetting();
+        if (!GameProgressSave.TryLoad(out _))
+        {
+            RefreshContinueButton();
+            return;
+        }
+
+        LoadGameScene();
+    }
+
+    private void OnClickGameStart()
+    {
+        if (IsPopupOpen || !CanLoadScene(gameSceneName))
+            return;
+
+        if (GameProgressSave.TryLoad(out _))
+        {
+            // 아직 기록을 삭제하지 않고 확인창만 연다.
+            inputBlocker.SetActive(true);
+            newGameConfirmPanel.SetActive(true);
+
+            PlayMenuSound();
+            return;
+        }
+
+        StartNewGame();
+    }
+
+    private void OnClickNewGameYes()
+    {
+        if (!newGameConfirmPanel.activeSelf)
+            return;
+
+        StartNewGame();
+    }
+
+    private void StartNewGame()
+    {
+        // 씬 전환이 가능한지 확인한 뒤 기록을 삭제한다.
+        if (!CanLoadScene(gameSceneName))
+            return;
+
+        GameProgressSave.DeleteProgress();
+
+        newGameConfirmPanel.SetActive(false);
+
+        LoadGameScene();
+    }
+
+    private void CloseNewGameConfirm()
+    {
+        if (isLoading || !newGameConfirmPanel.activeSelf)
+            return;
+
+        // 진행 기록은 그대로 유지한다.
+        newGameConfirmPanel.SetActive(false);
+        RefreshInputBlocker();
+
+        PlayMenuSound();
+    }
+
+    private void LoadGameScene()
+    {
+        isLoading = true;
+        inputBlocker.SetActive(true);
+
+        if (gameStartClip != null)
+            AudioManager.Instance.PlaySFX(gameStartClip);
+
+        SceneFadeController.Instance.LoadScene(gameSceneName);
+    }
+
+    private void OnClickFreeDrawMode()
+    {
+        if (IsPopupOpen || !CanLoadScene(freeDrawSceneName))
+            return;
+
+        isLoading = true;
+        inputBlocker.SetActive(true);
+
+        SceneFadeController.Instance.LoadScene(freeDrawSceneName);
+    }
+
+    private bool CanLoadScene(string sceneName)
+    {
+        if (isLoading)
+            return false;
+
+        if (SceneFadeController.Instance == null)
+        {
+            Debug.LogError(
+                "SceneFadeController를 확인해주세요.",
+                this);
+
+            return false;
+        }
+
+        if (SceneFadeController.Instance.IsTransitioning)
+            return false;
+
+        if (string.IsNullOrWhiteSpace(sceneName) ||
+            !Application.CanStreamedLevelBeLoaded(sceneName))
+        {
+            Debug.LogError(
+                $"씬 이름과 빌드 씬 목록을 확인해주세요: {sceneName}",
+                this);
+
+            return false;
+        }
+
+        return true;
     }
 
     private void OnClickSetting()
     {
-        settingsPanel.SetActive(true);
+        if (isLoading || IsPopupOpen)
+            return;
+
         inputBlocker.SetActive(true);
-        AudioManager.Instance.PlaySFX(openSettingMenuClip);
+        settingsPanel.SetActive(true);
+
+        PlayMenuSound();
     }
 
     private void SetOffSetting()
     {
         settingsPanel.SetActive(false);
-        inputBlocker.SetActive(false);
-        AudioManager.Instance.PlaySFX(openSettingMenuClip);
+        RefreshInputBlocker();
+
+        PlayMenuSound();
+    }
+
+    private void RefreshInputBlocker()
+    {
+        inputBlocker.SetActive(isLoading || IsPopupOpen);
+    }
+
+    private void PlayMenuSound()
+    {
+        if (openSettingMenuClip != null)
+            AudioManager.Instance.PlaySFX(openSettingMenuClip);
     }
 
     private void OnClickQuit()
     {
+        if (isLoading || IsPopupOpen)
+            return;
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -62,29 +243,27 @@ public class TitleUI : MonoBehaviour
 #endif
     }
 
-    private void OnClickGameStart()
-    {
-        if (isLoading || SceneFadeController.Instance.IsTransitioning)
-            return;
-
-        isLoading = true;
-
-        SceneFadeController.Instance.LoadScene(gameSceneName);
-    }
-    
-    private void OnClickFreeDrawMode()
-    {
-        if (isLoading || SceneFadeController.Instance.IsTransitioning)
-            return;
-
-        isLoading = true;
-
-        SceneFadeController.Instance.LoadScene(freeDrawSceneName);
-    }
-
     private void OnDestroy()
     {
+        if (continueButton != null)
+            continueButton.onClick.RemoveListener(OnClickContinue);
+
         if (gameStartButton != null)
             gameStartButton.onClick.RemoveListener(OnClickGameStart);
+
+        if (freeDrawModeButton != null)
+            freeDrawModeButton.onClick.RemoveListener(OnClickFreeDrawMode);
+
+        if (settingButton != null)
+            settingButton.onClick.RemoveListener(OnClickSetting);
+
+        if (quitButton != null)
+            quitButton.onClick.RemoveListener(OnClickQuit);
+
+        if (newGameYesButton != null)
+            newGameYesButton.onClick.RemoveListener(OnClickNewGameYes);
+
+        if (newGameNoButton != null)
+            newGameNoButton.onClick.RemoveListener(CloseNewGameConfirm);
     }
 }

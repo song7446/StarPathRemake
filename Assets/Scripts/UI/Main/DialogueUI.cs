@@ -100,7 +100,7 @@ public class DialogueUI : MonoBehaviour
 
             if (!GameManager.Instance.IsFront)
             {
-                GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx] = true;
+                GameManager.Instance.MarkCurrentChapterWatched();
                 onDialogueFinished?.Invoke();
             }
             else
