@@ -64,6 +64,8 @@ public class UIManager : SceneMonoBehaviourSingleton<UIManager>
     {
         chapterOriginalPositions.Clear();
 
+        GameManager manager = GameManager.Instance;
+
         foreach (GameObject button in chapterButtons)
         {
             if (button == null)
@@ -73,15 +75,33 @@ public class UIManager : SceneMonoBehaviourSingleton<UIManager>
 
             if (rect != null)
                 chapterOriginalPositions[rect] = rect.localPosition;
-        }
 
-        for (int i = 0; i < chapterButtons.Length; i++)
-        {
-            if (chapterButtons[i] == null)
+            ChapterButton chapterButton =
+                button.GetComponent<ChapterButton>();
+
+            if (chapterButton == null)
+            {
+                Debug.LogError(
+                    "챕터 버튼에 ChapterButton이 없습니다.",
+                    button);
+
+                button.SetActive(false);
                 continue;
+            }
 
-            chapterButtons[i].SetActive(
-                GameManager.Instance.CanShowChapterButton(i));
+            int index = chapterButton.ChapterIdx;
+
+            // 저장된 시청 기록으로 처음부터 썸네일을 복원한다.
+            if (manager.isWatched != null &&
+                index >= 0 &&
+                index < manager.isWatched.Length &&
+                manager.isWatched[index])
+            {
+                chapterButton.SetThumbnail();
+            }
+
+            button.SetActive(
+                manager.CanShowChapterButton(index));
         }
     }
 

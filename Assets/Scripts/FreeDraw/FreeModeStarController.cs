@@ -282,12 +282,18 @@ public class FreeModeStarController : MonoBehaviour
 
     public void SetMoveMode()
     {
+        if (Time.timeScale <= 0f)
+            return;
+
         CancelGesture();
         currentMode = EditMode.Move;
     }
 
     public void SetConnectMode()
     {
+        if (Time.timeScale <= 0f)
+            return;
+
         CancelGesture();
         ClearSelection();
         currentMode = EditMode.Connect;
@@ -378,8 +384,7 @@ public class FreeModeStarController : MonoBehaviour
             return;
 
         Rect screenRect = GetSelectionRect();
-
-        // マウス座標は左下基準、GUIは左上基準。
+        
         Rect guiRect = new Rect(
             screenRect.x,
             Screen.height - screenRect.yMax,
@@ -414,6 +419,11 @@ public class FreeModeStarController : MonoBehaviour
             Texture2D.whiteTexture);
 
         GUI.color = previousColor;
+    }
+    
+    public void OnPauseMenuOpened()
+    {
+        CancelGesture();
     }
 
     private void OnDisable()

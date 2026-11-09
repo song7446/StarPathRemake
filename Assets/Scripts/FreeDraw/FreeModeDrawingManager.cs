@@ -316,4 +316,9 @@ public class FreeModeDrawingManager : MonoBehaviour
         return EventSystem.current != null &&
                EventSystem.current.IsPointerOverGameObject();
     }
+    
+    public void OnPauseMenuOpened()
+    {
+        CancelDrawing();
+    }
 }

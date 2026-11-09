@@ -5178,8 +5178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFadeController
   fadeGroup: {fileID: 435477363}
-  coverDuration: 0.5
-  revealDuration: 0.7
+  coverDuration: 1
+  revealDuration: 1
 --- !u!114 &1164477775
 MonoBehaviour:
   m_ObjectHideFlags: 0
