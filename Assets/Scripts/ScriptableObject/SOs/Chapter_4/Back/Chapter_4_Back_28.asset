@@ -16,7 +16,7 @@ MonoBehaviour:
   sounds:
   - action: 1
     clip: {fileID: 8300000, guid: a581a116cccffa7459f76e8f94264014, type: 3}
-    volume: 0.6
+    volume: 0.3
   commands:
   - characterId: Daughter
     characterName: Daughter

@@ -60,6 +60,8 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
 // 현재 플레이에서 끝까지 본 독백 ID.
     private readonly HashSet<string> playedMonologueIds = new();
+    
+    [SerializeField] private ChapterOrderHintUI chapterOrderHintUI;
 
     private void Start()
     {
@@ -82,6 +84,10 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
         {
             return;
         }
+        
+        // 장면에 들어가면 시간대 퍼즐 안내를 숨긴다.
+        if (chapterOrderHintUI != null)
+            chapterOrderHintUI.HideGuide();
 
         // 시작 요청을 받는 순간부터 복귀 차단.
         isPreparingChapter = true;
@@ -247,6 +253,8 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
         isReturningToMenu = false;
         returnCoroutine = null;
+        
+        StartCoroutine(RestoreChapterOrderHint());
     }
     
     private void TryPlayChapterMonologue()
@@ -438,5 +446,29 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
         if (playedMonologueIds.Add(dialogueId))
             SaveProgress();
+    }
+    
+    private IEnumerator RestoreChapterOrderHint()
+    {
+        while (isReturningToMenu ||
+               MonologueUI.IsPlaying ||
+               PauseMenuUI.IsOpen)
+        {
+            // 대기 중 다른 챕터에 들어갔다면 복원하지 않는다.
+            if (isChapterActive || isPreparingChapter)
+                yield break;
+
+            yield return null;
+        }
+
+        if (isChapterActive ||
+            isPreparingChapter ||
+            chapterOrderHintUI == null ||
+            !ChapterDrawingManager.Instance.InputEnabled)
+        {
+            yield break;
+        }
+
+        chapterOrderHintUI.ShowGuide();
     }
 }

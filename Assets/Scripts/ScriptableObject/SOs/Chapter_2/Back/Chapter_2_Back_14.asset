@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: Chapter_2_Back_14
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
   dialogueId: Chapter_2_Back_14
+  sounds:
+  - action: 1
+    clip: {fileID: 8300000, guid: 42694dbdcf45b72428b0c3648acf576b, type: 3}
+    volume: 0.5
+  - action: 2
+    clip: {fileID: 8300000, guid: 1097dd074febdd64b95e78ccdd3d19bc, type: 3}
+    volume: 0.5
   commands:
   - characterId: Player
     characterName: Player

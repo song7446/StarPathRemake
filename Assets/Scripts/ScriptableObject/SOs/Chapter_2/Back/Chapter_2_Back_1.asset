@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
-  m_Name: Chapter_3_Front_27
+  m_Name: Chapter_2_Back_1
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
-  dialogueId: Chapter_3_Front_27
-  commands:
-  - characterId: Daughter
-    characterName: Daughter
-    position: {x: 0, y: -1, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 5060246784857740746, guid: c5f941717bc018a4ea7159bf8fb56378, type: 3}
+  dialogueId: Chapter_2_Back_1
+  sounds:
+  - action: 2
+    clip: {fileID: 8300000, guid: de3ffab1659a91d408633e2ee9f94406, type: 3}
+    volume: 0.5
+  commands: []
