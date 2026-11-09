@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chapter_6_Front_Definition
   m_EditorClassIdentifier: Assembly-CSharp::ChapterDefinition
   chapterId: 6_Front
-  chapterNumber: "\uC81C6\uC7A5"
+  chapterNumber: "\uC81C 6\uC7A5"
   chapterTitle: "\uB2FF\uC9C0 \uBABB\uD55C \uB9D0"
   chapterSubtitle: "\uB9D0\uC744 \uB530\uB77C "
   chapterNumber_En: Chapter 6
