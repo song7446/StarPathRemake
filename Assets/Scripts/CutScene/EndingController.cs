@@ -69,9 +69,8 @@ public class EndingController : MonoBehaviour
         }
 
         hasStarted = true;
-
-        AudioManager.Instance.FadeOutBGM(0.5f);
-        AudioManager.Instance.PlayBGM(endingBGM, 0.5f);
+        
+        AudioManager.Instance.PlayBGM(endingBGM, 1f);
         monologueUI.Play(
             endingDialogueId,
             ShowPoliceScene

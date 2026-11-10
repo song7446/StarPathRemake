@@ -2801,7 +2801,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBCC4\uC744 \uCC28\uB840\uB85C \uD074\uB9AD\uD574 \uC5F0\uACB0\uD558\uC138\uC694.\n"
+  m_text: "\uBCC4\uC744 \uD074\uB9AD\uD574 \uC5F0\uACB0\uD574\uBCF4\uC138\uC694."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0646936c80510b841bd87f15f98a706a, type: 2}
   m_sharedMaterial: {fileID: -5450793321309260394, guid: 0646936c80510b841bd87f15f98a706a, type: 2}
@@ -2894,13 +2894,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
   targetText: {fileID: 137727211}
-  textKr: "\uBCC4\uC744 \uCC28\uB840\uB85C \uD074\uB9AD\uD574 \uC5F0\uACB0\uD558\uC138\uC694."
-  textEn: 
-  textZhHans: 
-  textJa: 
-  textEs: 
-  textPt: 
-  textRu: 
+  textKr: "\uBCC4\uC744 \uD074\uB9AD\uD574 \uC5F0\uACB0\uD574\uBCF4\uC138\uC694."
+  textEn: Click the stars to connect them.
+  textZhHans: "\u70B9\u51FB\u661F\u661F\uFF0C\u5C06\u5B83\u4EEC\u8FDE\u8D77\u6765\u3002"
+  textJa: "\u661F\u3092\u30AF\u30EA\u30C3\u30AF\u3057\u3066\u3064\u306A\u3052\u307E\u3057\u3087\u3046\u3002"
+  textEs: Haz clic en las estrellas para unirlas.
+  textPt: "Clique nas estrelas para conect\xE1-las."
+  textRu: "\u041D\u0430\u0436\u0438\u043C\u0430\u0439\u0442\u0435 \u043D\u0430 \u0437\u0432\u0451\u0437\u0434\u044B,
+    \u0447\u0442\u043E\u0431\u044B \u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u044C
+    \u0438\u0445."
 --- !u!114 &137727214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28131,9 +28133,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 6
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -28158,7 +28160,7 @@ Transform:
   m_GameObject: {fileID: 1731806306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9.97, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33354,6 +33356,7 @@ MonoBehaviour:
   chapterConstellationReveal: {fileID: 1932959028}
   constellationRoot: {fileID: 834451867}
   chapterOrderHintUI: {fileID: 2070194778}
+  chapterAnswerSFX: {fileID: 8300000, guid: 7d38cacc555fdef4a9dbce27415b1d6f, type: 3}
   lockThreshold: 4
   lockedLineColor: {r: 1, g: 0.85, b: 0.5, a: 1}
   correctChapterOrder: 080000000000000002000000060000000900000004000000070000000100000005000000030000000a0000000b000000
@@ -33421,6 +33424,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   blackScreenHoldDuration: 5
+  endingBGM: {fileID: 8300000, guid: 1e778a80eddc5524983e94ea221fdd1a, type: 3}
 --- !u!114 &2070194778
 MonoBehaviour:
   m_ObjectHideFlags: 0

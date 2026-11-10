@@ -36,6 +36,8 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
     [Header("시간대 퍼즐 안내")]
     [SerializeField] private ChapterOrderHintUI chapterOrderHintUI;
 
+    [SerializeField] private AudioClip chapterAnswerSFX;
+
     public sealed class Connection
     {
         public ChapterButton From { get; }
@@ -459,7 +461,9 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
         // 정답 선은 고정하고 오답 선은 페이드 아웃.
         LockCorrectAndRemoveWrong(correctKeys);
-
+        
+        AudioManager.Instance.PlaySFX(chapterAnswerSFX, 0.5f);
+        
         if (!allCorrectConnected)
         {
             // 첫 부분 정답에서만 안내 문구 변경.
@@ -474,6 +478,8 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
         }
 
         isCompleted = true;
+        
+        AudioManager.Instance.FadeOutBGM(1f);
 
         // 엔딩 연출 전에 안내를 완전히 종료.
         if (chapterOrderHintUI != null)
