@@ -376,7 +376,7 @@ public class ConstellationManager : SceneMonoBehaviourSingleton<ConstellationMan
 
             UIManager.Instance.ToggleCamera();
             
-            AudioManager.Instance.PlaySFX(answerStarAudioClip, 0.5f);
+            AudioManager.Instance.PlaySFX(answerStarAudioClip, 0.3f);
         }
         else
         {

@@ -108,7 +108,10 @@ public class UIManager : SceneMonoBehaviourSingleton<UIManager>
     private void OnClickOnNoteBook()
     {
         isNoteBookOpen = !isNoteBookOpen;
+        
+        PlayUISound(isNoteBookOpen ? noteOpenClip : noteCloseClip);
         noteBookUI.gameObject.SetActive(isNoteBookOpen);
+        
 
         if (isNoteBookOpen && StarConnectionHintUI.Instance != null)
             StarConnectionHintUI.Instance.NotifyNotebookOpened();
