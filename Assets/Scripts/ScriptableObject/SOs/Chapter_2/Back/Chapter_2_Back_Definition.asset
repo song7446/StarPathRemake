@@ -35,7 +35,7 @@ MonoBehaviour:
   chapterTitle_Ru: "\u0412\u0441\u043B\u0435\u0434 \u0437\u0430 \u0437\u0432\u0451\u0437\u0434\u0430\u043C\u0438"
   chapterSubtitle_Ru: "\u041F\u043E \u0441\u043B\u0435\u0434\u0443"
   cutSceneCasts: {fileID: 11400000, guid: 858422b278a1f0b40b209dd9dc11ef48, type: 2}
-  constellationData: {fileID: 11400000, guid: 94689a28448ad76499210271c4ef8f84, type: 2}
+  constellationData: {fileID: 11400000, guid: eb318188bb8f3ab4499ed1bcf67f0b28, type: 2}
   animations:
   - {fileID: 11400000, guid: 0e9f815e582488541a8b05a33d76a47d, type: 2}
   - {fileID: 11400000, guid: dfff16cea575f134a90dfd493267386c, type: 2}
