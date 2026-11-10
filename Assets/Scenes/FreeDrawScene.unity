@@ -3964,6 +3964,9 @@ MonoBehaviour:
   openMenuClip: {fileID: 8300000, guid: 639f2d4cba8dceb4a9340e8433e2d7eb, type: 3}
   closeMenuClip: {fileID: 8300000, guid: 639f2d4cba8dceb4a9340e8433e2d7eb, type: 3}
   titleSceneName: TitleScene
+  freeModeBGM: {fileID: 8300000, guid: 441c8109f0fcae84a8066e96fc96d0f0, type: 3}
+  bgmFadeInDuration: 2
+  bgmFadeOutDuration: 0.5
 --- !u!114 &972526914
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,33 +5,34 @@ using UnityEngine.UI;
 
 public class FreeModePauseMenuUI : MonoBehaviour
 {
-    [Header("패널")]
-    [SerializeField] private GameObject inputBlocker;
+    [Header("패널")] [SerializeField] private GameObject inputBlocker;
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject exitConfirmPanel;
 
-    [Header("메뉴 버튼")]
-    [SerializeField] private Button resumeButton;
+    [Header("메뉴 버튼")] [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button titleButton;
     [SerializeField] private Button quitButton;
-    
 
-    [Header("나가기 확인 버튼")]
-    [SerializeField] private Button exitYesButton;
+
+    [Header("나가기 확인 버튼")] [SerializeField] private Button exitYesButton;
     [SerializeField] private Button exitNoButton;
 
-    [Header("자유모드 입력")]
-    [SerializeField] private FreeModeStarController starController;
+    [Header("자유모드 입력")] [SerializeField] private FreeModeStarController starController;
     [SerializeField] private FreeModeDrawingManager drawingManager;
 
-    [Header("효과음")]
-    [SerializeField] private AudioClip openMenuClip;
+    [Header("효과음")] [SerializeField] private AudioClip openMenuClip;
     [SerializeField] private AudioClip closeMenuClip;
 
-    [Header("타이틀 씬")]
-    [SerializeField] private string titleSceneName = "TitleScene";
+    [Header("타이틀 씬")] [SerializeField] private string titleSceneName = "TitleScene";
+
+    [Header("자유모드 배경 음악")] [SerializeField]
+    private AudioClip freeModeBGM;
+
+    [SerializeField, Min(0f)] private float bgmFadeInDuration = 2f;
+
+    [SerializeField, Min(0f)] private float bgmFadeOutDuration = 0.5f;
 
     private enum MenuPage
     {
@@ -63,9 +64,19 @@ public class FreeModePauseMenuUI : MonoBehaviour
         settingsButton.onClick.AddListener(OpenSettings);
         titleButton.onClick.AddListener(RequestReturnToTitle);
         quitButton.onClick.AddListener(RequestQuit);
-        
+
         exitYesButton.onClick.AddListener(ConfirmExit);
         exitNoButton.onClick.AddListener(ShowMainMenu);
+    }
+
+    private void Start()
+    {
+        if (freeModeBGM != null)
+        {
+            AudioManager.Instance.PlayBGM(
+                freeModeBGM,
+                bgmFadeInDuration);
+        }
     }
 
     private void Update()
@@ -222,17 +233,22 @@ public class FreeModePauseMenuUI : MonoBehaviour
 
         PlaySound(closeMenuClip);
 
-        if (pendingExit == ExitAction.Title)
-        {
-            SceneFadeController.Instance.LoadScene(titleSceneName);
-            return;
-        }
+        AudioManager.Instance.FadeOutBGM(
+            bgmFadeOutDuration,
+            () =>
+            {
+                if (pendingExit == ExitAction.Title)
+                {
+                    SceneFadeController.Instance.LoadScene(titleSceneName);
+                    return;
+                }
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+            });
     }
 
     private void SetPage(MenuPage page)
@@ -290,7 +306,7 @@ public class FreeModePauseMenuUI : MonoBehaviour
 
         if (quitButton != null)
             quitButton.onClick.RemoveListener(RequestQuit);
-        
+
         if (exitYesButton != null)
             exitYesButton.onClick.RemoveListener(ConfirmExit);
 

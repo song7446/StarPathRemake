@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleUI : MonoBehaviour
@@ -24,6 +23,16 @@ public class TitleUI : MonoBehaviour
     [Header("효과음")]
     [SerializeField] private AudioClip gameStartClip;
     [SerializeField] private AudioClip openSettingMenuClip;
+
+    [Header("타이틀 배경 음악")]
+    [SerializeField] private AudioClip titleBGM;
+
+    [SerializeField, Min(0f)]
+    private float bgmFadeInDuration = 2f;
+
+    [Tooltip("SceneFadeController의 Cover Duration과 맞춰주세요.")]
+    [SerializeField, Min(0f)]
+    private float bgmFadeOutDuration = 0.5f;
 
     [Header("이동할 씬 이름")]
     [SerializeField] private string gameSceneName = "MainScene";
@@ -49,6 +58,16 @@ public class TitleUI : MonoBehaviour
 
         newGameYesButton.onClick.AddListener(OnClickNewGameYes);
         newGameNoButton.onClick.AddListener(CloseNewGameConfirm);
+    }
+
+    private void Start()
+    {
+        if (titleBGM != null)
+        {
+            AudioManager.Instance.PlayBGM(
+                titleBGM,
+                bgmFadeInDuration);
+        }
     }
 
     private void OnEnable()
@@ -95,7 +114,7 @@ public class TitleUI : MonoBehaviour
             return;
         }
 
-        LoadGameScene();
+        BeginSceneTransition(gameSceneName);
     }
 
     private void OnClickGameStart()
@@ -105,7 +124,7 @@ public class TitleUI : MonoBehaviour
 
         if (GameProgressSave.TryLoad(out _))
         {
-            // 아직 기록을 삭제하지 않고 확인창만 연다.
+            // 확인 전에는 기존 기록을 삭제하지 않는다.
             inputBlocker.SetActive(true);
             newGameConfirmPanel.SetActive(true);
 
@@ -118,7 +137,7 @@ public class TitleUI : MonoBehaviour
 
     private void OnClickNewGameYes()
     {
-        if (!newGameConfirmPanel.activeSelf)
+        if (isLoading || !newGameConfirmPanel.activeSelf)
             return;
 
         StartNewGame();
@@ -134,7 +153,7 @@ public class TitleUI : MonoBehaviour
 
         newGameConfirmPanel.SetActive(false);
 
-        LoadGameScene();
+        BeginSceneTransition(gameSceneName);
     }
 
     private void CloseNewGameConfirm()
@@ -149,26 +168,26 @@ public class TitleUI : MonoBehaviour
         PlayMenuSound();
     }
 
-    private void LoadGameScene()
+    private void OnClickFreeDrawMode()
     {
+        if (IsPopupOpen || !CanLoadScene(freeDrawSceneName))
+            return;
+
+        BeginSceneTransition(freeDrawSceneName);
+    }
+
+    private void BeginSceneTransition(string sceneName)
+    {
+        // 페이드 시작 전에 중복 입력을 차단한다.
         isLoading = true;
         inputBlocker.SetActive(true);
 
         if (gameStartClip != null)
             AudioManager.Instance.PlaySFX(gameStartClip);
 
-        SceneFadeController.Instance.LoadScene(gameSceneName);
-    }
-
-    private void OnClickFreeDrawMode()
-    {
-        if (IsPopupOpen || !CanLoadScene(freeDrawSceneName))
-            return;
-
-        isLoading = true;
-        inputBlocker.SetActive(true);
-
-        SceneFadeController.Instance.LoadScene(freeDrawSceneName);
+        // 음악이 끝나기를 기다리지 않고 화면 전환도 함께 시작한다.
+        AudioManager.Instance.FadeOutBGM(bgmFadeOutDuration);
+        SceneFadeController.Instance.LoadScene(sceneName);
     }
 
     private bool CanLoadScene(string sceneName)

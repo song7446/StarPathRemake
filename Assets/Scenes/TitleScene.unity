@@ -6788,8 +6788,11 @@ MonoBehaviour:
   newGameConfirmPanel: {fileID: 453042574}
   newGameYesButton: {fileID: 1056124124}
   newGameNoButton: {fileID: 545971811}
-  gameStartClip: {fileID: 0}
+  gameStartClip: {fileID: 8300000, guid: 2e58a4ee81312074189f3cfb9550762c, type: 3}
   openSettingMenuClip: {fileID: 8300000, guid: 639f2d4cba8dceb4a9340e8433e2d7eb, type: 3}
+  titleBGM: {fileID: 8300000, guid: 23af4a0615954ee4ba2afe6369b1aabd, type: 3}
+  bgmFadeInDuration: 1
+  bgmFadeOutDuration: 1
   gameSceneName: MainScene
   freeDrawSceneName: FreeDrawScene
 --- !u!1 &1475402736
