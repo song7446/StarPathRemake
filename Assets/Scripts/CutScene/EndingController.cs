@@ -30,6 +30,8 @@ public class EndingController : MonoBehaviour
 
     private Tween blackScreenWait;
 
+    [SerializeField] private AudioClip endingBGM;
+
     private void Awake()
     {
         // 경찰 장면은 최종적으로 보여줄 위치에 그대로 배치.
@@ -68,10 +70,13 @@ public class EndingController : MonoBehaviour
 
         hasStarted = true;
 
+        AudioManager.Instance.FadeOutBGM(0.5f);
+        AudioManager.Instance.PlayBGM(endingBGM, 0.5f);
         monologueUI.Play(
             endingDialogueId,
             ShowPoliceScene
         );
+
     }
 
     private void ShowPoliceScene()
