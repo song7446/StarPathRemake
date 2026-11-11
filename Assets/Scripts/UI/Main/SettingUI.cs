@@ -25,7 +25,6 @@ public class SettingsUI : MonoBehaviour
         Russian = 6
     }
 
-// 설정창을 열지 않아도 저장된 언어를 확인할 수 있음.
     public static GameLanguage CurrentLanguage
     {
         get
@@ -41,11 +40,20 @@ public class SettingsUI : MonoBehaviour
         }
     }
 
-// 기존 코드와의 호환을 위해 유지.
     public static bool UseEnglish =>
         CurrentLanguage == GameLanguage.English;
 
     public static event System.Action LanguageChanged;
+
+    // 씬이 바뀌어도 유지한다.
+    private static bool displaySettingsApplied;
+
+    // 해상도 변경은 즉시 완료되지 않을 수 있으므로
+    // 적용 직후에는 실제 화면 상태 동기화를 잠시 기다린다.
+    private static bool waitingForDisplayChange;
+    private static bool requestedFullscreen;
+    private static int displayRequestFrame;
+    private static float displayRequestTime;
 
     [Header("오디오")]
     [SerializeField] private AudioMixer audioMixer;
@@ -70,6 +78,17 @@ public class SettingsUI : MonoBehaviour
     private bool hasPendingChanges;
     private bool initialized;
 
+    [RuntimeInitializeOnLoadMethod(
+        RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetDisplayInitialization()
+    {
+        displaySettingsApplied = false;
+        waitingForDisplayChange = false;
+        requestedFullscreen = false;
+        displayRequestFrame = 0;
+        displayRequestTime = 0f;
+    }
+
     private void Awake()
     {
         ConfigureVolumeSlider(masterSlider);
@@ -86,6 +105,126 @@ public class SettingsUI : MonoBehaviour
     }
 
     private void Start()
+    {
+        RefreshVolumeControls();
+
+        bool firstInitialization = !displaySettingsApplied;
+
+        bool fullscreen = firstInitialization
+            ? PlayerPrefs.GetInt(
+                FullscreenKey,
+                Screen.fullScreen ? 1 : 0) == 1
+            : GetCurrentFullscreenState();
+
+        fullscreenToggle.SetIsOnWithoutNotify(fullscreen);
+
+        InitializeResolutions();
+
+        languageDropdown.ClearOptions();
+        languageDropdown.AddOptions(new List<string>
+        {
+            "한국어",
+            "English",
+            "中文",
+            "日本語",
+            "Español",
+            "Português",
+            "Русский"
+        });
+
+        RefreshLanguageControl();
+
+        initialized = true;
+
+        if (firstInitialization)
+        {
+            // 최초 실행 때만 저장된 화면 설정을 적용한다.
+            displaySettingsApplied = true;
+
+            SaveDisplaySettings();
+            ApplyDisplaySettings();
+        }
+        else
+        {
+            // 씬 이동으로 새 설정창이 생성되어도
+            // 화면 모드를 다시 적용하지 않는다.
+            SynchronizeFullscreenState();
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (!initialized)
+            return;
+
+        RefreshVolumeControls();
+        RefreshLanguageControl();
+        InitializeResolutions();
+
+        fullscreenToggle.SetIsOnWithoutNotify(
+            GetCurrentFullscreenState());
+
+        SynchronizeFullscreenState();
+    }
+
+    private void Update()
+    {
+        if (!initialized)
+            return;
+
+        // 설정창이 열린 상태에서 Alt+Enter를 눌러도 반영한다.
+        SynchronizeFullscreenState();
+    }
+
+    private static bool GetCurrentFullscreenState()
+    {
+        return waitingForDisplayChange
+            ? requestedFullscreen
+            : Screen.fullScreen;
+    }
+
+    private void SynchronizeFullscreenState()
+    {
+        if (waitingForDisplayChange)
+        {
+            // 요청한 프레임 직후의 이전 상태를 저장하지 않는다.
+            if (Time.frameCount <= displayRequestFrame + 1)
+                return;
+
+            bool requestCompleted =
+                Screen.fullScreen == requestedFullscreen;
+
+            bool timedOut =
+                Time.realtimeSinceStartup - displayRequestTime >= 2f;
+
+            if (!requestCompleted && !timedOut)
+                return;
+
+            waitingForDisplayChange = false;
+        }
+
+        bool actualFullscreen = Screen.fullScreen;
+
+        fullscreenToggle.SetIsOnWithoutNotify(actualFullscreen);
+
+        int actualValue = actualFullscreen ? 1 : 0;
+
+        if (!PlayerPrefs.HasKey(FullscreenKey) ||
+            PlayerPrefs.GetInt(FullscreenKey) != actualValue)
+        {
+            PlayerPrefs.SetInt(FullscreenKey, actualValue);
+            hasPendingChanges = true;
+        }
+    }
+
+    private void ConfigureVolumeSlider(Slider slider)
+    {
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
+        slider.wholeNumbers = false;
+    }
+
+    private void RefreshVolumeControls()
     {
         LoadVolume(
             masterSlider,
@@ -104,45 +243,6 @@ public class SettingsUI : MonoBehaviour
             sfxValueText,
             SfxKey,
             "SFXVolume");
-
-        bool fullscreen = PlayerPrefs.GetInt(
-            FullscreenKey,
-            Screen.fullScreen ? 1 : 0
-        ) == 1;
-
-        fullscreenToggle.SetIsOnWithoutNotify(fullscreen);
-
-        InitializeResolutions();
-
-        languageDropdown.ClearOptions();
-        languageDropdown.ClearOptions();
-
-        languageDropdown.AddOptions(new List<string>
-        {
-            "한국어",
-            "English",
-            "中文",
-            "日本語",
-            "Español",
-            "Português",
-            "Русский"
-        });
-
-        languageDropdown.SetValueWithoutNotify(
-            (int)CurrentLanguage);
-
-        languageDropdown.RefreshShownValue();
-
-        initialized = true;
-
-        ApplyDisplaySettings();
-    }
-
-    private void ConfigureVolumeSlider(Slider slider)
-    {
-        slider.minValue = 0f;
-        slider.maxValue = 1f;
-        slider.wholeNumbers = false;
     }
 
     private void LoadVolume(
@@ -162,17 +262,20 @@ public class SettingsUI : MonoBehaviour
 
     private void SetMasterVolume(float value)
     {
-        SetVolume(value, MasterKey, "MasterVolume", masterValueText);
+        SetVolume(
+            value, MasterKey, "MasterVolume", masterValueText);
     }
 
     private void SetBgmVolume(float value)
     {
-        SetVolume(value, BgmKey, "BGMVolume", bgmValueText);
+        SetVolume(
+            value, BgmKey, "BGMVolume", bgmValueText);
     }
 
     private void SetSfxVolume(float value)
     {
-        SetVolume(value, SfxKey, "SFXVolume", sfxValueText);
+        SetVolume(
+            value, SfxKey, "SFXVolume", sfxValueText);
     }
 
     private void SetVolume(
@@ -181,6 +284,8 @@ public class SettingsUI : MonoBehaviour
         string mixerParameter,
         TMP_Text label)
     {
+        value = Mathf.Clamp01(value);
+
         ApplyVolume(mixerParameter, value);
         UpdateVolumeText(label, value);
 
@@ -210,12 +315,22 @@ public class SettingsUI : MonoBehaviour
     {
         resolutions.Clear();
 
-        // 주사율만 다른 동일 해상도는 한 번만 등록.
+        // 주사율이 달라도 동일한 해상도는 한 번만 등록.
+        // 16:9가 아닌 해상도는 AddResolution에서 제외한다.
         foreach (Resolution resolution in Screen.resolutions)
             AddResolution(resolution.width, resolution.height);
 
-        // 에디터나 목록이 없는 환경에서도 현재 크기는 사용 가능.
         AddResolution(Screen.width, Screen.height);
+
+        // 해상도 목록이 없는 환경의 대체 해상도.
+        if (resolutions.Count == 0)
+        {
+            int unit = Mathf.Max(
+                1,
+                Mathf.Min(Screen.width / 16, Screen.height / 9));
+
+            AddResolution(unit * 16, unit * 9);
+        }
 
         resolutions.Sort((a, b) =>
         {
@@ -228,16 +343,33 @@ public class SettingsUI : MonoBehaviour
 
         Vector2Int savedResolution = new Vector2Int(
             PlayerPrefs.GetInt(WidthKey, Screen.width),
-            PlayerPrefs.GetInt(HeightKey, Screen.height)
-        );
+            PlayerPrefs.GetInt(HeightKey, Screen.height));
 
         int selectedIndex = resolutions.IndexOf(savedResolution);
 
-        // 모니터 변경 등으로 저장된 해상도가 없다면 현재 크기 사용.
         if (selectedIndex < 0)
         {
-            selectedIndex = resolutions.IndexOf(
-                new Vector2Int(Screen.width, Screen.height));
+            long closestDistance = long.MaxValue;
+            selectedIndex = 0;
+
+            for (int i = 0; i < resolutions.Count; i++)
+            {
+                long widthDifference =
+                    (long)resolutions[i].x - savedResolution.x;
+
+                long heightDifference =
+                    (long)resolutions[i].y - savedResolution.y;
+
+                long distance =
+                    widthDifference * widthDifference +
+                    heightDifference * heightDifference;
+
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    selectedIndex = i;
+                }
+            }
         }
 
         var options = new List<string>();
@@ -247,16 +379,24 @@ public class SettingsUI : MonoBehaviour
 
         resolutionDropdown.ClearOptions();
         resolutionDropdown.AddOptions(options);
-
-        resolutionDropdown.SetValueWithoutNotify(
-            Mathf.Max(0, selectedIndex));
-
+        resolutionDropdown.SetValueWithoutNotify(selectedIndex);
         resolutionDropdown.RefreshShownValue();
+
+        Vector2Int selectedResolution = resolutions[selectedIndex];
+
+        PlayerPrefs.SetInt(WidthKey, selectedResolution.x);
+        PlayerPrefs.SetInt(HeightKey, selectedResolution.y);
+
+        hasPendingChanges = true;
     }
 
     private void AddResolution(int width, int height)
     {
         if (width <= 0 || height <= 0)
+            return;
+
+        // 정확한 16:9 해상도만 허용.
+        if ((long)width * 9 != (long)height * 16)
             return;
 
         Vector2Int resolution = new Vector2Int(width, height);
@@ -274,6 +414,10 @@ public class SettingsUI : MonoBehaviour
             return;
         }
 
+        // 해상도를 바꿀 때도 실제 전체화면 상태를 유지한다.
+        fullscreenToggle.SetIsOnWithoutNotify(
+            GetCurrentFullscreenState());
+
         SaveDisplaySettings();
         ApplyDisplaySettings();
     }
@@ -283,14 +427,23 @@ public class SettingsUI : MonoBehaviour
         if (!initialized)
             return;
 
+        fullscreenToggle.SetIsOnWithoutNotify(fullscreen);
+
         SaveDisplaySettings();
         ApplyDisplaySettings();
     }
 
     private void SaveDisplaySettings()
     {
-        Vector2Int resolution =
-            resolutions[resolutionDropdown.value];
+        if (resolutions.Count == 0)
+            return;
+
+        int index = Mathf.Clamp(
+            resolutionDropdown.value,
+            0,
+            resolutions.Count - 1);
+
+        Vector2Int resolution = resolutions[index];
 
         PlayerPrefs.SetInt(WidthKey, resolution.x);
         PlayerPrefs.SetInt(HeightKey, resolution.y);
@@ -307,14 +460,31 @@ public class SettingsUI : MonoBehaviour
         if (resolutions.Count == 0)
             return;
 
-        Vector2Int resolution =
-            resolutions[resolutionDropdown.value];
+        int index = Mathf.Clamp(
+            resolutionDropdown.value,
+            0,
+            resolutions.Count - 1);
 
-        FullScreenMode mode = fullscreenToggle.isOn
+        Vector2Int resolution = resolutions[index];
+
+        requestedFullscreen = fullscreenToggle.isOn;
+        waitingForDisplayChange = true;
+        displayRequestFrame = Time.frameCount;
+        displayRequestTime = Time.realtimeSinceStartup;
+
+        FullScreenMode mode = requestedFullscreen
             ? FullScreenMode.FullScreenWindow
             : FullScreenMode.Windowed;
 
         Screen.SetResolution(resolution.x, resolution.y, mode);
+    }
+
+    private void RefreshLanguageControl()
+    {
+        languageDropdown.SetValueWithoutNotify(
+            (int)CurrentLanguage);
+
+        languageDropdown.RefreshShownValue();
     }
 
     private void SetLanguage(int index)
@@ -345,17 +515,28 @@ public class SettingsUI : MonoBehaviour
 
     private void OnApplicationPause(bool paused)
     {
-        if (paused)
-            SaveSettings();
+        if (!paused)
+            return;
+
+        if (initialized)
+            SynchronizeFullscreenState();
+
+        SaveSettings();
     }
 
     private void OnDisable()
     {
+        if (initialized)
+            SynchronizeFullscreenState();
+
         SaveSettings();
     }
 
     private void OnApplicationQuit()
     {
+        if (initialized)
+            SynchronizeFullscreenState();
+
         SaveSettings();
     }
 

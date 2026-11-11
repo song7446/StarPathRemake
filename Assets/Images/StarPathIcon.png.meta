@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 161848aac866ac14e8738475e89d0680
+guid: 99539f17ae65f52448436013627f6f9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3667230315626592636
-    second: "StarPath \u2014 \uCC55\uD130\uBCC4 \uD654\uBA74 \uAD6C\uC0C1_0"
+      213: 9188218738102613522
+    second: StarPathIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "StarPath \u2014 \uCC55\uD130\uBCC4 \uD654\uBA74 \uAD6C\uC0C1_0"
+      name: StarPathIcon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 1536
+        width: 1254
+        height: 1254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 486888f25716b1dc0800000000000000
-      internalID: -3667230315626592636
+      spriteID: 216b133d24c138f70800000000000000
+      internalID: 9188218738102613522
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "StarPath \u2014 \uCC55\uD130\uBCC4 \uD654\uBA74 \uAD6C\uC0C1_0": -3667230315626592636
+      StarPathIcon_0: 9188218738102613522
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
