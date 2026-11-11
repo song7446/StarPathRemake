@@ -31617,7 +31617,7 @@ MonoBehaviour:
   lineDistance: 10
   inputBlocker: {fileID: 73472673}
   blinkWaitDuration: 1
-  transformDuration: 1.5
+  transformDuration: 1
   thumbnailShrinkRatio: 0.15
   lineWidthRatio: 0.5
   finalLineColor: {r: 0.85, g: 0.9, b: 1, a: 0.7}

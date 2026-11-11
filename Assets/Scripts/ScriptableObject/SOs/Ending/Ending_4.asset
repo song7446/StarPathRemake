@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Ending_4
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
   dialogueId: 
-  sounds: []
+  sounds:
+  - action: 1
+    clip: {fileID: 8300000, guid: 8df36acee85d37b4981691f3a7f0b280, type: 3}
+    volume: 0.3
   commands:
   - characterId: Car
     characterName: Car
