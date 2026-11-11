@@ -182,6 +182,13 @@ public class EndingCreditsController : MonoBehaviour
 // 별과 선만 사라지고 카메라의 검은 배경은 남는다.
         creditsImage.color = Color.white;
 
+// 별과 선이 사라지는 동안 BGM도 함께 페이드아웃한다.
+        bool bgmFadeFinished = false;
+
+        AudioManager.Instance.FadeOutBGM(
+            fadeOutDuration,
+            () => bgmFadeFinished = true);
+
         elapsed = 0f;
 
         while (elapsed < fadeOutDuration)
@@ -228,6 +235,10 @@ public class EndingCreditsController : MonoBehaviour
         }
 
         yield return new WaitForSecondsRealtime(endDelay);
+
+// 음악이 완전히 사라진 뒤 타이틀로 이동한다.
+        while (!bgmFadeFinished)
+            yield return null;
 
 // RawImage와 CreditsCamera는 켜둔 채 씬 전환.
 // 제목이 사라진 검은 화면을 계속 보여준다.

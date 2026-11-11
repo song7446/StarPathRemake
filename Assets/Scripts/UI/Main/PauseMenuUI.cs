@@ -33,6 +33,11 @@ public class PauseMenuUI : MonoBehaviour
     
     [SerializeField] private AudioClip openPauseMenuClip;
     [SerializeField] private AudioClip closePauseMenuClip;
+    
+    [Header("타이틀 복귀 음악")]
+    [Tooltip("SceneFadeController의 Cover Duration 이하로 설정")]
+    [SerializeField, Min(0f)]
+    private float returnBgmFadeDuration = 0.5f;
 
     private enum MenuPage
     {
@@ -193,15 +198,37 @@ public class PauseMenuUI : MonoBehaviour
         AudioManager.Instance.PlaySFX(closePauseMenuClip);
     }
 
+    // 메뉴 버튼으로 타이틀에 돌아갈 때 호출.
     public void ReturnToTitle()
     {
-        if (isLeavingScene ||
-            SceneFadeController.Instance.IsTransitioning)
+        ReturnToTitleInternal(true);
+    }
+
+// 크레딧에서 음악 페이드아웃을 완료한 뒤 호출.
+    public void ReturnToTitleAfterCredits()
+    {
+        ReturnToTitleInternal(false);
+    }
+
+    private void ReturnToTitleInternal(bool fadeBgm)
+    {
+        if (isLeavingScene)
+            return;
+
+        if (SceneFadeController.Instance == null)
         {
+            Debug.LogError(
+                "SceneFadeController를 확인해주세요.",
+                this);
+
             return;
         }
 
-        if (!Application.CanStreamedLevelBeLoaded(titleSceneName))
+        if (SceneFadeController.Instance.IsTransitioning)
+            return;
+
+        if (string.IsNullOrWhiteSpace(titleSceneName) ||
+            !Application.CanStreamedLevelBeLoaded(titleSceneName))
         {
             Debug.LogError(
                 $"타이틀 씬 이름과 빌드 씬 목록을 확인하세요: {titleSceneName}",
@@ -212,11 +239,18 @@ public class PauseMenuUI : MonoBehaviour
 
         isLeavingScene = true;
 
-        // 오디오 매니저가 다음 씬에도 남으므로 반복 효과음을 직접 정지.
         AudioManager.Instance.StopLoopSFX();
 
+        // 일시정지를 해제한 뒤 페이드아웃을 시작한다.
         Resume();
+        Time.timeScale = 1f;
 
+        inputBlocker.SetActive(true);
+
+        if (fadeBgm)
+            AudioManager.Instance.FadeOutBGM(returnBgmFadeDuration);
+
+        // 음악 완료를 기다리지 않고 화면도 동시에 가린다.
         SceneFadeController.Instance.LoadScene(titleSceneName);
     }
 

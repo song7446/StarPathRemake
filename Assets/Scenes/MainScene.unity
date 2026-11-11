@@ -27163,6 +27163,7 @@ MonoBehaviour:
   titleSceneName: TitleScene
   openPauseMenuClip: {fileID: 8300000, guid: 639f2d4cba8dceb4a9340e8433e2d7eb, type: 3}
   closePauseMenuClip: {fileID: 8300000, guid: 639f2d4cba8dceb4a9340e8433e2d7eb, type: 3}
+  returnBgmFadeDuration: 1
 --- !u!114 &1607645126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41374,7 +41375,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1607645125}
         m_TargetAssemblyTypeName: PauseMenuUI, Assembly-CSharp
-        m_MethodName: ReturnToTitle
+        m_MethodName: ReturnToTitleAfterCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
