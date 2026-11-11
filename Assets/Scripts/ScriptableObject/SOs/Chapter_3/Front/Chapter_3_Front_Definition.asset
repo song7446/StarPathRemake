@@ -51,5 +51,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8047c8e4de9b2042bb2a80a37681444, type: 2}
   - {fileID: 11400000, guid: 25ee7f2bc2110f64fbb10988ea1e0c4b, type: 2}
   - {fileID: 11400000, guid: 2de3c26943ce8304e8f131188b61a44f, type: 2}
-  thumbnail: {fileID: 21300000, guid: 79e8caa8bf6476240bbf26156f716f5e, type: 3}
+  thumbnail: {fileID: 21300000, guid: ed059a770b04b89448f26ef6c9fb49d4, type: 3}
   bgm: {fileID: 8300000, guid: 7e2143939d7ab774cb1e2b06ac4b1e07, type: 3}
