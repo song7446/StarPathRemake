@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
+  m_Name: Ending_3
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
+  dialogueId: 
+  sounds:
+  - action: 1
+    clip: {fileID: 8300000, guid: f3c9df3319d361a45b6b6a24654612c0, type: 3}
+    volume: 0.3
+  commands:
+  - characterId: Killer
+    characterName: Killer
+    position: {x: 4.53, y: -1.34, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 8098840984929153668, guid: f3553dbcb28df4b4cb78b0ab6d4b3f6f, type: 3}
+  - characterId: Father
+    characterName: Father
+    position: {x: -4.21, y: -1.14, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 6980575187698972842, guid: 7ef0016330dba994fbc1f72922abff75, type: 3}

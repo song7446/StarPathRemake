@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class AnimationManager : SceneMonoBehaviourSingleton<AnimationManager>
 {
-    [Header("접히는 UI 그림을 생성할 부모")]
-    [SerializeField] private RectTransform animationUIParent;
+    [Header("접히는 UI 그림을 생성할 부모")] [SerializeField]
+    private RectTransform animationUIParent;
 
     private readonly Dictionary<string, AnimationCommand> animationDict
         = new Dictionary<string, AnimationCommand>();
@@ -34,7 +34,20 @@ public class AnimationManager : SceneMonoBehaviourSingleton<AnimationManager>
     {
         if (!animationDict.TryGetValue(id, out var animationCommand))
             return;
-        
+
+        // 기존 챕터는 기존 페이드 시간을 사용한다.
+        PlayCommand(animationCommand);
+    }
+
+    public void PlayCommand(
+        AnimationCommand animationCommand,
+        Transform worldParent = null,
+        float spriteFadeOutDuration = 1f,
+        float spriteFadeInDuration = 1f)
+    {
+        if (animationCommand == null)
+            return;
+
         if (animationCommand.sounds != null)
         {
             foreach (SoundCommand sound in animationCommand.sounds)
@@ -64,10 +77,18 @@ public class AnimationManager : SceneMonoBehaviourSingleton<AnimationManager>
                 }
             }
         }
-        
+
+        if (animationCommand.commands == null)
+            return;
+
         foreach (var command in animationCommand.commands)
         {
-            
+            if (command == null ||
+                string.IsNullOrWhiteSpace(command.characterId))
+            {
+                continue;
+            }
+
             bool isFoldedUI =
                 command.characterPrefab != null &&
                 command.characterPrefab.GetComponent<FoldedPictureUI>() != null;
@@ -112,7 +133,7 @@ public class AnimationManager : SceneMonoBehaviourSingleton<AnimationManager>
                     newObject = Instantiate(
                         command.characterPrefab,
                         command.position,
-                        Quaternion.Euler(command.rotation));
+                        Quaternion.Euler(command.rotation), worldParent);
                 }
 
                 CutSceneCastManager.Instance.PushObject(
@@ -147,7 +168,7 @@ public class AnimationManager : SceneMonoBehaviourSingleton<AnimationManager>
                 }
                 else
                 {
-                    exitDuration = 1f;
+                    exitDuration = Mathf.Max(0.01f, spriteFadeOutDuration);
 
                     foreach (SpriteRenderer sr in
                              oldObject.GetComponentsInChildren<SpriteRenderer>(true))
@@ -184,7 +205,8 @@ public class AnimationManager : SceneMonoBehaviourSingleton<AnimationManager>
                 }
                 else
                 {
-                    const float enterDuration = 2f;
+                    float enterDuration =
+                        Mathf.Max(0.01f, spriteFadeInDuration);
 
                     foreach (SpriteRenderer sr in
                              newObject.GetComponentsInChildren<SpriteRenderer>(true))

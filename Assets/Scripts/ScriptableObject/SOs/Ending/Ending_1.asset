@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
   m_Name: Ending_1
   m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
-  dialogueId: Chapter_6_Front_33
+  dialogueId: 
+  sounds:
+  - action: 1
+    clip: {fileID: 8300000, guid: 42694dbdcf45b72428b0c3648acf576b, type: 3}
+    volume: 0
   commands:
-  - characterId: OldPolice
-    characterName: OldPolice
-    position: {x: -2.89, y: -1.42, z: 0}
+  - characterId: Father
+    characterName: Father
+    position: {x: -4.21, y: -1.14, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    characterPrefab: {fileID: 785610396355022184, guid: 663b799baeef8be4583c077b0d26ae24, type: 3}
+    characterPrefab: {fileID: 6671263772061636951, guid: 1cdeb6d9e31a7c347a7cc063f1643cff, type: 3}
+  - characterId: Car
+    characterName: Car
+    position: {x: 2.99, y: -1.99, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 3671879045801062401, guid: 7ad3eee147f63264d9e7ce24ef06ed9b, type: 3}

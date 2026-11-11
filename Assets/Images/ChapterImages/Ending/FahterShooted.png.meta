@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: adf037acc1483a34aa03389ed1f821d7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -440730662407090405
+    second: FahterShooted_0
+  - first:
+      213: -717208994616947406
+    second: FahterShooted_1
+  - first:
+      213: 6223116788745758171
+    second: FahterShooted_2
+  - first:
+      213: -1128649738542514214
+    second: FahterShooted_3
+  - first:
+      213: -9052778655968164805
+    second: FahterShooted_4
+  - first:
+      213: 7127586254080173281
+    second: FahterShooted_5
+  - first:
+      213: 3210525438368585545
+    second: FahterShooted_6
+  - first:
+      213: 2161630874480356207
+    second: FahterShooted_7
+  - first:
+      213: -3835196042927017758
+    second: FahterShooted_8
+  - first:
+      213: 1683062610734861164
+    second: FahterShooted_9
+  - first:
+      213: 5743517982487537216
+    second: FahterShooted_10
+  - first:
+      213: -8697230843289450776
+    second: FahterShooted_11
+  - first:
+      213: -4483029600051334801
+    second: FahterShooted_12
+  - first:
+      213: 3073236711578532455
+    second: FahterShooted_13
+  - first:
+      213: 7121712350403848897
+    second: FahterShooted_14
+  - first:
+      213: 6080249735854456194
+    second: FahterShooted_15
+  - first:
+      213: -7398711286634892439
+    second: FahterShooted_16
+  - first:
+      213: 197316206337556893
+    second: FahterShooted_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FahterShooted_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 873
+        height: 1481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1f4a913cc532e9f0800000000000000
+      internalID: -440730662407090405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1449
+        width: 71
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d44262836fb06f0800000000000000
+      internalID: -717208994616947406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_2
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 369
+        width: 229
+        height: 1135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd5e5f47fb3fc5650800000000000000
+      internalID: 6223116788745758171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_3
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 1421
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adff55aea0b3650f0800000000000000
+      internalID: -1128649738542514214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_4
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 1345
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3487cca6c11e5280800000000000000
+      internalID: -9052778655968164805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_5
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 1236
+        width: 31
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e4e76c3fe54ae260800000000000000
+      internalID: 7127586254080173281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_6
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 1183
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 947905840e31e8c20800000000000000
+      internalID: 3210525438368585545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_7
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1076
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6b2be8d3d7affd10800000000000000
+      internalID: 2161630874480356207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_8
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 814
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e0f959c485a6cac0800000000000000
+      internalID: -3835196042927017758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_9
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 753
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6bc797f6807b5710800000000000000
+      internalID: 1683062610734861164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_10
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 772
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 046ec33bc2315bf40800000000000000
+      internalID: 5743517982487537216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_11
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 556
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e64920c0aa3d4780800000000000000
+      internalID: -8697230843289450776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_12
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 503
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f61f063b45419c1c0800000000000000
+      internalID: -4483029600051334801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_13
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 385
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76af358a18456aa20800000000000000
+      internalID: 3073236711578532455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_14
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 337
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ca655676a765d260800000000000000
+      internalID: 7121712350403848897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_15
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 161
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d74439be2616450800000000000000
+      internalID: 6080249735854456194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_16
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 15
+        width: 67
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963347ce84f725990800000000000000
+      internalID: -7398711286634892439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FahterShooted_17
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 71
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d918d235b020db200800000000000000
+      internalID: 197316206337556893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FahterShooted_0: -440730662407090405
+      FahterShooted_1: -717208994616947406
+      FahterShooted_10: 5743517982487537216
+      FahterShooted_11: -8697230843289450776
+      FahterShooted_12: -4483029600051334801
+      FahterShooted_13: 3073236711578532455
+      FahterShooted_14: 7121712350403848897
+      FahterShooted_15: 6080249735854456194
+      FahterShooted_16: -7398711286634892439
+      FahterShooted_17: 197316206337556893
+      FahterShooted_2: 6223116788745758171
+      FahterShooted_3: -1128649738542514214
+      FahterShooted_4: -9052778655968164805
+      FahterShooted_5: 7127586254080173281
+      FahterShooted_6: 3210525438368585545
+      FahterShooted_7: 2161630874480356207
+      FahterShooted_8: -3835196042927017758
+      FahterShooted_9: 1683062610734861164
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

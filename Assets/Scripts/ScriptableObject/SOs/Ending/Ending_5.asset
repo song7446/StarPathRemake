@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa8298ab44c5a34c807eb5a30de1e2a, type: 3}
+  m_Name: Ending_5
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationCommand
+  dialogueId: 
+  sounds: []
+  commands:
+  - characterId: Father
+    characterName: Father
+    position: {x: -1.64, y: -3.98, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    characterPrefab: {fileID: 4174481222575367679, guid: b79eee3242ae4d64b991037a3a47af9c, type: 3}
