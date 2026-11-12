@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 822e1f458594da04faa051a30cee118c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5094857105394600875
+    second: LittleGround_0
+  - first:
+      213: -6733494065111802239
+    second: LittleGround_1
+  - first:
+      213: -2956476732184672194
+    second: LittleGround_2
+  - first:
+      213: -7543071594010963264
+    second: LittleGround_3
+  - first:
+      213: 2024591106682817314
+    second: LittleGround_4
+  - first:
+      213: -212988850249924095
+    second: LittleGround_5
+  - first:
+      213: 775787532731672877
+    second: LittleGround_6
+  - first:
+      213: 4569457294850491730
+    second: LittleGround_7
+  - first:
+      213: -6300964793517695239
+    second: LittleGround_8
+  - first:
+      213: -3544237254553565922
+    second: LittleGround_9
+  - first:
+      213: 7729836890433524592
+    second: LittleGround_10
+  - first:
+      213: -422095156021847789
+    second: LittleGround_11
+  - first:
+      213: 2672620171524153467
+    second: LittleGround_12
+  - first:
+      213: 3329043821276929945
+    second: LittleGround_13
+  - first:
+      213: 3337404319473190866
+    second: LittleGround_14
+  - first:
+      213: -83255016921449492
+    second: LittleGround_15
+  - first:
+      213: -1829461082788543168
+    second: LittleGround_16
+  - first:
+      213: 9095450681782491877
+    second: LittleGround_17
+  - first:
+      213: 8798025570068619638
+    second: LittleGround_18
+  - first:
+      213: -6767968449636370618
+    second: LittleGround_19
+  - first:
+      213: -1982322345058200874
+    second: LittleGround_20
+  - first:
+      213: 746961108953568772
+    second: LittleGround_21
+  - first:
+      213: -7582274130897170883
+    second: LittleGround_22
+  - first:
+      213: -464644749947462160
+    second: LittleGround_23
+  - first:
+      213: -1639817695466075504
+    second: LittleGround_24
+  - first:
+      213: 5672994819001363496
+    second: LittleGround_25
+  - first:
+      213: -2312511301531172468
+    second: LittleGround_26
+  - first:
+      213: 8462417542513699348
+    second: LittleGround_27
+  - first:
+      213: -2531625509797830824
+    second: LittleGround_28
+  - first:
+      213: 2371944157268589279
+    second: LittleGround_29
+  - first:
+      213: -8707317480166263141
+    second: LittleGround_30
+  - first:
+      213: -300110977654100350
+    second: LittleGround_31
+  - first:
+      213: -2178211518905491391
+    second: LittleGround_32
+  - first:
+      213: -3741832859476900967
+    second: LittleGround_33
+  - first:
+      213: 703494841733910767
+    second: LittleGround_34
+  - first:
+      213: 5631219878063203675
+    second: LittleGround_35
+  - first:
+      213: 3315960672649103872
+    second: LittleGround_36
+  - first:
+      213: 9140706308977365420
+    second: LittleGround_37
+  - first:
+      213: -7720391812854397528
+    second: LittleGround_38
+  - first:
+      213: -4062243598639052042
+    second: LittleGround_39
+  - first:
+      213: 7749059216143889631
+    second: LittleGround_40
+  - first:
+      213: -2668560989481758304
+    second: LittleGround_41
+  - first:
+      213: 4237038389678539364
+    second: LittleGround_42
+  - first:
+      213: -7949143275713360546
+    second: LittleGround_43
+  - first:
+      213: 1134967649734203326
+    second: LittleGround_44
+  - first:
+      213: -9020694022551279400
+    second: LittleGround_45
+  - first:
+      213: 5056192815670598560
+    second: LittleGround_46
+  - first:
+      213: 4028465671172316433
+    second: LittleGround_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LittleGround_0
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 607
+        width: 501
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5547493d47e6b49b0800000000000000
+      internalID: -5094857105394600875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LittleGround_1
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 614
+        width: 521
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e5fc7c2d2dd82a0800000000000000
+      internalID: -6733494065111802239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LittleGround_3
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 227
+        width: 497
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28e6bb7e7aac5dbf0800000000000000
+      internalID: -300110977654100350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LittleGround_2
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 209
+        width: 593
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00a4a6eb9a8a40e20800000000000000
+      internalID: 3315960672649103872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8485e45b06d5db344be1324e028677d2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      LittleGround_0: -5094857105394600875
+      LittleGround_1: -6733494065111802239
+      LittleGround_10: 7729836890433524592
+      LittleGround_11: -422095156021847789
+      LittleGround_12: 2672620171524153467
+      LittleGround_13: 3329043821276929945
+      LittleGround_14: 3337404319473190866
+      LittleGround_15: -83255016921449492
+      LittleGround_16: -1829461082788543168
+      LittleGround_17: 9095450681782491877
+      LittleGround_18: 8798025570068619638
+      LittleGround_19: -6767968449636370618
+      LittleGround_2: 3315960672649103872
+      LittleGround_20: -1982322345058200874
+      LittleGround_21: 746961108953568772
+      LittleGround_22: -7582274130897170883
+      LittleGround_23: -464644749947462160
+      LittleGround_24: -1639817695466075504
+      LittleGround_25: 5672994819001363496
+      LittleGround_26: -2312511301531172468
+      LittleGround_27: 8462417542513699348
+      LittleGround_28: -2531625509797830824
+      LittleGround_29: 2371944157268589279
+      LittleGround_3: -300110977654100350
+      LittleGround_30: -8707317480166263141
+      LittleGround_32: -2178211518905491391
+      LittleGround_33: -3741832859476900967
+      LittleGround_34: 703494841733910767
+      LittleGround_35: 5631219878063203675
+      LittleGround_37: 9140706308977365420
+      LittleGround_38: -7720391812854397528
+      LittleGround_39: -4062243598639052042
+      LittleGround_4: 2024591106682817314
+      LittleGround_40: 7749059216143889631
+      LittleGround_41: -2668560989481758304
+      LittleGround_42: 4237038389678539364
+      LittleGround_43: -7949143275713360546
+      LittleGround_44: 1134967649734203326
+      LittleGround_45: -9020694022551279400
+      LittleGround_46: 5056192815670598560
+      LittleGround_47: 4028465671172316433
+      LittleGround_48: 59169000
+      LittleGround_5: -212988850249924095
+      LittleGround_6: 775787532731672877
+      LittleGround_7: 4569457294850491730
+      LittleGround_8: -6300964793517695239
+      LittleGround_9: -3544237254553565922
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
