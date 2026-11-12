@@ -71,6 +71,6 @@ MonoBehaviour:
     starB: 7
   constellationPrefab: {fileID: 7510803573960233865, guid: ffa0057c43a1dd945ad5578803eb2b64, type: 3}
   CreatePosition: {x: 3.46, y: 2.34, z: 0}
-  constellationGuideImage: {fileID: 21300000, guid: 2a8b81af4b8e31543b769ec3540c6c46, type: 3}
+  constellationGuideImage: {fileID: 21300000, guid: 4f1494ebed4d1814a96c2b0af6a021b7, type: 3}
   fakeStarsPrefab: {fileID: 8817382393032707462, guid: 28e96700512ab594cbe31e47ccd6680f, type: 3}
   fakeStarsCreatePosition: {x: -4.99, y: -0.24, z: 0}
