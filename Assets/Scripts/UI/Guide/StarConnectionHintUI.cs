@@ -6,9 +6,13 @@ public class StarConnectionHintUI : MonoBehaviour
 {
     public static StarConnectionHintUI Instance { get; private set; }
 
-    [Header("UI")]
+    [Header("공통 안내 그룹")]
     [SerializeField] private CanvasGroup hintGroup;
-    [SerializeField] private TMP_Text hintText;
+
+    [Header("안내 텍스트")]
+    [SerializeField] private TMP_Text connectHintText;
+    [SerializeField] private TMP_Text cancelHintText;
+    [SerializeField] private TMP_Text notebookHintText;
 
     [Header("챕터 인덱스")]
     [SerializeField] private int firstChapterIndex = 0;
@@ -28,18 +32,20 @@ public class StarConnectionHintUI : MonoBehaviour
     private bool hasOpenedNotebook;
 
     private bool isShowing;
-    private string currentMessage;
+    private TMP_Text currentHint;
 
     private void Awake()
     {
         Instance = this;
 
-        hintGroup.alpha = 0f;
+        connectHintText.raycastTarget = false;
+        cancelHintText.raycastTarget = false;
+        notebookHintText.raycastTarget = false;
+
         hintGroup.interactable = false;
         hintGroup.blocksRaycasts = false;
-        hintGroup.gameObject.SetActive(false);
 
-        hintText.raycastTarget = false;
+        Hide();
     }
 
     private void Update()
@@ -49,8 +55,16 @@ public class StarConnectionHintUI : MonoBehaviour
 
     private void RefreshHint()
     {
-        // 땅을 보거나 대사가 진행 중이면 안내 숨김.
-        if (!UIManager.Instance.GetIsOnSkyView() ||
+        if (UIManager.Instance == null ||
+            GameManager.Instance == null)
+        {
+            Hide();
+            return;
+        }
+
+        // 챕터 플레이 중이 아니거나 준비 중이면 안내를 숨긴다.
+        if (!GameManager.Instance.IsChapterReady ||
+            !UIManager.Instance.GetIsOnSkyView() ||
             UIManager.Instance.IsPlayingDialogue() ||
             MonologueUI.IsPlaying ||
             PauseMenuUI.IsOpen)
@@ -65,8 +79,8 @@ public class StarConnectionHintUI : MonoBehaviour
             !firstPuzzleCompleted)
         {
             Show(hasConnectedLine
-                ? "우클릭으로 그리던 선을 취소하거나 마지막 선을 지울 수 있습니다."
-                : "별을 차례로 클릭해서 연결하세요.");
+                ? cancelHintText
+                : connectHintText);
 
             return;
         }
@@ -74,10 +88,7 @@ public class StarConnectionHintUI : MonoBehaviour
         if (chapterIndex == secondChapterIndex &&
             !hasOpenedNotebook)
         {
-            Show(
-                "수첩에서 현재 챕터에 해당하는 별자리 사진을 꺼내 참고하세요."
-            );
-
+            Show(notebookHintText);
             return;
         }
 
@@ -87,7 +98,8 @@ public class StarConnectionHintUI : MonoBehaviour
     // 실제로 새로운 선이 완성됐을 때 호출.
     public void NotifyLineConnected()
     {
-        if (GameManager.Instance.currentChapterIdx != firstChapterIndex ||
+        if (GameManager.Instance == null ||
+            GameManager.Instance.currentChapterIdx != firstChapterIndex ||
             firstPuzzleCompleted)
         {
             return;
@@ -100,8 +112,11 @@ public class StarConnectionHintUI : MonoBehaviour
     // 첫 챕터 별자리 완성 시 호출.
     public void Complete()
     {
-        if (GameManager.Instance.currentChapterIdx != firstChapterIndex)
+        if (GameManager.Instance == null ||
+            GameManager.Instance.currentChapterIdx != firstChapterIndex)
+        {
             return;
+        }
 
         firstPuzzleCompleted = true;
         Hide();
@@ -114,19 +129,35 @@ public class StarConnectionHintUI : MonoBehaviour
         RefreshHint();
     }
 
-    private void Show(string message)
+    private void Show(TMP_Text targetHint)
     {
-        if (isShowing && currentMessage == message)
+        if (targetHint == null)
+        {
+            Hide();
+            return;
+        }
+
+        if (isShowing && currentHint == targetHint)
             return;
 
         hintTween?.Kill();
+        hintTween = null;
 
         isShowing = true;
-        currentMessage = message;
+        currentHint = targetHint;
 
-        // 안내가 바뀔 때도 페이드 인.
         hintGroup.alpha = 0f;
-        hintText.text = message;
+
+        // 문구와 폰트는 각 텍스트의 현지화 컴포넌트가 처리한다.
+        connectHintText.gameObject.SetActive(
+            targetHint == connectHintText);
+
+        cancelHintText.gameObject.SetActive(
+            targetHint == cancelHintText);
+
+        notebookHintText.gameObject.SetActive(
+            targetHint == notebookHintText);
+
         hintGroup.gameObject.SetActive(true);
 
         hintTween = hintGroup
@@ -147,17 +178,26 @@ public class StarConnectionHintUI : MonoBehaviour
 
     private void Hide()
     {
-        if (!isShowing)
-            return;
-
         isShowing = false;
-        currentMessage = null;
+        currentHint = null;
 
         hintTween?.Kill();
         hintTween = null;
 
-        hintGroup.alpha = 0f;
-        hintGroup.gameObject.SetActive(false);
+        if (connectHintText != null)
+            connectHintText.gameObject.SetActive(false);
+
+        if (cancelHintText != null)
+            cancelHintText.gameObject.SetActive(false);
+
+        if (notebookHintText != null)
+            notebookHintText.gameObject.SetActive(false);
+
+        if (hintGroup != null)
+        {
+            hintGroup.alpha = 0f;
+            hintGroup.gameObject.SetActive(false);
+        }
     }
 
     private void OnDisable()

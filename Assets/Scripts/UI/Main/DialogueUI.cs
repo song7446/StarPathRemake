@@ -45,11 +45,17 @@ public class DialogueUI : MonoBehaviour
 
     [SerializeField, Range(0.1f, 3f)]
     private float defaultPitch = 1f;
+    
+    // 화면에 실제로 표시한 대사의 인덱스.
+    private int displayedLineIndex = -1;
 
     public void Play(IReadOnlyList<DialogueData> dialogues)
     {
         StopTyping();
         isPlaying = false;
+
+        // 이전 대사 표시 정보 초기화.
+        displayedLineIndex = -1;
 
         if (dialogueText == null)
         {
@@ -119,8 +125,10 @@ public class DialogueUI : MonoBehaviour
     {
         StopTyping();
 
-        DialogueData line = lines[currentIndex];
+        displayedLineIndex = currentIndex;
 
+        DialogueData line = lines[currentIndex];
+        
         SetDialoguePitch(line.Speaker);
 
         dialogueText.text = line.GetText();
@@ -264,33 +272,34 @@ public class DialogueUI : MonoBehaviour
     private void OnEnable()
     {
         SettingsUI.LanguageChanged += OnLanguageChanged;
+
+        // 비활성 상태에서 언어가 변경됐어도 다시 켜질 때 반영.
+        OnLanguageChanged();
     }
 
     private void OnLanguageChanged()
     {
-        if (!isPlaying ||
-            dialogueText == null ||
+        if (dialogueText == null ||
             lines == null ||
-            currentIndex < 0 ||
-            currentIndex >= lines.Count)
+            displayedLineIndex < 0 ||
+            displayedLineIndex >= lines.Count)
         {
             return;
         }
 
         StopTyping();
 
-        DialogueData line = lines[currentIndex];
+        // 재생이 끝났어도 화면에 남아 있는 대사를 번역.
+        DialogueData line = lines[displayedLineIndex];
 
         dialogueText.text = line.GetText();
-
-        // 변경된 문장은 타이핑 없이 전체 표시.
         dialogueText.maxVisibleCharacters = int.MaxValue;
         dialogueText.ForceMeshUpdate();
 
         characterCount = dialogueText.textInfo.characterCount;
-        dialogueText.maxVisibleCharacters = characterCount;
 
-        // 언어 변경만으로 애니메이션을 실행하거나 기록을 추가하지 않음.
+        // 진행 인덱스와 재생 상태는 변경하지 않는다.
+        // 애니메이션, 기록 추가, 완료 이벤트도 실행하지 않는다.
     }
 
     private void OnDisable()
