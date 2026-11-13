@@ -37,6 +37,8 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
     [SerializeField] private ChapterOrderHintUI chapterOrderHintUI;
 
     [SerializeField] private AudioClip chapterAnswerSFX;
+    
+    [SerializeField] private AudioClip chapterConnectSFX;
 
     public sealed class Connection
     {
@@ -223,6 +225,9 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
 
         currentLine = null;
         startStar = null;
+
+        if (chapterConnectSFX != null)
+            AudioManager.Instance.PlaySFX(chapterConnectSFX);
 
         CheckAnswer();
     }
