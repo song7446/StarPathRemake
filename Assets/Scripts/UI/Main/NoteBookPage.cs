@@ -61,11 +61,8 @@ public class NoteBookPage : MonoBehaviour
         if (constellationData == null)
             return;
 
-        UIManager.Instance.SetGuideConstellation(
+        UIManager.Instance.ReplaceGuideConstellation(
             constellationData);
-
-        UIManager.Instance.ReplaceGuideImage(
-            constellationData.constellationGuideImage);
     }
 
     private void OnDestroy()

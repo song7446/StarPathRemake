@@ -483,4 +483,9 @@ public class UIManager : SceneMonoBehaviourSingleton<UIManager>
 
         AudioManager.Instance.PlaySFX(clip, uiSoundVolume);
     }
+    
+    public void ReplaceGuideConstellation(ConstellationData constellation)
+    {
+        guideImageUI.ReplaceGuideConstellation(constellation);
+    }
 }

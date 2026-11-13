@@ -290,4 +290,39 @@ public class GuideImageUI : MonoBehaviour
 
         guideImageName.text = currentConstellation.GetName();
     }
+    
+    public void ReplaceGuideConstellation(ConstellationData constellation)
+    {
+        // 이동 중이면 이름과 사진 모두 변경하지 않는다.
+        if (isSliding ||
+            constellation == null ||
+            constellation.constellationGuideImage == null ||
+            guidePhotoImage == null ||
+            guideImage == null)
+        {
+            return;
+        }
+
+        isDraggingGuide = false;
+
+        if (isGuideHidden)
+        {
+            // 숨겨진 상태에서 이름과 사진을 함께 교체.
+            SetGuideConstellation(constellation);
+            ChangeGuideImage(constellation.constellationGuideImage);
+
+            SlideGuideImage();
+        }
+        else
+        {
+            // 기존 사진이 완전히 나간 뒤 함께 교체.
+            SlideGuideImage(() =>
+            {
+                SetGuideConstellation(constellation);
+                ChangeGuideImage(constellation.constellationGuideImage);
+
+                SlideGuideImage();
+            });
+        }
+    }
 }
