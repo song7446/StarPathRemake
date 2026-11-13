@@ -372,7 +372,7 @@ public class ChapterDrawingManager : SceneMonoBehaviourSingleton<ChapterDrawingM
         }
     }
 
-    private void CancelDrawing()
+    public void CancelDrawing()
     {
         if (currentLine != null)
             Destroy(currentLine.gameObject);

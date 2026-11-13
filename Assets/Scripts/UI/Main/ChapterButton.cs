@@ -44,9 +44,13 @@ public class ChapterButton : MonoBehaviour,
 
     private void OnClickSceneViewButton()
     {
+        // 장면을 보러 갈 때는 임시 선만 취소한다.
+        // 이미 연결한 선은 그대로 유지한다.
+        ChapterDrawingManager.Instance.CancelDrawing();
+
         GameManager.Instance.StartChapter(chapterIdx);
         UIManager.Instance.SlideOutChapterButtons();
-        ChapterDrawingManager.Instance.OnRightClick();
+
         AudioManager.Instance.PlaySFX(chapterStartAudioClip);
     }
 

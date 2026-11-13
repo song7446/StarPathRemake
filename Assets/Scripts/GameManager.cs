@@ -62,7 +62,10 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
     private readonly HashSet<string> playedMonologueIds = new();
     
     [SerializeField] private ChapterOrderHintUI chapterOrderHintUI;
-
+    
+// 현재 챕터 안에 있는지 외부에서 확인한다.
+    public bool IsChapterActive => isChapterActive;
+    
     private void Start()
     {
         LoadProgress();

@@ -23,15 +23,41 @@ public class PlayerInput : MonoBehaviour
     {
         if (!context.performed)
             return;
-        
+
         if (MonologueUI.IsPlaying || PauseMenuUI.IsOpen)
             return;
 
-        // 챕터 별 위에서는 기존 장면 보기 입력만 처리한다.
+        if (SceneFadeController.Instance != null &&
+            SceneFadeController.Instance.IsTransitioning)
+        {
+            return;
+        }
+
+        GameManager manager = GameManager.Instance;
+
+        if (manager.IsChapterActive)
+        {
+            // 챕터 준비와 복귀 중에는 처리하지 않는다.
+            if (!manager.IsChapterReady)
+                return;
+
+            // 챕터 안에서는 하늘을 보며 퍼즐을 푸는 동안만
+            // 해당 별자리의 선을 취소하거나 삭제한다.
+            if (!UIManager.Instance.GetIsOnSkyView() ||
+                UIManager.Instance.IsPlayingDialogue())
+            {
+                return;
+            }
+
+            DrawingManager.Instance.OnRightClick();
+            return;
+        }
+
+        // 챕터 선택 화면의 별 위에서는 장면 보기 메뉴만 처리.
         if (IsPointerOverChapterButton())
             return;
 
-        DrawingManager.Instance.OnRightClick();
+        // 챕터 선택 화면에서는 시간 순서 퍼즐만 처리한다.
         ChapterDrawingManager.Instance.OnRightClick();
     }
 

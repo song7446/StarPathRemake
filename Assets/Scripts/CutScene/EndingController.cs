@@ -103,9 +103,9 @@ public class EndingController : MonoBehaviour
 
         ShowFatherScene();
 
-        monologueUI.Play(
-            endingDialogueId,
-            StartFatherAnimation);
+        // monologueUI.Play(
+        //     endingDialogueId,
+        //     StartFatherAnimation);
     }
     
     private void ShowFatherScene()
