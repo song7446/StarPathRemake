@@ -345,8 +345,8 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
         if (isWatched[idx])
             return true;
 
-        // 다음 챕터 앞장면은 이전 챕터 뒷장면을 보면 해금.
-        return idx % 2 == 0 && isWatched[idx - 1];
+        // 앞뒤 구분 없이 바로 이전 장면을 완료했다면 선택 가능.
+        return isWatched[idx - 1];
     }
 
     public void MarkCurrentChapterWatched()
