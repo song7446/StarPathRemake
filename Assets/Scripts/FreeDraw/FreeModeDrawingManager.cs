@@ -14,6 +14,9 @@ public class FreeModeDrawingManager : MonoBehaviour
     [Header("별 선택")]
     [SerializeField] private LayerMask starLayer;
     [SerializeField] private float starPlaneZ;
+    
+    [Header("효과음")]
+    [SerializeField] private AudioClip connectStarAudioClip;
 
     private class Connection
     {
@@ -217,6 +220,9 @@ public class FreeModeDrawingManager : MonoBehaviour
             end = endStar,
             line = currentLine
         });
+
+        if (connectStarAudioClip != null)
+            AudioManager.Instance.PlaySFX(connectStarAudioClip);
 
         currentLine = null;
         startStar = null;
