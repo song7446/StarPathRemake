@@ -368,7 +368,7 @@ public class ConstellationManager : SceneMonoBehaviourSingleton<ConstellationMan
             if (StarConnectionHintUI.Instance != null)
                 StarConnectionHintUI.Instance.Complete();
 
-            GameManager.Instance.isWatched[GameManager.Instance.currentChapterIdx] = true;
+            GameManager.Instance.MarkCurrentChapterWatched();
             GameManager.Instance.StartChapter(
                 GameManager.Instance.currentChapterIdx + 1,
                 true

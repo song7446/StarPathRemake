@@ -301,6 +301,12 @@ public class DialogueUI : MonoBehaviour
         // 진행 인덱스와 재생 상태는 변경하지 않는다.
         // 애니메이션, 기록 추가, 완료 이벤트도 실행하지 않는다.
     }
+    
+    public void StopDialogue()
+    {
+        StopTyping();
+        isPlaying = false;
+    }
 
     private void OnDisable()
     {

@@ -195,10 +195,13 @@ public class UIManager : SceneMonoBehaviourSingleton<UIManager>
 
     public void GetOutUIs()
     {
+        // 챕터를 떠날 때 타이핑과 대사 효과음 중단.
+        dialogueUI.StopDialogue();
+
         GetOutButtons();
         GetOutSubTitle();
         GetOutDialogueUI();
-        
+
         guideImageUI.HideGuideImage();
     }
 
