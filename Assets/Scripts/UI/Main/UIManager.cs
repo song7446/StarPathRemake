@@ -491,4 +491,9 @@ public class UIManager : SceneMonoBehaviourSingleton<UIManager>
     {
         guideImageUI.ReplaceGuideConstellation(constellation);
     }
+    
+    public void StopDialogue()
+    {
+        dialogueUI.StopDialogue();
+    }
 }

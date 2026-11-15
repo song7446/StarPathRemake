@@ -13,6 +13,12 @@ public class PlayerInput : MonoBehaviour
         if (!context.performed)
             return;
 
+        if (SceneFadeController.Instance != null &&
+            SceneFadeController.Instance.IsTransitioning)
+        {
+            return;
+        }
+
         if (MonologueUI.IsPlaying || PauseMenuUI.IsOpen)
             return;
 

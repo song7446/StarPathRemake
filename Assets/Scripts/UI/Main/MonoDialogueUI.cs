@@ -148,6 +148,12 @@ public class MonologueUI : MonoBehaviour
 
     public void Advance()
     {
+        if (SceneFadeController.Instance != null &&
+            SceneFadeController.Instance.IsTransitioning)
+        {
+            return;
+        }
+        
         if (activeMonologue != this ||
             PauseMenuUI.IsOpen ||
             lines == null)

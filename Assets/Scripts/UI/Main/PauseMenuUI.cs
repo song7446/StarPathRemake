@@ -6,37 +6,31 @@ public class PauseMenuUI : MonoBehaviour
 {
     public static bool IsOpen { get; private set; }
 
-    [Header("화면")]
-    [SerializeField] private GameObject inputBlocker;
+    [Header("화면")] [SerializeField] private GameObject inputBlocker;
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject dialogueHistoryPanel;
 
-    [Header("메뉴 버튼")]
-    [SerializeField] private Button resumeButton;
+    [Header("메뉴 버튼")] [SerializeField] private Button resumeButton;
     [SerializeField] private Button historyButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button chapterSelectButton;
     [SerializeField] private Button titleButton;
     [SerializeField] private Button quitButton;
 
-    [Header("뒤로 버튼")]
-    [SerializeField] private Button settingsBackButton;
+    [Header("뒤로 버튼")] [SerializeField] private Button settingsBackButton;
     [SerializeField] private Button historyBackButton;
 
-    [Header("씬")]
-    [SerializeField] private string titleSceneName = "TitleScene";
+    [Header("씬")] [SerializeField] private string titleSceneName = "TitleScene";
 
     private bool isInChapter;
     private bool isLeavingScene;
     private float previousTimeScale = 1f;
-    
+
     [SerializeField] private AudioClip openPauseMenuClip;
     [SerializeField] private AudioClip closePauseMenuClip;
-    
-    [Header("타이틀 복귀 음악")]
-    [Tooltip("SceneFadeController의 Cover Duration 이하로 설정")]
-    [SerializeField, Min(0f)]
+
+    [Header("타이틀 복귀 음악")] [Tooltip("SceneFadeController의 Cover Duration 이하로 설정")] [SerializeField, Min(0f)]
     private float returnBgmFadeDuration = 0.5f;
 
     private enum MenuPage
@@ -66,7 +60,7 @@ public class PauseMenuUI : MonoBehaviour
 
         SetChapterPlaying(false);
     }
-    
+
     private void Update()
     {
         if (!IsOpen || !isInChapter)
@@ -133,7 +127,7 @@ public class PauseMenuUI : MonoBehaviour
         inputBlocker.SetActive(true);
 
         ShowMainMenu();
-        
+
         AudioManager.Instance.SetBGMPaused(true);
     }
 
@@ -220,7 +214,6 @@ public class PauseMenuUI : MonoBehaviour
             Debug.LogError(
                 "SceneFadeController를 확인해주세요.",
                 this);
-
             return;
         }
 
@@ -233,24 +226,24 @@ public class PauseMenuUI : MonoBehaviour
             Debug.LogError(
                 $"타이틀 씬 이름과 빌드 씬 목록을 확인하세요: {titleSceneName}",
                 this);
-
             return;
         }
 
         isLeavingScene = true;
 
-        AudioManager.Instance.StopLoopSFX();
+        // 일시정지를 풀기 전에 대사와 대기 중인 진행을 중단.
+        GameManager.Instance.PrepareToLeaveScene();
 
-        // 일시정지를 해제한 뒤 페이드아웃을 시작한다.
         Resume();
         Time.timeScale = 1f;
 
         inputBlocker.SetActive(true);
 
+        AudioManager.Instance.StopLoopSFX();
+
         if (fadeBgm)
             AudioManager.Instance.FadeOutBGM(returnBgmFadeDuration);
 
-        // 음악 완료를 기다리지 않고 화면도 동시에 가린다.
         SceneFadeController.Instance.LoadScene(titleSceneName);
     }
 

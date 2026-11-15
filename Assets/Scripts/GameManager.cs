@@ -474,4 +474,21 @@ public class GameManager : SceneMonoBehaviourSingleton<GameManager>
 
         chapterOrderHintUI.ShowGuide();
     }
+    
+    public void PrepareToLeaveScene()
+    {
+        isReturningToMenu = true;
+        isChapterActive = false;
+
+        // 챕터 준비, 복귀, 힌트 복원 대기를 모두 중단.
+        StopAllCoroutines();
+
+        chapterReadyCoroutine = null;
+        returnCoroutine = null;
+
+        chapterEntranceSequence?.Kill();
+        chapterEntranceSequence = null;
+
+        UIManager.Instance.StopDialogue();
+    }
 }
