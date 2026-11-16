@@ -315,12 +315,59 @@ public class SettingsUI : MonoBehaviour
     {
         resolutions.Clear();
 
-        // 주사율이 달라도 동일한 해상도는 한 번만 등록.
-        // 16:9가 아닌 해상도는 AddResolution에서 제외한다.
-        foreach (Resolution resolution in Screen.resolutions)
-            AddResolution(resolution.width, resolution.height);
+        if (Application.platform == RuntimePlatform.OSXPlayer ||
+            Application.platform == RuntimePlatform.OSXEditor)
+        {
+            // OS가 보고한 모드 중 면적이 가장 큰 해상도를 기준으로 한다.
+            int maxWidth = Screen.currentResolution.width;
+            int maxHeight = Screen.currentResolution.height;
 
-        AddResolution(Screen.width, Screen.height);
+            foreach (Resolution resolution in Screen.resolutions)
+            {
+                if ((long)resolution.width * resolution.height >
+                    (long)maxWidth * maxHeight)
+                {
+                    maxWidth = resolution.width;
+                    maxHeight = resolution.height;
+                }
+            }
+
+            Vector2Int[] presets =
+            {
+                new(640, 360),
+                new(960, 540),
+                new(1152, 648),
+                new(1280, 720),
+                new(1600, 900),
+                new(1920, 1080),
+                new(2560, 1440),
+                new(2880, 1620),
+                new(3200, 1800),
+                new(3840, 2160),
+                new(5120, 2880),
+                new(7680, 4320)
+            };
+
+            foreach (Vector2Int preset in presets)
+            {
+                if (preset.x <= maxWidth && preset.y <= maxHeight)
+                    AddResolution(preset.x, preset.y);
+            }
+
+            // 프리셋에 없어도 최대 크기 안에 들어가는 16:9를 추가.
+            int unit = Mathf.Min(maxWidth / 16, maxHeight / 9);
+
+            if (unit > 0)
+                AddResolution(unit * 16, unit * 9);
+        }
+        else
+        {
+            // Windows에서는 기존처럼 모니터가 보고한 모드를 사용.
+            foreach (Resolution resolution in Screen.resolutions)
+                AddResolution(resolution.width, resolution.height);
+
+            AddResolution(Screen.width, Screen.height);
+        }
 
         // 해상도 목록이 없는 환경의 대체 해상도.
         if (resolutions.Count == 0)
@@ -392,9 +439,10 @@ public class SettingsUI : MonoBehaviour
 
     private void AddResolution(int width, int height)
     {
+        Debug.Log($"AddResolution: {width}x{height}");
+        
         if (width <= 0 || height <= 0)
             return;
-
         // 정확한 16:9 해상도만 허용.
         if ((long)width * 9 != (long)height * 16)
             return;
